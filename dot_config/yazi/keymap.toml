@@ -1,0 +1,20 @@
+# For defaults, see:
+#   https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset
+[mgr]
+prepend_keymap = [
+	{ on = "Z", run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
+	{ on = "z", run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
+	{ on = "!", run = 'shell "$SHELL" --block', desc = "Open $SHELL here", for = "unix" },
+	{ on = "!", run = 'shell "pwsh.exe" --block', desc = "Open Powershell here", for = "windows" },
+	{ on = "_", run = "back", desc = "Back to previous directory" },
+	{ on = "+", run = "forward", desc = "Forward to next directory" },
+	{ on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+	{ on = "!", for  = "windows", run  = 'shell "pwsh.exe" --block', desc = "Open PowerShell here" }
+]
+append_keymap = [
+	{ on = "<C-e>", run = "arrow 50%", desc = "Move cursor down half page" },
+	{ on = "<C-Left>", run = "back", desc = "Back to previous directory" },
+	{ on = "<C-Right>", run = "forward", desc = "Forward to next directory" },
+	{ on = "<C-PageDown>", run = "back", desc = "Back to previous directory" },
+	{ on = "<C-PageUp>", run = "forward", desc = "Forward to next directory" },
+]

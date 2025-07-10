@@ -1,0 +1,22 @@
+[user]
+	email = {{ .username | quote }}
+	email = {{ .email | quote }}
+[core]
+	autocrlf = false
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = true
+	side-by-side = true
+[merge]
+	conflictStyle = zdiff3
+	tool = diffview
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "diffview"]
+	cmd = nvim -n -c "DiffviewOpen" "$MERGE"

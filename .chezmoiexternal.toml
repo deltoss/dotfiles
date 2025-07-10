@@ -1,0 +1,19 @@
+{{- if eq .chezmoi.os "windows" }}
+["AppData/Local/nvim"]
+{{- else }}
+[".config/nvim"]
+{{- end }}
+    type = "git-repo"
+    urls = [
+      "git@github.com:deltoss/kickstart.nvim.git",
+      "https://github.com/deltoss/kickstart.nvim.git"
+    ]
+    refreshPeriod = "168h"
+
+[".config/wezterm"]
+    type = "git-repo"
+    urls = [
+      "git@github.com:deltoss/wezterm-config.git",
+      "https://github.com/deltoss/wezterm-config.git"
+    ]
+    refreshPeriod = "168h"
