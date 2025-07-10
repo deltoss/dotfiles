@@ -1,0 +1,9 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: openai:gpt-4o
+light_theme: true
+clients:
+- type: claude
+  api_key: {{ onepasswordRead "op://Personal/Claude AI - Personal/AIChat API Key" }}
+- type: openai
+  api_key: {{ onepasswordRead "op://Personal/OpenAI - Personal/AIChat API Key" }}
