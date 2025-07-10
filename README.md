@@ -40,3 +40,8 @@
    chezmoi apply
    ```
 
+## Debugging Chezmoi
+
+- Test templates with `chezmoi execute-template '{{ .chezmoi.os }}'`. See [Chezmoi References - Commands - execute-template - examples](https://www.chezmoi.io/reference/commands/execute-template/#examples)
+- View variables with `chezmoi data`. See [Chezmoi References - Variables](https://www.chezmoi.io/reference/templates/variables/)
+
