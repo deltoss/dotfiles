@@ -1,0 +1,6 @@
+# Add my 'web' type
+--type-add
+web:*.{html,css,js}*
+
+# Similar to --ignore-case, but disables itself if the pattern contains any uppercase letters
+--smart-case
