@@ -37,14 +37,15 @@ bars:
         "glazewm_tiling_direction",
         "glazewm_workspaces",
         "glazewm_binding_mode",
-        "clock",
         "notifications",
+        "systray",
       ]
       center: [
         "media",
         "active_window"
       ]
       right: [
+        "clock",
         "wifi",
         "cpu",
         "memory",
@@ -54,8 +55,49 @@ bars:
         "brightness",
         "weather",
         "language",
-        "systray",
         "power_menu"
+      ]
+  secondary-bar:
+    enabled: true
+    screens: ['*']
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    animation:
+      enabled: true
+      duration: 1000
+    blur_effect:
+      enabled: false
+      acrylic: false
+      dark_mode: false
+      round_corners: false
+      round_corners_type: "normal"
+      border_color: "System"
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 35
+    padding:
+      top: 4
+      left: 6
+      bottom: 0
+      right: 6
+    widgets:
+      left: [
+        "glazewm_tiling_direction",
+        "glazewm_workspaces",
+        "glazewm_binding_mode",
+      ]
+      center: [
+        "active_window"
+      ]
+      right: [
+        "clock",
+        "weather",
+        "language",
       ]
 
 widgets:
