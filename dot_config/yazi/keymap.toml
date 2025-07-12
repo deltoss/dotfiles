@@ -12,6 +12,8 @@ prepend_keymap = [
 	{ on = "!", for  = "windows", run  = 'shell "pwsh.exe" --block', desc = "Open PowerShell here" }
 ]
 append_keymap = [
+	{ on = "<C-o>", run = "back", desc = "Back to previous directory" },
+	{ on = "<C-i>", run = "forward", desc = "Forward to next directory" },
 	{ on = "<C-e>", run = "arrow 50%", desc = "Move cursor down half page" },
 	{ on = "<C-Left>", run = "back", desc = "Back to previous directory" },
 	{ on = "<C-Right>", run = "forward", desc = "Forward to next directory" },
