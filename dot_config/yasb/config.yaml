@@ -38,7 +38,7 @@ bars:
         "glazewm_workspaces",
         "glazewm_binding_mode",
         "notifications",
-        "systray",
+        "github",
       ]
       center: [
         "media",
@@ -217,20 +217,6 @@ widgets:
         callbacks:
           on_left: "toggle_label"
 
-  traffic:
-      type: "yasb.traffic.TrafficWidget"
-      options:
-        label: "<span>\udb82\udcfa</span> \uea9a{download_speed} \ueaa1{upload_speed}"
-        label_alt: "<span>\udb82\udcfa</span> Download {download_speed} | Upload {upload_speed}"
-        update_interval: 1000
-        callbacks:
-          on_left: "toggle_label"
-          on_right: "exec cmd /c Taskmgr"
-        animation:
-          enabled: true
-          type: "fadeInOut"
-          duration: 200
-
   wifi:
       type: "yasb.wifi.WifiWidget"
       options:
@@ -370,31 +356,6 @@ widgets:
         radius: 3
         offset: [ 1, 1 ]
 
-  systray:
-    type: "yasb.systray.SystrayWidget"
-    options:
-      class_name: "systray"
-      label_collapsed: "▼"
-      label_expanded: "▶"
-      label_position: "left" # Can be "left" or "right"
-      icon_size: 16 # Can be any integer between 8 and 64
-      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
-      show_unpinned: true
-      show_unpinned_button: true
-      show_battery: false
-      show_volume: false
-      show_network: false
-      container_padding:
-          left: 0
-          top: 0
-          right: 0
-          bottom: 0
-      btn_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
-
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
@@ -447,3 +408,30 @@ widgets:
         radius: 3
         offset: [ 1, 1 ]
 
+  github:
+    type: "yasb.github.GithubWidget"
+    options:
+      label: "<span>\ueba1</span>"
+      label_alt: "Notifications {data}" # {data} return number of unread notification
+      token: ghp_xxxxxxxxxxx # GitHub Personal access tokens (classic) https://github.com/settings/tokens
+      max_notification: 20 # Max number of notification displaying in menu max: 50
+      notification_dot:
+        enabled: True
+        corner: "bottom_left" # Can be "top_left", "top_right", "bottom_left", "bottom_right"
+        color: "red" # Can be hex color or string
+        margin: [ 1, 1 ] # x and y margin for the dot
+      only_unread: false # Show only unread or all notifications; 
+      max_field_size: 54 # Max characters in title before truncation.
+      update_interval: 300 # Check for new notification in seconds
+      menu:
+        blur: True # Enable blur effect for the menu
+        round_corners: True # Enable round corners for the menu (this option is not supported on Windows 10)
+        round_corners_type: "normal" # Set the type of round corners for the menu (normal, small) (this option is not supported on Windows 10)
+        border_color: "System" # Set the border color for the menu (this option is not supported on Windows 10)
+        alignment: "right"
+        direction: "down"
+      label_shadow:
+        enabled: True
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
