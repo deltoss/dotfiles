@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
+- `Powershell 7+` → To install Nerd fonts
 - `Git` → To clone/pull from public repositories
 - `1Password CLI` → For secrets in templates
-- `gsudo` → To elevate permissions with scripts
 
 ## Windows Installation
 
@@ -13,7 +13,7 @@
 1. Run the below command to install the pre-requisites and Chezmoi
 
    ```powershell
-   winget install --id=gerardog.gsudo -e
+   winget install --id=Microsoft.PowerShell -e
    winget install --id=Git.Git -e
    winget install --id=AgileBits.1Password.CLI -e
    winget install --id=twpayne.chezmoi -e
@@ -36,8 +36,8 @@
 8. Run the below commands:
 
    ```powershell
-   chezmoi init
-   chezmoi apply
+   chezmoi init --verbose
+   chezmoi apply --verbose
    ```
 
 ## Debugging Chezmoi

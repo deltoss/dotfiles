@@ -1,0 +1,26 @@
+[[packages.windows.core]]
+id = "gerardog.gsudo"
+
+[[packages.windows.core]]
+id = "voidtools.Everything"
+
+[[packages.windows.core]]
+id = "7zip.7zip"
+
+[[packages.windows.core]]
+id = "JohnMacFarlane.Pandoc"
+
+[[packages.windows.core]]
+id = "dotPDN.PaintDotNet"
+
+[[packages.windows.core]]
+id = "ElaborateBytes.VirtualCloneDrive"
+
+[[packages.windows.core]]
+id = "WinMerge.WinMerge"
+
+[[packages.windows.core]]
+id = "glzr-io.glazewm"
+
+[[packages.windows.core]]
+id = "AmN.yasb"
