@@ -10,13 +10,14 @@
 
 1. Open up `Powershell`
 
-1. Run the below command to install the pre-requisites and Chezmoi
+2. Run the below command to install the pre-requisites and Chezmoi
 
    ```powershell
-   winget install --id=Microsoft.PowerShell -e
-   winget install --id=Git.Git -e
-   winget install --id=AgileBits.1Password.CLI -e
-   winget install --id=twpayne.chezmoi -e
+   winget install --id Microsoft.PowerShell -e
+   winget install --id Git.Git -e
+   winget install --id AgileBits.1Password -e
+   winget install --id AgileBits.1Password.CLI -e
+   winget install --id twpayne.chezmoi -e
    ```
 
 3. Restart the terminal
