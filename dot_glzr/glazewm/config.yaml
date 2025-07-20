@@ -276,15 +276,9 @@ keybindings:
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
-    bindings: ['ctrl+alt+shift+.']
-  - commands: ['focus --next-active-workspace']
     bindings: ['ctrl+alt+shift+u']
   - commands: ['focus --next-active-workspace']
     bindings: ['ctrl+alt+shift+page_up']
-  - commands: ['focus --next-active-workspace']
-    bindings: ['ctrl+alt+shift+u']
-  - commands: ['focus --prev-active-workspace']
-    bindings: ['ctrl+alt+shift+,']
   - commands: ['focus --prev-active-workspace']
     bindings: ['ctrl+alt+shift+o']
   - commands: ['focus --prev-active-workspace']
