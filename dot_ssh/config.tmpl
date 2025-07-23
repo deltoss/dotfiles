@@ -1,0 +1,24 @@
+{{- $config := dict -}}
+{{- if eq .computerPurpose "personal" -}}
+{{- $config = (onepasswordRead "op://Personal/SSH Connections/notesPlain" | fromToml) -}}
+{{- else if eq .computerPurpose "work" -}}
+{{- $config = (onepasswordRead "op://Work/SSH Connections/notesPlain" | fromToml) -}}
+{{- end -}}
+
+{{- if $config }}
+{{- range $config.hosts -}}
+Host {{ .alias }}
+  HostName {{ .hostname }}
+  User {{ .user }}
+{{- if hasKey . "macs" }}
+  MACs {{ .macs }}
+{{- end }}
+{{- if hasKey . "port" }}
+  Port {{ .port }}
+{{- end }}
+{{- if hasKey . "identityFile" }}
+  IdentityFile {{ .identityFile }}
+{{- end }}
+
+{{ end }}
+{{- end -}}

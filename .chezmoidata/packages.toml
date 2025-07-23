@@ -24,3 +24,7 @@ id = "glzr-io.glazewm"
 
 [[packages.windows.core]]
 id = "AmN.yasb"
+
+[[packages.windows.core]]
+id = "SSHFS-Win.SSHFS-Win"
+
