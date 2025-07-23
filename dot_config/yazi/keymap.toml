@@ -17,6 +17,6 @@ append_keymap = [
 	{ on = "<C-e>", run = "arrow 50%", desc = "Move cursor down half page" },
 	{ on = "<C-Left>", run = "back", desc = "Back to previous directory" },
 	{ on = "<C-Right>", run = "forward", desc = "Forward to next directory" },
-	{ on = "<C-PageDown>", run = "back", desc = "Back to previous directory" },
-	{ on = "<C-PageUp>", run = "forward", desc = "Forward to next directory" },
+	{ on = "<C-PageUp>", run = "seek -10", desc = "Seek up 10 units in the preview" },
+	{ on = "<C-PageDown>", run = "seek 10", desc = "Seek down 10 units in the preview" },
 ]
