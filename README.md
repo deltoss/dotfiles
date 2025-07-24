@@ -26,17 +26,10 @@
 
 5. Restart the terminal
 
-6. Clone this repository:
+6. Run the below commands:
 
    ```powershell
-   git clone git@github.com:deltoss/dotfiles.git "$Env:USERPROFILE/.local/share/chezmoi"
-   ```
-
-7. Run the below commands:
-
-   ```powershell
-   chezmoi init --verbose
-   chezmoi apply --verbose
+   chezmoi init deltoss/dotfiles --ssh --apply --verbose
    ```
 
 ## Debugging Chezmoi
