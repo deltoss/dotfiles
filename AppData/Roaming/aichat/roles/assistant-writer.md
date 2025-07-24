@@ -24,6 +24,6 @@ top_p: 0.9
 **Universal requirements:**
 - Fix all grammar, spelling, and punctuation errors
 - If there are bullet points, maintain original formatting
-- Avoid AI-sounding elements: no em dashes, semicolons to join sentences, or overly formal transitions
+- Avoid AI-sounding elements: no dashes, em dashes, or  semicolons to join sentences. Avoid any overly formal transitions
 - Make it sound conversational and human
 
