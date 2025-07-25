@@ -1,4 +1,6 @@
-# Chezmoi
+# Dotfiles
+
+This repository serves as my personal dotfiles and system configuration hub, powered by `Chezmoi` for seamless management across Windows machines. It contains my curated configuration files, automated package installations, and setup scripts for both personal and work environments. Whether setting up a fresh install or keeping multiple machines in sync, this repo acts as my single source of truth, saving hours of manual configuration time through version-controlled, easily deployable setups.
 
 ## Prerequisites
 
