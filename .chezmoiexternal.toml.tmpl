@@ -1,9 +1,17 @@
 {{- if eq .chezmoi.os "windows" }}
-["AppData/Local/nvim"]
-{{- else }}
-[".config/nvim"]
-{{- end }}
+[".config/PowerShell"]
     type = "git-repo"
+    url = "git@github.com:deltoss/MyPowerShellProfile.git"
+    urls = [
+      "git@github.com:deltoss/MyPowerShellProfile.git",
+      "https://github.com/deltoss/MyPowerShellProfile.git"
+    ]
+    refreshPeriod = "168h"
+{{- end }}
+
+[".config/nvim"]
+    type = "git-repo"
+    url = "git@github.com:deltoss/kickstart.nvim.git"
     urls = [
       "git@github.com:deltoss/kickstart.nvim.git",
       "https://github.com/deltoss/kickstart.nvim.git"
@@ -12,6 +20,7 @@
 
 [".config/wezterm"]
     type = "git-repo"
+    url = "git@github.com:deltoss/wezterm-config.git"
     urls = [
       "git@github.com:deltoss/wezterm-config.git",
       "https://github.com/deltoss/wezterm-config.git"
