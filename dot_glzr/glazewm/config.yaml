@@ -158,12 +158,13 @@ window_rules:
         window_title: { equals: "Settings" }
       - window_process: { equals: 'devenv' } # Visual Studio IDE
       - window_process: { equals: 'wezterm-gui' }
-      - window_title: { regex: '.*Spirit City.*' }
       - window_title: { regex: '.*Virtual Cottage.*' }
-      - window_title: { regex: '.*Ropuka.*Idle.*Island' }
 
   - commands: ['ignore']
     match:
+      - window_title: { regex: '.*Spirit City.*' }
+      - window_title: { regex: '.*Ropuka.*Idle.*Island' }
+
       # Task Manager requires admin privileges to manage
       # and should be ignored unless running the WM as admin.
       - window_process: { equals: 'Taskmgr' }
