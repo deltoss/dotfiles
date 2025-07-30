@@ -152,6 +152,16 @@ workspaces:
     bind_to_monitor: 2
 
 window_rules:
+  - commands: ["set-floating"]
+    match:
+      - window_process: { equals: "Flow.Launcher" }
+        window_title: { equals: "Settings" }
+      - window_process: { equals: 'devenv' } # Visual Studio IDE
+      - window_process: { equals: 'wezterm-gui' }
+      - window_title: { regex: '.*Spirit City.*' }
+      - window_title: { regex: '.*Virtual Cottage.*' }
+      - window_title: { regex: '.*Ropuka.*Idle.*Island' }
+
   - commands: ['ignore']
     match:
       # Task Manager requires admin privileges to manage
@@ -167,6 +177,9 @@ window_rules:
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
+      # Boom 3D
+      - window_process: { equals: 'Boom3D' }
 
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: 'PowerToys' }
