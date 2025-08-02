@@ -162,13 +162,17 @@ window_rules:
       - window_process: { regex: 'AutoHotkey.*' }
       - window_process: { regex: 'Cold Turkey.*' }
 
-  - commands: ["move --workspace 4", "move --workspace 4"]
+  - commands: ["move --workspace 2", "focus --workspace 2"]
     match:
-      - window_process: { equals: 'Notion' }
+      - window_process: { regex: "firefox|msedge|brave|chrome" }
 
-  - commands: ["move --workspace 5", "move --workspace 5"]
+  - commands: ["move --workspace 4", "focus --workspace 4"]
     match:
-      - window_process: { equals: 'Notion Calendar' }
+      - window_process: { regex: '[Nn]otion' }
+
+  - commands: ["move --workspace 5", "focus --workspace 5"]
+    match:
+      - window_process: { regex: '[Nn]otion.*[Cc]alendar' }
 
   - commands: ["set-fullscreen"]
     match:
@@ -210,9 +214,6 @@ window_rules:
         window_class: { not_regex: 'OpusApp' }
       - window_process: { equals: 'POWERPNT' }
         window_class: { not_regex: 'PPTFrameClass' }
-      - window_title: { regex: '.*Spirit City.*' }
-      - window_title: { regex: '.*Virtual Cottage.*' }
-      - window_title: { regex: '.*Ropuka.*Idle.*Island' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
