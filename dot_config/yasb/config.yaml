@@ -201,9 +201,12 @@ widgets:
   clock:
       type: "yasb.clock.ClockWidget"
       options:
-        label: "{%a, %d %b %H:%M}"
-        label_alt: "{%A, %d %B %Y %H:%M}"
-        timezones: []
+        label: "\uf017 {%a, %d %b %H:%M}"
+        label_alt: "\uf017 {%d/%m/%y %H:%M:%S}"
+        callbacks:
+          on_left: "toggle_label"
+          on_middle: "do_nothing"
+          on_right: "do_nothing"
 
   weather:
       type: "yasb.weather.WeatherWidget"
@@ -221,12 +224,12 @@ widgets:
       type: "yasb.wifi.WifiWidget"
       options:
         label: "<span>{wifi_icon}</span>"
-        label_alt: "{wifi_name} {wifi_strength}%"
+        label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
         update_interval: 5000
         callbacks:
-          on_left: "exec cmd.exe /c start ms-settings:network"
+          on_left: "toggle_label"
           on_middle: "do_nothing"
-          on_right: "toggle_label"
+          on_right: "exec cmd.exe /c start ms-settings:network"
         wifi_icons: [
           "\udb82\udd2e",  # 0% strength icon
           "\udb82\udd1f",  # 1-20% strength
@@ -264,10 +267,9 @@ widgets:
     type: "yasb.memory.MemoryWidget"
     options:
       label: "<span>\uefc5</span> {virtual_mem_percent}%"
-      label_alt: "<span>\uefc5</span> {virtual_mem_used}/{virtual_mem_total}"
       update_interval: 5000
       callbacks:
-        on_left: "toggle_label"
+        on_left: "do_nothing"
         on_middle: "do_nothing"
         on_right: "do_nothing"
       container_padding:
