@@ -14,3 +14,13 @@
 
 [diff]
   pager = "delta"
+
+[merge]
+  command = "nvim"
+  args = [
+    "-d",
+    {{ printf "%q" "{{ .Destination }}" }},
+    {{ printf "%q" "{{ .Source }}" }},
+    # Commented below as changing this panel won't actually merge in the edits made to it
+    # {{ printf "%q" "{{ .Target }}" }},
+  ]
