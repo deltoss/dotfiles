@@ -47,10 +47,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\A
 echo "Disable Weather, News and Interests on taskbar"
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
 
-echo "Up TaskBar"
-reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v Settings /t REG_BINARY /d 30000000feffffff0200000001000000300000002000000000000000c203000080070000e20300006000000001000000 /f
-
-Write-Host "After the chezmoi process finishes, restart computer for these regedits to take effect"
+Write-Host "After the chezmoi process ends, restart computer for these reg edits to take effect"
 Write-Host "Review the output, then type 'exit' + enter..."
 
 {{ end -}}
