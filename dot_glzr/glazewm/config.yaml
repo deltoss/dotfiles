@@ -158,7 +158,7 @@ window_rules:
         window_title: { equals: "Settings" }
       - window_process: { regex: 'AutoHotkey.*' }
 
-  - commands: ["set-floating", "set-tiling"] # Set initially to tiling breaks these apps, so first-set to floating
+  - commands: ["set-floating", "move --workspace 1", "focus --workspace 1", "set-tiling"] # Set initially to tiling breaks these apps, so first-set to floating
     match:
       - window_process: { equals: 'wezterm-gui' }
       - window_process: { equals: 'devenv' } # Visual Studio IDE
