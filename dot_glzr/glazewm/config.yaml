@@ -156,7 +156,7 @@ window_rules:
     match:
       - window_process: { equals: "Flow.Launcher" }
         window_title: { equals: "Settings" }
-      - window_process: { regex: 'AutoHotkey.*' }
+      - window_process: { regex: '[Aa]uto[Hh]otkey.*' }
 
   - commands: ["set-floating", "move --workspace 1", "focus --workspace 1", "set-tiling"] # Set initially to tiling breaks these apps, so first-set to floating
     match:
@@ -167,6 +167,8 @@ window_rules:
     match:
       - window_process: { regex: 'Cold Turkey.*' }
       - window_process: { regex: '[Ss]team.*' }
+      - window_process: { regex: '[Ss]oundpad' }
+      - window_process: { equals: 'mmc' } # Windows Event Viewer, Firewall rules, etc
 
   - commands: ["move --workspace 2", "focus --workspace 2"]
     match:
