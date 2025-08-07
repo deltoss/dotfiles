@@ -1,0 +1,3 @@
+{{- if eq .chezmoi.os "windows" -}}
+{{- onepasswordRead "op://Personal/Mobile Devices SSH Key/public key" -}}
+{{- end -}}
