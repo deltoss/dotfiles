@@ -168,6 +168,7 @@ window_rules:
       - window_process: { regex: 'Cold Turkey.*' }
       - window_process: { regex: '[Ss]team.*' }
       - window_process: { regex: '[Ss]oundpad' }
+      - window_process: { regex: '[Ee]verything' }
       - window_process: { equals: 'mmc' } # Windows Event Viewer, Firewall rules, etc
 
   - commands: ["move --workspace 2", "focus --workspace 2"]
