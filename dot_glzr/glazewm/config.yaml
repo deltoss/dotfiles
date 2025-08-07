@@ -162,6 +162,7 @@ window_rules:
     match:
       - window_process: { equals: 'wezterm-gui' }
       - window_process: { equals: 'devenv' } # Visual Studio IDE
+      - window_process: { equals: 'Code' } # Visual Studio Code
 
   - commands: ["set-floating", "move --workspace 1", "focus --workspace 1"]
     match:
