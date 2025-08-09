@@ -183,6 +183,7 @@ window_rules:
   - commands: ["move --workspace 5", "focus --workspace 5"]
     match:
       - window_process: { regex: '[Nn]otion.*[Cc]alendar' }
+      - window_process: { equals: 'thunderbird' }
 
   - commands: ["move --workspace 6", "focus --workspace 6"]
     match:
