@@ -28,3 +28,5 @@ id = "AmN.yasb"
 [[packages.windows.core]]
 id = "SSHFS-Win.SSHFS-Win"
 
+[[packages.windows.core]]
+id = "Doist.Todoist"
