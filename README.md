@@ -4,13 +4,21 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 
 ## Prerequisites
 
-- `Powershell 7+` → To install Nerd fonts using [nerd-fonts-installer-PS](https://github.com/deltoss/nerd-fonts-installer-ps)
+- `PowerShell 7+` → To install Nerd fonts using [nerd-fonts-installer-PS](https://github.com/deltoss/nerd-fonts-installer-ps)
 - `Git` → To clone/pull from public repositories
 - `1Password CLI` → For secrets in templates
 
 ## Windows Installation
 
-1. Open up `Powershell`
+1. Open up `PowerShell` as administrator.
+
+   ---
+
+   > 💡 Tip
+   > 
+   > Opening PowerShell as administrator is optional, but the chezmoi process would then prompt you to escalate privileges for each script to run.
+
+   ---
 
 2. Run the below command to install the pre-requisites and Chezmoi
 
