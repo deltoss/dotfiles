@@ -187,6 +187,8 @@ window_rules:
           regex: '[Nn]otion.*[Cc]alendar'
       - window_process:
           equals: thunderbird
+      - window_process:
+          regex: '[Tt]odoist'
   - commands:
       - move --workspace 6
       - focus --workspace 6
