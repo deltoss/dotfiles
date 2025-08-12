@@ -219,6 +219,8 @@ window_rules:
   - commands:
       - ignore
     match:
+      - window_process:
+          regex: '*[Aa]udible*'
       - window_title:
           regex: .*[d|D]ialog.*
       - window_title:
