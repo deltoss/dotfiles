@@ -140,6 +140,10 @@ window_rules:
           regex: '[Aa]uto[Hh]otkey.*'
       - window_process:
           regex: '[Bb]ambu.*'
+      - window_title:
+          not_regex: '.+[Aa]nki'
+        window_process:
+          regex: '[Aa]nki'
   - commands:
       - set-floating
       - move --workspace 1
@@ -173,6 +177,10 @@ window_rules:
     match:
       - window_process:
           regex: firefox|msedge|brave|chrome
+      - window_title:
+          regex: '.+[Aa]nki'
+        window_process:
+          regex: '[Aa]nki'
   - commands:
       - move --workspace 4
       - focus --workspace 4
