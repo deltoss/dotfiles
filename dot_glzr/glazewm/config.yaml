@@ -171,6 +171,8 @@ window_rules:
           regex: '[Ee]verything'
       - window_process:
           equals: mmc # Windows Event Viewer, Firewall rules, etc
+      - window_process:
+          equals: 'paintdotnet'
   - commands:
       - move --workspace 2
       - focus --workspace 2
@@ -181,6 +183,13 @@ window_rules:
           regex: '.+[Aa]nki'
         window_process:
           regex: '[Aa]nki'
+  - commands:
+      - move --workspace 3
+      - focus --workspace 3
+      - ignore
+    match:
+      - window_process:
+          equals: 'bambu-studio'
   - commands:
       - move --workspace 4
       - focus --workspace 4
