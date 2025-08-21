@@ -9,9 +9,6 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
-echo "Ditto Settings"
-reg import "{{.chezmoi.sourceDir}}/WindowsRegEdits/DittoSettings.reg"
-
 # See https://github.com/awesome-windows11/windows11
 
 echo "Disable Windows Key"
