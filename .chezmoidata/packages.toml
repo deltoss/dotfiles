@@ -1,4 +1,7 @@
 [[packages.windows.core]]
+id = "Git.Git"
+
+[[packages.windows.core]]
 id = "gerardog.gsudo"
 
 [[packages.windows.core]]
@@ -30,3 +33,79 @@ id = "SSHFS-Win.SSHFS-Win"
 
 [[packages.windows.core]]
 id = "Doist.Todoist"
+
+[[packages.windows.core]]
+id = "Mozilla.Firefox.en-GB"
+
+[[packages.windows.core]]
+id = "Mozilla.Thunderbird"
+
+[[packages.windows.core]]
+id = "Microsoft.PowerShell"
+
+[[packages.windows.core]]
+id = "Microsoft.PowerToys"
+
+[[packages.windows.core]]
+id = "Microsoft.VisualStudioCode"
+
+[[packages.windows.core]]
+id = "Notion.Notion"
+
+[[packages.windows.core]]
+id = "SUSE.RancherDesktop"
+prescript = "wsl --install"
+
+[[packages.windows.core]]
+id = "Neovim.Neovim"
+
+[[packages.windows.core]]
+id = "RoyalApps.RoyalTS.7"
+
+[[packages.windows.core]]
+id = "AutoHotkey.AutoHotkey"
+
+[[packages.windows.core]]
+id = "JesseDuffield.lazygit"
+
+[[packages.windows.core]]
+id = "JesseDuffield.Lazydocker"
+
+[[packages.windows.core]]
+id = "Google.GoogleDrive"
+
+[[packages.windows.core]]
+id = "ajeetdsouza.zoxide"
+
+[[packages.windows.core]]
+id = "Gyan.FFmpeg"
+
+[[packages.windows.core]]
+id = "jqlang.jq"
+
+[[packages.windows.core]]
+id = "oschwartz10612.Poppler"
+
+[[packages.windows.core]]
+id = "sharkdp.fd"
+
+[[packages.windows.core]]
+id = "BurntSushi.ripgrep.MSVC"
+
+[[packages.windows.core]]
+id = "junegunn.fzf"
+
+[[packages.windows.core]]
+id = "ImageMagick.ImageMagick"
+
+[[packages.windows.core]]
+id = "sxyazi.yazi"
+
+[[packages.windows.core]]
+id = "wez.wezterm"
+
+[[packages.windows.core]]
+id = "Ditto.Ditto"
+
+[[packages.windows.personal]]
+id = "Microsoft.VisualStudio.2022.Community.Preview"
