@@ -9,10 +9,43 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
+Write-Host "Configuring necessary environment variables..."
+$env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
+
 {{ range .packages.windows.core}}
 Write-Host "Installing {{ .id }}..."
+{{- if hasKey . "precommand" }}
+{{ .precommand }}
+{{- end }}
 winget install --id {{ .id | quote }} -e --no-upgrade
+{{- if hasKey . "postcommand" }}
+{{ .postcommand }}
+{{- end }}
 {{ end -}}
+
+{{- if eq .computerPurpose "personal" -}}
+  {{ range .packages.windows.personal}}
+  Write-Host "Installing {{ .id }}..."
+  {{- if hasKey . "precommand" }}
+  {{ .precommand }}
+  {{- end }}
+  winget install --id {{ .id | quote }} -e --no-upgrade
+  {{- if hasKey . "postcommand" }}
+  {{ .postcommand }}
+  {{- end }}
+  {{ end -}}
+{{- else if eq .computerPurpose "work" -}}
+  {{ range .packages.windows.work}}
+  Write-Host "Installing {{ .id }}..."
+  {{- if hasKey . "precommand" }}
+  {{ .precommand }}
+  {{- end }}
+  winget install --id {{ .id | quote }} -e --no-upgrade
+  {{- if hasKey . "postcommand" }}
+  {{ .postcommand }}
+  {{- end }}
+  {{ end -}}
+{{- end -}}
 
 Write-Host "Review the output, then type 'exit' + enter..."
 

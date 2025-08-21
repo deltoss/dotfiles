@@ -1,11 +1,19 @@
 [[packages.windows.core]]
+id = "Ditto.Ditto"
+postcommand = 'echo "Importing Ditto Settings as RegEdits"; reg import "$env:CHEZMOI_SOURCEDIR/WindowsRegEdits/DittoSettings.reg"'
+
+[[packages.windows.core]]
+id = "SUSE.RancherDesktop"
+precommand = "wsl --install --no-distribution"
+
+[[packages.windows.core]]
+id = "ShareX.ShareX"
+
+[[packages.windows.core]]
 id = "Git.Git"
 
 [[packages.windows.core]]
 id = "gerardog.gsudo"
-
-[[packages.windows.core]]
-id = "voidtools.Everything"
 
 [[packages.windows.core]]
 id = "7zip.7zip"
@@ -51,10 +59,6 @@ id = "Microsoft.VisualStudioCode"
 
 [[packages.windows.core]]
 id = "Notion.Notion"
-
-[[packages.windows.core]]
-id = "SUSE.RancherDesktop"
-prescript = "wsl --install"
 
 [[packages.windows.core]]
 id = "Neovim.Neovim"
@@ -105,7 +109,19 @@ id = "sxyazi.yazi"
 id = "wez.wezterm"
 
 [[packages.windows.core]]
-id = "Ditto.Ditto"
+id = "KDE.KDEConnect"
+
+[[packages.windows.core]]
+id = "Flow-Launcher.Flow-Launcher"
+
+[[packages.windows.core]]
+id = "NickeManarin.ScreenToGif"
+
+[[packages.windows.core]]
+id = "voidtools.Everything"
+
+[[packages.windows.core]]
+id = "AstroComma.AstroGrep"
 
 [[packages.windows.personal]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
