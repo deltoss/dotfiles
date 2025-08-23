@@ -123,5 +123,8 @@ id = "voidtools.Everything"
 [[packages.windows.core]]
 id = "AstroComma.AstroGrep"
 
-[[packages.windows.personal]]
+[[packages.windows.core]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
+
+[[packages.windows.personal]]
+id = "Bambulab.Bambustudio"

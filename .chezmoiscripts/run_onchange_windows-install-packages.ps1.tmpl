@@ -12,41 +12,43 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 Write-Host "Configuring necessary environment variables..."
 $env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
 
-{{ range .packages.windows.core}}
-Write-Host "Installing {{ .id }}..."
-{{- if hasKey . "precommand" }}
-{{ .precommand }}
-{{- end }}
-winget install --id {{ .id | quote }} -e --no-upgrade
-{{- if hasKey . "postcommand" }}
-{{ .postcommand }}
-{{- end }}
-{{ end -}}
+# See https://github.com/microsoft/winget-cli?tab=readme-ov-file
+if (-not (Get-Module -ListAvailable -Name Microsoft.WinGet.Client)) {
+    Write-Host "Installing Microsoft.WinGet.Client module..."
+    Install-Module -Name Microsoft.WinGet.Client -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -Confirm:$false
+}
+Import-Module -Name Microsoft.WinGet.Client
+$packagesInstalled = Get-WinGetPackage -Source winget | Select-Object -ExpandProperty Id
 
+{{- $packagesToInstall := .packages.windows.core -}}
 {{- if eq .computerPurpose "personal" -}}
-  {{ range .packages.windows.personal}}
-  Write-Host "Installing {{ .id }}..."
-  {{- if hasKey . "precommand" }}
-  {{ .precommand }}
-  {{- end }}
-  winget install --id {{ .id | quote }} -e --no-upgrade
-  {{- if hasKey . "postcommand" }}
-  {{ .postcommand }}
-  {{- end }}
-  {{ end -}}
+  {{- $packagesToInstall = concat $packagesToInstall .packages.windows.personal -}}
 {{- else if eq .computerPurpose "work" -}}
-  {{ range .packages.windows.work}}
-  Write-Host "Installing {{ .id }}..."
+  {{- $packagesToInstall = concat $packagesToInstall .packages.windows.work -}}
+{{- end -}}
+
+{{- range $packagesToInstall }}
+  $displayName = "{{ if hasKey . "id" }}{{ .id }}{{ else if hasKey . "name" }}{{ .name }}{{ else }}Unknown{{ end }}"
+  Write-Host "Checking $displayName..."
   {{- if hasKey . "precommand" }}
-  {{ .precommand }}
-  {{- end }}
-  winget install --id {{ .id | quote }} -e --no-upgrade
+    {{ .precommand }}
+  {{ end }}
+  {{- if hasKey . "id" }}
+    if ($packagesInstalled -contains "{{ .id }}") {
+        Write-Host "$displayName is already installed, skipping..."
+    } else {
+        Write-Host "Installing $displayName..."
+        winget install --id {{ .id | quote }} -e --no-upgrade
+    }
+  {{ end }}
+  {{- if hasKey . "command" }}
+    {{ .command }}
+  {{ end }}
   {{- if hasKey . "postcommand" }}
-  {{ .postcommand }}
-  {{- end }}
-  {{ end -}}
+    {{ .postcommand }}
+  {{ end }}
 {{- end -}}
 
 Write-Host "Review the output, then type 'exit' + enter..."
 
-{{ end -}}
+{{- end -}}
