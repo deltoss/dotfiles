@@ -12,12 +12,16 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 Write-Host "Configuring necessary environment variables..."
 $env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
 
-# See https://github.com/microsoft/winget-cli?tab=readme-ov-file
+# Installs prerequisites for the Install Scripts
+# See https://github.com/microsoft/winget-cli
 if (-not (Get-Module -ListAvailable -Name Microsoft.WinGet.Client)) {
     Write-Host "Installing Microsoft.WinGet.Client module..."
     Install-Module -Name Microsoft.WinGet.Client -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -Confirm:$false
 }
 Import-Module -Name Microsoft.WinGet.Client
+
+# winget list gets us a string back, not a powershell object to manipulate.
+# Thus, use Microsoft.WinGet.Client to get the list of installed packages instead.
 $packagesInstalled = Get-WinGetPackage -Source winget | Select-Object -ExpandProperty Id
 
 {{- $packagesToInstall := .packages.windows.core -}}
