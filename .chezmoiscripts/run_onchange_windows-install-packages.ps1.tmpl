@@ -25,9 +25,9 @@ Import-Module -Name Microsoft.WinGet.Client
 $packagesInstalled = Get-WinGetPackage -Source winget | Select-Object -ExpandProperty Id
 
 {{- $packagesToInstall := .packages.windows.core -}}
-{{- if eq .computerPurpose "personal" -}}
+{{- if and (eq .computerPurpose "personal") (hasKey .packages.windows "personal") -}}
   {{- $packagesToInstall = concat $packagesToInstall .packages.windows.personal -}}
-{{- else if eq .computerPurpose "work" -}}
+{{- else if and (eq .computerPurpose "work") (hasKey .packages.windows "work") -}}
   {{- $packagesToInstall = concat $packagesToInstall .packages.windows.work -}}
 {{- end -}}
 
