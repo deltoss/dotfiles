@@ -126,5 +126,14 @@ id = "AstroComma.AstroGrep"
 [[packages.windows.core]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
 
+[[packages.windows.core]]
+id = "Starship.Starship"
+
+[[packages.windows.core]]
+id = "OpenJS.NodeJS"
+
+[[packages.windows.core]]
+id = "dbrgn.tealdeer"
+
 [[packages.windows.personal]]
 id = "Bambulab.Bambustudio"
