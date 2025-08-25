@@ -1,6 +1,7 @@
 README.md
 LICENSE
 WindowsRegEdits/
+scripts/
 
 # Ignore files or directories on different OS
 # See https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines

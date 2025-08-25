@@ -212,22 +212,22 @@ window_rules:
           regex: '[Dd]iscord'
   - commands:
       - set-floating
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 7
+      - focus --workspace 7
     match:
       - window_title:
           regex: .*Virtual Cottage.*
   - commands:
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 7
+      - focus --workspace 7
       - ignore
     match:
       - window_title:
           regex: .*Ropuka.*Idle.*Island
   - commands:
       - set-fullscreen
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 7
+      - focus --workspace 7
     match:
       - window_title:
           regex: .*Spirit City.*

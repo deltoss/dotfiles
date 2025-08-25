@@ -1,10 +1,28 @@
 [[packages.windows.core]]
+name = "dotnet"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
+
+[[packages.windows.core]]
 id = "Ditto.Ditto"
 postcommand = 'echo "Importing Ditto Settings as RegEdits"; reg import "$env:CHEZMOI_SOURCEDIR/WindowsRegEdits/DittoSettings.reg"'
 
 [[packages.windows.core]]
 id = "SUSE.RancherDesktop"
 precommand = "wsl --install --no-distribution"
+
+[[packages.windows.core]]
+id = "Chocolatey.Chocolatey"
+# Refresh the Path variable so it'd detect chocolatey in the current terminal session
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
+
+[[packages.windows.core]]
+name = "MinGW"
+command = "choco install mingw"
+desc = "Required dependency for Neovim plugins"
+
+[[packages.windows.core]]
+id = "Python.Python.3.13"
+desc = "Dependency for Neovim plugins"
 
 [[packages.windows.core]]
 id = "ShareX.ShareX"
@@ -149,20 +167,6 @@ id = "dbrgn.tealdeer"
 
 [[packages.windows.core]]
 id = "dandavison.delta"
-
-[[packages.windows.core]]
-id = "Chocolatey.Chocolatey"
-# Refresh the Path variable so it'd detect chocolatey in the current terminal session
-postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
-
-[[packages.windows.core]]
-name = "MinGW"
-command = "choco install mingw"
-desc = "Required dependency for Neovim plugins"
-
-[[packages.windows.core]]
-id = "Python.Python.3.13"
-desc = "Dependency for Neovim plugins"
 
 [[packages.windows.core]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
