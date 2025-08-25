@@ -1,7 +1,2 @@
 [fonts]
-  windows = [
-    "jetbrains-mono",
-    "heavy-data",
-    "departure-mono",
-    "caskaydia-cove"
-  ]
+windows = ["jetbrains-mono", "heavy-data", "departure-mono", "caskaydia-cove"]
