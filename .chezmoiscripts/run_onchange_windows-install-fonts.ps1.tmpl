@@ -9,7 +9,9 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
-& ([scriptblock]::Create((iwr "https://raw.githubusercontent.com/deltoss/nerd-fonts-installer-PS/main/Invoke-NerdFontInstaller.ps1"))) -Confirm:$false -Name {{ .fonts.windows | quoteList | join ", " }}
+Write-Host "Installing fonts..."
+
+pwsh -NoProfile -NoLogo -NonInteractive -Command '& ([scriptblock]::Create((iwr ''https://raw.githubusercontent.com/deltoss/nerd-fonts-installer-PS/main/Invoke-NerdFontInstaller.ps1''))) -Confirm:$False -Name {{ .fonts.windows | quoteList | join ", " }}'
 
 Write-Host "Review the output, then type 'exit' + enter..."
 
