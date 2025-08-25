@@ -16,6 +16,12 @@ id = "Git.Git"
 id = "gerardog.gsudo"
 
 [[packages.windows.core]]
+id = "sigoden.AIChat"
+
+[[packages.windows.core]]
+id = "RoyalApps.RoyalTS"
+
+[[packages.windows.core]]
 id = "7zip.7zip"
 
 [[packages.windows.core]]
@@ -94,6 +100,12 @@ id = "oschwartz10612.Poppler"
 id = "sharkdp.fd"
 
 [[packages.windows.core]]
+id = "sharkdp.bat"
+
+[[packages.windows.core]]
+id = "eza-community.eza"
+
+[[packages.windows.core]]
 id = "BurntSushi.ripgrep.MSVC"
 
 [[packages.windows.core]]
@@ -121,6 +133,9 @@ id = "NickeManarin.ScreenToGif"
 id = "voidtools.Everything"
 
 [[packages.windows.core]]
+id = "voidtools.Everything.Cli"
+
+[[packages.windows.core]]
 id = "AstroComma.AstroGrep"
 
 [[packages.windows.core]]
@@ -137,9 +152,13 @@ id = "dandavison.delta"
 
 [[packages.windows.core]]
 id = "Chocolatey.Chocolatey"
-# Refresh the Path variable so it'd detect chocolotey in the current terminal session
-postcommand = "$env:Path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User'); choco install mingw"
-desc = "Dependency for Neovim plugins"
+# Refresh the Path variable so it'd detect chocolatey in the current terminal session
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
+
+[[packages.windows.core]]
+name = "MinGW"
+command = "choco install mingw"
+desc = "Required dependency for Neovim plugins"
 
 [[packages.windows.core]]
 id = "Python.Python.3.13"
@@ -147,6 +166,32 @@ desc = "Dependency for Neovim plugins"
 
 [[packages.windows.core]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
+
+[[packages.windows.core]]
+id = "Adobe.Acrobat.Reader.64-bit"
+
+[[packages.windows.core]]
+id = "GitHub.cli"
+
+[[packages.windows.core]]
+id = "Bruno.Bruno"
+
+[[packages.windows.personal]]
+id = "Audacity.Audacity"
+
+[[packages.windows.personal]]
+id = "Gyan.FFmpeg"
+desc = "For Audacity to be compatible with more files"
+
+[[packages.windows.personal]]
+id = "VideoLAN.VLC"
+
+[[packages.windows.personal]]
+id = "CodecGuide.K-LiteCodecPack.Full"
+desc = "For Media Player Classic. Note VLC uses its own Codec."
+
+[[packages.windows.personal]]
+id = "clsid2.mpc-hc"
 
 [[packages.windows.personal]]
 id = "Bambulab.Bambustudio"
