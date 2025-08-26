@@ -311,6 +311,11 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
     MouseMove width / 3, height / 3
 }
 
+#HotIf WinActive('ahk_exe Slack.exe')
+^p:: Send "^k" ; Activate launcher
+!p:: Send "^k"
+#HotIf
+
 StartFocusSteamGame()
 {
     local randomChoice := Random(1, 3)
