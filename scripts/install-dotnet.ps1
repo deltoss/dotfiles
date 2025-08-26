@@ -1,6 +1,3 @@
-        irm "https://dot.net/v1/dotnet-install.ps1" | Out-File $tempScript
-        & $tempScript -Channel LTS
-        & $tempScript -Channel STS
 # See:
 # - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 # - https://github.com/dotnet/install-scripts
