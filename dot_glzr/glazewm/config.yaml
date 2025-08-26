@@ -210,6 +210,8 @@ window_rules:
     match:
       - window_process:
           regex: '[Dd]iscord'
+      - window_process:
+          equals: 'Slack'
   - commands:
       - set-floating
       - move --workspace 7
