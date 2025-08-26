@@ -209,7 +209,7 @@ window_rules:
       - focus --workspace 6
     match:
       - window_process:
-          regex: '[Dd]iscord'
+          equals: 'Discord'
       - window_process:
           equals: 'Slack'
   - commands:
