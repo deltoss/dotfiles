@@ -201,17 +201,19 @@ window_rules:
       - window_process:
           regex: '[Nn]otion.*[Cc]alendar'
       - window_process:
-          equals: thunderbird
-      - window_process:
           regex: '[Tt]odoist'
   - commands:
       - move --workspace 6
       - focus --workspace 6
     match:
       - window_process:
-          equals: 'Discord'
+          equals: Discord
       - window_process:
-          equals: 'Slack'
+          equals: Slack
+      - window_process:
+          equals: thunderbird
+      - window_process:
+          equals: olk # Microsoft Outlook
   - commands:
       - set-floating
       - move --workspace 7
