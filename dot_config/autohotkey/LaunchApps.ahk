@@ -93,6 +93,28 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
     MouseMove width / 3, height / 3
 }
 
+#HotIf WinActive('ahk_exe olk.exe')
+#o:: WinMinimize ; If window exists and is focused, minimize it
+#HotIf WinExist("ahk_exe olk.exe")
+#o::
+{
+    WinActivate ; If window exists unfocused, focus it
+    ; Move mouse to the active window
+    WinGetPos , , &width, &height, "A"
+    MouseMove width / 3, height / 3
+}
+#HotIf
+#o::
+{
+    Run("olk.exe") ; If window doesn't exist, run the app
+    WinWait("ahk_exe olk.exe")
+    WinActivate("ahk_exe olk.exe")
+    WinWaitActive("ahk_exe olk.exe")
+    ; Move mouse to the active window
+    WinGetPos , , &width, &height, "A"
+    MouseMove width / 3, height / 3
+}
+
 ; Window + Z - Notes
 #HotIf WinActive('ahk_exe notion.exe')
 #z:: WinMinimize ; If window exists and is focused, minimize it
