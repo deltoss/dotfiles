@@ -1,4 +1,4 @@
-if (Get-Command acli -ErrorAction SilentlyContinue) {
+if (Get-Command wezterm -ErrorAction SilentlyContinue) {
   Write-Host "Already installed" -ForegroundColor Green
   Write-Host "Skipping installation..." -ForegroundColor Green
   return
@@ -10,12 +10,6 @@ if (Test-Path $targetTempPath) {
 }
 git clone https://github.com/deltoss/PsInstallTools.git $targetTempPath
 Import-Module -Verbose $targetTempPath
-
-$targetTempFolder = "$((Get-Item $env:TEMP).FullName)/Atlassian CLI"
-New-Item -Path $targetTempFolder -ItemType Directory -Force
-Invoke-WebRequest -Uri  https://acli.atlassian.com/windows/latest/acli_windows_amd64/acli.exe -OutFile "$targetTempFolder/acli.exe"
-Install-FromFolder $targetTempFolder "acli"
-Remove-Item -Path $targetTempFolder -Recurse -Force
-
+Start-ExeFromUrl "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe"
 Remove-Module -Verbose PsInstallTools
 Remove-Item -Path $targetTempPath -Recurse -Force

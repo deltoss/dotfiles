@@ -7,7 +7,7 @@ $locations = @(
 
 foreach ($path in $locations) {
     if (Test-Path $path) {
-        Write-Host "Mechvibes found at: $path" -ForegroundColor Green
+        Write-Host "Already installed at: $path" -ForegroundColor Green
         Write-Host "Skipping installation..." -ForegroundColor Green
         return
     }
