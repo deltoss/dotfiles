@@ -6,7 +6,7 @@
 {{ $email := promptStringOnce . "email" "What is your email address (for git)" -}}
 {{ $username := promptStringOnce . "username" "What is your username (for git)" -}}
 {{ $computerPurposeChoices := list "personal" "work" -}}
-{{ $computerPurpose := promptChoice "What type of computer are you on" $computerPurposeChoices -}}
+{{ $computerPurpose := promptChoiceOnce . "computerPurpose" "What type of computer are you on" $computerPurposeChoices -}}
 [data]
   email = {{ $email | quote }}
   username = {{ $username | quote }}
