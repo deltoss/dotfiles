@@ -70,6 +70,10 @@ id = "SSHFS-Win.SSHFS-Win"
 [[packages.windows.core]]
 id = "Doist.Todoist"
 
+
+[[packages.windows.core]]
+id = "Anki.Anki"
+
 [[packages.windows.core]]
 id = "Mozilla.Firefox.en-GB"
 
@@ -173,9 +177,6 @@ id = "dbrgn.tealdeer"
 id = "dandavison.delta"
 
 [[packages.windows.core]]
-id = "Microsoft.VisualStudio.2022.Community.Preview"
-
-[[packages.windows.core]]
 id = "Adobe.Acrobat.Reader.64-bit"
 
 [[packages.windows.core]]
@@ -183,6 +184,9 @@ id = "GitHub.cli"
 
 [[packages.windows.core]]
 id = "Bruno.Bruno"
+
+[[packages.windows.personal]]
+id = "Microsoft.VisualStudio.2022.Community.Preview"
 
 [[packages.windows.personal]]
 id = "Audacity.Audacity"
@@ -203,3 +207,7 @@ id = "clsid2.mpc-hc"
 
 [[packages.windows.personal]]
 id = "Bambulab.Bambustudio"
+
+[[packages.windows.work]]
+name = "Atlassian CLI"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-acli.ps1"'
