@@ -144,7 +144,8 @@ id = "ImageMagick.ImageMagick"
 id = "sxyazi.yazi"
 
 [[packages.windows.core]]
-id = "wez.wezterm"
+name = "Weztern Nightly"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-wezterm-nightly.ps1"'
 
 [[packages.windows.core]]
 id = "KDE.KDEConnect"
