@@ -1,4 +1,13 @@
 [[packages.windows.core]]
+id = "Chocolatey.Chocolatey"
+# Refresh the Path variable so it'd detect chocolatey in the current terminal session
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
+
+[[packages.windows.core]]
+name = "Scoop"
+command = "powershell -Command 'iex \"& {$(irm get.scoop.sh)} -RunAsAdmin\"'"
+
+[[packages.windows.core]]
 name = "dotnet"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
 
@@ -13,11 +22,6 @@ postcommand = 'echo "Importing Ditto Settings as RegEdits"; reg import "$env:CHE
 [[packages.windows.core]]
 id = "SUSE.RancherDesktop"
 precommand = "wsl --install --no-distribution"
-
-[[packages.windows.core]]
-id = "Chocolatey.Chocolatey"
-# Refresh the Path variable so it'd detect chocolatey in the current terminal session
-postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
 
 [[packages.windows.core]]
 name = "MinGW"
@@ -210,5 +214,5 @@ id = "clsid2.mpc-hc"
 id = "Bambulab.Bambustudio"
 
 [[packages.windows.work]]
-name = "Atlassian CLI"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-acli.ps1"'
+name = "Jira CLI"
+command = "scoop bucket add extras; scoop install jira-cli"
