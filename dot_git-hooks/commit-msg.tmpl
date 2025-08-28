@@ -1,0 +1,10 @@
+#!/bin/sh
+# Based on: https://doitpshway.com/automation-of-your-git-repository-via-git-hooks-and-powershell-scripts#2-how-to-check-commit-message-format-commit-msg
+echo "#####################"
+echo "###### COMMIT-MSG git hook"
+USERPROFILE=$(powershell.exe -NoProfile -Command "Write-Output \$env:USERPROFILE" | tr -d '\r')
+
+{{- if and (eq .computerPurpose "work") }}
+exec powershell.exe -NoProfile -ExecutionPolicy Bypass -file "$USERPROFILE\.git-hooks\check-commit-msg.ps1" $1
+{{ end -}}
+exit
