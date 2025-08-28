@@ -5,6 +5,6 @@ echo "###### COMMIT-MSG git hook"
 USERPROFILE=$(powershell.exe -NoProfile -Command "Write-Output \$env:USERPROFILE" | tr -d '\r')
 
 {{- if eq .computerPurpose "work" }}
-exec powershell.exe -NoProfile -ExecutionPolicy Bypass -file "$USERPROFILE\.git-hooks\check-commit-msg.ps1" $1
+exec powershell.exe -NoProfile -ExecutionPolicy Bypass -file "$USERPROFILE\.config\git\hooks\check-commit-msg.ps1" $1
 {{ end -}}
 exit

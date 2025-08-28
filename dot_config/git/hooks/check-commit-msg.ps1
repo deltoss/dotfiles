@@ -37,7 +37,7 @@ try {
     $commitMsg = Get-Content $commitPath -TotalCount 1
 
     if ($commitMsg -notmatch "^[A-Za-z0-9]{1,}-[0-9]{1,} - " -and $commitMsg -notmatch "Merge branch ") {
-        _ErrorWithBypassOption "Name of commit isn't in correct format:`n<TicketName> - <Message>`n`nFor example:`n'AB-1234: Added new feature for commits'"
+        _ErrorWithBypassOption "Name of commit isn't in correct format:`n<TicketId> - <Message>`n`nFor example:`n'AB-1234 - Added new feature for commits'"
     }
 } catch {
     $errorMsg = "There was an error:`n$_"
