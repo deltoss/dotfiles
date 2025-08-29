@@ -142,6 +142,10 @@ window_rules:
           not_regex: '.+[Aa]nki'
         window_process:
           regex: '[Aa]nki'
+      - window_process:
+          equals: 'SSMS'
+      - window_process:
+          regex: '.+[Dd]esktop'
   - commands:
       - set-floating
       - move --workspace 1
