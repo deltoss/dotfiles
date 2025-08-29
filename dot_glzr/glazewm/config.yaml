@@ -110,7 +110,7 @@ workspaces:
     keep_alive: true
   - name: "4"
     display_name: IV
-    bind_to_monitor: 2
+    bind_to_monitor: 0
     keep_alive: true
   - name: "5"
     display_name: V
@@ -122,10 +122,16 @@ workspaces:
     keep_alive: true
   - name: "7"
     display_name: VII
+    bind_to_monitor: 2
+    keep_alive: true
   - name: "8"
     display_name: VIII
+    bind_to_monitor: 2
+    keep_alive: true
   - name: "9"
     display_name: IX
+  - name: "0"
+    display_name: N
 window_rules:
   - commands:
       - set-floating
@@ -142,6 +148,8 @@ window_rules:
           not_regex: '.+[Aa]nki'
         window_process:
           regex: '[Aa]nki'
+      - window_process:
+          equals: 'ScreenToGif'
       - window_process:
           equals: 'SSMS'
       - window_process:
@@ -193,22 +201,22 @@ window_rules:
       - window_process:
           equals: 'bambu-studio'
   - commands:
-      - move --workspace 4
-      - focus --workspace 4
+      - move --workspace 5
+      - focus --workspace 5
     match:
       - window_process:
           regex: '[Nn]otion'
   - commands:
-      - move --workspace 5
-      - focus --workspace 5
+      - move --workspace 6
+      - focus --workspace 6
     match:
       - window_process:
           regex: '[Nn]otion.*[Cc]alendar'
       - window_process:
           regex: '[Tt]odoist'
   - commands:
-      - move --workspace 6
-      - focus --workspace 6
+      - move --workspace 8
+      - focus --workspace 8
     match:
       - window_process:
           equals: Discord
@@ -220,22 +228,22 @@ window_rules:
           equals: olk # Microsoft Outlook
   - commands:
       - set-floating
-      - move --workspace 7
-      - focus --workspace 7
+      - move --workspace 9
+      - focus --workspace 9
     match:
       - window_title:
           regex: .*Virtual Cottage.*
   - commands:
-      - move --workspace 7
-      - focus --workspace 7
+      - move --workspace 9
+      - focus --workspace 9
       - ignore
     match:
       - window_title:
           regex: .*Ropuka.*Idle.*Island
   - commands:
       - set-fullscreen
-      - move --workspace 7
-      - focus --workspace 7
+      - move --workspace 9
+      - focus --workspace 9
     match:
       - window_title:
           regex: .*Spirit City.*
@@ -287,6 +295,8 @@ window_rules:
           equals: POWERPNT
         window_class:
           not_regex: PPTFrameClass
+      - window_process:
+          equals: rundll32 # Printer
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
   - name: resize
