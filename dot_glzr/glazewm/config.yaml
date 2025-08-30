@@ -215,8 +215,8 @@ window_rules:
       - window_process:
           regex: '[Tt]odoist'
   - commands:
-      - move --workspace 8
-      - focus --workspace 8
+      - move --workspace 7
+      - focus --workspace 7
     match:
       - window_process:
           equals: Discord
@@ -228,22 +228,22 @@ window_rules:
           equals: olk # Microsoft Outlook
   - commands:
       - set-floating
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 8
+      - focus --workspace 8
     match:
       - window_title:
           regex: .*Virtual Cottage.*
   - commands:
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 8
+      - focus --workspace 8
       - ignore
     match:
       - window_title:
           regex: .*Ropuka.*Idle.*Island
   - commands:
       - set-fullscreen
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace 8
+      - focus --workspace 8
     match:
       - window_title:
           regex: .*Spirit City.*
