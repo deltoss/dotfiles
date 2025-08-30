@@ -110,7 +110,7 @@ workspaces:
     keep_alive: true
   - name: "4"
     display_name: IV
-    bind_to_monitor: 0
+    bind_to_monitor: 2
     keep_alive: true
   - name: "5"
     display_name: V
@@ -126,12 +126,12 @@ workspaces:
     keep_alive: true
   - name: "8"
     display_name: VIII
-    bind_to_monitor: 2
-    keep_alive: true
   - name: "9"
     display_name: IX
   - name: "0"
     display_name: N
+    bind_to_monitor: 0
+    keep_alive: true
 window_rules:
   - commands:
       - set-floating
@@ -418,7 +418,7 @@ keybindings:
       - ctrl+alt+shift+z
   # [M]inimize focused window by sending it to workspace 3.
   - commands:
-      - move --workspace 3
+      - move --workspace 0
     bindings:
       - ctrl+alt+shift+m
   # E[x]it/Close focused [W]indow.
@@ -506,6 +506,10 @@ keybindings:
       - focus --workspace 9
     bindings:
       - ctrl+alt+shift+9
+  - commands:
+      - focus --workspace 0
+    bindings:
+      - ctrl+alt+shift+0
   # Move focused window to a workspace defined in `workspaces` config.
   - commands:
       - move --workspace 1
@@ -561,3 +565,9 @@ keybindings:
     bindings:
       - alt+shift+9
       - lwin+ctrl+alt+shift+9
+  - commands:
+      - move --workspace 0
+      - focus --workspace 0
+    bindings:
+      - alt+shift+0
+      - lwin+ctrl+alt+shift+0
