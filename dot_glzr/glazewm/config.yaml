@@ -194,21 +194,21 @@ window_rules:
         window_process:
           regex: '[Aa]nki'
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 0
+      - focus --workspace 0
       - ignore
     match:
       - window_process:
           equals: 'bambu-studio'
   - commands:
-      - move --workspace 5
-      - focus --workspace 5
+      - move --workspace 4
+      - focus --workspace 4
     match:
       - window_process:
           regex: '[Nn]otion'
   - commands:
-      - move --workspace 6
-      - focus --workspace 6
+      - move --workspace 5
+      - focus --workspace 5
     match:
       - window_process:
           regex: '[Nn]otion.*[Cc]alendar'
