@@ -360,10 +360,10 @@ StartFocusSteamGame()
         Send("{F11}")
         Send("{F11}")
     } else {
-        Run("steam://rungameid/3416070")
-        WinWait("ahk_exe RopukaIdleIsland.exe")
-        WinActivate("ahk_exe RopukaIdleIsland.exe")
-        WinWaitActive("ahk_exe RopukaIdleIsland.exe")
+        Run("steam://rungameid/2826180")
+        WinWait("ahk_exe ChillPulse.exe")
+        WinActivate("ahk_exe ChillPulse.exe")
+        WinWaitActive("ahk_exe ChillPulse.exe")
     }
 }
 
