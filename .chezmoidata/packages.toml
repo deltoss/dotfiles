@@ -74,7 +74,6 @@ id = "SSHFS-Win.SSHFS-Win"
 [[packages.windows.core]]
 id = "Doist.Todoist"
 
-
 [[packages.windows.core]]
 id = "Anki.Anki"
 
@@ -82,7 +81,7 @@ id = "Anki.Anki"
 id = "Mozilla.Firefox.en-GB"
 
 [[packages.windows.core]]
-id = "Mozilla.Thunderbird"
+id = "Readdle.Spark"
 
 [[packages.windows.core]]
 id = "Microsoft.PowerShell"
