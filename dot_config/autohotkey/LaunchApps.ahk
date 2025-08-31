@@ -71,9 +71,9 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + M - [M]ail
-#HotIf WinActive('ahk_exe thunderbird.exe')
+#HotIf WinActive('ahk_exe Spark Desktop.exe')
 #m:: WinMinimize ; If window exists and is focused, minimize it
-#HotIf WinExist("ahk_exe thunderbird.exe")
+#HotIf WinExist("ahk_exe Spark Desktop.exe")
 #m::
 {
     WinActivate ; If window exists unfocused, focus it
@@ -84,10 +84,10 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 #HotIf
 #m::
 {
-    Run("Thunderbird") ; If window doesn't exist, run the app
-    WinWait("ahk_exe thunderbird.exe")
-    WinActivate("ahk_exe thunderbird.exe")
-    WinWaitActive("ahk_exe thunderbird.exe")
+    Run(A_AppData . "/../Local/Programs/SparkDesktop/Spark Desktop") ; If window doesn't exist, run the app
+    WinWait("ahk_exe Spark Desktop.exe")
+    WinActivate("ahk_exe Spark Desktop.exe")
+    WinWaitActive("ahk_exe Spark Desktop.exe")
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 3, height / 3
