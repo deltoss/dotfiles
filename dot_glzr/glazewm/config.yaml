@@ -230,16 +230,19 @@ window_rules:
       - set-floating
       - move --workspace 8
       - focus --workspace 8
+      - set-fullscreen
     match:
       - window_title:
           regex: .*Virtual Cottage.*
+      - window_process:
+          equals: ChillPulse
   - commands:
       - move --workspace 8
       - focus --workspace 8
       - ignore
     match:
-      - window_title:
-          regex: .*Ropuka.*Idle.*Island
+      - window_process:
+          equals: RopukaIdleIsland
   - commands:
       - set-fullscreen
       - move --workspace 8
