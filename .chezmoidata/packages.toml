@@ -123,6 +123,9 @@ id = "Gyan.FFmpeg"
 id = "jqlang.jq"
 
 [[packages.windows.core]]
+id = "MikeFarah.yq"
+
+[[packages.windows.core]]
 id = "oschwartz10612.Poppler"
 
 [[packages.windows.core]]
