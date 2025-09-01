@@ -57,9 +57,6 @@ nnoremap <C-Down> gj
 vnoremap <C-Down> gj
 inoremap <Down> <C-o>gj
 
-" Navigation
-nnoremap <C-e> <C-d>
-
 " Save with Ctrl+S
 nnoremap <C-s> :update<CR>
 inoremap <C-s> <Esc>:update<CR>
