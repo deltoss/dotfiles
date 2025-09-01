@@ -301,6 +301,14 @@ window_rules:
         window_class:
           not_regex: PPTFrameClass
       - window_process:
+          regex: ".*Dialog.*"
+        window_title:
+          regex: ".*Microsoft Visual Studio.*"
+      - window_process:
+          regex: "devenv"
+        window_title:
+          not_regex: ".*Microsoft Visual Studio.*"
+      - window_process:
           equals: rundll32 # Printer
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
