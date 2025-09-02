@@ -1,0 +1,37 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+{{- if eq .computerPurpose "personal" -}}
+
+#Requires AutoHotkey v2.0
+
+SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+
+; Global variable to track if this is the first request
+global firstRequest := true
+; Global variable to track the time of the last HTTP request
+global ticksSinceLastRequest := 0
+
+~Space::
+{
+  ; Using global keyword inside the hotkey
+  global firstRequest, ticksSinceLastRequest
+
+  ; Check if this is the first request or a certain amount of seconds have elapsed
+  if (firstRequest) {
+    Run "curl -X GET `"{{ onepasswordRead "op://Personal/Hostnames/iot" }}/endpoint/light-keep-alive`" -s", , "Hide"
+
+    firstRequest := false
+    return
+  }
+
+  ticksSinceLastRequest += A_TimeSincePriorHotkey
+  if (ticksSinceLastRequest >= 15000) {
+    Run "curl -X GET `"{{ onepasswordRead "op://Personal/Hostnames/iot" }}/endpoint/light-keep-alive`" -s", , "Hide"
+    ticksSinceLastRequest := 0
+  }
+}
+
+{{- end -}}
+
+{{- end -}}
