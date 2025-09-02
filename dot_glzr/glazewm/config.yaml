@@ -156,12 +156,18 @@ window_rules:
           regex: '[Ll]eap [Dd]esktop'
   - commands:
       - set-floating
-      - move --workspace 1
-      - focus --workspace 1
+      - move --workspace 0
+      - focus --workspace 0
       - set-tiling
     match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
           equals: wezterm-gui
+  - commands:
+      - set-floating
+      - move --workspace 1
+      - focus --workspace 1
+      - set-tiling
+    match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
           equals: devenv # Visual Studio IDE
       - window_process:
