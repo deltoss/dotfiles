@@ -221,6 +221,14 @@ window_rules:
       - window_process:
           regex: '[Tt]odoist'
   - commands:
+      - move --workspace 6
+      - focus --workspace 6
+    match:
+      - window_process:
+          equals: "Spark Desktop"
+      - window_process:
+          equals: olk # Microsoft Outlook
+  - commands:
       - move --workspace 7
       - focus --workspace 7
     match:
@@ -228,12 +236,6 @@ window_rules:
           equals: Discord
       - window_process:
           equals: Slack
-      - window_process:
-          equals: thunderbird
-      - window_process:
-          equals: "Spark Desktop"
-      - window_process:
-          equals: olk # Microsoft Outlook
   - commands:
       - set-floating
       - move --workspace 8
