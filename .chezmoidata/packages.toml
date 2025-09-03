@@ -192,6 +192,9 @@ id = "GitHub.cli"
 [[packages.windows.core]]
 id = "Bruno.Bruno"
 
+[[packages.windows.core]]
+id = "xanderfrangos.twinkletray"
+
 [[packages.windows.personal]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
 
