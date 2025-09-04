@@ -7,7 +7,7 @@ general:
   # Commands to run after the WM config is reloaded.
   config_reload_commands: ["shell-exec yasbc start"]
   # Whether to automatically focus windows underneath the cursor.
-  focus_follows_cursor: false
+  focus_follows_cursor: true
   # Whether to switch back and forth between the previously focused
   # workspace when focusing the current workspace.
   toggle_workspace_on_refocus: false
