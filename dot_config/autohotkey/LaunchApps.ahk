@@ -2,6 +2,8 @@
 SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 
+DetectHiddenWindows true
+
 ^Esc::
 !Esc::
 {
@@ -20,7 +22,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 
 ; Window + F - [F]irefox
 #HotIf WinActive("ahk_exe firefox.exe")
-#f:: WinMinimize ; If window exists and is focused, minimize it
 !o:: Send "^+{Tab}" ; Go to left tab
 !u:: Send "^{Tab}" ; Go to right tab
 !PgDn:: Send "^+{Tab}" ; Go to left tab
@@ -48,8 +49,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + B - [B]rowser
-#HotIf WinActive('ahk_exe firefox.exe')
-#b:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe firefox.exe")
 #b::
 {
@@ -71,8 +70,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + M - [M]ail
-#HotIf WinActive('ahk_exe Spark Desktop.exe')
-#m:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe Spark Desktop.exe")
 #m::
 {
@@ -93,8 +90,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
     MouseMove width / 3, height / 3
 }
 
-#HotIf WinActive('ahk_exe olk.exe')
-#o:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe olk.exe")
 #o::
 {
@@ -117,7 +112,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 
 ; Window + Z - Notes
 #HotIf WinActive('ahk_exe notion.exe')
-#z:: WinMinimize ; If window exists and is focused, minimize it
 !o:: Send "^+{Tab}" ; Go to left tab
 !u:: Send "^{Tab}" ; Go to right tab
 !PgDn:: Send "^+{Tab}" ; Go to left tab
@@ -150,8 +144,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + C - [C]alendar
-#HotIf WinActive("ahk_exe notion calendar.exe")
-#c:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe notion calendar.exe")
 #c::
 {
@@ -173,8 +165,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + T - [T]erminal
-#HotIf WinActive("ahk_exe wezterm-gui.exe")
-#t:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe wezterm-gui.exe")
 #t::
 {
@@ -219,8 +209,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + V - [V]isual Studio Code
-#HotIf WinActive("ahk_exe code.exe")
-#v:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe code.exe")
 #v::
 {
@@ -242,8 +230,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + Alt + V - [V]isual Studio
-#HotIf WinActive("ahk_exe devenv.exe")
-#!v:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe devenv.exe")
 #!v::
 {
@@ -265,8 +251,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + S (Search)
-#HotIf WinActive("ahk_exe everything.exe")
-#s:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe everything.exe")
 #s::
 {
@@ -288,8 +272,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + W - [W]ord Docs
-#HotIf WinActive("ahk_exe editors.exe")
-#w:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe editors.exe")
 #w::
 {
@@ -311,8 +293,6 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + H - [H]abits/ToDo
-#HotIf WinActive("ahk_exe Todoist.exe")
-#h:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe Todoist.exe")
 #h::
 {
