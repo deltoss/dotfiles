@@ -311,7 +311,7 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 }
 
 ; Window + H - [H]abits/ToDo
-#HotIf WinActive('ahk_exe Todoist.exe')
+#HotIf WinActive("ahk_exe Todoist.exe")
 #h:: WinMinimize ; If window exists and is focused, minimize it
 #HotIf WinExist("ahk_exe Todoist.exe")
 #h::
@@ -333,9 +333,17 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
     MouseMove width / 3, height / 3
 }
 
-#HotIf WinActive('ahk_exe Slack.exe')
+#HotIf WinActive("ahk_exe Slack.exe")
 ^p:: Send "^k" ; Activate launcher
 !p:: Send "^k"
+#HotIf
+
+#HotIf WinActive("ahk_exe Postman.exe")
+^p:: Send "^k" ; Search
+!p:: Send "^k"
+!w:: Send "^w" ; Close request
+!u:: Send "^{Tab}" ; Next tab
+!o:: Send "+^{Tab}" ; Previous tab
 #HotIf
 
 StartFocusSteamGame()
