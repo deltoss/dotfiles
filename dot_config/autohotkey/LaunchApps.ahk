@@ -53,7 +53,8 @@ DetectHiddenWindows true
 }
 
 ; Window + B - [B]rowser
-#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")#b::
+#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")
+#b::
 {
     WinActivate
     Sleep 100
