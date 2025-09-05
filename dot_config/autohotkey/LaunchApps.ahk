@@ -28,13 +28,17 @@ DetectHiddenWindows true
 !PgUp:: Send "^{Tab}" ; Go to right tab
 !w:: Send "^w" ; Close tab
 !t:: Send "^t" ; New tab
-#HotIf WinExist("ahk_exe firefox.exe")
+#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")
 #f::
 {
-    WinActivate ; If window exists unfocused, focus it
+    WinActivate
+    Sleep 100
+    WinActivate
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 3
+    Sleep 100 ; To get GlazeWM to stay focused
+    WinActivate
 }
 #HotIf
 #f::
@@ -49,13 +53,16 @@ DetectHiddenWindows true
 }
 
 ; Window + B - [B]rowser
-#HotIf WinExist("ahk_exe firefox.exe")
-#b::
+#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")#b::
 {
-    WinActivate ; If window exists unfocused, focus it
+    WinActivate
+    Sleep 100
+    WinActivate
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 3
+    Sleep 100 ; To get GlazeWM to stay focused
+    WinActivate
 }
 #HotIf
 #b::
@@ -73,10 +80,18 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe Spark Desktop.exe")
 #m::
 {
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 3, height / 3
+    DetectHiddenWindows false
+    if (WinExist("ahk_exe Spark Desktop.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe Spark Desktop.exe")
+      ; Move mouse to the active window
+      WinGetPos , , &width, &height, "A"
+      MouseMove width / 3, height / 3
+      Sleep 100 ; To get GlazeWM to stay focused
+      WinActivate("ahk_exe Spark Desktop.exe")
+    } else { ; Already running in the background, so focus it
+      Run(A_AppData . "/../Local/Programs/SparkDesktop/Spark Desktop")
+    }
+    DetectHiddenWindows true
 }
 #HotIf
 #m::
@@ -126,10 +141,18 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe notion.exe")
 #z::
 {
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
+    DetectHiddenWindows false
+    if (WinExist("ahk_exe notion.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe notion.exe")
+      ; Move mouse to the active window
+      WinGetPos , , &width, &height, "A"
+      MouseMove width / 3, height / 3
+      Sleep 100 ; To get GlazeWM to stay focused
+      WinActivate("ahk_exe notion.exe")
+    } else { ; Already running in the background, so focus it
+      Run(A_Programs . "/Notion")
+    }
+    DetectHiddenWindows true
 }
 #HotIf
 #z::
@@ -147,10 +170,18 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe notion calendar.exe")
 #c::
 {
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
+    DetectHiddenWindows false
+    if (WinExist("ahk_exe notion calendar.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe notion calendar.exe")
+      ; Move mouse to the active window
+      WinGetPos , , &width, &height, "A"
+      MouseMove width / 3, height / 3
+      Sleep 100 ; To get GlazeWM to stay focused
+      WinActivate("ahk_exe notion calendar.exe")
+    } else { ; Already running in the background, so focus it
+      Run(A_Programs . "/Notion Calendar")
+    }
+    DetectHiddenWindows true
 }
 #HotIf
 #c::
@@ -172,6 +203,8 @@ DetectHiddenWindows true
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 2
+    Sleep 200
+    WinActivate ; If window exists unfocused, focus it
 }
 #HotIf
 #t::
@@ -181,10 +214,6 @@ DetectHiddenWindows true
     WinWait("ahk_exe wezterm-gui.exe")
     WinActivate("ahk_exe wezterm-gui.exe")
     WinWaitActive("ahk_exe wezterm-gui.exe")
-
-    ; Uncomment if not using a tiling window manager
-    ; Sleep(250)
-    ; WinMaximize
 
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
@@ -198,10 +227,6 @@ DetectHiddenWindows true
     WinWait("ahk_exe wezterm-gui.exe")
     WinActivate("ahk_exe wezterm-gui.exe")
     WinWaitActive("ahk_exe wezterm-gui.exe")
-
-    ; Uncomment if not using a tiling window manager
-    ; Sleep(250)
-    ; WinMaximize
 
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
@@ -254,10 +279,18 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe everything.exe")
 #s::
 {
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 3
+    DetectHiddenWindows false
+    if (WinExist("ahk_exe everything.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe everything.exe")
+      ; Move mouse to the active window
+      WinGetPos , , &width, &height, "A"
+      MouseMove width / 3, height / 3
+      Sleep 100 ; To get GlazeWM to stay focused
+      WinActivate("ahk_exe everything.exe")
+    } else { ; Already running in the background, so focus it
+      Run(A_ProgramsCommon . "/Everything")
+    }
+    DetectHiddenWindows true
 }
 #HotIf
 #s::
@@ -296,10 +329,18 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe Todoist.exe")
 #h::
 {
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 3, height / 3
+    DetectHiddenWindows false
+    if (WinExist("ahk_exe Todoist.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe Todoist.exe")
+      ; Move mouse to the active window
+      WinGetPos , , &width, &height, "A"
+      MouseMove width / 3, height / 3
+      Sleep 100 ; To get GlazeWM to stay focused
+      WinActivate("ahk_exe Todoist.exe")
+    } else { ; Already running in the background, so focus it
+      Run(EnvGet("LOCALAPPDATA") . "\Programs\todoist\Todoist.exe")
+    }
+    DetectHiddenWindows true
 }
 #HotIf
 #h::
