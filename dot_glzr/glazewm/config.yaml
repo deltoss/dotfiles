@@ -153,6 +153,8 @@ window_rules:
       - window_process:
           equals: 'SSMS'
       - window_process:
+          equals: 'ApplicationFrameHost' # Windows settings
+      - window_process:
           regex: '[Ll]eap [Dd]esktop'
   - commands:
       - set-floating
