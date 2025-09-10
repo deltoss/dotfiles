@@ -368,6 +368,11 @@ DetectHiddenWindows true
 !o:: Send "+^{Tab}" ; Previous tab
 #HotIf
 
+#HotIf WinActive("ahk_exe Ssms.exe")
+!u:: Send "!^{PgDn}"
+!o:: Send "!^{PgUp}"
+#HotIf
+
 StartFocusSteamGame()
 {
     local randomChoice := Random(1, 3)
