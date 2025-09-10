@@ -374,6 +374,7 @@ DetectHiddenWindows true
 !w:: Send "^{F4}" ; Window.CloseDocumentWindow
 !c:: Send "{F8}" ; View.ObjectExplorer ([C]onnections)
 !r:: Send "!^g" ; View.RegisteredServers
+!g:: Send "!^g" ; View.RegisteredServers
 !i:: Send "{Esc}" ; Window.ActivateDocumentWindow
 !s:: Send "!^l" ; View.SolutionExplorer
 #HotIf
