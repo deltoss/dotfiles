@@ -369,8 +369,13 @@ DetectHiddenWindows true
 #HotIf
 
 #HotIf WinActive("ahk_exe Ssms.exe")
-!u:: Send "!^{PgDn}"
-!o:: Send "!^{PgUp}"
+!u:: Send "!^{PgDn}" ; Window.NextTab
+!o:: Send "!^{PgUp}" ; Window.PreviousTab
+!w:: Send "^{F4}" ; Window.CloseDocumentWindow
+!c:: Send "{F8}" ; View.ObjectExplorer ([C]onnections)
+!r:: Send "!^g" ; View.RegisteredServers
+!i:: Send "{Esc}" ; Window.ActivateDocumentWindow
+!s:: Send "!^l" ; View.SolutionExplorer
 #HotIf
 
 StartFocusSteamGame()
