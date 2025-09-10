@@ -7,7 +7,7 @@ general:
   # Commands to run after the WM config is reloaded.
   config_reload_commands: ["shell-exec yasbc start"]
   # Whether to automatically focus windows underneath the cursor.
-  focus_follows_cursor: true
+  focus_follows_cursor: false
   # Whether to switch back and forth between the previously focused
   # workspace when focusing the current workspace.
   toggle_workspace_on_refocus: false
@@ -88,7 +88,7 @@ window_behavior:
       # Whether to center floating windows by default.
       centered: true
       # Whether to show floating windows as always on top.
-      shown_on_top: true
+      shown_on_top: false
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a
       # maximize button, then it'll be fullscreen'ed normally instead.
