@@ -1,3 +1,4 @@
+"   Intended for Visual Studio IDE's vsvim extension
 "   type ':source %' to reload the vim configs
 
 syntax on
@@ -52,10 +53,10 @@ inoremap <C-S-z> <C-o><C-r>
 " Wrapped line navigation
 nnoremap <C-Up> gk
 vnoremap <C-Up> gk
-inoremap <Up> <C-o>gk
+inoremap <C-Up> <C-o>gk
 nnoremap <C-Down> gj
 vnoremap <C-Down> gj
-inoremap <Down> <C-o>gj
+inoremap <C-Down> <C-o>gj
 
 " Save with Ctrl+S
 nnoremap <C-s> :update<CR>
@@ -64,10 +65,6 @@ inoremap <C-s> <Esc>:update<CR>
 " Indent and outdent with < and > in visual mode
 vnoremap < <gv
 vnoremap > >gv
-
-" Autocompletion
-inoremap <A-,> <C-p>
-inoremap <A-.> <C-n>
 
 " Map Ctrl+Backspace to delete the previous word in insert mode
 " Note: In many terminals, Ctrl+Backspace sends different codes
@@ -88,10 +85,18 @@ nnoremap <leader>e <C-w>l
 " Delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+nnoremap <leader>D "_D
+vnoremap <leader>D "_D
+nnoremap <leader>x "_x
+vnoremap <leader>x "_x
+nnoremap <leader>X "_X
+vnoremap <leader>X "_X
 
 " Change without yanking
 nnoremap <leader>c "_c
 vnoremap <leader>c "_c
+nnoremap <leader>C "_C
+vnoremap <leader>C "_C
 
 " Replace currently selected text with default register
 " without yanking it
