@@ -315,10 +315,6 @@ window_rules:
         window_title:
           regex: ".*Microsoft Visual Studio.*"
       - window_process:
-          regex: "devenv"
-        window_title:
-          not_regex: ".*Microsoft Visual Studio.*"
-      - window_process:
           equals: rundll32 # Printer
       - window_process:
           regex: ".*Wondershare Filmora.*"
