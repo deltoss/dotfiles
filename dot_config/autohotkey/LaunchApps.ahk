@@ -379,6 +379,12 @@ DetectHiddenWindows true
 !s:: Send "!^l" ; View.SolutionExplorer
 #HotIf
 
+#HotIf WinActive("ahk_exe gitkraken.exe")
+!u:: Send "^{Tab}" ; Next tab
+!o:: Send "+^{Tab}" ; Next tab
+!w:: Send "^w" ; Close tab
+#HotIf
+
 StartFocusSteamGame()
 {
     local randomChoice := Random(1, 3)
