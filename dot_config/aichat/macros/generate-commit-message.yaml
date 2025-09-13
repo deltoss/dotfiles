@@ -1,2 +1,2 @@
 steps:
-  - .file `git diff` -- generate git commit message
+  - .file `git diff HEAD` -- generate git commit message
