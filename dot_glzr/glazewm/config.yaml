@@ -319,9 +319,9 @@ window_rules:
       - window_process:
           regex: '[Ll]eap [Dd]esktop'
       - window_process:
-          equals: devenv # Visual Studio IDE Search dialog
+          equals: devenv # Visual Studio IDE dialogs
         window_title:
-          regex: '.*[Ss]earch.*'
+          not_regex: '.*[Mm]icrosoft.*'
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
   - name: resize
