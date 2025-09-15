@@ -135,6 +135,31 @@ workspaces:
 window_rules:
   - commands:
       - set-floating
+    match:
+      - window_process:
+          equals: Flow.Launcher
+        window_title:
+          equals: Settings
+      - window_process:
+          regex: '[Aa]uto[Hh]otkey.*'
+      - window_process:
+          regex: '[Bb]ambu.*'
+      - window_title:
+          not_regex: '.+[Aa]nki'
+        window_process:
+          regex: '[Aa]nki'
+      - window_process:
+          equals: 'ScreenToGif'
+      - window_process:
+          equals: 'SSMS'
+      - window_process:
+          equals: 'ApplicationFrameHost' # Windows settings
+      - window_process:
+          regex: '[Ll]eap [Dd]esktop'
+      - window_process:
+          equals: devenv # Visual Studio IDE
+  - commands:
+      - set-floating
       - move --workspace 0
       - focus --workspace 0
       - set-tiling
@@ -147,8 +172,6 @@ window_rules:
       - focus --workspace 1
       - set-tiling
     match: # Set initially to tiling breaks these apps, so first-set to floating
-      - window_process:
-          equals: devenv # Visual Studio IDE
       - window_process:
           equals: Code # Visual Studio Code
   - commands:
@@ -295,33 +318,6 @@ window_rules:
           equals: rundll32 # Printer
       - window_process:
           regex: ".*Wondershare Filmora.*"
-  - commands:
-      - set-floating
-    match:
-      - window_process:
-          equals: Flow.Launcher
-        window_title:
-          equals: Settings
-      - window_process:
-          regex: '[Aa]uto[Hh]otkey.*'
-      - window_process:
-          regex: '[Bb]ambu.*'
-      - window_title:
-          not_regex: '.+[Aa]nki'
-        window_process:
-          regex: '[Aa]nki'
-      - window_process:
-          equals: 'ScreenToGif'
-      - window_process:
-          equals: 'SSMS'
-      - window_process:
-          equals: 'ApplicationFrameHost' # Windows settings
-      - window_process:
-          regex: '[Ll]eap [Dd]esktop'
-      - window_process:
-          equals: devenv # Visual Studio IDE dialogs
-        window_title:
-          not_regex: '.*[Mm]icrosoft.*'
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
   - name: resize
