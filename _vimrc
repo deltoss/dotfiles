@@ -42,6 +42,13 @@ set hidden                      " Allow buffers to be hidden without saving
 " See https://www.reddit.com/r/vim/comments/1ac30kt/comment/kjs5yxx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u 
 
+nnoremap <C-u> <C-u>zz
+vnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+vnoremap <C-d> <C-d>zz
+nnoremap <C-e> <C-d>zz
+vnoremap <C-e> <C-d>zz
+
 " Undo/redo mappings
 nnoremap <C-z> u
 vnoremap <C-z> u
