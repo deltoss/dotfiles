@@ -13,7 +13,7 @@ set timeoutlen=3000
 set backspace=indent,eol,start
 
 " Use system keyboard
-set clipboard=unnamed
+:set clipboard=unnamed
 set number " Show line numbers
 set relativenumber " Show relative line numbers
 set cursorline " Highlight current line
