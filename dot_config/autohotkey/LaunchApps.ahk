@@ -355,6 +355,12 @@ DetectHiddenWindows true
     MouseMove width / 3, height / 3
 }
 
+#HotIf WinActive("ahk_exe explorer.exe")
+^p:: Send "!d" ; Navigation bar
+!p:: Send "!d"
+!w:: Send "^w" ; Close
+#HotIf
+
 #HotIf WinActive("ahk_exe Slack.exe")
 ^p:: Send "^k" ; Activate launcher
 !p:: Send "^k"
