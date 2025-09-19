@@ -113,6 +113,12 @@ vnoremap p "_dP
 " Join lines
 nnoremap <leader>j J
 
+" Commenting in Visual Studio
+nmap gcc :vsc Edit.ToggleLineComment<CR>
+vmap gcc :vsc Edit.ToggleLineComment<CR>
+nmap gcb :vsc Edit.ToggleBlockComment<CR>
+vmap gcb :vsc Edit.ToggleBlockComment<CR>
+
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Inconsolata\ 12
