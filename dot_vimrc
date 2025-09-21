@@ -1,6 +1,3 @@
-"   Intended for Visual Studio IDE's vsvim extension
-"   type ':source %' to reload the vim configs
-
 syntax on
 
 " Leader key configurations
@@ -22,6 +19,11 @@ set ruler " Show cursor position
 set wildmenu " Visual autocomplete for command menu
 set showcmd " Show incomplete commands
 set spell spelllang=en " Spell checking
+set ignorecase " Ignore case when searching
+set smartcase " This makes the search case sensitive if uppercase is entered
+set hlsearch " Highlight search results
+set incsearch " Makes search act like search in modern browsers
+set showmatch " Show matching brackets
 
 " Tab and Indentation settings
 set expandtab                   " Use spaces instead of tabs
@@ -112,12 +114,6 @@ vnoremap p "_dP
 
 " Join lines
 nnoremap <leader>j J
-
-" Commenting in Visual Studio
-nmap gcc :vsc Edit.ToggleLineComment<CR>
-vmap gcc :vsc Edit.ToggleLineComment<CR>
-nmap gcb :vsc Edit.ToggleBlockComment<CR>
-vmap gcb :vsc Edit.ToggleBlockComment<CR>
 
 if has("gui_running")
   if has("gui_gtk2")
