@@ -1,0 +1,99 @@
+"   Intended for Visual Studio IDE's vsvim extension
+"   type ':source %' to reload the vim configs
+
+" ##################################################################
+" Copied from vimrc, but filtered to only supported options
+" ##################################################################
+
+" Leader key configurations
+nnoremap <SPACE> <Nop>
+vnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
+set timeoutlen=3000
+
+" To have backspace work as intended
+set backspace=indent,eol,start
+
+" Use system keyboard
+:set clipboard=unnamed
+set number " Show line numbers
+set relativenumber " Show relative line numbers
+set cursorline " Highlight current line
+set showcmd " Show incomplete commands
+set ignorecase " Ignore case when searching
+set smartcase " This makes the search case sensitive if uppercase is entered
+set hlsearch " Highlight search results
+set incsearch " Makes search act like search in modern browsers
+
+" Tab and Indentation settings
+set expandtab                   " Use spaces instead of tabs
+set shiftwidth=2                " 1 tab = 2 spaces
+set tabstop=2                   " 1 tab = 2 spaces
+set softtabstop=2               " Makes backspace treat 2 spaces as a tab
+set autoindent                  " Auto indent
+
+" ##################################################################
+" Visual Studio Mappings
+" ##################################################################
+
+nmap <leader>sq :vsc Window.QuickLaunch<CR>
+nmap <leader>zz :vsc Window.CloseDocumentWindow<CR>
+nmap <leader>zw :vsc Window.CloseDocumentWindow<CR>
+nmap <leader>zb :vsc Window.CloseDocumentWindow<CR>
+nmap <leader>en :vsc View.NextError<CR>
+nmap <leader>ep :vsc View.PreviousError<CR>
+nmap <leader>mn :vsc Edit.NextBookmark<CR>
+nmap <leader>bn :vsc Edit.NextBookmark<CR>
+nmap <leader>mp :vsc Edit.PreviousBookmark<CR>
+nmap <leader>bp :vsc Edit.PreviousBookmark<CR>
+nmap <leader>tn :vsc View.NextTask<CR>
+nmap <leader>tp :vsc View.PreviousTask<CR>
+
+nmap <leader>a :vsc AddQuickFile<CR>
+nmap <leader>, :vsc Edit.ListMembers<CR>
+nmap <leader>ma :vsc Edit.ToggleBookmark<CR>
+nmap <leader>ba :vsc Edit.ToggleBookmark<CR>
+nmap <leader>ta :vsc Edit.ToggleTaskListShortcut<CR>
+nmap gcc :vsc Edit.ToggleLineComment<CR>
+vmap gcc :vsc Edit.ToggleLineComment<CR>
+nmap gcb :vsc Edit.ToggleBlockComment<CR>
+vmap gcb :vsc Edit.ToggleBlockComment<CR>
+
+
+nmap <leader>sc :vsc Edit.GoToAll<CR>
+nmap <leader>sg :vsc Edit.GoToAll<CR>
+nmap <leader>sf :vsc Edit.GoToFile<CR>
+nmap <leader>ss :vsc Edit.GoToSymbol<CR>
+nmap <leader>sm :vsc Edit.GoToMember<CR>
+nmap <leader>cm :vsc Edit.ShowNavigateMenu<CR>
+nmap <leader>cc :vsc EditorContextMenus.CodeWindow.ViewCallHierarchy<CR>
+nmap <leader>cd :vsc Edit.GoToDefinition<CR>
+nmap <leader>ci :vsc Edit.GoToImplementation<CR>
+nmap <leader>cr :vsc Edit.FindAllReferences<CR>
+nmap <leader>pb :vsc Build.RebuildSelection<CR>
+nmap <leader>ps :vsc Build.RebuildSelection<CR>
+nmap <leader>pr :vsc Build.RebuildSolution<CR>
+nmap <leader>pc :vsc Build.Cancel<CR>
+nmap <leader>da :vsc Debug.ToggleBreakpoint<CR>
+nmap <leader>ds :vsc Debug.Start<CR>
+nmap <leader>dq :vsc Debug.StopDebugging<CR>
+nmap <leader>dw :vsc Debug.StopDebugging<CR>
+nmap <leader>dc :vsc Debug.CallStack<CR>
+nmap <leader>di :vsc Debug.Immediate<CR>
+nmap <leader>dp :vsc Project.ConfigureStartupProjects<CR>
+nmap <C-y> :vsc Debug.StepOut<CR>
+nmap <C-h> :vsc Debug.StepOver<CR>
+nmap <C-a> :vsc Debug.QuickWatch<CR>
+vmap <C-a> :vsc Debug.QuickWatch<CR>
+nmap <C-e> :vsc Debug.StepInto<CR>
+nmap <C-i> :vsc Debug.RunToCursor<CR>
+
+nmap <leader>vs :vsc View.SolutionExplorer<CR>
+nmap <leader>vj :vsc View.SolutionExplorer<CR>
+nmap <leader>vf :vsc Window.SolutionExplorerSearch<CR>
+nmap <leader>vt :vsc View.Terminal<CR>
+nmap <leader>ee :vsc View.ErrorList<CR>
+nmap <leader>mm :vsc View.BookmarkWindow<CR>
+nmap <leader>bb :vsc View.BookmarkWindow<CR>
+nmap <leader>tt :vsc View.TaskList<CR>
+nmap <leader>dd :vsc Debug.Breakpoints<CR>
