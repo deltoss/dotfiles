@@ -50,6 +50,14 @@ nmap <leader>tn :vsc View.NextTask<CR>
 nmap <leader>tp :vsc View.PreviousTask<CR>
 
 nmap <leader>a :vsc AddQuickFile<CR>
+nmap <leader>rr :vsc Refactor.Rename<CR>
+nmap <leader>rn :vsc Refactor.Rename<CR>
+nmap <leader>ru :vsc Edit.RemoveAndSort<CR>
+nmap <leader>rU :vsc Edit.SortUsings<CR>
+nmap <leader>r. :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
+vmap <leader>r. :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
+nmap <leader>. :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
+vmap <leader>. :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
 nmap <leader>, :vsc Edit.ListMembers<CR>
 nmap <leader>ma :vsc Edit.ToggleBookmark<CR>
 nmap <leader>ba :vsc Edit.ToggleBookmark<CR>
@@ -58,7 +66,6 @@ nmap gcc :vsc Edit.ToggleLineComment<CR>
 vmap gcc :vsc Edit.ToggleLineComment<CR>
 nmap gcb :vsc Edit.ToggleBlockComment<CR>
 vmap gcb :vsc Edit.ToggleBlockComment<CR>
-
 
 nmap <leader>sc :vsc Edit.GoToAll<CR>
 nmap <leader>sg :vsc Edit.GoToAll<CR>
@@ -70,6 +77,14 @@ nmap <leader>cc :vsc EditorContextMenus.CodeWindow.ViewCallHierarchy<CR>
 nmap <leader>cd :vsc Edit.GoToDefinition<CR>
 nmap <leader>ci :vsc Edit.GoToImplementation<CR>
 nmap <leader>cr :vsc Edit.FindAllReferences<CR>
+nmap zi :vsc Edit.ToggleAllOutlining<CR>
+nmap za :vsc Edit.ToggleOutliningExpansion<CR>
+nmap zd :vsc Edit.CollapsetoDefinitions<CR>
+nmap [[ :vsc Edit.PreviousMethod<CR>
+vmap [[ :vsc Edit.PreviousMethod<CR>
+nmap ]] :vsc Edit.NextMethod<CR>
+vmap ]] :vsc Edit.NextMethod<CR>
+
 nmap <leader>pb :vsc Build.RebuildSelection<CR>
 nmap <leader>ps :vsc Build.RebuildSelection<CR>
 nmap <leader>pr :vsc Build.RebuildSolution<CR>
