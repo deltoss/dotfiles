@@ -1,0 +1,11 @@
+theme: tokyo-night
+pager: less
+keymap:
+  quit: ctrl+q
+  search-requests: ctrl+r
+  send-request: ctrl+enter
+  open-in-editor: ctrl+o
+  open-in-pager: ctrl+l
+  focus-url: ctrl+u
+  jump: ctrl+g
+  help: f2
