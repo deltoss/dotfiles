@@ -1,15 +1,19 @@
-[[steamApps.windows.core]]
+[[steamApps.windows.work]]
 id = "1369320"
 name = "Virtual Cottage"
+folderName = "Virtual Cottage"
 
-[[steamApps.windows.core]]
+[[steamApps.windows.work]]
 id = "2113850"
 name = "Spirit City - Lofi Sessions"
+folderName = "Spirit City Lofi Sessions"
 
-[[steamApps.windows.core]]
+[[steamApps.windows.work]]
 id = "2826180"
-name = "Chillpulse"
+name = "ChillPulse"
+folderName = "ChillPulse"
 
-[[steamApps.windows.core]]
+[[steamApps.windows.work]]
 id = "431960"
 name = "Wallpaper Engine"
+folderName = "wallpaper_engine"
