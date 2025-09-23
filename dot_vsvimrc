@@ -82,6 +82,8 @@ nmap gcc :vsc Edit.ToggleLineComment<CR>
 vmap gcc :vsc Edit.ToggleLineComment<CR>
 nmap gcb :vsc Edit.ToggleBlockComment<CR>
 vmap gcb :vsc Edit.ToggleBlockComment<CR>
+nmap <leader>f :vsc Edit.FormatDocument<CR>
+vmap <leader>f :vsc Edit.FormatSelection<CR>
 
 nmap <leader>sc :vsc Edit.GoToAll<CR>
 nmap <leader>sg :vsc Edit.GoToAll<CR>
