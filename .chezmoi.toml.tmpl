@@ -5,11 +5,13 @@
 
 {{ $email := promptStringOnce . "email" "What is your email address (for git)" -}}
 {{ $username := promptStringOnce . "username" "What is your username (for git)" -}}
+{{ $steamUsername := promptStringOnce . "steamUsername" "What is your username (for Steam)" -}}
 {{ $computerPurposeChoices := list "personal" "work" -}}
 {{ $computerPurpose := promptChoiceOnce . "computerPurpose" "What type of computer are you on" $computerPurposeChoices -}}
 [data]
   email = {{ $email | quote }}
   username = {{ $username | quote }}
+  steamUsername = {{ $steamUsername | quote }}
   computerPurpose = {{ $computerPurpose | quote }}
 
 [diff]
