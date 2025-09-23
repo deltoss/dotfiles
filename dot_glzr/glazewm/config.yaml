@@ -151,7 +151,7 @@ window_rules:
       - window_process:
           equals: 'ScreenToGif'
       - window_process:
-          equals: 'SSMS'
+          equals: 'Ssms'
       - window_process:
           equals: 'ApplicationFrameHost' # Windows settings
       - window_process:

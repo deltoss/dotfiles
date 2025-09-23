@@ -206,6 +206,9 @@ id = "xanderfrangos.twinkletray"
 [[packages.windows.core]]
 id = "jftuga.less"
 
+[[packages.windows.core]]
+id = "Valve.Steam"
+
 [[packages.windows.personal]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
 
