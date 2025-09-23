@@ -1,0 +1,24 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+Write-Host "Configuring necessary environment variables..."
+$env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
+
+# Installs prerequisites for the Install Scripts
+& "$env:CHEZMOI_SOURCEDIR/scripts/install-steamcmd.ps1"
+
+{{- $steamAppsToInstall := .steamApps.windows.core -}}
+{{- if and (eq .computerPurpose "personal") (hasKey .steamApps.windows "personal") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.personal -}}
+{{- else if and (eq .computerPurpose "work") (hasKey .steamApps.windows "work") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.work -}}
+{{- end -}}
+
+{{- range $steamAppsToInstall }}
+  Write-Host "Installing app id of {{ .id }} ({{.name}})..."
+{{- end }}
+
+steamcmd +login {{ .steamUsername }} {{- range $steamAppsToInstall }} +app_update {{ .id }} {{ end }} +quit
+
+Write-Host "Steam app installs complete..." -ForegroundColor Green
+
+{{- end -}}

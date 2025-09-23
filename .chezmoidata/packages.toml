@@ -209,10 +209,6 @@ id = "jftuga.less"
 [[packages.windows.core]]
 id = "Valve.Steam"
 
-[[packages.windows.core]]
-name = "steamcmd"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-steamcmd.ps1"'
-
 [[packages.windows.personal]]
 id = "Microsoft.VisualStudio.2022.Community.Preview"
 
