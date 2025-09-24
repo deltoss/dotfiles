@@ -47,10 +47,8 @@ nmap <C-Left> :vsc Edit.PreviousSubword<CR>
 vmap <C-Left> :vsc Edit.PreviousSubwordExtend<CR>
 nmap <C-BS> :vsc Edit.SubwordDeleteToStart<CR>
 nmap <C-Del> :vsc Edit.SubwordDeleteToEnd<CR>
-nmap vv :vsc Edit.SubwordExpandSelection<CR>
-vmap vv :vsc Edit.SubwordExpandSelection<CR>
-nmap vV :vsc Edit.SubwordContractSelection<CR>
-vmap vV :vsc Edit.SubwordContractSelection<CR>
+vmap v :vsc Edit.SubwordExpandSelection<CR>
+vmap V :vsc Edit.SubwordContractSelection<CR>
 
 nmap <leader>sq :vsc Window.QuickLaunch<CR>
 nmap <leader>zz :vsc Window.CloseDocumentWindow<CR>
