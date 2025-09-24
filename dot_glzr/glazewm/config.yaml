@@ -196,6 +196,10 @@ window_rules:
     match:
       - window_process:
           equals: 'Ssms'
+      - window_process:
+          equals: 'Zoom'
+      - window_process:
+          equals: 'ms-teams'
   - commands:
       - move --workspace 2
       - focus --workspace 2
