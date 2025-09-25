@@ -36,6 +36,12 @@ set autoindent                  " Auto indent
 " Visual Studio Mappings
 " ##################################################################
 
+" Simulates autocomplete behavior
+" Make sure to uncheck:
+"   Tools > Options > IntelliCode > Advanced
+"   > Apply whole line completions on right arrow
+imap <C-y> <Tab>
+
 nmap <C-o> :vsc View.NavigateBackward<CR>
 vmap <C-o> :vsc View.NavigateBackward<CR>
 nmap <C-i> :vsc View.NavigateForward<CR>
