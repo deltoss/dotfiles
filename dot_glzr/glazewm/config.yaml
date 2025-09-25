@@ -152,8 +152,6 @@ window_rules:
           equals: 'ScreenToGif'
       - window_process:
           equals: 'ApplicationFrameHost' # Windows settings
-      - window_process:
-          regex: '[Ll]eap [Dd]esktop'
   - commands:
       - set-floating
       - move --workspace 0
@@ -200,6 +198,8 @@ window_rules:
           equals: 'Zoom'
       - window_process:
           equals: 'ms-teams'
+      - window_process:
+          equals: 'LEAP Desktop'
   - commands:
       - move --workspace 2
       - focus --workspace 2
