@@ -2,10 +2,12 @@ theme: tokyo-night
 pager: less
 keymap:
   quit: ctrl+q
+  save-request: ctrl+w,ctrl+s
   search-requests: ctrl+r
-  send-request: ctrl+enter
+  send-request: ctrl+j,ctrl+enter,ctrl+shift+enter
   open-in-editor: ctrl+o
   open-in-pager: ctrl+l
   focus-url: ctrl+u
   jump: ctrl+g
+  commands: ctrl+o,ctrl+p
   help: f2
