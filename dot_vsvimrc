@@ -196,10 +196,13 @@ nmap <leader>bc :vsc Debug.CallStack<CR>
 nmap <leader>bi :vsc Debug.Immediate<CR>
 nmap <leader>bp :vsc Project.ConfigureStartupProjects<CR>
 nmap <C-A-y> :vsc Debug.StepOut<CR>
+nmap <C-A-Left> :vsc Debug.StepOut<CR>
 nmap <C-A-h> :vsc Debug.StepOver<CR>
+nmap <C-A-Down> :vsc Debug.StepOver<CR>
 nmap <C-A-a> :vsc Debug.QuickWatch<CR>
-vmap <C-A-a> :vsc Debug.QuickWatch<CR>
+nmap <C-A-Up> :vsc Debug.QuickWatch<CR>
 nmap <C-A-e> :vsc Debug.StepInto<CR>
+nmap <C-A-Right> :vsc Debug.StepInto<CR>
 nmap <C-A-i> :vsc Debug.RunToCursor<CR>
 
 nmap <leader>vs :vsc View.SolutionExplorer<CR>
@@ -214,3 +217,7 @@ nmap <leader>vt :vsc View.TaskList<CR>
 nmap <leader>tt :vsc View.TaskList<CR>
 nmap <leader>vb :vsc Debug.Breakpoints<CR>
 nmap <leader>bb :vsc Debug.Breakpoints<CR>
+nmap <leader>vc :vsc Debug.Immediate<CR>
+nmap <leader>vi :vsc Debug.Immediate<CR>
+nmap <leader>vo :vsc Debug.Output<CR>
+
