@@ -28,7 +28,7 @@ $baseInstallPath = "C:\Program Files (x86)\Steam\steamapps\common"
     New-Item -Path $appInstallPath -ItemType Directory
   }
 
-steamcmd +force_install_dir "$appInstallPath" +login $steamUsername +app_update {{ .id }} +quit
+  steamcmd +force_install_dir "$appInstallPath" +login $steamUsername +app_update {{ .id }} +quit
 
   Write-Host "For {{ .id }} ({{ .name }}): Copying manifests from '$appInstallPath\steamapps' to '$baseInstallPath\..\'" -ForegroundColor Green
   Get-ChildItem -Path "$appInstallPath\steamapps" -Filter "appmanifest_*.acf" | Copy-Item -Destination "$baseInstallPath\..\" -Force
