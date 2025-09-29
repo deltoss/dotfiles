@@ -32,10 +32,40 @@ set tabstop=2                   " 1 tab = 2 spaces
 set softtabstop=2               " Makes backspace treat 2 spaces as a tab
 set autoindent                  " Auto indent
 
+" Close mappings
+nnoremap Zq :q<cr>
+nnoremap ZQ :q<cr>
+nnoremap <leader>zq :q<cr>
+nnoremap <leader>zz :q<cr>
+nnoremap ZW :wq<cr>
+nnoremap Zw :wq<cr>
+nnoremap <leader>zw :wq<cr>
+nnoremap Zb :bd<cr>
+nnoremap ZB :bd<cr>
+nnoremap <leader>zb :bd<cr>
+
+" Newline mappings
+nnoremap <C-Enter> o<Esc>
+nnoremap <S-Enter> O<Esc>
+
 " Spelling correction
 " See https://www.reddit.com/r/vim/comments/1ac30kt/comment/kjs5yxx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u 
 
+" Undo/redo mappings
+nnoremap <C-z> u
+vnoremap <C-z> u
+inoremap <C-z> <C-o>u
+nnoremap <C-y> <C-r>
+vnoremap <C-y> <C-r>
+inoremap <C-y> <C-o><C-r>
+
+" Paste mappings
+inoremap <C-r><C-r> <C-r>*
+inoremap <C-r>r <C-r>*
+cnoremap <C-r><C-r> <C-o><C-r>*
+
+" Better Navigation
 nnoremap <C-u> <C-u>zz
 vnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
@@ -43,21 +73,13 @@ vnoremap <C-d> <C-d>zz
 nnoremap <C-e> <C-d>zz
 vnoremap <C-e> <C-d>zz
 
-" Undo/redo mappings
-nnoremap <C-z> u
-vnoremap <C-z> u
-inoremap <C-z> <C-o>u
-nnoremap <C-S-z> <C-r>
-vnoremap <C-S-z> <C-r>
-inoremap <C-S-z> <C-o><C-r>
-
 " Wrapped line navigation
 nnoremap <C-Up> gk
 vnoremap <C-Up> gk
-inoremap <C-Up> <C-o>gk
+inoremap <Up> <C-o>gk
 nnoremap <C-Down> gj
 vnoremap <C-Down> gj
-inoremap <C-Down> <C-o>gj
+inoremap <Down> <C-o>gj
 
 " Save with Ctrl+S
 nnoremap <C-s> :update<CR>
@@ -74,14 +96,10 @@ inoremap <C-BS> <C-w>
 inoremap <C-Del> <C-o>dw
 
 " Window operations
-nnoremap <C-w>y <C-w>h
-nnoremap <C-w>h <C-w>j
-nnoremap <C-w>a <C-w>k
-nnoremap <C-w>e <C-w>l
-nnoremap <leader>y <C-w>h
-nnoremap <leader>h <C-w>j
-nnoremap <leader>a <C-w>k
-nnoremap <leader>e <C-w>l
+nnoremap <leader><Up> :split<CR>
+nnoremap <leader><Down> :split<CR>
+nnoremap <leader><Left> :vsplit<CR>
+nnoremap <leader><Right> :vsplit<CR>
 
 " Delete without yanking
 nnoremap <leader>d "_d
