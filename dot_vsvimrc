@@ -131,7 +131,7 @@ nmap <C-Del> :vsc Edit.SubwordDeleteToEnd<CR>
 vmap v :vsc Edit.SubwordExpandSelection<CR>
 vmap V :vsc Edit.SubwordContractSelection<CR>
 
-nmap <leader>sq :vsc Window.QuickLaunch<CR>
+nmap <leader>sp :vsc Window.QuickLaunch<CR>
 nmap <leader>zz :vsc Window.CloseDocumentWindow<CR>
 nmap <leader>zw :vsc Window.CloseDocumentWindow<CR>
 nmap <leader>zb :vsc Window.CloseDocumentWindow<CR>
@@ -170,6 +170,7 @@ nmap <leader>sg :vsc Edit.FindinFiles<CR>
 nmap <leader>sf :vsc Edit.GoToFile<CR>
 nmap <leader>ss :vsc Edit.GoToSymbol<CR>
 nmap <leader>sm :vsc Edit.GoToMember<CR>
+nmap <leader>cs :vsc Edit.GoToAll<CR>
 nmap <leader>cm :vsc Edit.ShowNavigateMenu<CR>
 nmap <leader>cq :vsc Edit.QuickInfo<CR>
 nmap <leader>cc :vsc EditorContextMenus.CodeWindow.ViewCallHierarchy<CR>
