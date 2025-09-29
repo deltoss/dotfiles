@@ -74,12 +74,14 @@ nnoremap <C-e> <C-d>zz
 vnoremap <C-e> <C-d>zz
 
 " Wrapped line navigation
+" Do not map up/down arrow keys as it conflicts with accepting suggestions in
+" Visual Studio
 nnoremap <C-Up> gk
 vnoremap <C-Up> gk
-inoremap <Up> <C-o>gk
+inoremap <C-Up> <C-o>gk
 nnoremap <C-Down> gj
 vnoremap <C-Down> gj
-inoremap <Down> <C-o>gj
+inoremap <C-Down> <C-o>gj
 
 " Save with Ctrl+S
 nnoremap <C-s> :update<CR>
