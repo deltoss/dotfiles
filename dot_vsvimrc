@@ -246,3 +246,7 @@ nmap <leader>vc :vsc Debug.Immediate<CR>
 nmap <leader>vi :vsc Debug.Immediate<CR>
 nmap <leader>vo :vsc Debug.Output<CR>
 
+nmap <leader>gd :vsc Edit.PeekDifference<CR>
+nmap <leader>gD :vsc Team.Git.CompareWithUnmodified<CR>
+nmap <leader>gb :vsc Team.Git.Annotate<CR>
+nmap <leader>gh :vsc Team.Git.ViewHistory<CR>
