@@ -73,7 +73,9 @@ vnoremap <C-d> <C-d>zz
 nnoremap <C-e> <C-d>zz
 vnoremap <C-e> <C-d>zz
 nnoremap n nzz
+vnoremap n nzz
 nnoremap N Nzz
+vnoremap N Nzz
 
 " Wrapped line navigation
 " Do not map up/down arrow keys as it conflicts with accepting suggestions in
