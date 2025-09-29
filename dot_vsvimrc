@@ -9,7 +9,7 @@
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
-set timeoutlen=3000
+set timeoutlen=300
 
 " To have backspace work as intended
 set backspace=indent,eol,start
