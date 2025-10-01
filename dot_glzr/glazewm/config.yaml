@@ -414,11 +414,11 @@ keybindings:
     bindings:
       - ctrl+alt+shift+r
   # [P]auses/Disables window management and all other 
-  # keybindings until alt+shift+p is pressed again.
+  # keybindings until the key is pressed again.
   - commands:
       - wm-toggle-pause
     bindings:
-      - alt+shift+p
+      - lwin+ctrl+alt+shift+t
       - lwin+ctrl+alt+shift+p
   # Change tiling [D]irection. This determines where new tiling windows 
   # will be inserted.
