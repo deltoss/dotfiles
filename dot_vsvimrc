@@ -210,9 +210,9 @@ nmap ]] :vsc Edit.NextMethod<CR>
 vmap ]] :vsc Edit.NextMethod<CR>
 
 nmap <leader>pb :vsc Build.RebuildSelection<CR>
-nmap <leader>ps :vsc Build.RebuildSelection<CR>
 nmap <leader>pr :vsc Build.RebuildSolution<CR>
 nmap <leader>pc :vsc Build.Cancel<CR>
+nmap <leader>ps :vsc Project.ConfigureStartupProjects<CR>
 nmap <leader>ba :vsc Debug.ToggleBreakpoint<CR>
 nmap <leader>bs :vsc Debug.Start<CR>
 nmap <leader>bq :vsc Debug.StopDebugging<CR>
