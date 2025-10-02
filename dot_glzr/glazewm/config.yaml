@@ -217,6 +217,8 @@ window_rules:
     match:
       - window_process:
           equals: 'bambu-studio'
+      - window_process:
+          equals: 'Soundpad'
   - commands:
       - move --workspace 4
       - focus --workspace 4

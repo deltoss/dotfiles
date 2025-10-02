@@ -167,8 +167,8 @@ nmap <leader>tn :vsc View.NextTask<CR>
 nmap <leader>tp :vsc View.PreviousTask<CR>
 
 nmap <leader>a :vsc AddQuickFile<CR>
-nmap <leader>rr :vsc Refactor.Rename<CR>
-nmap <leader>rn :vsc Refactor.Rename<CR>
+nmap <leader>rr :vsc Refactor.Rename<CR><Esc>
+nmap <leader>rn :vsc Refactor.Rename<CR><Esc>
 nmap <leader>ru :vsc Edit.RemoveAndSort<CR>
 nmap <leader>rU :vsc Edit.SortUsings<CR>
 nmap <leader>r. :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
