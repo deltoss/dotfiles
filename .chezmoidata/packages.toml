@@ -1,6 +1,6 @@
 [[packages.windows.core]]
 id = "Chocolatey.Chocolatey"
-# Refresh the Path variable so it'd detect chocolatey in the current terminal session
+# Refresh the Path variable so it'd detect the tool in the current terminal session
 postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
 
 [[packages.windows.core]]
@@ -14,6 +14,16 @@ command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/insta
 [[packages.windows.core]]
 name = "posting"
 command = 'uv tool install --python 3.13 posting'
+
+[[packages.windows.core]]
+id = "Rustlang.Rust.GNU"
+# Refresh the Path variable so it'd detect the tool in the current terminal session
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
+
+[[packages.windows.core]]
+id = "Rust - Cargo Configuration"
+# Add Cargo to the PATH if not already
+postcommand = 'if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains "$env:USERPROFILE\.cargo\bin")) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.cargo\bin", "User"); $env:Path += ";$env:USERPROFILE\.cargo\bin" }'
 
 [[packages.windows.core]]
 name = "dotnet"
