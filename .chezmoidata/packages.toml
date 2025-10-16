@@ -12,8 +12,8 @@ name = "uv"
 command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"; $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"'
 
 [[packages.windows.core]]
-name = "posting"
-command = 'uv tool install --python 3.13 posting'
+name = "atac"
+command = 'cargo install atac --locked'
 
 [[packages.windows.core]]
 name = "harlequin"

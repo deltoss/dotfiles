@@ -3,6 +3,6 @@ show_hidden = true
 
 [opener]
 edit = [
-	{ run = 'nvim %*', block = true, desc = "Neovim" },
-	{ run = 'code -w %*', block = true, desc = "VSCode", for = "windows" },
+  { run = 'nvim %*', block = true, desc = "Neovim" },
+  { run = 'code -w %*', block = true, desc = "VSCode", for = "windows" },
 ]
