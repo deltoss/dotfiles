@@ -22,3 +22,15 @@
 	keepBackup = false
 [mergetool "diffview"]
 	cmd = nvim -n -c "DiffviewOpen" "$MERGE"
+[alias]
+	ac = commit -am
+	m = merge --ignore-cr-at-eol
+	rb = rebase -i
+	s = status -sb
+	l = log --all --color=always --pretty=format:\"%C(yellow)%h%C(reset) %C(green)%ad%C(reset) %C(blue)(%an)%C(reset) %s → %H\" --date=format:\"%Y-%m-%d %I:%M %p\"
+	co = checkout
+	b = branch
+	amend = commit --amend --no-edit
+	undo = reset --soft HEAD~1
+	aliases = config --get-regexp alias
+	today = log --since='midnight' --oneline --author={{ .username | quote }}
