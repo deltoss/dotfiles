@@ -23,7 +23,8 @@
 [mergetool "diffview"]
 	cmd = nvim -n -c "DiffviewOpen" "$MERGE"
 [alias]
-	ac = commit -am
+	c = commit
+	ac = commit -a
 	m = merge --ignore-cr-at-eol
 	rb = rebase -i
 	s = status -sb
