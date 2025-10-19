@@ -25,7 +25,7 @@
 [alias]
 	c = commit
 	ac = commit -a
-	m = merge --ignore-cr-at-eol
+	m = merge -X ignore-cr-at-eol
 	rb = rebase -i
 	s = status -sb
 	l = log --all --color=always --pretty=format:\"%C(yellow)%h%C(reset) %C(green)%ad%C(reset) %C(blue)(%an)%C(reset) %s → %H\" --date=format:\"%Y-%m-%d %I:%M %p\"
