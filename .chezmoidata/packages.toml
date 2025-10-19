@@ -9,6 +9,7 @@ command = "powershell -Command 'iex \"& {$(irm get.scoop.sh)} -RunAsAdmin\"'"
 
 [[packages.windows.core]]
 name = "uv"
+desc = "Package manager for Python"
 command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"; $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"'
 
 [[packages.windows.core]]
@@ -18,6 +19,7 @@ postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 
 
 [[packages.windows.core]]
 name = "Rust - Cargo Configuration"
+desc = "Package manager for Rust"
 # Add Cargo to the PATH if not already
 postcommand = 'if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains "$env:USERPROFILE\.cargo\bin")) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.cargo\bin", "User"); $env:Path += ";$env:USERPROFILE\.cargo\bin" }'
 
@@ -28,6 +30,9 @@ command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
 [[packages.windows.core]]
 name = "atac"
 command = 'cargo install atac --locked'
+
+[[packages.windows.core]]
+id = 'mitmproxy.mitmproxy'
 
 [[packages.windows.core]]
 name = "harlequin"
