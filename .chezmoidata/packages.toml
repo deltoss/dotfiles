@@ -32,6 +32,10 @@ name = "atac"
 command = 'cargo install atac --locked'
 
 [[packages.windows.core]]
+name = "gittype"
+command = 'cargo install gittype'
+
+[[packages.windows.core]]
 id = 'mitmproxy.mitmproxy'
 
 [[packages.windows.core]]
