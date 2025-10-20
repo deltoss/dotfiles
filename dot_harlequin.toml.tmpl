@@ -6,11 +6,11 @@ theme = "catppuccin-latte"
 limit = 100000
 keymap_name = ["default_keymap"]
 
-[profiles.mysql]
-adapter = "mysql"
-theme = "catppuccin-latte"
-limit = 100000
-keymap_name = ["default_keymap"]
+{{ if eq .computerPurpose "personal" -}}
+  {{- onepasswordRead "op://Personal/Harlequin/Configs" -}}
+{{ else if eq .computerPurpose "work" -}}
+  {{- onepasswordRead "op://Work/Harlequin/Configs" -}}
+{{- end }}
 
 [[keymaps.default_keymap]]
 keys = "ctrl+q"
@@ -69,7 +69,7 @@ keys = "ctrl+w"
 action = "code_editor.close_buffer"
 
 [[keymaps.default_keymap]]
-keys = "ctrl+k"
+keys = "ctrl+pageup,ctrl+g"
 action = "code_editor.next_buffer"
 
 [[keymaps.default_keymap]]
@@ -98,7 +98,7 @@ keys = "f3"
 action = "code_editor.find_next"
 
 [[keymaps.default_keymap]]
-keys = "ctrl+g"
+keys = "ctrl+l"
 action = "code_editor.goto_line"
 
 [[keymaps.default_keymap]]
@@ -238,11 +238,11 @@ keys = "shift+delete"
 action = "code_editor.delete_line"
 
 [[keymaps.default_keymap]]
-keys = "j"
+keys = "h"
 action = "data_catalog.previous_tab"
 
 [[keymaps.default_keymap]]
-keys = "k"
+keys = "a"
 action = "data_catalog.next_tab"
 
 [[keymaps.default_keymap]]
@@ -259,7 +259,7 @@ keys = "enter"
 action = "data_catalog.select_cursor"
 
 [[keymaps.default_keymap]]
-keys = "space"
+keys = "space,right,left"
 action = "data_catalog.toggle_node"
 
 [[keymaps.default_keymap]]
