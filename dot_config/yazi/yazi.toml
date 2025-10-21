@@ -3,6 +3,10 @@ show_hidden = true
 
 [opener]
 edit = [
-  { run = 'nvim %*', block = true, desc = "Neovim" },
+  { run = '$EDITOR "$@"', block = true, desc = "Editor", for = "unix" },
+  { run = '%EDITOR% %*', block = true, desc = "Editor", for = "windows" },
+  { run = 'code -w "$@"', block = true, desc = "VSCode", for = "unix" },
   { run = 'code -w %*', block = true, desc = "VSCode", for = "windows" },
+  { run = '$SHELL', block = true, desc = "Terminal", for = "unix" },
+  { run = 'pwsh.exe', block = true, desc = "Terminal", for = "windows" },
 ]
