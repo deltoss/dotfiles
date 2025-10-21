@@ -159,12 +159,12 @@ nmap <leader>sp :vsc Window.QuickLaunch<CR>
 nmap <leader>zz :vsc Window.CloseDocumentWindow<CR>
 nmap <leader>zw :vsc Window.CloseDocumentWindow<CR>
 nmap <leader>zb :vsc Window.CloseDocumentWindow<CR>
-nmap <leader>en :vsc View.NextError<CR>
-nmap <leader>ep :vsc View.PreviousError<CR>
-nmap <leader>mn :vsc Edit.NextBookmark<CR>
-nmap <leader>mp :vsc Edit.PreviousBookmark<CR>
-nmap <leader>tn :vsc View.NextTask<CR>
-nmap <leader>tp :vsc View.PreviousTask<CR>
+nmap <leader>en :vsc View.NextError<CR>zz
+nmap <leader>ep :vsc View.PreviousError<CR>zz
+nmap <leader>mn :vsc Edit.NextBookmark<CR>zz
+nmap <leader>mp :vsc Edit.PreviousBookmark<CR>zz
+nmap <leader>tn :vsc View.NextTask<CR>zz
+nmap <leader>tp :vsc View.PreviousTask<CR>zz
 
 nmap <leader>a :vsc AddQuickFile<CR>
 nmap <leader>rr :vsc Refactor.Rename<CR><Esc>
@@ -207,10 +207,22 @@ nmap gt :vsc Edit.GoToType<CR>
 nmap zi :vsc Edit.ToggleAllOutlining<CR>
 nmap za :vsc Edit.ToggleOutliningExpansion<CR>
 nmap zd :vsc Edit.CollapsetoDefinitions<CR>
-nmap [[ :vsc Edit.PreviousMethod<CR>
-vmap [[ :vsc Edit.PreviousMethod<CR>
-nmap ]] :vsc Edit.NextMethod<CR>
-vmap ]] :vsc Edit.NextMethod<CR>
+nmap [[ :vsc Edit.PreviousMethod<CR>zz
+vmap [[ :vsc Edit.PreviousMethod<CR>zz
+nmap ]] :vsc Edit.NextMethod<CR>zz
+vmap ]] :vsc Edit.NextMethod<CR>zz
+nmap ]e :vsc View.NextError<CR>zz
+vmap ]e :vsc View.NextError<CR>zz
+nmap [e :vsc View.PreviousError<CR>zz
+vmap [e :vsc View.PreviousError<CR>zz
+nmap ]m :vsc Edit.NextBookmark<CR>zz
+vmap ]m :vsc Edit.NextBookmark<CR>zz
+nmap [m :vsc Edit.PreviousBookmark<CR>zz
+vmap [m :vsc Edit.PreviousBookmark<CR>zz
+nmap ]t :vsc View.NextTask<CR>zz
+vmap ]t :vsc View.NextTask<CR>zz
+nmap [t :vsc View.PreviousTask<CR>zz
+vmap [t :vsc View.PreviousTask<CR>zz
 
 nmap <leader>pb :vsc Build.RebuildSelection<CR>
 nmap <leader>pr :vsc Build.RebuildSolution<CR>
