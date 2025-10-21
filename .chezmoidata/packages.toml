@@ -257,3 +257,7 @@ id = "Bambulab.Bambustudio"
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
+
+[[packages.windows.core]]
+name = "navi"
+command = 'scoop bucket add main; scoop install main/navi'
