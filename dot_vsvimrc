@@ -199,7 +199,7 @@ nmap k :vsc Edit.ParameterInfo<CR>
 nmap ga :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
 nmap gA :vsc Edit.ShowNavigateMenu<CR>
 nmap gd :vsc Edit.GoToDefinition<CR>
-nmap gD :vsc Edit.GoToDeclaration<CR>
+nmap gD :vsc Edit.PeekDefinition<CR>
 nmap gi :vsc Edit.GoToImplementation<CR>
 nmap gr :vsc Edit.FindAllReferences<CR>
 nmap gh :vsc EditorContextMenus.CodeWindow.ViewCallHierarchy<CR>
@@ -235,12 +235,13 @@ nmap <leader>bw :vsc Debug.StopDebugging<CR>
 nmap <leader>bc :vsc Debug.CallStack<CR>
 nmap <leader>bi :vsc Debug.Immediate<CR>
 nmap <leader>bp :vsc Project.ConfigureStartupProjects<CR>
+nmap <leader>bl :vsc Debug.Locals<CR>
+nmap <leader>bk :vsc Debug.QuickWatch<CR>
+nmap <leader>k :vsc Debug.QuickWatch<CR>
 nmap <C-A-y> :vsc Debug.StepOut<CR>
 nmap <C-A-Left> :vsc Debug.StepOut<CR>
 nmap <C-A-h> :vsc Debug.StepOver<CR>
 nmap <C-A-Down> :vsc Debug.StepOver<CR>
-nmap <C-A-a> :vsc Debug.QuickWatch<CR>
-nmap <C-A-Up> :vsc Debug.QuickWatch<CR>
 nmap <C-A-e> :vsc Debug.StepInto<CR>
 nmap <C-A-Right> :vsc Debug.StepInto<CR>
 nmap <C-A-i> :vsc Debug.RunToCursor<CR>
@@ -260,6 +261,7 @@ nmap <leader>bb :vsc Debug.Breakpoints<CR>
 nmap <leader>vc :vsc Debug.Immediate<CR>
 nmap <leader>vi :vsc Debug.Immediate<CR>
 nmap <leader>vo :vsc Debug.Output<CR>
+nmap <leader>vl :vsc Debug.Output<CR>
 
 nmap <leader>gp :vsc Edit.PeekDifference<CR>
 nmap <leader>gP :vsc Team.Git.CompareWithUnmodified<CR>
