@@ -155,14 +155,8 @@ QToolTip {
     color: var(--blue);
     margin: 1px 2px 0 0;
 }
-.weather-widget,
 .volume-widget {
     padding: 0 6px;
-}
-.weather-widget .icon {
-    font-size: 18px;
-    margin: 0 2px 1px 0;
-    color: var(--yellow);
 }
 .media-widget {
     padding: 0;
@@ -203,11 +197,6 @@ QToolTip {
     margin: 0;
     border: none;
 }
-.wifi-widget {}
-.wifi-widget .widget-container {}
-.wifi-widget .widget-container .label {}
-.wifi-widget .widget-container .label.alt {}
-.wifi-widget .widget-container .icon {}
 .taskbar-widget .app-icon {
     padding: 0 6px;
     border: none;
@@ -251,94 +240,11 @@ QToolTip {
 .active-window-widget .widget-container .label.alt {}
 .active-window-widget .widget-container .icon {}
 
-.notification-widget {
-    padding: 0 0px 0 4px;
-}
-.notification-widget .widget-container {
-	background-color:rgba(17, 17, 27, 0.75);
-	margin: 3px 0 3px 0;
-	border-radius: 12px;
-    border: 1px solid #45475a;
-}
-.notification-widget .icon {
-    font-size: 12px;
-}
-.notification-widget .icon.new-notification {
-    color: #89b4fa;
-}
-.notification-widget .label.new-notification {
-    color: #89b4fa;
-}
-
 .bluetooth-widget {}
 .bluetooth-widget .widget-container {}
 .bluetooth-widget .label {}
 .bluetooth-widget .label.alt {}
 .bluetooth-widget .icon {}
-
-.language-menu {
-    background-color: rgba(17, 17, 27, 0.4);
-    min-width: 300px;
-}
-.language-menu .header {
-    font-family: 'Segoe UI';
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 2px;
-    padding: 12px;
-    background-color: rgba(17, 17, 27, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.language-menu .footer {
-    font-family: 'Segoe UI';
-    font-size: 12px;
-    font-weight: 600;
-    padding: 12px;
-    margin-top: 2px;
-    color: #9399b2;
-    background-color: rgba(17, 17, 27, 0.6);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.language-menu .footer:hover {
-    background-color: rgba(36, 36, 51, 0.6);
-    color: #fff;
-}
-.language-menu .language-item {
-    padding: 6px 12px;
-    margin: 2px 4px;
-}
-.language-menu .language-item.active {
-    background-color:rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-.language-menu .language-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-.language-menu .language-item.active:hover {
-    background-color:rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-.language-menu .language-item .code {
-    font-weight: 900;
-    font-size: 14px;
-    min-width: 40px;
-    text-transform: uppercase;
-}
-.language-menu .language-item .icon {
-    font-size: 16px;
-    margin-right: 8px;
-    color: #fff;
-}
-.language-menu .language-item .name {
-    font-weight: 600;
-    font-family: 'Segoe UI';
-    font-size: 14px;
-}
-.language-menu .language-item .layout {
-    font-weight: 600;
-    font-family: 'Segoe UI';
-    font-size: 12px;
-}
 
 .glazewm-workspaces {
     margin: 0;
@@ -443,14 +349,8 @@ QToolTip {
     color: var(--blue);
     margin: 1px 2px 0 0;
 }
-.weather-widget,
 .volume-widget {
     padding: 0 6px;
-}
-.weather-widget .icon {
-    font-size: 18px;
-    margin: 0 2px 1px 0;
-    color: var(--yellow);
 }
 .media-widget {
     padding: 0;
@@ -531,67 +431,4 @@ QToolTip {
 .clock-widget .label {
     font-size: 14px;
     color: var(--pink);
-}
-
-.github-menu    {
-    background-color:  rgba(17, 17, 27, 0.2);
-    max-height: 500px;
-    min-height: 500px;
-    min-width: 420px;
-}
-.github-menu .header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 15px;
-    font-weight: 400;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    padding: 8px;
-    color: white;
-    background-color: rgba(17, 17, 27, 0.75);
-}
-.github-menu .footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 12px;
-    padding: 4px 8px 6px 8px;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    color: #9399b2;
-    background-color: rgba(17, 17, 27, 0.75);
-}
-.github-menu .contents {
-    background-color:  rgba(17, 17, 27, 0.2);
-}
-.github-menu .contents .item {
-    min-height: 40px;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
-}
-.github-menu .contents .item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0);
-}
-.github-menu .contents .item .title,
-.github-menu .contents .item .description {
-    color: #9399b2;
-    font-family: Segoe UI;
-}
-.github-menu .contents .item .title {
-    font-size: 14px;
-    font-weight: 600; 
-}
-.github-menu .contents .item .description {
-    font-size: 12px;
-    font-weight: 500
-}
-.github-menu .contents .item.new .title,
-.github-menu .contents .item.new .description {
-    color: #ffffff
-}
-.github-menu .contents .item .icon {
-    font-size: 16px;
-    padding-right: 0;
-    padding-left: 8px;
-    padding-right: 4px;
-    color: #9399b2;
-}
-.github-menu .contents .item.new .icon {
-    color: #3fb950;
 }

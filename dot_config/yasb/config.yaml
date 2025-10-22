@@ -36,9 +36,7 @@ bars:
         "home",
         "glazewm_tiling_direction",
         "glazewm_workspaces",
-        "glazewm_binding_mode",
-        "notifications",
-        "github",
+        "glazewm_binding_mode"
       ]
       center: [
         "media",
@@ -46,15 +44,12 @@ bars:
       ]
       right: [
         "clock",
-        "wifi",
         "cpu",
         "memory",
         "battery",
         "bluetooth",
         "volume",
         "brightness",
-        "weather",
-        "language",
         "power_menu"
       ]
   secondary-bar:
@@ -96,8 +91,6 @@ bars:
       ]
       right: [
         "clock",
-        "weather",
-        "language",
       ]
 
 widgets:
@@ -208,36 +201,6 @@ widgets:
           on_middle: "do_nothing"
           on_right: "do_nothing"
 
-  weather:
-      type: "yasb.weather.WeatherWidget"
-      options:
-        label: "<span>{icon}</span> {temp}"
-        label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-        api_key: "$env:YASB_WEATHER_API_KEY"
-        update_interval: 1000
-        hide_decimal: true
-        location: "$env:YASB_WEATHER_LOCATION"
-        callbacks:
-          on_left: "toggle_label"
-
-  wifi:
-      type: "yasb.wifi.WifiWidget"
-      options:
-        label: "<span>{wifi_icon}</span>"
-        label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
-        update_interval: 5000
-        callbacks:
-          on_left: "toggle_label"
-          on_middle: "do_nothing"
-          on_right: "exec cmd.exe /c start ms-settings:network"
-        wifi_icons: [
-          "\udb82\udd2e",  # 0% strength icon
-          "\udb82\udd1f",  # 1-20% strength
-          "\udb82\udd22",  # 21-40% strength
-          "\udb82\udd25",  # 41-80% strength
-          "\udb82\udd28"   # 81-100% strength
-        ]
-
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
@@ -336,28 +299,6 @@ widgets:
         bottom: 0
         right: 0
 
-  notifications:
-    type: "yasb.notifications.NotificationsWidget"
-    options:
-      label: "<span>\uf476</span> {count}"
-      label_alt: "{count} notifications"
-      hide_empty: true
-      tooltip: false
-      callbacks:
-        on_left: "toggle_notification"
-        on_right: "do_nothing"
-        on_middle: "toggle_label"
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
-
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
@@ -383,57 +324,3 @@ widgets:
         radius: 3
         offset: [ 1, 1 ]
 
-  language:
-    type: "yasb.language.LanguageWidget"
-    options:
-      label: "{lang[language_code]}-{lang[country_code]}"
-      label_alt: "{lang[full_name]}"
-      update_interval: 5
-      callbacks:
-        on_left: "toggle_menu"
-        on_middle: "do_nothing"
-        on_right: "toggle_label"
-      language_menu:
-        blur: true
-        round_corners: true
-        round_corners_type: "normal"
-        border_color: "system"
-        alignment: "right"
-        direction: "down"
-        offset_top: 6
-        offset_left: 0
-        show_layout_icon: true
-        layout_icon: "\uf11c"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
-
-  github:
-    type: "yasb.github.GithubWidget"
-    options:
-      label: "<span>\ueba1</span>"
-      label_alt: "Notifications {data}" # {data} return number of unread notification
-      token: ghp_xxxxxxxxxxx # GitHub Personal access tokens (classic) https://github.com/settings/tokens
-      max_notification: 20 # Max number of notification displaying in menu max: 50
-      notification_dot:
-        enabled: True
-        corner: "bottom_left" # Can be "top_left", "top_right", "bottom_left", "bottom_right"
-        color: "red" # Can be hex color or string
-        margin: [ 1, 1 ] # x and y margin for the dot
-      only_unread: false # Show only unread or all notifications; 
-      max_field_size: 54 # Max characters in title before truncation.
-      update_interval: 300 # Check for new notification in seconds
-      menu:
-        blur: True # Enable blur effect for the menu
-        round_corners: True # Enable round corners for the menu (this option is not supported on Windows 10)
-        round_corners_type: "normal" # Set the type of round corners for the menu (normal, small) (this option is not supported on Windows 10)
-        border_color: "System" # Set the border color for the menu (this option is not supported on Windows 10)
-        alignment: "right"
-        direction: "down"
-      label_shadow:
-        enabled: True
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
