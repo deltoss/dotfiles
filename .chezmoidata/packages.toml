@@ -232,7 +232,7 @@ id = "xanderfrangos.twinkletray"
 id = "jftuga.less"
 
 [[packages.windows.personal]]
-id = "Microsoft.VisualStudio.2022.Community.Preview"
+id = "Microsoft.VisualStudio.Community.Insiders"
 
 [[packages.windows.personal]]
 id = "Audacity.Audacity"
