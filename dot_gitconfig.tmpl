@@ -24,7 +24,7 @@
 	cmd = nvim -n -c "DiffviewOpen" "$MERGE"
 [alias]
 	c = commit
-	ac = commit -a
+	ac = !git add -A && git commit
 	m = merge -X ignore-cr-at-eol
 	rb = rebase -i
 	s = status -sb
@@ -35,3 +35,5 @@
 	undo = reset --soft HEAD~1
 	aliases = config --get-regexp alias
 	today = log --since='midnight' --oneline --author={{ .username | quote }}
+[push]
+	autoSetupRemote = true
