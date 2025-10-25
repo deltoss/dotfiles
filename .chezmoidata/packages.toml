@@ -211,6 +211,9 @@ id = "Starship.Starship"
 id = "OpenJS.NodeJS"
 
 [[packages.windows.core]]
+id = "pnpm.pnpm"
+
+[[packages.windows.core]]
 id = "dbrgn.tealdeer"
 
 [[packages.windows.core]]
