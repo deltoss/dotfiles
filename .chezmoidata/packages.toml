@@ -32,6 +32,10 @@ name = "atac"
 command = 'cargo install atac --locked'
 
 [[packages.windows.core]]
+name = "intelli-shell"
+command = 'cargo install intelli-shell --locked'
+
+[[packages.windows.core]]
 name = "gittype"
 command = 'cargo install gittype'
 
