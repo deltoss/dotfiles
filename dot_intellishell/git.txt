@@ -11,3 +11,4 @@ git checkout {{branch}}
 
 # A global completion for any `{{branch}}` variable.
 $ branch: git branch --format='%(refname:short)'
+$ b: git branch --format='%(refname:short)'
