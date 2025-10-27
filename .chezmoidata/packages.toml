@@ -24,6 +24,11 @@ desc = "Package manager for Rust"
 postcommand = 'if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains "$env:USERPROFILE\.cargo\bin")) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.cargo\bin", "User"); $env:Path += ";$env:USERPROFILE\.cargo\bin" }'
 
 [[packages.windows.core]]
+name = "cargo-binstall"
+desc = "Binary package manager for Rust"
+command = "cargo install cargo-binstall"
+
+[[packages.windows.core]]
 name = "dotnet"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
 
@@ -33,7 +38,7 @@ command = 'cargo install atac --locked'
 
 [[packages.windows.core]]
 name = "intelli-shell"
-command = 'cargo install intelli-shell --locked'
+command = 'cargo binstall -y intelli-shell --locked'
 
 [[packages.windows.core]]
 name = "gittype"
