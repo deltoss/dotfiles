@@ -1,0 +1,13 @@
+# --------------------------------------------------------------
+#   Commands
+# --------------------------------------------------------------
+
+# [alias:dce] Shell into a container
+docker compose exec {{docker-compose-containers}} sh
+
+# --------------------------------------------------------------
+#   Completions
+# --------------------------------------------------------------
+
+# A command completion for any `{{docker-compose-containers}}` variable.
+$ (docker) docker-compose-containers: docker compose ps --services
