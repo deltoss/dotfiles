@@ -65,8 +65,13 @@ precommand = "wsl --install --no-distribution"
 
 [[packages.windows.core]]
 name = "MinGW"
-command = "choco install mingw"
+command = "choco install -y mingw"
 desc = "Required dependency for Neovim plugins"
+
+[[packages.windows.core]]
+name = "OpenCode"
+command = "choco install -y opencode"
+desc = "Agentic AI in the terminal"
 
 [[packages.windows.core]]
 id = "Python.Python.3.13"
