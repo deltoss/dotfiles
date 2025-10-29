@@ -237,7 +237,9 @@ nmap <leader>bi :vsc Debug.Immediate<CR>
 nmap <leader>bp :vsc Project.ConfigureStartupProjects<CR>
 nmap <leader>bl :vsc Debug.Locals<CR>
 nmap <leader>bk :vsc Debug.QuickWatch<CR>
+vmap <leader>bk :vsc Debug.QuickWatch<CR>
 nmap <leader>k :vsc Debug.QuickWatch<CR>
+vmap <leader>k :vsc Debug.QuickWatch<CR>
 nmap <C-A-y> :vsc Debug.StepOut<CR>
 nmap <C-A-Left> :vsc Debug.StepOut<CR>
 nmap <C-A-h> :vsc Debug.StepOver<CR>
