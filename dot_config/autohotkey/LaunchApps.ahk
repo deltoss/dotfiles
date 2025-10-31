@@ -394,6 +394,7 @@ DetectHiddenWindows true
 StartFocusSteamGame()
 {
     Run("taskkill /F /IM steam.exe", , "Hide") ; Close steam first
+    Sleep(2000)
     local randomChoice := Random(1, 3)
     if (randomChoice = 1) {
         Run("steam://rungameid/2113850")
