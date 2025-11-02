@@ -45,6 +45,10 @@ name = "gittype"
 command = 'cargo install gittype'
 
 [[packages.windows.core]]
+id = 'tsl0922.ttyd'
+postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/setup-ttyd.ps1"'
+
+[[packages.windows.core]]
 id = 'mitmproxy.mitmproxy'
 
 [[packages.windows.core]]
