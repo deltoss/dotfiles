@@ -3,7 +3,6 @@
 
 [mgr]
 prepend_keymap = [
-  { on = "<C-s>", run = 'shell "pwsh.exe --Command \"ya emit cd (Search-Query)\"" --block', desc = "Jump to a directory via Everything Search" },
   { on = "<C-Esc>", run = 'escape --search', desc = "Cancel the ongoing search" },
   { on = "Z", run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
   { on = "z", run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
@@ -14,6 +13,11 @@ prepend_keymap = [
   { on = "_", run = "back", desc = "Back to previous directory" },
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = "e", run = 'shell "pwsh.exe --Command \"ya emit cd (Search-Query)\"" --block', desc = "Jump to a directory via Everything Search" },
+  { on = [
+    "g",
+    "G",
+  ], run = 'shell "lazygit" --block', desc = "Open lazygit" },
 ]
 append_keymap = [
   { on = "<C-e>", run = "arrow 50%", desc = "Move cursor down half page" },
