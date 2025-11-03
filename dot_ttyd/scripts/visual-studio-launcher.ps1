@@ -1,0 +1,1 @@
+($null | fzf --multi --bind 'change:reload-sync(Start-Sleep -m 100; es -sort date-modified-descending count:100 -p *.sln {q:1} {q:2} {q:3} {q:4} {q:5} {q:6} {q:7} {q:8} {q:9})' --phony --query '' --header='Search - .NET Solutions (Tab to Select)') | Where-Object { Start-Process devenv -Argument """$_""" }
