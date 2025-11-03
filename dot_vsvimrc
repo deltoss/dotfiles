@@ -206,6 +206,7 @@ nmap gh :vsc EditorContextMenus.CodeWindow.ViewCallHierarchy<CR>
 nmap gt :vsc Edit.GoToType<CR>
 nmap zi :vsc Edit.ToggleAllOutlining<CR>
 nmap za :vsc Edit.ToggleOutliningExpansion<CR>
+nmap zA :vsc Edit.ToggleOutliningExpansion<CR>
 nmap zd :vsc Edit.CollapsetoDefinitions<CR>
 nmap [[ :vsc Edit.PreviousMethod<CR>zz
 vmap [[ :vsc Edit.PreviousMethod<CR>zz
