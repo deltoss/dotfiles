@@ -1,4 +1,4 @@
-$trigger = New-ScheduledTaskTrigger -AtStartup
+$trigger = New-ScheduledTaskTrigger -AtLogOn
 $settings = New-ScheduledTaskSettingsSet -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1) -Hidden
 
 $scriptPath = "$env:USERPROFILE/.ttyd/scripts/visual-studio-launcher.ps1"
