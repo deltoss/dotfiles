@@ -273,7 +273,7 @@ desc = "For Media Player Classic. Note VLC uses its own Codec."
 id = "clsid2.mpc-hc"
 
 [[packages.windows.personal]]
-id = "Bambulab.Bambustudio"
+id = "SoftFever.OrcaSlicer"
 
 [[packages.windows.work]]
 name = "Jira CLI"
