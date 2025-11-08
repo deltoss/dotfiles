@@ -22,6 +22,8 @@ DetectHiddenWindows true
 
 ; Window + F - [F]irefox
 #HotIf WinActive("ahk_exe firefox.exe")
+^p:: Send "^l" ; Go to address bar
+^k:: Send "^l"
 !o:: Send "^+{Tab}" ; Go to left tab
 !u:: Send "^{Tab}" ; Go to right tab
 !PgDn:: Send "^+{Tab}" ; Go to left tab
