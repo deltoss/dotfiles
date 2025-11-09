@@ -3,6 +3,12 @@
 
 [mgr]
 prepend_keymap = [
+  { on = "<Space>", run = 'noop', desc = "Disables the default selection state toggle key" },
+  { on = "<Tab>", run = [
+    "toggle",
+    "arrow next",
+  ], desc = "Toggle the current selection state" },
+  { on = "i", run = "spot", desc = "Spot hovered file" },
   { on = "<C-Esc>", run = 'escape --search', desc = "Cancel the ongoing search" },
   { on = "Z", run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
   { on = "z", run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
@@ -13,7 +19,53 @@ prepend_keymap = [
   { on = "_", run = "back", desc = "Back to previous directory" },
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
-  { on = "e", run = 'shell "pwsh.exe --Command \"ya emit cd (Search-Query)\"" --block', desc = "Jump to a directory via Everything Search" },
+  { on = [
+    "<Space>",
+    "a",
+    "a",
+  ], run = 'create', desc = "Add a file/directory" },
+  { on = [
+    "<Space>",
+    "a",
+    "d",
+  ], run = 'create --dir', desc = "Add a directory" },
+  { on = [
+    "<Space>",
+    "a",
+    "n",
+    "i",
+  ], run = 'shell "pwsh.exe --Command \"New-DotNetItem\"" --block', desc = "Add a DotNet Item" },
+  { on = [
+    "<Space>",
+    "a",
+    "n",
+    "p",
+  ], run = 'shell "pwsh.exe --Command \"New-DotNetProject\"" --block', desc = "Add a DotNet Project" },
+  { on = [
+    "<Space>",
+    "s",
+    "e",
+  ], run = 'shell "pwsh.exe --Command \"ya emit cd (Search-Query)\"" --block', desc = "Search via Everything" },
+  { on = [
+    "<Space>",
+    "s",
+    "z",
+  ], run = "plugin zoxide", desc = "Search common directories via zoxide" },
+  { on = [
+    "<Space>",
+    "s",
+    "f",
+  ], run = "plugin fzf", desc = "Search files by name via fzf" },
+  { on = [
+    "<Space>",
+    "s",
+    "F",
+  ], run = "search --via=fd", desc = "Search files by name via fd" },
+  { on = [
+    "<Space>",
+    "s",
+    "g",
+  ], run = "search --via=rg", desc = "Search files by content via ripgrep" },
   { on = [
     "g",
     "G",
@@ -28,3 +80,6 @@ append_keymap = [
   { on = "<C-PageUp>", run = "seek -10", desc = "Seek up 10 units in the preview" },
   { on = "<C-PageDown>", run = "seek 10", desc = "Seek down 10 units in the preview" },
 ]
+
+[spot]
+prepend_keymap = [{ on = "i", run = "close", desc = "Close the spot" }]
