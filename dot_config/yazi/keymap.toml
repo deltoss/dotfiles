@@ -19,6 +19,29 @@ prepend_keymap = [
   { on = "_", run = "back", desc = "Back to previous directory" },
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+
+  # Dotnet CLI Bindings
+  { on = [
+    "<Space>",
+    "n",
+    "n",
+  ], run = 'shell "pwsh.exe -NoExit -Command \"Invoke-DotNetCommand\"" --block', desc = "Invoke a DotNet Command" },
+  { on = [
+    "<Space>",
+    "n",
+    "c",
+  ], run = 'shell "pwsh.exe -NoExit -Command \"Invoke-DotNetCommand\"" --block', desc = "Invoke a DotNet Command" },
+  { on = [
+    "<Space>",
+    "n",
+    "i",
+  ], run = 'shell "pwsh.exe -Command \"New-DotNetItem\"" --block', desc = "Add a DotNet Item" },
+  { on = [
+    "<Space>",
+    "n",
+    "p",
+  ], run = 'shell "pwsh.exe -Command \"New-DotNetProject\"" --block', desc = "Add a DotNet Project" },
+
   { on = [
     "<Space>",
     "a",
@@ -29,18 +52,6 @@ prepend_keymap = [
     "a",
     "d",
   ], run = 'create --dir', desc = "Add a directory" },
-  { on = [
-    "<Space>",
-    "a",
-    "n",
-    "i",
-  ], run = 'shell "pwsh.exe --Command \"New-DotNetItem\"" --block', desc = "Add a DotNet Item" },
-  { on = [
-    "<Space>",
-    "a",
-    "n",
-    "p",
-  ], run = 'shell "pwsh.exe --Command \"New-DotNetProject\"" --block', desc = "Add a DotNet Project" },
   { on = [
     "<Space>",
     "s",
