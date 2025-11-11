@@ -77,9 +77,11 @@ prepend_keymap = [
     "s",
     "g",
   ], run = "search --via=rg", desc = "Search files by content via ripgrep" },
+
   { on = [
+    "<Space>",
     "g",
-    "G",
+    "g",
   ], run = 'shell "lazygit" --block', desc = "Open lazygit" },
 ]
 append_keymap = [
