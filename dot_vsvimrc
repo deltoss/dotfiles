@@ -163,8 +163,8 @@ nmap <leader>en :vsc View.NextError<CR>zz
 nmap <leader>ep :vsc View.PreviousError<CR>zz
 nmap <leader>mn :vsc Edit.NextBookmark<CR>zz
 nmap <leader>mp :vsc Edit.PreviousBookmark<CR>zz
-nmap <leader>tn :vsc View.NextTask<CR>zz
-nmap <leader>tp :vsc View.PreviousTask<CR>zz
+nmap <leader>Tn :vsc View.NextTask<CR>zz
+nmap <leader>Tp :vsc View.PreviousTask<CR>zz
 
 nmap <leader>a :vsc AddQuickFile<CR>
 nmap <leader>rr :vsc Refactor.Rename<CR><Esc>
@@ -179,9 +179,9 @@ nmap <leader>, :vsc Edit.ListMembers<CR>
 nmap <leader>ma :vsc Edit.ToggleBookmark<CR>:vsc View.BookmarkWindow<CR>
 nmap <leader>mx :vsc Edit.ToggleBookmark<CR>
 nmap <leader>md :vsc Edit.ToggleBookmark<CR>
-nmap <leader>ta :vsc Edit.ToggleTaskListShortcut<CR>:vsc View.TaskList<CR>
-nmap <leader>tx :vsc Edit.ToggleTaskListShortcut<CR>
-nmap <leader>td :vsc Edit.ToggleTaskListShortcut<CR>
+nmap <leader>Ta :vsc Edit.ToggleTaskListShortcut<CR>:vsc View.TaskList<CR>
+nmap <leader>Tx :vsc Edit.ToggleTaskListShortcut<CR>
+nmap <leader>Td :vsc Edit.ToggleTaskListShortcut<CR>
 nmap gcc :vsc Edit.ToggleLineComment<CR>
 vmap gcc :vsc Edit.ToggleLineComment<CR>
 nmap gcb :vsc Edit.ToggleBlockComment<CR>
@@ -220,15 +220,15 @@ nmap ]m :vsc Edit.NextBookmark<CR>zz
 vmap ]m :vsc Edit.NextBookmark<CR>zz
 nmap [m :vsc Edit.PreviousBookmark<CR>zz
 vmap [m :vsc Edit.PreviousBookmark<CR>zz
-nmap ]t :vsc View.NextTask<CR>zz
-vmap ]t :vsc View.NextTask<CR>zz
-nmap [t :vsc View.PreviousTask<CR>zz
-vmap [t :vsc View.PreviousTask<CR>zz
+nmap ]T :vsc View.NextTask<CR>zz
+vmap ]T :vsc View.NextTask<CR>zz
+nmap [T :vsc View.PreviousTask<CR>zz
+vmap [T :vsc View.PreviousTask<CR>zz
 
-nmap <leader>pb :vsc Build.RebuildSelection<CR>
-nmap <leader>pr :vsc Build.RebuildSolution<CR>
-nmap <leader>pc :vsc Build.Cancel<CR>
-nmap <leader>ps :vsc Project.ConfigureStartupProjects<CR>
+nmap <leader>nb :vsc Build.RebuildSelection<CR>
+nmap <leader>nr :vsc Build.RebuildSolution<CR>
+nmap <leader>nc :vsc Build.Cancel<CR>
+nmap <leader>ns :vsc Project.ConfigureStartupProjects<CR>
 nmap <leader>ba :vsc Debug.ToggleBreakpoint<CR>
 nmap <leader>bs :vsc Debug.Start<CR>
 nmap <leader>bq :vsc Debug.StopDebugging<CR>
@@ -245,9 +245,13 @@ nmap <C-A-y> :vsc Debug.StepOut<CR>
 nmap <C-A-Left> :vsc Debug.StepOut<CR>
 nmap <C-A-h> :vsc Debug.StepOver<CR>
 nmap <C-A-Down> :vsc Debug.StepOver<CR>
+nmap <C-A-a> :vsc Debug.Start<CR>
+nmap <C-A-Up> :vsc Debug.Start<CR>
 nmap <C-A-e> :vsc Debug.StepInto<CR>
 nmap <C-A-Right> :vsc Debug.StepInto<CR>
 nmap <C-A-i> :vsc Debug.RunToCursor<CR>
+nmap <leader>ts :vsc TestExplorer.RunAllTestsInContext<CR>
+nmap <leader>tS :vsc TestExplorer.DebugAllTestsInContext<CR>
 
 nmap <leader>vs :vsc View.SolutionExplorer<CR>
 nmap <leader>vj :vsc View.SolutionExplorer<CR>
@@ -257,14 +261,16 @@ nmap <leader>ve :vsc View.ErrorList<CR>
 nmap <leader>ee :vsc View.ErrorList<CR>
 nmap <leader>vm :vsc View.BookmarkWindow<CR>
 nmap <leader>mm :vsc View.BookmarkWindow<CR>
-nmap <leader>vt :vsc View.TaskList<CR>
-nmap <leader>tt :vsc View.TaskList<CR>
+nmap <leader>vT :vsc View.TaskList<CR>
+nmap <leader>Tt :vsc View.TaskList<CR>
 nmap <leader>vb :vsc Debug.Breakpoints<CR>
 nmap <leader>bb :vsc Debug.Breakpoints<CR>
 nmap <leader>vc :vsc Debug.Immediate<CR>
 nmap <leader>vi :vsc Debug.Immediate<CR>
 nmap <leader>vo :vsc Debug.Output<CR>
 nmap <leader>vl :vsc Debug.Output<CR>
+nmap <leader>tt :vsc TestExplorer.ShowTestExplorer<CR>
+nmap <leader>vt :vsc TestExplorer.ShowTestExplorer<CR>
 
 nmap <leader>gp :vsc Edit.PeekDifference<CR>
 nmap <leader>gP :vsc Team.Git.CompareWithUnmodified<CR>
