@@ -368,6 +368,20 @@ DetectHiddenWindows true
 !p:: Send "^k"
 #HotIf
 
+#HotIf WinActive("ahk_exe Bruno.exe")
+^p:: Send "^k" ; Search requests
+^o:: Send "^{PgUp}" ; Previous tab
+!o:: Send "^{PgUp}"
+^u:: Send "^{PgDn}" ; Next tab
+!u:: Send "^{PgDn}"
++^o:: Send "+^{PgUp}" ; Swap previous tab
++!o:: Send "+^{PgUp}"
++^u:: Send "+^{PgDn}" ; Swap next tab
++!u:: Send "+^{PgDn}"
+^n:: Send "^b" ; New request
++^b:: Send "^\" ; Collapse side bar
+#HotIf
+
 #HotIf WinActive("ahk_exe Postman.exe")
 ^p:: Send "^k" ; Search
 !p:: Send "^k"
