@@ -17,6 +17,10 @@
 	conflictStyle = zdiff3
 	tool = diffview
 	renormalize = true
+	ff = false # Even create extra merge commit when fast forward merge would be possible
+[pull]
+	rebase = true
+	ff = only # Disallows non ff merges on pull. Overrides merge.ff when pulling
 [mergetool]
 	prompt = false
 	keepBackup = false
