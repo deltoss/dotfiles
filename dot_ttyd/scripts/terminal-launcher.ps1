@@ -1,4 +1,4 @@
-$esTemplate = "es -sort date-modified-descending count:100 -r !'*Recycle.Bin*\*' !'*RECYCLE*\*' {q:1} {q:2} {q:3} {q:4} {q:5} {q:6} {q:7} {q:8} {q:9}"
+$esTemplate = "es -sort date-modified-descending count:100 -r !'*Recycle.Bin*\*' -r !'*RECYCLE*\*' -r {q:1} -r {q:2} -r {q:3} -r {q:4} -r {q:5} -r {q:6} -r {q:7} -r {q:8} -r {q:9}"
 
 # Pipe null to disable the initial unnecessary search upon entering fzf
 # Sleep command is there to debounce the query so we don't search on every single letter typed
