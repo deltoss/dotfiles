@@ -6,5 +6,5 @@ $selection = $null | fzf --bind "change:reload-sync(Start-Sleep -m 100; $esTempl
 if ($selection)
 {
   $folder = [System.IO.Path]::GetDirectoryName($selection)
-  & wezterm cli spawn --new-window --cwd $folder
+  & wezterm-gui start --cwd $folder
 }
