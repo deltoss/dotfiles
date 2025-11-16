@@ -152,6 +152,8 @@ window_rules:
           equals: 'ScreenToGif'
       - window_process:
           equals: 'ApplicationFrameHost' # Windows settings
+      - window_process:
+          equals: 'WindowsTerminal'
   - commands:
       - set-floating
       - move --workspace 0
