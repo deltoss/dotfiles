@@ -13,6 +13,9 @@ desc = "Package manager for Python"
 command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"; $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"'
 
 [[packages.windows.core]]
+id = "OpenJS.NodeJS"
+
+[[packages.windows.core]]
 id = "Rustlang.Rust.GNU"
 # Refresh the Path variable so it'd detect the tool in the current terminal session
 postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
@@ -226,12 +229,6 @@ id = "AstroComma.AstroGrep"
 id = "Starship.Starship"
 
 [[packages.windows.core]]
-id = "OpenJS.NodeJS"
-
-[[packages.windows.core]]
-id = "pnpm.pnpm"
-
-[[packages.windows.core]]
 id = "dbrgn.tealdeer"
 
 [[packages.windows.core]]
@@ -245,6 +242,10 @@ id = "GitHub.cli"
 
 [[packages.windows.core]]
 id = "Bruno.Bruno"
+
+[[packages.windows.core]]
+name = "bru - Bruno CLI"
+command = "if (-not (Get-Command 'bru' -ErrorAction SilentlyContinue)) { npm install -g @usebruno/cli }"
 
 [[packages.windows.core]]
 id = "xanderfrangos.twinkletray"
