@@ -182,10 +182,10 @@ nmap <leader>md :vsc Edit.ToggleBookmark<CR>
 nmap <leader>Ta :vsc Edit.ToggleTaskListShortcut<CR>:vsc View.TaskList<CR>
 nmap <leader>Tx :vsc Edit.ToggleTaskListShortcut<CR>
 nmap <leader>Td :vsc Edit.ToggleTaskListShortcut<CR>
-nmap gcc :vsc Edit.ToggleLineComment<CR>
-vmap gcc :vsc Edit.ToggleLineComment<CR>
-nmap gcb :vsc Edit.ToggleBlockComment<CR>
-vmap gcb :vsc Edit.ToggleBlockComment<CR>
+nmap gc :vsc Edit.ToggleLineComment<CR>
+vmap gc :vsc Edit.ToggleLineComment<CR>
+nmap gb :vsc Edit.ToggleBlockComment<CR>
+vmap gb :vsc Edit.ToggleBlockComment<CR>
 nmap <leader>f :vsc Edit.FormatDocument<CR>
 vmap <leader>f :vsc Edit.FormatSelection<CR>
 
