@@ -95,11 +95,17 @@ inoremap <C-s> <Esc>:update<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Map Ctrl+Backspace to delete the previous word in insert mode
+" Insert mode deletion bindings
+" Matches terminal behavior
 " Note: In many terminals, Ctrl+Backspace sends different codes
+"
+" Delete the previous word
 inoremap <C-BS> <C-w>
-" Map Ctrl+Delete to delete the next word in insert mode
+" Delete the next word
 inoremap <C-Del> <C-o>dw
+inoremap <C-d> <C-o>dw
+" Delete to end of line
+inoremap <C-k> <C-o>D
 
 " Window operations
 nnoremap <leader><Up> :split<CR>
