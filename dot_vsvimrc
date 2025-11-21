@@ -200,7 +200,7 @@ nmap <leader>ss :vsc Edit.GoToSymbol<CR>
 nmap <leader>sm :vsc Edit.GoToMember<CR>
 nmap k :vsc Edit.QuickInfo<CR>
 nmap K :vsc Edit.ParameterInfo<CR>
-imap <C-k> :vsc Edit.ParameterInfo<CR>
+imap <C-k> <C-o>:vsc Edit.ParameterInfo<CR>
 nmap ga :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
 nmap gA :vsc Edit.ShowNavigateMenu<CR>
 nmap gd :vsc Edit.GoToDefinition<CR>
