@@ -104,8 +104,6 @@ inoremap <C-BS> <C-w>
 " Delete the next word
 inoremap <C-Del> <C-o>dw
 inoremap <C-d> <C-o>dw
-" Delete to end of line
-inoremap <C-k> <C-o>D
 
 " Window operations
 nnoremap <leader><Up> :split<CR>
