@@ -135,6 +135,10 @@ vnoremap p "_dP
 " Join lines
 nnoremap <leader>j J
 
+" Quickly change word
+" From https://github.com/folke/dot/blob/master/nvim/lua/config/keymaps.lua
+nmap <C-c> ciw
+
 " ##################################################################
 " Visual Studio Mappings
 " ##################################################################
