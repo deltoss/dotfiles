@@ -4,7 +4,7 @@
     // See https://opencode.ai/docs/keybinds/
     "app_exit": "<leader>q,ctrl+q",
     "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrl+d",
+    "messages_half_page_down": "ctrl+d,ctrl+e",
     "editor_open": "<leader>e,ctrl+o",
   }
 }
