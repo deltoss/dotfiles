@@ -13,6 +13,11 @@ desc = "Package manager for Python"
 command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"; $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"'
 
 [[packages.windows.core]]
+name = "Aider"
+desc = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
+command = 'uv tool install --force --python python3.12 --with pip aider-chat@latest'
+
+[[packages.windows.core]]
 id = "OpenJS.NodeJS"
 
 [[packages.windows.core]]
