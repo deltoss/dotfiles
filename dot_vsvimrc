@@ -140,6 +140,12 @@ nnoremap <leader>j J
 nnomap <C-c> ciw
 vnomap <C-c> c
 
+
+" Search and replace word under cursor
+nnoremap <leader>rw :%s/\<<C-r><C-w>\>//g<left><left>
+
+" Quickly change word
+" From https://github.com/folke/dot/blob/master/nvim/lua/config/keymaps.lua
 nnoremap <leader>* *``cgn
 vnoremap <leader>* "sy/\\V<C-R>s<CR>``cgn
 
