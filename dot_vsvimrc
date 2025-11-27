@@ -137,7 +137,11 @@ nnoremap <leader>j J
 
 " Quickly change word
 " From https://github.com/folke/dot/blob/master/nvim/lua/config/keymaps.lua
-nmap <C-c> ciw
+nnomap <C-c> ciw
+vnomap <C-c> c
+
+nnoremap <leader>* *``cgn
+vnoremap <leader>* "sy/\\V<C-R>s<CR>``cgn
 
 " ##################################################################
 " Visual Studio Mappings
