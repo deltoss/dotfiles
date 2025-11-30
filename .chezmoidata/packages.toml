@@ -262,6 +262,21 @@ id = "jftuga.less"
 id = "Microsoft.VisualStudio.Community.Insiders"
 
 [[packages.windows.personal]]
+id = "calibre.calibre"
+
+[[packages.windows.personal]]
+id = "AppByTroye.KoodoReader"
+
+[[packages.windows.personal]]
+id = "ONLYOFFICE.DesktopEditors"
+
+[[packages.windows.personal]]
+id = "qBittorrent.qBittorrent"
+
+[[packages.windows.personal]]
+id = "HandBrake.HandBrake"
+
+[[packages.windows.personal]]
 id = "Audacity.Audacity"
 
 [[packages.windows.personal]]
