@@ -1,0 +1,17 @@
+[[uninstalls.windows.personal]]
+query = "*xbox*"
+
+[[uninstalls.windows.personal]]
+query = "*OneDrive*"
+
+[[uninstalls.windows.personal]]
+query = "*PowerAutomate*"
+
+[[uninstalls.windows.personal]]
+query = "*Microsoft.WindowsFeedbackHub*"
+
+[[uninstalls.windows.personal]]
+query = "*Bing*"
+
+[[uninstalls.windows.personal]]
+query = "*Spotify*"
