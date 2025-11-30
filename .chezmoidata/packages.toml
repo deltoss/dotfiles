@@ -277,6 +277,9 @@ id = "qBittorrent.qBittorrent"
 id = "HandBrake.HandBrake"
 
 [[packages.windows.personal]]
+id = "TGRMNSoftware.BulkRenameUtility"
+
+[[packages.windows.personal]]
 id = "Audacity.Audacity"
 
 [[packages.windows.personal]]
