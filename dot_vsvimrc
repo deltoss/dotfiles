@@ -275,7 +275,7 @@ nmap <leader>tS :vsc TestExplorer.DebugAllTestsInContext<CR>
 nmap <leader>vs :vsc View.SolutionExplorer<CR>
 nmap <leader>vj :vsc View.SolutionExplorer<CR>
 nmap <leader>vf :vsc Window.SolutionExplorerSearch<CR>
-nmap <leader>vt :vsc View.Terminal<CR>
+nmap <leader>w :vsc View.Terminal<CR>
 nmap <leader>ve :vsc View.ErrorList<CR>
 nmap <leader>ee :vsc View.ErrorList<CR>
 nmap <leader>vm :vsc View.BookmarkWindow<CR>
