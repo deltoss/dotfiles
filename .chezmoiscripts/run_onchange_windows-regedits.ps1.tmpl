@@ -9,6 +9,14 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   }
 }
 
+New-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders' Personal -Value "$Env:UserProfile\.config\" -Type ExpandString -Force
+
+# AutoHotKey
+
+echo "Set AHK Script Editor"
+$exePath = "$env:LOCALAPPDATA\Programs\WeztermNeovimLauncher\WeztermNeovimLauncher.exe"
+reg add "HKEY_CLASSES_ROOT\AutoHotkeyScript\shell\edit\command" /ve /t REG_SZ /d "`"$exePath`" `"%1`"" /f
+
 # AutoHotKey
 
 echo "Set AHK Script Editor"

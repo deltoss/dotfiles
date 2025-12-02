@@ -1,7 +1,4 @@
 [[uninstalls.windows.personal]]
-query = "*xbox*"
-
-[[uninstalls.windows.personal]]
 query = "*OneDrive*"
 
 [[uninstalls.windows.personal]]

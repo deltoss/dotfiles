@@ -1,4 +1,16 @@
 [[packages.windows.core]]
+id = "Microsoft.VCRedist.2015+.x64"
+desc = "Many applications requires these as dependencies, such as Rust (msvc)"
+
+[[packages.windows.core]]
+id = "Microsoft.VisualStudio.BuildTools"
+desc = "Many applications requires these as dependencies, such as Rust (msvc)"
+
+[[packages.windows.core]]
+name = "dotnet"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
+
+[[packages.windows.core]]
 id = "Chocolatey.Chocolatey"
 # Refresh the Path variable so it'd detect the tool in the current terminal session
 postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
@@ -21,9 +33,8 @@ command = 'uv tool install --force --python python3.12 --with pip aider-chat@lat
 id = "OpenJS.NodeJS"
 
 [[packages.windows.core]]
-id = "Rustlang.Rust.GNU"
-# Refresh the Path variable so it'd detect the tool in the current terminal session
-postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')"
+name = "Rust"
+postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-rust.ps1"'
 
 [[packages.windows.core]]
 name = "Rust - Cargo Configuration"
@@ -35,10 +46,6 @@ postcommand = 'if (!([Environment]::GetEnvironmentVariable("Path", "User") -spli
 name = "cargo-binstall"
 desc = "Binary package manager for Rust"
 command = "cargo install cargo-binstall"
-
-[[packages.windows.core]]
-name = "dotnet"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
 
 [[packages.windows.core]]
 name = "atac"
