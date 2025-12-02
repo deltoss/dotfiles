@@ -1,0 +1,3 @@
+- Set Update checks to Weekly
+- Updated default output path
+- Configured subtitles selections for presets
