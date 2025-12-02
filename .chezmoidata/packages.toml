@@ -1,14 +1,14 @@
 [[packages.windows.core]]
+name = "dotnet"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
+
+[[packages.windows.core]]
 id = "Microsoft.VCRedist.2015+.x64"
 desc = "Many applications requires these as dependencies, such as Rust (msvc)"
 
 [[packages.windows.core]]
 id = "Microsoft.VisualStudio.BuildTools"
 desc = "Many applications requires these as dependencies, such as Rust (msvc)"
-
-[[packages.windows.core]]
-name = "dotnet"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.ps1"'
 
 [[packages.windows.core]]
 id = "Chocolatey.Chocolatey"
