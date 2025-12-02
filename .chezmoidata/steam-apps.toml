@@ -17,3 +17,8 @@ folderName = "ChillPulse"
 id = "431960"
 name = "Wallpaper Engine"
 folderName = "wallpaper_engine"
+
+[[steamApps.windows.work]]
+id = "3511030"
+name = "Mini Cozy Room: Lo-Fi"
+folderName = "Mini Cozy Room"
