@@ -430,6 +430,11 @@ StartFocusSteamGame()
         Send("{F11}")
         Send("{F11}")
         Send("{F11}")
+    } else if (randomChoice = 3) {
+        Run("steam://rungameid/3511030")
+        WinWait("ahk_exe MiniCozyRoom.exe")
+        WinActivate("ahk_exe MiniCozyRoom.exe")
+        WinWaitActive("ahk_exe MiniCozyRoom.exe")
     } else {
         Run("steam://rungameid/2826180")
         WinWait("ahk_exe ChillPulse.exe")
