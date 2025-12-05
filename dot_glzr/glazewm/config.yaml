@@ -339,6 +339,8 @@ window_rules:
           equals: rundll32 # Printer
       - window_process:
           regex: ".*Wondershare Filmora.*"
+      - window_process:
+          regex: ".*[Cc]rosshair.*"
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
   - name: resize
