@@ -467,5 +467,7 @@ StartFocusSteamGame()
 ~#^+!Insert:: ; WIN + CTRL + ALT + SHIFT + INSERT
 ~^+!Insert:: ; CTRL + ALT + SHIFT + INSERT
 {
-    DllCall("user32.dll\LockWorkStation")
+    ; DllCall("user32.dll\LockWorkStation") ; Lock
+    Sleep 1000
+    SendMessage(0x112,0xF170,2,,"Program Manager") ; Monitor off
 }
