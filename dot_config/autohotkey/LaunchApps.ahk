@@ -20,6 +20,17 @@ DetectHiddenWindows true
 #HotIf
 #Enter:: Run(A_Programs . "/Flow Launcher/Flow Launcher")
 
+; Zen Browser
+#HotIf WinActive("ahk_exe zen.exe")
+^p:: Send "^k" ; Command palette
+!o:: Send "^+{Tab}" ; Go to left tab
+!u:: Send "^{Tab}" ; Go to right tab
+!PgDn:: Send "^+{Tab}" ; Go to left tab
+!PgUp:: Send "^{Tab}" ; Go to right tab
+!w:: Send "^w" ; Close tab
+!t:: Send "^t" ; New tab
+#HotIf
+
 ; Window + F - [F]irefox
 #HotIf WinActive("ahk_exe firefox.exe")
 ^p:: Send "^l" ; Go to address bar
@@ -55,7 +66,7 @@ DetectHiddenWindows true
 }
 
 ; Window + B - [B]rowser
-#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")
+#HotIf WinExist("ahk_exe zen.exe ahk_class MozillaWindowClass")
 #b::
 {
     WinActivate
@@ -70,10 +81,10 @@ DetectHiddenWindows true
 #HotIf
 #b::
 {
-    Run("Firefox") ; If window doesn't exist, run the app
-    WinWait("ahk_exe firefox.exe")
-    WinActivate("ahk_exe firefox.exe")
-    WinWaitActive("ahk_exe firefox.exe")
+    Run("Zen") ; If window doesn't exist, run the app
+    WinWait("ahk_exe zen.exe")
+    WinActivate("ahk_exe zen.exe")
+    WinWaitActive("ahk_exe zen.exe")
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 3
@@ -411,7 +422,7 @@ StartFocusSteamGame()
 {
     Run("taskkill /F /IM steam.exe", , "Hide") ; Close steam first
     Sleep(2000)
-    local randomChoice := Random(1, 3)
+    local randomChoice := Random(1, 4)
     if (randomChoice = 1) {
         Run("steam://rungameid/2113850")
         WinWait("ahk_exe SpiritCity-Win64-Shipping.exe")
