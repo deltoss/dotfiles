@@ -20,6 +20,18 @@ DetectHiddenWindows true
 #HotIf
 #Enter:: Run(A_Programs . "/Flow Launcher/Flow Launcher")
 
+; Window + F - [F]irefox
+#HotIf WinActive("ahk_exe firefox.exe")
+^p:: Send "^l" ; Go to address bar
+^k:: Send "^l"
+!o:: Send "^+{Tab}" ; Go to left tab
+!u:: Send "^{Tab}" ; Go to right tab
+!PgDn:: Send "^+{Tab}" ; Go to left tab
+!PgUp:: Send "^{Tab}" ; Go to right tab
+!w:: Send "^w" ; Close tab
+!t:: Send "^t" ; New tab
+#HotIf
+
 ; Zen Browser
 #HotIf WinActive("ahk_exe zen.exe")
 ^p:: Send "^k" ; Command palette
@@ -31,43 +43,9 @@ DetectHiddenWindows true
 !t:: Send "^t" ; New tab
 #HotIf
 
-; Window + F - [F]irefox
-#HotIf WinActive("ahk_exe firefox.exe")
-^p:: Send "^l" ; Go to address bar
-^k:: Send "^l"
-!o:: Send "^+{Tab}" ; Go to left tab
-!u:: Send "^{Tab}" ; Go to right tab
-!PgDn:: Send "^+{Tab}" ; Go to left tab
-!PgUp:: Send "^{Tab}" ; Go to right tab
-!w:: Send "^w" ; Close tab
-!t:: Send "^t" ; New tab
-#HotIf WinExist("ahk_exe firefox.exe ahk_class MozillaWindowClass")
-#f::
-{
-    WinActivate
-    Sleep 100
-    WinActivate
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 3
-    Sleep 100 ; To get GlazeWM to stay focused
-    WinActivate
-}
-#HotIf
-#f::
-{
-    Run("Firefox") ; If window doesn't exist, run the app
-    WinWait("ahk_exe firefox.exe")
-    WinActivate("ahk_exe firefox.exe")
-    WinWaitActive("ahk_exe firefox.exe")
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 3
-}
-
-; Window + B - [B]rowser
+; Window + G - [G]o/Browser
 #HotIf WinExist("ahk_exe zen.exe ahk_class MozillaWindowClass")
-#b::
+#g::
 {
     WinActivate
     Sleep 100
@@ -79,7 +57,7 @@ DetectHiddenWindows true
     WinActivate
 }
 #HotIf
-#b::
+#g::
 {
     Run("Zen") ; If window doesn't exist, run the app
     WinWait("ahk_exe zen.exe")
