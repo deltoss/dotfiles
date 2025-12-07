@@ -75,6 +75,10 @@ name = "Mechvibes"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-mechvibes.ps1"'
 
 [[packages.windows.core]]
+name = "Soundux"
+command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-soundux.ps1"'
+
+[[packages.windows.core]]
 id = "Ditto.Ditto"
 postcommand = 'echo "Importing Ditto Settings as RegEdits"; reg import "$env:CHEZMOI_SOURCEDIR/WindowsRegEdits/DittoSettings.reg"'
 
