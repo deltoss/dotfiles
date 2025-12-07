@@ -144,7 +144,7 @@ id = "Doist.Todoist"
 id = "Anki.Anki"
 
 [[packages.windows.core]]
-id = "Mozilla.Firefox.en-GB"
+id = "Zen-Team.Zen-Browser"
 
 [[packages.windows.core]]
 id = "Readdle.Spark"
