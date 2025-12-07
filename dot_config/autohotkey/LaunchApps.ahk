@@ -43,9 +43,9 @@ DetectHiddenWindows true
 !t:: Send "^t" ; New tab
 #HotIf
 
-; Window + G - [G]o/Browser
+; Window + R - [R]esearch/Browser
 #HotIf WinExist("ahk_exe zen.exe ahk_class MozillaWindowClass")
-#g::
+#r::
 {
     WinActivate
     Sleep 100
@@ -57,7 +57,7 @@ DetectHiddenWindows true
     WinActivate
 }
 #HotIf
-#g::
+#r::
 {
     Run("Zen") ; If window doesn't exist, run the app
     WinWait("ahk_exe zen.exe")
