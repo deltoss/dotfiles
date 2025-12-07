@@ -35,8 +35,8 @@ DetectHiddenWindows true
 ; Zen Browser
 #HotIf WinActive("ahk_exe zen.exe")
 ^p:: Send "^k" ; Command palette
-!o:: Send "^+{Tab}" ; Go to left tab
-!u:: Send "^{Tab}" ; Go to right tab
+!o:: Send "^{Tab}" ; Go to below tab
+!u:: Send "^+{Tab}" ; Go to above tab
 !PgDn:: Send "^+{Tab}" ; Go to left tab
 !PgUp:: Send "^{Tab}" ; Go to right tab
 !w:: Send "^w" ; Close tab
