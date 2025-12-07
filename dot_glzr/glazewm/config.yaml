@@ -207,7 +207,7 @@ window_rules:
       - focus --workspace 2
     match:
       - window_process:
-          regex: firefox|msedge|brave|chrome
+          regex: firefox|msedge|brave|chrome|zen
       - window_title:
           regex: '.+[Aa]nki'
         window_process:
