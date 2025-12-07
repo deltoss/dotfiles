@@ -452,11 +452,10 @@ StartFocusSteamGame()
 }
 
 ; Lock Windows
-; To add lock functionality to Soundpad with focus ritual
+; To add lock functionality to Soundux/Soundpad with focus ritual
 ~#^+!Insert:: ; WIN + CTRL + ALT + SHIFT + INSERT
 ~^+!Insert:: ; CTRL + ALT + SHIFT + INSERT
 {
-    ; DllCall("user32.dll\LockWorkStation") ; Lock
-    Sleep 1000
-    SendMessage(0x112,0xF170,2,,"Program Manager") ; Monitor off
+    Sleep 2500
+    DllCall("user32.dll\LockWorkStation") ; Lock
 }
