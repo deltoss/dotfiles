@@ -313,6 +313,9 @@ id = "KDE.Kdenlive"
 [[packages.windows.personal]]
 id = "SoftFever.OrcaSlicer"
 
+[[packages.windows.personal]]
+id = "Oracle.VirtualBox"
+
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
