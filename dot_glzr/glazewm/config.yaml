@@ -220,6 +220,8 @@ window_rules:
           equals: 'Postman'
       - window_process:
           equals: 'Bruno'
+      - window_process:
+          equals: 'VirtualBoxVM'
   - commands:
       - move --workspace 0
       - focus --workspace 0
@@ -251,6 +253,8 @@ window_rules:
           equals: "Spark Desktop"
       - window_process:
           equals: olk # Microsoft Outlook
+      - window_process:
+          equals: 'VirtualBox'
   - commands:
       - move --workspace 7
       - focus --workspace 7
