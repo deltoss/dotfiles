@@ -1,0 +1,14 @@
+# --------------------------------------------------------------
+#   Commands
+# --------------------------------------------------------------
+
+# [alias:vs] Open a Visual Studio Solution
+devenv {{vssolution}}
+
+# --------------------------------------------------------------
+#   Completions
+# --------------------------------------------------------------
+
+# A global completion for any `{{vssolution}}` variable.
+$ vssolution: fd .sln | fzf
+$ vssol: fd .sln | fzf
