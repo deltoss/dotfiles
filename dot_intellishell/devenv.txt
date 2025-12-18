@@ -10,5 +10,5 @@ devenv {{vssolution}}
 # --------------------------------------------------------------
 
 # A global completion for any `{{vssolution}}` variable.
-$ vssolution: fd .sln | fzf
-$ vssol: fd .sln | fzf
+$ vssolution: fd .sln
+$ vssol: fd .sln
