@@ -51,10 +51,6 @@ desc = "Binary package manager for Rust"
 command = "cargo install cargo-binstall"
 
 [[packages.windows.core]]
-name = "atac"
-command = 'cargo install atac --locked'
-
-[[packages.windows.core]]
 name = "intelli-shell"
 command = 'cargo binstall -y intelli-shell --locked'
 
@@ -82,8 +78,7 @@ name = "Soundux"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-soundux.ps1"'
 
 [[packages.windows.core]]
-id = "Ditto.Ditto"
-postcommand = 'echo "Importing Ditto Settings as RegEdits"; reg import "$env:CHEZMOI_SOURCEDIR/WindowsRegEdits/DittoSettings.reg"'
+id = "hluk.CopyQ"
 
 [[packages.windows.core]]
 id = "SUSE.RancherDesktop"
@@ -116,9 +111,6 @@ id = "gerardog.gsudo"
 id = "sigoden.AIChat"
 
 [[packages.windows.core]]
-id = "RoyalApps.RoyalTS"
-
-[[packages.windows.core]]
 id = "7zip.7zip"
 # Add 7z to the PATH if not already
 postcommand = '$7zPath = (Get-ChildItem "C:\Program Files","C:\Program Files (x86)" -Filter "7-Zip").FullName; if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains $7zPath)) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$7zPath", "User"); $env:Path += ";$7zPath" }'
@@ -127,10 +119,7 @@ postcommand = '$7zPath = (Get-ChildItem "C:\Program Files","C:\Program Files (x8
 id = "JohnMacFarlane.Pandoc"
 
 [[packages.windows.core]]
-id = "dotPDN.PaintDotNet"
-
-[[packages.windows.core]]
-id = "ElaborateBytes.VirtualCloneDrive"
+id = "Pinta.Pinta"
 
 [[packages.windows.core]]
 id = "WinMerge.WinMerge"
@@ -154,7 +143,7 @@ id = "Anki.Anki"
 id = "Zen-Team.Zen-Browser"
 
 [[packages.windows.core]]
-id = "Readdle.Spark"
+id = "Foundry376.Mailspring"
 
 [[packages.windows.core]]
 id = "Microsoft.PowerShell"
@@ -166,13 +155,10 @@ id = "Microsoft.PowerToys"
 id = "Microsoft.VisualStudioCode"
 
 [[packages.windows.core]]
-id = "Notion.Notion"
+id = "AppFlowy.AppFlowy"
 
 [[packages.windows.core]]
 id = "Neovim.Neovim"
-
-[[packages.windows.core]]
-id = "RoyalApps.RoyalTS.7"
 
 [[packages.windows.core]]
 id = "AutoHotkey.AutoHotkey"
@@ -184,7 +170,7 @@ id = "JesseDuffield.lazygit"
 id = "JesseDuffield.Lazydocker"
 
 [[packages.windows.core]]
-id = "Google.GoogleDrive"
+id = "Rclone.Rclone"
 
 [[packages.windows.core]]
 id = "ajeetdsouza.zoxide"
