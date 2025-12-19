@@ -122,7 +122,7 @@ id = "JohnMacFarlane.Pandoc"
 id = "Pinta.Pinta"
 
 [[packages.windows.core]]
-id = "WinMerge.WinMerge"
+id = "Meld.Meld"
 
 [[packages.windows.core]]
 id = "glzr-io.glazewm"
