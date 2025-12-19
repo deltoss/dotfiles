@@ -291,6 +291,8 @@ window_rules:
       - ignore
     match:
       - window_process:
+          equals: copyq
+      - window_process:
           regex: '*[Aa]udible*'
       - window_title:
           regex: .*[d|D]ialog.*
