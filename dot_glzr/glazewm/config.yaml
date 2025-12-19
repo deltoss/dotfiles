@@ -186,6 +186,8 @@ window_rules:
       - window_process:
           equals: mmc # Windows Event Viewer, Firewall rules, etc
       - window_process:
+          equals: 'Pinta'
+      - window_process:
           equals: 'paintdotnet'
       - window_process:
           equals: devenv # Visual Studio IDE
