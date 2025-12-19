@@ -81,15 +81,6 @@ command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-soundux.ps1"'
 id = "hluk.CopyQ"
 
 [[packages.windows.core]]
-id = "SUSE.RancherDesktop"
-precommand = "wsl --install --no-distribution"
-
-[[packages.windows.core]]
-name = "MinGW"
-command = "choco install -y mingw"
-desc = "Required dependency for Neovim plugins"
-
-[[packages.windows.core]]
 name = "OpenCode"
 command = "choco install -y opencode"
 desc = "Agentic AI in the terminal"
@@ -97,9 +88,6 @@ desc = "Agentic AI in the terminal"
 [[packages.windows.core]]
 id = "Python.Python.3.13"
 desc = "Dependency for Neovim plugins"
-
-[[packages.windows.core]]
-id = "ShareX.ShareX"
 
 [[packages.windows.core]]
 id = "Git.Git"
@@ -131,9 +119,6 @@ id = "glzr-io.glazewm"
 id = "AmN.yasb"
 
 [[packages.windows.core]]
-id = "SSHFS-Win.SSHFS-Win"
-
-[[packages.windows.core]]
 id = "Doist.Todoist"
 
 [[packages.windows.core]]
@@ -144,12 +129,6 @@ id = "Zen-Team.Zen-Browser"
 
 [[packages.windows.core]]
 id = "Foundry376.Mailspring"
-
-[[packages.windows.core]]
-id = "Microsoft.PowerShell"
-
-[[packages.windows.core]]
-id = "Microsoft.PowerToys"
 
 [[packages.windows.core]]
 id = "Microsoft.VisualStudioCode"
@@ -216,19 +195,7 @@ command = '& "$env:CHEZMOI_SOURCEDIR/scripts/install-wezterm-nightly.ps1"'
 id = "KDE.KDEConnect"
 
 [[packages.windows.core]]
-id = "Flow-Launcher.Flow-Launcher"
-
-[[packages.windows.core]]
-id = "NickeManarin.ScreenToGif"
-
-[[packages.windows.core]]
-id = "voidtools.Everything"
-
-[[packages.windows.core]]
-id = "voidtools.Everything.Cli"
-
-[[packages.windows.core]]
-id = "AstroComma.AstroGrep"
+id = "rsteube.Carapace"
 
 [[packages.windows.core]]
 id = "Starship.Starship"
@@ -252,15 +219,6 @@ id = "Bruno.Bruno"
 name = "bru - Bruno CLI"
 command = "if (-not (Get-Command 'bru' -ErrorAction SilentlyContinue)) { npm install -g @usebruno/cli }"
 
-[[packages.windows.core]]
-id = "xanderfrangos.twinkletray"
-
-[[packages.windows.core]]
-id = "jftuga.less"
-
-[[packages.windows.personal]]
-id = "Microsoft.VisualStudio.Community.Insiders"
-
 [[packages.windows.personal]]
 id = "calibre.calibre"
 
@@ -277,9 +235,6 @@ id = "qBittorrent.qBittorrent"
 id = "HandBrake.HandBrake"
 
 [[packages.windows.personal]]
-id = "TGRMNSoftware.BulkRenameUtility"
-
-[[packages.windows.personal]]
 id = "Audacity.Audacity"
 
 [[packages.windows.personal]]
@@ -290,6 +245,62 @@ desc = "For Audacity to be compatible with more files"
 id = "VideoLAN.VLC"
 
 [[packages.windows.personal]]
+id = "KDE.Kdenlive"
+
+[[packages.windows.personal]]
+id = "SoftFever.OrcaSlicer"
+
+[[packages.windows.core]]
+id = "Microsoft.PowerShell"
+
+# The below only works with Windows, and has no direct Linux Counterpart
+
+[[packages.windows.core]]
+id = "SUSE.RancherDesktop"
+precommand = "wsl --install --no-distribution"
+
+[[packages.windows.core]]
+name = "MinGW"
+command = "choco install -y mingw"
+desc = "Required dependency for Neovim plugins"
+
+[[packages.windows.core]]
+id = "ShareX.ShareX"
+
+[[packages.windows.core]]
+id = "SSHFS-Win.SSHFS-Win"
+
+[[packages.windows.core]]
+id = "Microsoft.PowerToys"
+
+[[packages.windows.core]]
+id = "Flow-Launcher.Flow-Launcher"
+
+[[packages.windows.core]]
+id = "NickeManarin.ScreenToGif"
+
+[[packages.windows.core]]
+id = "voidtools.Everything"
+
+[[packages.windows.core]]
+id = "voidtools.Everything.Cli"
+
+[[packages.windows.core]]
+id = "AstroComma.AstroGrep"
+
+[[packages.windows.core]]
+id = "xanderfrangos.twinkletray"
+
+[[packages.windows.core]]
+id = "jftuga.less"
+
+[[packages.windows.personal]]
+id = "Microsoft.VisualStudio.Community.Insiders"
+
+[[packages.windows.personal]]
+id = "TGRMNSoftware.BulkRenameUtility"
+
+[[packages.windows.personal]]
 id = "CodecGuide.K-LiteCodecPack.Full"
 desc = "For Media Player Classic. Note VLC uses its own Codec."
 
@@ -297,18 +308,8 @@ desc = "For Media Player Classic. Note VLC uses its own Codec."
 id = "clsid2.mpc-hc"
 
 [[packages.windows.personal]]
-id = "KDE.Kdenlive"
-
-[[packages.windows.personal]]
-id = "SoftFever.OrcaSlicer"
-
-[[packages.windows.personal]]
 id = "Oracle.VirtualBox"
 
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
-
-[[packages.windows.core]]
-name = "navi"
-command = 'scoop bucket add main; scoop install main/navi'
