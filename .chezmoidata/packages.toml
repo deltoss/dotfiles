@@ -182,6 +182,9 @@ id = "BurntSushi.ripgrep.MSVC"
 id = "junegunn.fzf"
 
 [[packages.windows.core]]
+id = "Flameshot.Flameshot"
+
+[[packages.windows.core]]
 id = "ImageMagick.ImageMagick"
 
 [[packages.windows.core]]
@@ -266,9 +269,6 @@ precommand = "wsl --install --no-distribution"
 name = "MinGW"
 command = "choco install -y mingw"
 desc = "Required dependency for Neovim plugins"
-
-[[packages.windows.core]]
-id = "ShareX.ShareX"
 
 [[packages.windows.core]]
 id = "SSHFS-Win.SSHFS-Win"
