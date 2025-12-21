@@ -207,7 +207,7 @@ id = "dbrgn.tealdeer"
 id = "dandavison.delta"
 
 [[packages.windows.core]]
-id = "Adobe.Acrobat.Reader.64-bit"
+id = "ImageMagick.Q16-HDRI"
 
 [[packages.windows.core]]
 id = "GitHub.cli"
@@ -254,6 +254,9 @@ id = "SoftFever.OrcaSlicer"
 id = "Microsoft.PowerShell"
 
 # The below only works with Windows, and has no direct Linux Counterpart
+
+[[packages.windows.core]]
+id = "Adobe.Acrobat.Reader.64-bit"
 
 [[packages.windows.core]]
 id = "SUSE.RancherDesktop"
