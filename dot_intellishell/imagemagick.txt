@@ -5,6 +5,9 @@
 # Remove duplicate gif frames
 magick {{input.gif}} -coalesce -layers RemoveDups {{output.gif}}
 
+# Split gif into its individual png frames
+magick {{input.gif}} frame_%04d.png
+
 # --------------------------------------------------------------
 #   Completions
 # --------------------------------------------------------------
