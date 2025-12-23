@@ -350,6 +350,8 @@ window_rules:
       - window_process:
           regex: ".*Wondershare Filmora.*"
       - window_process:
+          equals: kdenlive
+      - window_process:
           regex: ".*[Cc]rosshair.*"
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
