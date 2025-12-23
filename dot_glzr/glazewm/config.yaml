@@ -252,6 +252,8 @@ window_rules:
       - focus --workspace 6
     match:
       - window_process:
+          equals: "mailspring"
+      - window_process:
           equals: "Spark Desktop"
       - window_process:
           equals: olk # Microsoft Outlook
