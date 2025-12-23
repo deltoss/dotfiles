@@ -1,0 +1,39 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+Write-Host "Configuring necessary environment variables..."
+$env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
+
+# Installs prerequisites for the Install Scripts
+winget install --id "Valve.Steam" -e --no-upgrade
+& "$env:CHEZMOI_SOURCEDIR/scripts/install-steamcmd.ps1"
+
+{{- $steamAppsToInstall := list -}}
+{{- if hasKey .steamApps.windows "core" -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.core -}}
+{{- end -}}
+{{- if and (eq .computerPurpose "personal") (hasKey .steamApps.windows "personal") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.personal -}}
+{{- else if and (eq .computerPurpose "work") (hasKey .steamApps.windows "work") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.work -}}
+{{- end }}
+
+$steamUsername = "{{ .steamUsername }}"
+$baseInstallPath = "C:\Program Files (x86)\Steam\steamapps\common"
+
+{{ range $steamAppsToInstall }}
+  $appInstallPath = "$baseInstallPath\{{ .folderName }}"
+
+  Write-Host "Installing {{ .id }} ({{ .name }}) to $appInstallPath..." -ForegroundColor Green
+  if (-not (Test-Path -Path $appInstallPath)) {
+    New-Item -Path $appInstallPath -ItemType Directory
+  }
+
+  steamcmd +force_install_dir "$appInstallPath" +login $steamUsername +app_update {{ .id }} +quit
+
+  Write-Host "For {{ .id }} ({{ .name }}): Copying manifests from '$appInstallPath\steamapps' to '$baseInstallPath\..\'" -ForegroundColor Green
+  Get-ChildItem -Path "$appInstallPath\steamapps" -Filter "appmanifest_*.acf" | Copy-Item -Destination "$baseInstallPath\..\" -Force
+{{ end }}
+
+Write-Host "Steam app installs complete..." -ForegroundColor Green
+
+{{- end -}}

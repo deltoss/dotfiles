@@ -150,6 +150,8 @@ id = "JesseDuffield.Lazydocker"
 
 [[packages.windows.core]]
 id = "Rclone.Rclone"
+desc = "For mounting and syncing network storage"
+postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/setup-rclone.ps1"'
 
 [[packages.windows.core]]
 id = "ajeetdsouza.zoxide"
