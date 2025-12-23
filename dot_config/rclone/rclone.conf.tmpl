@@ -1,0 +1,17 @@
+{{- if eq .computerPurpose "personal" -}}
+[media-dav]
+type = webdav
+url = {{ onepasswordRead "op://Personal/Copyparty/website" }}
+vendor = owncloud
+pacer_min_sleep = 0.01ms
+user = {{ onepasswordRead "op://Personal/Copyparty/username" }}
+pass = 
+
+[personal-google-drive]
+type = drive
+client_id = {{ onepasswordRead "op://Personal/Google - PSPPartner/RCLONE DESKTOP/Client Id" }}
+client_secret = {{ onepasswordRead "op://Personal/Google - PSPPartner/RCLONE DESKTOP/Client Secret" }}
+scope = drive
+token = 
+team_drive = 
+{{- end -}}
