@@ -134,7 +134,7 @@ id = "Foundry376.Mailspring"
 id = "Microsoft.VisualStudioCode"
 
 [[packages.windows.core]]
-id = "AppFlowy.AppFlowy"
+id = "Obsidian.Obsidian"
 
 [[packages.windows.core]]
 id = "Neovim.Neovim"
