@@ -118,70 +118,29 @@ DetectHiddenWindows true
 }
 
 ; Window + Z - Notes
-#HotIf WinActive('ahk_exe notion.exe')
-!o:: Send "^+{Tab}" ; Go to left tab
-!u:: Send "^{Tab}" ; Go to right tab
-!PgDn:: Send "^+{Tab}" ; Go to left tab
-!PgUp:: Send "^{Tab}" ; Go to right tab
-^u:: Send "{PgUp}"
-^e:: Send "{PgDn}"
-!p:: Send "^p" ; Activate launcher
-!t:: Send "^t" ; New tab
-!w:: Send "^w" ; Close tab
-!Left:: Send "^[" ; Go back a page
-!Right:: Send "^]" ; Go forward a page
-#HotIf WinExist("ahk_exe notion.exe")
+#HotIf WinExist("ahk_exe Obsidian.exe")
 #z::
 {
     DetectHiddenWindows false
-    if (WinExist("ahk_exe notion.exe")) { ; If non-hidden GUI window exists unfocused, focus it
-      WinActivate("ahk_exe notion.exe")
+    if (WinExist("ahk_exe Obsidian.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+      WinActivate("ahk_exe Obsidian.exe")
       ; Move mouse to the active window
       WinGetPos , , &width, &height, "A"
       MouseMove width / 3, height / 3
       Sleep 100 ; To get GlazeWM to stay focused
-      WinActivate("ahk_exe notion.exe")
+      WinActivate("ahk_exe Obsidian.exe")
     } else { ; Already running in the background, so focus it
-      Run(A_Programs . "/Notion")
+      Run(A_Programs . "/Obsidian")
     }
     DetectHiddenWindows true
 }
 #HotIf
 #z::
 {
-    Run(A_Programs . "/Notion") ; If window doesn't exist, run the app
-    WinWait("ahk_exe notion.exe")
-    WinActivate("ahk_exe notion.exe")
-    WinWaitActive("ahk_exe notion.exe")
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
-}
-
-; Window + C - [C]alendar
-#HotIf WinExist("ahk_exe notion calendar.exe")
-#c::
-{
-    DetectHiddenWindows false
-    if (WinExist("ahk_exe notion calendar.exe")) { ; If non-hidden GUI window exists unfocused, focus it
-      WinActivate("ahk_exe notion calendar.exe")
-      ; Move mouse to the active window
-      WinGetPos , , &width, &height, "A"
-      MouseMove width / 3, height / 3
-      Sleep 100 ; To get GlazeWM to stay focused
-      WinActivate("ahk_exe notion calendar.exe")
-    } else { ; Already running in the background, so focus it
-      Run(A_Programs . "/Notion Calendar")
-    }
-    DetectHiddenWindows true
-}
-#HotIf
-#c::
-{
-    Run(A_Programs . "/Notion Calendar") ; If window doesn't exist, run the app
-    WinWait("ahk_exe notion calendar.exe")
-    WinActivate("ahk_exe notion calendar.exe")
-    WinWaitActive("ahk_exe notion calendar.exe")
+    Run(A_Programs . "/Obsidian") ; If window doesn't exist, run the app
+    WinWait("ahk_exe Obsidian.exe")
+    WinActivate("ahk_exe Obsidian.exe")
+    WinWaitActive("ahk_exe Obsidian.exe")
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 2
@@ -443,8 +402,6 @@ StartFocusSteamGame()
 {
     Run(A_ProgramsCommon . "/Cold Turkey Software/Cold Turkey Blocker")
     WinWait("ahk_exe Cold Turkey Blocker.exe")
-
-    Run(A_Programs . "/Notion Calendar")
 
     StartFocusSteamGame()
 
