@@ -148,6 +148,14 @@ nnoremap <leader>rw :%s/\<<C-r><C-w>\>//g<left><left>
 nnoremap <leader>* *``cgn
 vnoremap <leader>* "sy/\\V<C-R>s<CR>``cgn
 
+" Copy file paths
+nnoremap <leader>yp :let @+=expand('%:.')<cr>
+nnoremap <leader>yP :let @+=@%<cr>
+nnoremap <leader>yp :let @+=expand('%:.:h')<cr>
+nnoremap <leader>yP :let @+=expand('%:p:h')<cr>
+nnoremap <leader>yn :let @+=expand('%:t:r')<cr>
+nnoremap <leader>yf :let @+=expand('%:t')<cr>
+
 " ##################################################################
 " Visual Studio Mappings
 " ##################################################################
