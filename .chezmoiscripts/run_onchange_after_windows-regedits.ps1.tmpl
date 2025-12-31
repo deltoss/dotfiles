@@ -14,6 +14,12 @@ New-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User 
 # Disable default Windows Print Screen shortcut
 reg add "HKEY_CURRENT_USER\Control Panel\Keyboard" /v PrintScreenKeyForSnippingEnabled /t REG_DWORD /d 0 /f
 
+# Steam
+
+echo "Set Steam Silent Launch"
+$exePath = "C:\Program Files (x86)\Steam\steam.exe"
+reg add "HKEY_CLASSES_ROOT\steam\Shell\Open\Command" /ve /t REG_SZ /d "`"$exePath`" -silent -- `"%1`"" /f
+
 # AutoHotKey
 
 echo "Set AHK Script Editor"
