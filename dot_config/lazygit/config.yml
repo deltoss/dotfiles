@@ -106,7 +106,7 @@ customCommands:
           - perf\(api\)!: optimize database queries
           IMPORTANT:
           - Generate exactly ($commits_to_suggest) different commit message options
-          - If user selected 'ai-defined', you can use different types for different options
+          - If user selected 'ai-defined', do not just use all types, just the most relevant ones to the changes. Feel free to use the same types multiple times if relevant
           - If user selected a specific type, all messages must use that type
           - Only return commit messages, no explanations
           - Do not use markdown code blocks
