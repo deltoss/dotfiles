@@ -118,5 +118,6 @@ customCommands:
           ($full_diff)
           "
           '
-    command: "git commit -m \"{{.Form.CommitMsg}}\""
+    command: "git commit -e -m \"{{.Form.CommitMsg}}\""
+    output: terminal
     loadingText: "Generating commit messages..."
