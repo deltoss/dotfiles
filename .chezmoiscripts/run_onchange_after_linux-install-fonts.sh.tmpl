@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+DIR="~/nerd-fonts"
+if [ -d "$DIR" ]; then
+  rm -rf "$DIR"
+fi
+
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/nerd-fonts
+cd ~/nerd-fonts/
+./install.sh {{ .fonts.linux | quoteList | join ", " }}
+
+{{ end -}}
