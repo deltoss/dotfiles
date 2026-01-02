@@ -1,2 +1,3 @@
 [fonts]
 windows = ["jetbrains-mono", "heavy-data", "departure-mono", "caskaydia-cove"]
+linux = ["JetBrainsMono", "HeavyData", "DepartureMono", "CaskaydiaCove"] # For full list of fonts, see https://github.com/ryanoasis/nerd-fonts/blob/master/bin/scripts/lib/fonts.json

@@ -7,4 +7,11 @@ scripts/
 # See https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines
 {{- if ne .chezmoi.os "windows" }}
 AppData/ # A directory exclusive to Windows
+Documents/PowerShell # I don't use PowerShell on Linux
+
+# Only works on Windows
+mechvibes_custom/
+dot_config/Bulk Rename Utility
+dot_config/autohotkey
+dot_glzr/
 {{- end }}
