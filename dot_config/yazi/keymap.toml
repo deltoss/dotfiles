@@ -20,6 +20,12 @@ prepend_keymap = [
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
+	# Copy
+	{ on = [ "<Space>", "y", "c" ], run = "copy path",             desc = "Copy the file path" },
+	{ on = [ "<Space>", "y", "d" ], run = "copy dirname",          desc = "Copy the directory path" },
+	{ on = [ "<Space>", "y", "f" ], run = "copy filename",         desc = "Copy the filename" },
+	{ on = [ "<Space>", "y", "n" ], run = "copy name_without_ext", desc = "Copy the filename without extension" },
+
   # Dotnet CLI Bindings
   { on = [
     "<Space>",
