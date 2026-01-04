@@ -5,7 +5,7 @@ $env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"
 
 # Installs prerequisites for the Install Scripts
 winget install --id "Valve.Steam" -e --no-upgrade
-& "$env:CHEZMOI_SOURCEDIR/scripts/install-steamcmd.ps1"
+& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-steamcmd.ps1"
 
 {{- $steamAppsToInstall := list -}}
 {{- if hasKey .steamApps.windows "core" -}}
