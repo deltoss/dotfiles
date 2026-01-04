@@ -44,10 +44,6 @@ nnoremap Zb :bd<cr>
 nnoremap ZB :bd<cr>
 nnoremap <leader>zb :bd<cr>
 
-" Newline mappings
-nnoremap <C-Enter> o<Esc>
-nnoremap <S-Enter> O<Esc>
-
 " Spelling correction
 " See https://www.reddit.com/r/vim/comments/1ac30kt/comment/kjs5yxx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u 
