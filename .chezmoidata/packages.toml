@@ -319,3 +319,7 @@ id = "Oracle.VirtualBox"
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
+
+[[packages.windows.work]]
+name = "Obsidian CLI"
+command = "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git; scoop install obsidian-cli"
