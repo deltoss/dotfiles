@@ -300,6 +300,10 @@ id = "xanderfrangos.twinkletray"
 [[packages.windows.core]]
 id = "jftuga.less"
 
+[[packages.windows.core]]
+name = "Obsidian CLI"
+command = "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git; scoop install obsidian-cli"
+
 [[packages.windows.personal]]
 id = "Microsoft.VisualStudio.Community.Insiders"
 
@@ -319,7 +323,3 @@ id = "Oracle.VirtualBox"
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
-
-[[packages.windows.work]]
-name = "Obsidian CLI"
-command = "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git; scoop install obsidian-cli"
