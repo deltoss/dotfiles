@@ -128,9 +128,6 @@ id = "Anki.Anki"
 id = "Zen-Team.Zen-Browser"
 
 [[packages.windows.core]]
-id = "Foundry376.Mailspring"
-
-[[packages.windows.core]]
 id = "Microsoft.VisualStudioCode"
 
 [[packages.windows.core]]
@@ -224,6 +221,9 @@ id = "Bruno.Bruno"
 [[packages.windows.core]]
 name = "bru - Bruno CLI"
 command = "if (-not (Get-Command 'bru' -ErrorAction SilentlyContinue)) { npm install -g @usebruno/cli }"
+
+[[packages.windows.personal]]
+id = "Foundry376.Mailspring"
 
 [[packages.windows.personal]]
 id = "calibre.calibre"
