@@ -121,8 +121,7 @@ DetectHiddenWindows true
 #HotIf WinExist("ahk_exe Obsidian.exe")
 #z::
 {
-    DetectHiddenWindows false
-    if (WinExist("ahk_exe Obsidian.exe")) { ; If non-hidden GUI window exists unfocused, focus it
+    if (WinExist("ahk_exe Obsidian.exe")) { ; If window exists unfocused, focus it
       WinActivate("ahk_exe Obsidian.exe")
       ; Move mouse to the active window
       WinGetPos , , &width, &height, "A"
@@ -132,7 +131,6 @@ DetectHiddenWindows true
     } else { ; Already running in the background, so focus it
       Run(A_Programs . "/Obsidian")
     }
-    DetectHiddenWindows true
 }
 #HotIf
 #z::
