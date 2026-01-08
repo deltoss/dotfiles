@@ -15,7 +15,7 @@
 	side-by-side = true
 [merge]
 	conflictStyle = zdiff3
-	tool = vscode-diff
+	tool = codediff
 	renormalize = true
 	ff = false # Even create extra merge commit when fast forward merge would be possible
 [pull]
@@ -24,7 +24,7 @@
 [mergetool]
 	prompt = false
 	keepBackup = false
-[mergetool "vscode-diff"]
+[mergetool "codediff"]
 	cmd = nvim -n -c "CodeDiff" "$MERGE"
 [alias]
 	c = commit
