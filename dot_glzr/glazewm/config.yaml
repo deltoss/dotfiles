@@ -155,6 +155,12 @@ window_rules:
       - window_process:
           equals: 'WindowsTerminal'
   - commands:
+      - move --workspace 0
+      - focus --workspace 0
+    match:
+      - window_process:
+          equals: Obsidian
+  - commands:
       - set-floating
       - move --workspace 0
       - focus --workspace 0
