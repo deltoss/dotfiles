@@ -275,8 +275,8 @@ nmap <C-A-i> :vsc Debug.RunToCursor<CR>
 nmap <leader>ts :vsc TestExplorer.RunAllTestsInContext<CR>
 nmap <leader>tS :vsc TestExplorer.DebugAllTestsInContext<CR>
 
-nmap - :vsc View.SolutionExplorer<CR>:vsc SolutionExplorer.CollapseAll<CR>:vsc Window.SolutionExplorerSearch<CR>
-nmap <leader>- :vsc View.SolutionExplorer<CR>
+nmap - :vsc View.SolutionExplorer<CR>
+nmap _ :vsc View.SolutionExplorer<CR>:vsc SolutionExplorer.CollapseAll<CR>:vsc Window.SolutionExplorerSearch<CR>
 nmap <leader>vs :vsc View.SolutionExplorer<CR>
 nmap <leader>vj :vsc View.SolutionExplorer<CR>
 nmap <leader>vf :vsc Window.SolutionExplorerSearch<CR>
