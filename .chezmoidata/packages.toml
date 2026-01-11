@@ -305,6 +305,14 @@ name = "Obsidian CLI"
 command = "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git; scoop install obsidian-cli"
 
 [[packages.windows.personal]]
+name = "Bitwarden"
+command = "choco install bitwarden"
+
+[[packages.windows.personal]]
+name = "Bitwarden CLI"
+command = "npm install -g @bitwarden/cli"
+
+[[packages.windows.personal]]
 id = "Microsoft.VisualStudio.Community.Insiders"
 
 [[packages.windows.personal]]
