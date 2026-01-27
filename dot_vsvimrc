@@ -123,6 +123,9 @@ vnoremap <leader>c "_c
 nnoremap <leader>C "_C
 vnoremap <leader>C "_C
 
+" Yanking to end of line
+nnoremap Y y$
+
 " Replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
