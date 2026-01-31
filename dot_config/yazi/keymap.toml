@@ -3,6 +3,13 @@
 
 [mgr]
 prepend_keymap = [
+  # Zipping
+  { on = "<Space>za", run = 'plugin compress', desc = "Archive selected files" },
+  { on = "<Space>zp", run = 'plugin compress -p', desc = "Archive selected files (password)" },
+  { on = "<Space>zh", run = 'plugin compress -ph', desc = "Archive selected files (password+header)" },
+  { on = "<Space>zl", run = 'plugin compress -l', desc = "Archive selected files (compression level)" },
+  { on = "<Space>zA", run = 'plugin compress -phl', desc = "Archive selected files (password+header+level)" },
+
   { on = "<Space>", run = 'noop', desc = "Disables the default selection state toggle key" },
   { on = "<Tab>", run = [
     "toggle",
