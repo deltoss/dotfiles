@@ -334,7 +334,7 @@ command = "scoop bucket add extras; scoop install jira-cli"
 
 [[packages.windows.work]]
 name = "AWS CLI"
-command = "Get-Command aws -ErrorAction SilentlyContinue || echo msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi"
+command = "Get-Command aws -ErrorAction SilentlyContinue; if (-not $?) { msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi }"
 desc = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
 
 [[packages.windows.work]]
