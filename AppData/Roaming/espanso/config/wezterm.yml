@@ -1,3 +1,6 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
+
 filter_exec: wezterm
 inject_delay: 5
 paste_shortcut: SHIFT+INSERT
+backend: clipboard # So that unicode symbols would work
