@@ -1,0 +1,129 @@
+matches:
+
+# Mermaid Flowchart - Start template
+- triggers: [":mflow", ":mdiag", ":mdiagram"]
+  replace: |-
+    ```mermaid
+    graph TD
+        %% Directions: TD (top-down), LR (left-right), BT (bottom-top), RL (right-left)
+        A["LabelA"] --> B["LabelB"]
+        B --> C["LabelC"]
+    ```
+  label: "Mermaid flowchart template"
+
+# === SHAPES ===
+
+# Database
+- triggers: [":mdb", ":mdatabase"]
+  replace: "A[(\"$|$\")]"
+  label: "Mermaid Database shape"
+
+# Rectangle/Box
+- triggers: [":mbox", ":mrect"]
+  replace: "A[\"$|$\"]"
+  label: "Mermaid Rectangle/box shape"
+
+# Rounded rectangle
+- triggers: [":mround", ":mroundrect"]
+  replace: "A(\"$|$\")"
+  label: "Mermaid Rounded rectangle shape"
+
+# Stadium (pill shape)
+- triggers: [":mpill", ":mstadium"]
+  replace: "A([\"$|$\"])"
+  label: "Mermaid Stadium/pill shape"
+
+# Diamond/Decision
+- triggers: [":mdecision", ":mdiamond"]
+  replace: "A{\"$|$\"}"
+  label: "Mermaid Diamond/decision shape"
+
+# Hexagon
+- trigger: ":mhex"
+  replace: "A{{\"$|$\"}}"
+  label: "Mermaid Hexagon shape"
+
+# Circle
+- trigger: ":mcircle"
+  replace: "A((\"$|$\"))"
+  label: "Mermaid Circle shape"
+
+# Trapezoid
+- triggers: [":mtrap", ":mtrapezoid"]
+  replace: "A[/\"$|$\"/]"
+  label: "Mermaid Trapezoid shape"
+
+# Parallelogram
+- triggers: [":mpara", ":mparallel"]
+  replace: "A[/\"$|$\"\\]"
+  label: "Mermaid Parallelogram shape"
+
+# === ARROWS/CONNECTIONS ===
+
+# Simple arrow
+- triggers: [":marrow", ":mconnect"]
+  replace: "A --> B"
+  label: "Mermaid Simple arrow connection"
+
+# Arrow with label
+- triggers: [":marrowlabel", ":mlabel"]
+  replace: "A -->|\"$|$\"| B"
+  label: "Mermaid Labeled arrow connection"
+
+# Dotted arrow
+- triggers: [":mdot", ":mdotted", ":mdotarrow", ":mdottedarrow"]
+  replace: "A -.-> B"
+  label: "Mermaid Dotted arrow connection"
+
+# Dotted arrow with label
+- triggers: [":mdotlabel", ":mdottedlabel", ":mdotarrowlabel", ":mdottedarrowlabel"]
+  replace: "A -.\"$|$\".-> B"
+  label: "Mermaid Labeled dotted arrow"
+
+# Thick arrow
+- triggers: [":mthick", ":mthickarrow"]
+  replace: "A ==> B"
+  label: "Mermaid Thick arrow connection"
+
+# Thick arrow with label
+- triggers: [":mthicklabel", ":mthickarrowlabel"]
+  replace: "A ===\"$|$\"==> B"
+  label: "Mermaid Labeled thick arrow"
+
+# Line (no arrow)
+- trigger: ":mline"
+  replace: "A --- B"
+  label: "Mermaid Line connection (no arrow)"
+
+# === COMMON FLOWCHART PATTERNS ===
+
+# Start node
+- trigger: ":mstart"
+  replace: "Start([\"Start\"]) --> "
+  label: "Mermaid Start node pattern"
+
+# End node
+- trigger: ":mend"
+  replace: "$|$ --> End([\"End\"])"
+  label: "Mermaid End node pattern"
+
+# Yes/No decision
+- triggers: [":myesno", ":myn"]
+  replace: |-
+    A{\"$|$\"}
+    A -->|\"Yes\"| B
+    A -->|\"No\"| C
+  label: "Mermaid Yes/No decision pattern"
+
+# Process step
+- triggers: [":mprocess", ":mproc"]
+  replace: "A[\"$|$\"] --> "
+  label: "Mermaid Process step pattern"
+
+# Subgraph
+- triggers: [":msubgraph", ":msub"]
+  replace: |-
+    subgraph "$|$"
+        
+    end
+  label: "Mermaid Subgraph container"
