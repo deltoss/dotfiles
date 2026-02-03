@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+
 matches:
 
 # Mermaid Flowchart - Start template
@@ -15,8 +17,7 @@ matches:
 
 # Link Node
 - triggers: [":mlink"]
-  replace: |-
-    "LA[\"Emoji<a href='$|$'>DisplayText</a>\"]"
+  replace: "LA[\"\U0001F517<a href='$|$'>DisplayText</a>\"]"
   label: "Mermaid link node"
 
 # Database
