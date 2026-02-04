@@ -8,8 +8,8 @@ matches:
     ```mermaid
     graph TD
         %% Directions: TD (top-down), LR (left-right), BT (bottom-top), RL (right-left)
-        A["LabelA"] --> B["LabelB"]
-        B --> C["LabelC"]
+        A["⚡ LabelA"] --> B["🚀 LabelB"]
+        B --> C["💡 LabelC"]
     ```
   label: "Mermaid flowchart template"
 
@@ -17,12 +17,12 @@ matches:
 
 # Link Node
 - triggers: [":mlink"]
-  replace: "LA[\"\U0001F517<a href='$|$'>DisplayText</a>\"]"
+  replace: "LA[\"🔗 <a href='$|$'>DisplayText</a>\"]"
   label: "Mermaid link node"
 
 # Database
 - triggers: [":mdb", ":mdatabase"]
-  replace: "A[(\"$|$\")]"
+  replace: "A[(\"🗄️ $|$\")]"
   label: "Mermaid database shape"
 
 # Rectangle/Box
@@ -106,20 +106,20 @@ matches:
 
 # Start node
 - trigger: ":mstart"
-  replace: "Start([\"Start\"]) --> "
+  replace: "Start([\"🟢 Start\"]) --> "
   label: "Mermaid start node pattern"
 
 # End node
 - trigger: ":mend"
-  replace: "$|$ --> End([\"End\"])"
+  replace: "$|$ --> End([\"🟩 End\"])"
   label: "Mermaid end node pattern"
 
 # Yes/No decision
 - triggers: [":myesno", ":myn"]
   replace: |-
-    A{\"$|$\"}
-    A -->|\"Yes\"| B
-    A -->|\"No\"| C
+    A{\"❓ $|$\"}
+    A -->|\"✅ Yes\"| B
+    A -->|\"❌ No\"| C
   label: "Mermaid yes/no decision pattern"
 
 # Process step
@@ -130,7 +130,7 @@ matches:
 # Subgraph
 - triggers: [":msubgraph", ":msub"]
   replace: |-
-    subgraph "$|$"
+    subgraph "ℹ️ $|$"
         
     end
   label: "Mermaid subgraph container"
