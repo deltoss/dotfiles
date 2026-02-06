@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+Write-Host "Configuring environment variables..."
+
+setx XDG_CONFIG_HOME "$env:USERPROFILE/.config"
+setx EDITOR "nvim"
+
+# Configure Yazi to open files correctly on Windows.
+# See:
+#   https://yazi-rs.github.io/docs/installation#windows
+setx YAZI_FILE_ONE "C:\Program Files\Git\usr\bin\file.exe"
+setx YAZI_CONFIG_HOME "$env:XDG_CONFIG_HOME/yazi"
+
+setx OPENCODE_PORT 4096
+
+Write-Host "Configured environment variables..."
+
+{{ end -}}
