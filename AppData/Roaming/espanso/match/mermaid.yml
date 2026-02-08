@@ -94,7 +94,7 @@ matches:
 
 # Thick arrow with label
 - triggers: [":mthicklabel", ":mthickarrowlabel"]
-  replace: "A ===\"$|$\"==> B"
+  replace: "A ==\"$|$\"==> B"
   label: "Mermaid labeled thick arrow"
 
 # Line (no arrow)
