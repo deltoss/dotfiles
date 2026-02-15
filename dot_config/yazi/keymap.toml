@@ -70,7 +70,7 @@ prepend_keymap = [
     "<Space>",
     "s",
     "e",
-  ], run = 'shell "pwsh.exe --Command \"ya emit cd (Search-Query)\"" --block', for = "windows", desc = "Search via Everything" },
+  ], run = 'shell "nu -c \"ya emit cd (search everything)\"" --block', desc = "Search everything" },
   { on = [
     "<Space>",
     "s",
