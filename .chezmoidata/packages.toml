@@ -181,6 +181,9 @@ id = "BurntSushi.ripgrep.MSVC"
 id = "junegunn.fzf"
 
 [[packages.windows.core]]
+id = "alexpasmantier.television"
+
+[[packages.windows.core]]
 id = "Flameshot.Flameshot"
 version = "12.1.0" # Wait until v14 is released before I remove this version pin. I experience issues with V13 for mixed monitor setups
 
