@@ -210,6 +210,7 @@ fallback_channel = "files"
 "env" = ["export", "unset"]
 "dirs" = ["cd", "ls", "rmdir", "z"]
 "files" = [
+  "open",
   "cat",
   "less",
   "head",
