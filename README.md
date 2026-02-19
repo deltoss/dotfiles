@@ -45,5 +45,5 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 ## Debugging Chezmoi
 
 - Test templates with `chezmoi execute-template '{{ .chezmoi.os }}'`. See [Chezmoi References - Commands - execute-template - examples](https://www.chezmoi.io/reference/commands/execute-template/#examples)
+- Test an entire template file with `cat mytemplate.nu.tmpl | chezmoi execute-template`
 - View variables with `chezmoi data`. See [Chezmoi References - Variables](https://www.chezmoi.io/reference/templates/variables/)
-
