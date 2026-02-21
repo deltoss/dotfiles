@@ -50,7 +50,7 @@ customCommands:
         title: "AI Generated Commit Messages"
         key: CommitMsg
         command: |
-          nu -c '
+          nu -n --no-std-lib -c '
           let diff = (git diff --cached | lines | first 10 | str join "\n")
           if ($diff | is-empty) {
             print "No changes in staging. Add changes first."
