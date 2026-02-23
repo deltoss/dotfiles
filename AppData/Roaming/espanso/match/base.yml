@@ -40,5 +40,8 @@ matches:
   - triggers: [":leftarrow", ":larrow", ":larr", ":leftarr"]
     replace: "←"
     label: "Left arrow"
+  - triggers: [":burger", ":burg"]
+    replace: "☰"
+    label: "Burger Menu"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
