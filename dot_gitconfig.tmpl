@@ -2,17 +2,42 @@
 	name = {{ .username | quote }}
 	email = {{ .email | quote }}
 [core]
+  compression = 9
+  whitespace = error
 	autocrlf = true
 	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 	editor = nvim
 	pager = delta
 	hooksPath = ~/.config/git/hooks
+[status]
+  branch = true
+  showStash = true
+  showUntractedFiles = all
+[log]
+  graphColors = blue,yellow,cyan,magenta,green,red
+[color "decorate"]
+  HEAD = red
+  branch = blue
+  tag = yellow
+  remoteBranch = 166 bold # Dark orange
+[color "branch"]
+  current = red bold
+  local = blue
+  remote = 166 # Dark orange
+  upstream = green
+  plain = default
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
 [interactive]
-	diffFilter = delta --color-only
+  diffFilter = delta --color-only
+  singleKey = true
 [delta]
-	navigate = true
+	navigate = true # n/N to jump between diff sections
 	light = true
 	side-by-side = true
+  line-numbers = true
 [merge]
 	renormalize = true
 	ff = false # Even create extra merge commit when fast forward merge would be possible
@@ -26,18 +51,10 @@
 [pull]
 	rebase = true
 	ff = only # Disallows non ff merges on pull. Overrides merge.ff when pulling
-[alias]
-	c = commit
-	ac = !git add -A && git commit
-	m = merge -X ignore-cr-at-eol
-	rb = rebase -i
-	s = status -sb
-	l = log --all --color=always --pretty=format:\"%C(yellow)%h%C(reset) %C(green)%ad%C(reset) %C(blue)(%an)%C(reset) %s → %H\" --date=format:\"%Y-%m-%d %I:%M %p\"
-	co = checkout
-	b = branch
-	amend = commit --amend --no-edit
-	undo = reset --soft HEAD~1
-	aliases = config --get-regexp alias
-	today = log --since='midnight' --oneline --author={{ .username | quote }}
 [push]
 	autoSetupRemote = true
+  default = current
+  followTags = true
+[rebase]
+  autoStash = true # For any unstaged local changes, auto stashes it, then apply it after
+  missingCommitsCheck = warn # Warns if you accidentally removed commits whilst editing
