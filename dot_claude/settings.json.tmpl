@@ -1,7 +1,7 @@
 {
-{{ if eq .computerPurpose "personal" -}}
+{{- if eq .computerPurpose "personal" }}
   "apiKeyHelper": "echo {{ onepasswordRead "op://Personal/Claude AI - Personal/CLAUDECODE/API Key" }}"
-{{- else if eq .computerPurpose "work" -}}
+{{- else if eq .computerPurpose "work" }}
 {{- end }}
   "autoUpdatesChannel": "latest"
 }
