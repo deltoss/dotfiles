@@ -17,7 +17,7 @@ matches:
 
   # Print the current date
   - trigger: ":date"
-    replace: "{{mydate}}"
+    replace: "{{ `{{mydate}}` }}"
     vars:
       - name: mydate
         type: date
@@ -26,12 +26,19 @@ matches:
 
   # Print the output of a shell command
   - trigger: ":shell"
-    replace: "{{output}}"
+    replace: "{{ `{{output}}` }}"
     vars:
       - name: output
         type: shell
         params:
           cmd: "echo 'Hello from your shell'"
+
+  {{if .email -}}
+  # Print email
+  - triggers: [":email", ":em"]
+    replace: {{ .email | quote }}
+    label: "Email"
+  {{- end}}
 
   # Print a unicode symbol
   - triggers: [":rightarrow", ":rarrow", ":rarr", ":rightarr"]
