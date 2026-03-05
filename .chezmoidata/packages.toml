@@ -93,6 +93,10 @@ desc = "Dependency for Neovim plugins"
 id = "Git.Git"
 
 [[packages.windows.core]]
+id = "max-sixty.worktrunk"
+desc = "Better CLI to interact with Git Worktrees"
+
+[[packages.windows.core]]
 id = "gerardog.gsudo"
 
 [[packages.windows.core]]
