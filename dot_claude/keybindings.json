@@ -1,0 +1,25 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-keybindings.json",
+  "$docs": "https://code.claude.com/docs/en/keybindings",
+  "bindings": [
+    {
+      "context": "Global",
+      "bindings": {
+        "ctrl+l": "app:toggleTranscript",
+        "ctrl+o": "chat:externalEditor"
+      }
+    },
+    {
+      "context": "Chat",
+      "bindings": {
+        "ctrl+o": "chat:externalEditor"
+      }
+    },
+    {
+      "context": "Autocomplete",
+      "bindings": {
+        "ctrl+y": "autocomplete:accept"
+      }
+    }
+  ]
+}
