@@ -306,6 +306,13 @@ DetectHiddenWindows true
 #HotIf WinActive("ahk_exe explorer.exe")
 ^p:: Send "!d" ; Navigation bar
 !p:: Send "!d"
+^k:: Send "!d"
+!k:: Send "!d"
+^u:: Send "^{Tab}" ; Next tab
+!u:: Send "^{Tab}"
+^o:: Send "+^{Tab}" ; Previous tab
+!o:: Send "+^{Tab}"
+!t:: Send "^t" ; New Tab
 !w:: Send "^w" ; Close
 #HotIf
 
