@@ -1,9 +1,7 @@
-{{- if eq .chezmoi.os "windows" }}
 [cd]
-  command = "pwsh"
-{{- end }}
+  command = "nu"
 
-{{ $email := promptStringOnce . "email" "What is your email address (for git)" -}}
+{{ $email := promptStringOnce . "email" "What is your email address (for git). Match this to your GitHub account's email(s) or your activity graph may not detect the commit." -}}
 {{ $username := promptStringOnce . "username" "What is your username (for git)" -}}
 {{ $steamUsername := promptStringOnce . "steamUsername" "What is your username (for Steam)" -}}
 {{ $computerPurposeChoices := list "personal" "work" -}}
