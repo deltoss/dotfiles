@@ -225,8 +225,7 @@ window_rules:
         window_process:
           regex: 'pythonw'
   - commands:
-      - move --workspace 4
-      - focus --workspace 4
+      - set-floating
     match:
       - window_process:
           equals: claude
