@@ -35,7 +35,7 @@ command = 'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/insta
 [[packages.windows.core]]
 name = "Aider"
 desc = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
-command = 'uv tool install --force --python python3.12 --with pip aider-chat@latest'
+command = 'uv tool install --python python3.12 --with pip aider-chat@latest'
 
 [[packages.windows.core]]
 id = "OpenJS.NodeJS"
@@ -272,6 +272,10 @@ id = "SoftFever.OrcaSlicer"
 id = "Microsoft.PowerShell"
 
 # The below only works with Windows, and has no direct Linux Counterpart
+
+[[packages.windows.core]]
+name = "Claude Desktop"
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-claude-desktop.nu"'
 
 [[packages.windows.core]]
 id = "Adobe.Acrobat.Reader.64-bit"
