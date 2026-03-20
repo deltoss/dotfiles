@@ -96,6 +96,10 @@ window_behavior:
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
 workspaces:
+  - name: "0"
+    display_name: N
+    bind_to_monitor: 0
+    keep_alive: true
   - name: "1"
     display_name: I
     bind_to_monitor: 0
@@ -114,7 +118,7 @@ workspaces:
     keep_alive: true
   - name: "5"
     display_name: V
-    bind_to_monitor: 2
+    bind_to_monitor: 0
     keep_alive: true
   - name: "6"
     display_name: VI
@@ -130,10 +134,10 @@ workspaces:
     keep_alive: true
   - name: "9"
     display_name: IX
-  - name: "0"
-    display_name: N
-    bind_to_monitor: 0
+    bind_to_monitor: 2
     keep_alive: true
+  - name: "S"
+    display_name: "S"
 window_rules:
   - commands:
       - set-floating
@@ -194,8 +198,8 @@ window_rules:
       - window_process:
           equals: devenv # Visual Studio IDE
   - commands:
-      - move --workspace 4
-      - focus --workspace 4
+      - move --workspace 3
+      - focus --workspace 3
       - set-floating
     match:
       - window_process:
@@ -226,6 +230,10 @@ window_rules:
     match:
       - window_process:
           equals: claude
+  - commands:
+      - move --workspace 5
+      - focus --workspace 5
+    match:
       - window_process:
           equals: Obsidian
   - commands:
@@ -284,16 +292,16 @@ window_rules:
       - window_process:
           equals: ChillPulse
   - commands:
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace S
+      - focus --workspace S
       - ignore
     match:
       - window_process:
           equals: RopukaIdleIsland
   - commands:
       - set-fullscreen
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace S
+      - focus --workspace S
     match:
       - window_title:
           regex: .*Spirit City.*
