@@ -110,7 +110,7 @@ workspaces:
     keep_alive: true
   - name: "4"
     display_name: IV
-    bind_to_monitor: 2
+    bind_to_monitor: 0
     keep_alive: true
   - name: "5"
     display_name: V
@@ -126,6 +126,8 @@ workspaces:
     keep_alive: true
   - name: "8"
     display_name: VIII
+    bind_to_monitor: 2
+    keep_alive: true
   - name: "9"
     display_name: IX
   - name: "0"
@@ -155,12 +157,6 @@ window_rules:
       - window_process:
           equals: 'WindowsTerminal'
   - commands:
-      - move --workspace 0
-      - focus --workspace 0
-    match:
-      - window_process:
-          equals: Obsidian
-  - commands:
       - set-floating
       - move --workspace 0
       - focus --workspace 0
@@ -170,15 +166,15 @@ window_rules:
           equals: wezterm-gui
   - commands:
       - set-floating
-      - move --workspace 1
-      - focus --workspace 1
+      - move --workspace 2
+      - focus --workspace 2
       - set-tiling
     match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
           equals: Code # Visual Studio Code
   - commands:
-      - move --workspace 1
-      - focus --workspace 1
+      - move --workspace 2
+      - focus --workspace 2
       - set-floating
     match:
       - window_process:
@@ -198,8 +194,8 @@ window_rules:
       - window_process:
           equals: devenv # Visual Studio IDE
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 4
+      - focus --workspace 4
       - set-floating
     match:
       - window_process:
@@ -211,8 +207,8 @@ window_rules:
       - window_process:
           equals: 'LEAP Desktop'
   - commands:
-      - move --workspace 2
-      - focus --workspace 2
+      - move --workspace 3
+      - focus --workspace 3
     match:
       - window_process:
           regex: firefox|msedge|brave|chrome|zen
@@ -225,8 +221,16 @@ window_rules:
         window_process:
           regex: 'pythonw'
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 4
+      - focus --workspace 4
+    match:
+      - window_process:
+          equals: claude
+      - window_process:
+          equals: Obsidian
+  - commands:
+      - move --workspace 4
+      - focus --workspace 4
     match:
       - window_process:
           equals: 'Postman'
@@ -244,22 +248,14 @@ window_rules:
       - window_process:
           equals: 'Soundpad'
   - commands:
-      - move --workspace 4
-      - focus --workspace 4
+      - move --workspace 6
+      - focus --workspace 6
     match:
-      - window_process:
-          regex: '[Nn]otion'
-  - commands:
-      - move --workspace 5
-      - focus --workspace 5
-    match:
-      - window_process:
-          regex: '[Nn]otion.*[Cc]alendar'
       - window_process:
           regex: '[Tt]odoist'
   - commands:
-      - move --workspace 6
-      - focus --workspace 6
+      - move --workspace 7
+      - focus --workspace 7
     match:
       - window_process:
           equals: "mailspring"
@@ -270,8 +266,8 @@ window_rules:
       - window_process:
           equals: 'VirtualBox'
   - commands:
-      - move --workspace 7
-      - focus --workspace 7
+      - move --workspace 8
+      - focus --workspace 8
     match:
       - window_process:
           equals: Discord
@@ -279,8 +275,8 @@ window_rules:
           equals: Slack
   - commands:
       - set-floating
-      - move --workspace 8
-      - focus --workspace 8
+      - move --workspace 9
+      - focus --workspace 9
       - set-fullscreen
     match:
       - window_title:
@@ -288,16 +284,16 @@ window_rules:
       - window_process:
           equals: ChillPulse
   - commands:
-      - move --workspace 8
-      - focus --workspace 8
+      - move --workspace 9
+      - focus --workspace 9
       - ignore
     match:
       - window_process:
           equals: RopukaIdleIsland
   - commands:
       - set-fullscreen
-      - move --workspace 8
-      - focus --workspace 8
+      - move --workspace 9
+      - focus --workspace 9
     match:
       - window_title:
           regex: .*Spirit City.*
@@ -482,11 +478,6 @@ keybindings:
       - toggle-fullscreen
     bindings:
       - ctrl+alt+shift+z
-  # [M]inimize focused window by sending it to workspace 3.
-  - commands:
-      - move --workspace 0
-    bindings:
-      - ctrl+alt+shift+m
   # E[x]it/Close focused [W]indow.
   - commands:
       - close
