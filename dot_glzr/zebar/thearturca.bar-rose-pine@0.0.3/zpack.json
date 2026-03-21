@@ -1,0 +1,98 @@
+{
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.1.0/resources/zpack-schema.json",
+  "name": "bar-rose-pine-modded",
+  "version": "0.0.3",
+  "description": "Simple bar with rose-pine theme and komorebi/glazewm workspaces support",
+  "tags": [
+    "workspaces",
+    "komorebi",
+    "rose-pine",
+    "media",
+    "glazewm"
+  ],
+  "previewImages": [
+    "assets\\preview_1.png"
+  ],
+  "repositoryUrl": "https://github.com/thearturca/zebar-rose-pine-bar",
+  "widgets": [
+    {
+      "name": "bar-komorebi",
+      "htmlPath": "./dist/src/widgets/bar/komorebi/index.html",
+      "zOrder": "normal",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": [
+        "dist/**/*"
+      ],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": [
+          {
+            "program": "komorebic",
+            "argsRegex": ".*"
+          }
+        ]
+      },
+      "presets": [
+        {
+          "name": "default",
+          "anchor": "top_center",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "40px",
+          "monitorSelection": {
+            "type": "all"
+          },
+          "dockToEdge": {
+            "enabled": true,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bar-glazewm",
+      "htmlPath": "./dist/src/widgets/bar/glazewm/index.html",
+      "zOrder": "normal",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": [
+        "dist/**/*"
+      ],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": []
+      },
+      "presets": [
+        {
+          "name": "default",
+          "anchor": "top_center",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "40px",
+          "monitorSelection": {
+            "type": "all"
+          },
+          "dockToEdge": {
+            "enabled": false,
+            "edge": null,
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    }
+  ]
+}
