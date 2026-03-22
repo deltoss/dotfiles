@@ -179,7 +179,7 @@ window_rules:
   - commands:
       - move --workspace 2
       - focus --workspace 2
-      - set-floating
+      - set-tiling
     match:
       - window_process:
           regex: Cold Turkey.*
@@ -213,9 +213,14 @@ window_rules:
   - commands:
       - move --workspace 3
       - focus --workspace 3
+      - set-tiling
     match:
       - window_process:
           regex: firefox|msedge|brave|chrome|zen
+  - commands:
+      - move --workspace 3
+      - focus --workspace 3
+    match:
       - window_title:
           regex: '.+[Aa]nki'
         window_process:
@@ -232,12 +237,14 @@ window_rules:
   - commands:
       - move --workspace 5
       - focus --workspace 5
+      - set-tiling
     match:
       - window_process:
           equals: Obsidian
   - commands:
       - move --workspace 4
       - focus --workspace 4
+      - set-tiling
     match:
       - window_process:
           equals: 'Postman'
@@ -263,6 +270,7 @@ window_rules:
   - commands:
       - move --workspace 7
       - focus --workspace 7
+      - set-tiling
     match:
       - window_process:
           equals: "mailspring"
@@ -275,6 +283,7 @@ window_rules:
   - commands:
       - move --workspace 8
       - focus --workspace 8
+      - set-tiling
     match:
       - window_process:
           equals: Discord
@@ -284,7 +293,7 @@ window_rules:
       - set-floating
       - move --workspace 9
       - focus --workspace 9
-      - set-fullscreen
+      - set-tiling
     match:
       - window_title:
           regex: .*Virtual Cottage.*
