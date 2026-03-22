@@ -171,7 +171,7 @@ window_rules:
   - commands:
       - move --workspace 2
       - focus --workspace 2
-      - set-tiling
+      - set-floating
     match:
       - window_process:
           regex: Cold Turkey.*
@@ -187,8 +187,20 @@ window_rules:
           equals: 'Pinta'
       - window_process:
           equals: 'paintdotnet'
+  - commands:
+      - set-floating
+    match:
       - window_process:
           equals: devenv # Visual Studio IDE
+  - commands:
+      - move --workspace 2
+      - focus --workspace 2
+      - set-tiling
+    match:
+      - window_process:
+          equals: devenv # Visual Studio IDE
+        window_title:
+          regex: .*Visual Studio.* # Solution windows
   - commands:
       - move --workspace 3
       - focus --workspace 3
