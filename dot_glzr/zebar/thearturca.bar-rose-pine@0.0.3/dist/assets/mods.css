@@ -1,0 +1,14 @@
+@layer theme {
+  :root, :host {
+    --color-rose-pine-base: #f0eff1;
+    --color-rose-pine-text: #1e2e4e;
+    --color-rose-pine-gold: #4D68FB;
+  }
+}
+
+@layer base { 
+  #root {
+    margin: -1px 0;
+    opacity: 0.98
+  }
+}
