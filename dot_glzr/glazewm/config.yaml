@@ -99,45 +99,37 @@ workspaces:
   - name: "0"
     display_name: N
     bind_to_monitor: 0
-    keep_alive: true
   - name: "1"
     display_name: I
     bind_to_monitor: 0
-    keep_alive: true
   - name: "2"
     display_name: II
     bind_to_monitor: 0
-    keep_alive: true
   - name: "3"
     display_name: III
     bind_to_monitor: 0
-    keep_alive: true
   - name: "4"
     display_name: IV
     bind_to_monitor: 0
-    keep_alive: true
   - name: "5"
     display_name: V
     bind_to_monitor: 0
-    keep_alive: true
   - name: "6"
     display_name: VI
     bind_to_monitor: 2
-    keep_alive: true
   - name: "7"
     display_name: VII
     bind_to_monitor: 2
-    keep_alive: true
   - name: "8"
     display_name: VIII
     bind_to_monitor: 2
-    keep_alive: true
   - name: "9"
     display_name: IX
     bind_to_monitor: 2
-    keep_alive: true
-  - name: "S"
-    display_name: "S"
+  - name: "S1"
+    display_name: "S1"
+  - name: "S2"
+    display_name: "S2"
 window_rules:
   - commands:
       - set-floating
@@ -300,16 +292,16 @@ window_rules:
       - window_process:
           equals: ChillPulse
   - commands:
-      - move --workspace S
-      - focus --workspace S
+      - move --workspace S1
+      - focus --workspace S1
       - ignore
     match:
       - window_process:
           equals: RopukaIdleIsland
   - commands:
       - set-fullscreen
-      - move --workspace S
-      - focus --workspace S
+      - move --workspace S1
+      - focus --workspace S1
     match:
       - window_title:
           regex: .*Spirit City.*
