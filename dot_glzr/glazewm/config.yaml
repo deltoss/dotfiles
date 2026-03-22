@@ -294,9 +294,15 @@ window_rules:
       - window_process:
           equals: Slack
   - commands:
+      - move --workspace S1
+      - focus --workspace S1
+    match:
+      - window_process:
+          equals: MiniCozyRoom
+  - commands:
       - set-floating
-      - move --workspace 9
-      - focus --workspace 9
+      - move --workspace S1
+      - focus --workspace S1
       - set-tiling
     match:
       - window_title:
