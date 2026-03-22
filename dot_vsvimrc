@@ -216,7 +216,8 @@ vmap <leader>f :vsc Edit.FormatSelection<CR>
 nmap <leader>sc :vsc Edit.GoToAll<CR>
 nmap <leader>sg :vsc Edit.GoToText<CR>
 nmap <leader>sf :vsc Edit.GoToFile<CR>
-nmap <leader>ss :vsc Edit.GoToSymbol<CR>
+nmap <leader>ss :vsc OtherContextMenus.Searchscope.Currentdocument<CR>
+nmap <leader>sS :vsc OtherContextMenus.Searchscope.Entiresolution<CR>
 nmap <leader>sm :vsc Edit.GoToMember<CR>
 nmap k :vsc Edit.QuickInfo<CR>
 nmap K :vsc Edit.ParameterInfo<CR>
