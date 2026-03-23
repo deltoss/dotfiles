@@ -4,6 +4,54 @@ git:
 customCommands:
   - key: <c-a>
     context: "files"
+    description: AI-powered commits
+    prompts:
+      - type: menuFromCommand
+        title: "AI Generated Commit Messages"
+        key: CommitMsg
+        command: |
+          nu -n --no-std-lib -c '
+          let diff = (git diff --cached | lines | first 10 | str join "\n")
+          if ($diff | is-empty) {
+            print "No changes in staging. Add changes first."
+            exit 1
+          }
+          let commits_to_suggest = 8
+          let prev_commit_messages = (^git log -n 10 --pretty=format:"%s")
+          let diff_stat = (git diff --cached --stat)
+          let full_diff = (git diff --cached)
+
+          aichat $"
+          You are an expert at writing Git commits. Your job is to write clear, short, and concise commit messages. Use the tone of James Clear from Atomic Habits.
+
+          Look at the previous commit messages. If you notice any good beneficial patterns, use that pattern. Here are the previous commit messages for context:
+          ($prev_commit_messages)
+
+          Your task is to:
+          1. Analyze the code changes
+          2. Determine the most appropriate commit message structure. Look at the previous commit messages. If you notice any beneficial patterns, use it.
+          3. Decide if this is a breaking change
+          4. Write clear, concise commit messages
+          Follow these guidelines:
+          - Use lowercase for description \(except proper nouns\)
+          - Use imperative mood \(\"add\", not \"added\"\)
+          - Keep description under 50 characters when possible
+          - No period at the end of subject line
+          IMPORTANT:
+          - Generate exactly ($commits_to_suggest) different commit message options
+          - Only return commit messages, no explanations
+          - Do not use markdown code blocks
+          - One message per line
+          Changes to analyze:
+          ($diff_stat)
+          ($full_diff)
+          "
+          '
+    command: "git commit -e -m \"{{.Form.CommitMsg}}\""
+    output: terminal
+    loadingText: "Generating commit messages..."
+  - key: <c-c>
+    context: "files"
     description: AI-powered conventional commit
     prompts:
       - type: "menu"
@@ -61,7 +109,7 @@ customCommands:
           let previous_commits = (git log --oneline -10)
           let diff_stat = (git diff --cached --stat)
           let full_diff = (git diff --cached)
-          
+
           aichat $"
           You are an expert at writing Git commits. Your job is to write commit messages that follow the Conventional Commits format.
           The user has selected: ($selected_type)
