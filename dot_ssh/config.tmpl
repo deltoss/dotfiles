@@ -1,9 +1,5 @@
 {{- $config := dict -}}
-{{- if eq .computerPurpose "personal" -}}
-{{- $config = (onepasswordRead "op://Personal/SSH Connections/notesPlain" | fromToml) -}}
-{{- else if eq .computerPurpose "work" -}}
-{{- $config = (onepasswordRead "op://Work/SSH Connections/notesPlain" | fromToml) -}}
-{{- end -}}
+{{- $config = ( .ssh_connections | fromToml) -}}
 
 {{- if $config }}
 {{- range $config.hosts -}}

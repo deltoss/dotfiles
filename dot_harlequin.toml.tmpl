@@ -6,11 +6,7 @@ theme = "catppuccin-latte"
 limit = 100000
 keymap_name = ["default_keymap"]
 
-{{ if eq .computerPurpose "personal" -}}
-  {{- onepasswordRead "op://Personal/Harlequin/Configs" -}}
-{{ else if eq .computerPurpose "work" -}}
-  {{- onepasswordRead "op://Work/Harlequin/Configs" -}}
-{{- end }}
+{{ .harlequin_configs }}
 
 [[keymaps.default_keymap]]
 keys = "ctrl+q"
