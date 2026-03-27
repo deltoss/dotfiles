@@ -11,6 +11,9 @@
   username = {{ $username | quote }}
   steamUsername = {{ $steamUsername | quote }}
   computerPurpose = {{ $computerPurpose | quote }}
+  {{ if eq $computerPurpose "personal" -}}
+  vultr_key = {{ onepasswordRead "op://Personal/Vultr/API Key" | quote }}
+  {{- end }}
   aider_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AIDER/API Key" | quote }}
   aichat_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AICHAT/API Key" | quote }}
   aichat_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/AICHAT/API Key" | quote }}
