@@ -347,6 +347,11 @@ id = "clsid2.mpc-hc"
 [[packages.windows.personal]]
 id = "Oracle.VirtualBox"
 
+[[packages.windows.personal]]
+id = "Vultr CLI"
+command = "choco install -y vultr-cli"
+desc = "CLI for Vultr VPS & cloud services"
+
 [[packages.windows.work]]
 name = "Jira CLI"
 command = "scoop bucket add extras; scoop install jira-cli"
