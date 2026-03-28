@@ -364,7 +364,7 @@ StartFocusSteamGame()
 {
     Run("taskkill /F /IM steam.exe", , "Hide") ; Close steam first
     Sleep(2000)
-    local randomChoice := Random(1, 4)
+    local randomChoice := Random(1, 5)
     if (randomChoice = 1) {
         Run '"C:\Program Files (x86)\Steam\steam.exe" -silent -- "steam://rungameid/2113850"'
         WinWait("ahk_exe SpiritCity-Win64-Shipping.exe")
@@ -388,6 +388,12 @@ StartFocusSteamGame()
         WinWait("ahk_exe MiniCozyRoom.exe")
         WinActivate("ahk_exe MiniCozyRoom.exe")
         WinWaitActive("ahk_exe MiniCozyRoom.exe")
+    } else if (randomChoice = 4) {
+        Run '"C:\Program Files (x86)\Steam\steam.exe" -silent -- "steam://rungameid/2943180"'
+        WinWait("ahk_exe VirtualCottage2.exe")
+        WinActivate("ahk_exe VirtualCottage2.exe")
+        WinWaitActive("ahk_exe VirtualCottage2.exe")
+    } else {
     } else {
         Run '"C:\Program Files (x86)\Steam\steam.exe" -silent -- "steam://rungameid/2826180"'
         WinWait("ahk_exe ChillPulse.exe")

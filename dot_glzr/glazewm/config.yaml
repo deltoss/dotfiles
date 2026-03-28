@@ -308,6 +308,8 @@ window_rules:
       - window_title:
           regex: .*Virtual Cottage.*
       - window_process:
+          equals: VirtualCottage2
+      - window_process:
           equals: ChillPulse
   - commands:
       - move --workspace S1
