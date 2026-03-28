@@ -394,7 +394,6 @@ StartFocusSteamGame()
         WinActivate("ahk_exe VirtualCottage2.exe")
         WinWaitActive("ahk_exe VirtualCottage2.exe")
     } else {
-    } else {
         Run '"C:\Program Files (x86)\Steam\steam.exe" -silent -- "steam://rungameid/2826180"'
         WinWait("ahk_exe ChillPulse.exe")
         WinActivate("ahk_exe ChillPulse.exe")
