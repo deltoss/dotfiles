@@ -135,6 +135,8 @@ window_rules:
       - set-floating
     match:
       - window_process:
+          equals: 'ms-teams'
+      - window_process:
           equals: Flow.Launcher
         window_title:
           equals: Settings
@@ -208,8 +210,6 @@ window_rules:
           equals: 'Ssms'
       - window_process:
           equals: 'Zoom'
-      - window_process:
-          equals: 'ms-teams'
       - window_process:
           equals: 'LEAP Desktop'
   - commands:
