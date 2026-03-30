@@ -125,9 +125,6 @@ id = "Meld.Meld"
 id = "glzr-io.glazewm"
 
 [[packages.windows.core]]
-id = "AmN.yasb"
-
-[[packages.windows.core]]
 id = "Doist.Todoist"
 
 [[packages.windows.core]]
