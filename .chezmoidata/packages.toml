@@ -278,8 +278,9 @@ command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-claude-desktop.nu"
 id = "Adobe.Acrobat.Reader.64-bit"
 
 [[packages.windows.core]]
-id = "SUSE.RancherDesktop"
+id = "RedHat.Podman"
 precommand = "wsl --install --no-distribution"
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User'); podman machine init; podman machine start"
 
 [[packages.windows.core]]
 name = "MinGW"
