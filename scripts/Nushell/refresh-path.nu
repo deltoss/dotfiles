@@ -1,3 +1,5 @@
+# Usage:
+#   source refresh-path.nu
 $env.Path = (
   [
     (registry query --hkcu "Environment" "Path" | get value | split row ";"),
