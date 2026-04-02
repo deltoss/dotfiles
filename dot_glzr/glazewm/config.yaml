@@ -333,6 +333,8 @@ window_rules:
       - window_process:
           equals: copyq
       - window_process:
+          equals: 'SnagitCapture'
+      - window_process:
           regex: '*[Aa]udible*'
       - window_title:
           regex: .*[d|D]ialog.*
