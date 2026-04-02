@@ -327,6 +327,8 @@ window_rules:
       - ignore
     match:
       - window_process:
+          equals: 'handy'
+      - window_process:
           equals: 'Pinta'
       - window_process:
           equals: copyq

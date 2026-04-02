@@ -320,6 +320,9 @@ command = "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yak
 [[packages.windows.core]]
 id = "Espanso.Espanso"
 
+[[packages.windows.core]]
+id = "cjpais.Handy"
+
 [[packages.windows.personal]]
 name = "Bitwarden"
 command = "choco install bitwarden"
