@@ -56,6 +56,9 @@ desc = "Binary package manager for Rust"
 command = "cargo install cargo-binstall"
 
 [[packages.windows.core]]
+id = "jdx.mise"
+
+[[packages.windows.core]]
 name = "intelli-shell"
 command = 'cargo binstall -y intelli-shell --locked'
 
@@ -207,9 +210,6 @@ command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-wezterm-nightly.
 id = "KDE.KDEConnect"
 
 [[packages.windows.core]]
-id = "rsteube.Carapace"
-
-[[packages.windows.core]]
 id = "Starship.Starship"
 
 [[packages.windows.core]]
@@ -268,6 +268,11 @@ id = "SoftFever.OrcaSlicer"
 [[packages.windows.core]]
 id = "Microsoft.PowerShell"
 
+[[packages.windows.core]]
+id = "RedHat.Podman"
+precommand = "wsl --install --no-distribution"
+postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User'); podman machine init; podman machine start"
+
 # The below only works with Windows, and has no direct Linux Counterpart
 
 [[packages.windows.core]]
@@ -276,11 +281,6 @@ command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-claude-desktop.nu"
 
 [[packages.windows.core]]
 id = "Adobe.Acrobat.Reader.64-bit"
-
-[[packages.windows.core]]
-id = "RedHat.Podman"
-precommand = "wsl --install --no-distribution"
-postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User'); podman machine init; podman machine start"
 
 [[packages.windows.core]]
 name = "MinGW"
