@@ -26,6 +26,11 @@ echo "Set AHK Script Editor"
 $exePath = "$env:LOCALAPPDATA\Programs\WeztermNeovimLauncher\WeztermNeovimLauncher.exe"
 reg add "HKEY_CLASSES_ROOT\AutoHotkeyScript\shell\edit\command" /ve /t REG_SZ /d "`"$exePath`" `"%1`"" /f
 
+# SSH Server
+
+# Set default shell to nushell
+reg add "HKLM\SOFTWARE\OpenSSH" /v "DefaultShell" /t REG_SZ /d "C:\Program Files\Nu\bin\nu.exe" /f
+
 # See https://github.com/awesome-windows11/windows11
 
 echo "Disable Windows Key"
