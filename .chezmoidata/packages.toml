@@ -82,10 +82,6 @@ name = "Mechvibes"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-mechvibes.ps1"'
 
 [[packages.windows.core]]
-name = "Soundux"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-soundux.ps1"'
-
-[[packages.windows.core]]
 id = "hluk.CopyQ"
 
 [[packages.windows.core]]
