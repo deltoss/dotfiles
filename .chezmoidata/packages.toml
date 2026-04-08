@@ -2,6 +2,11 @@
 id = "Nushell.Nushell"
 
 [[packages.windows.core]]
+name = "Nushell Plugin: nu_plugin_formats"
+desc = "An I/O plugin for a set of file formats for Nushell"
+command = 'cargo install nu_plugin_formats'
+
+[[packages.windows.core]]
 name = "dotnet"
 command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-dotnet.ps1"'
 
