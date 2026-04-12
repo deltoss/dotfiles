@@ -156,11 +156,6 @@ id = "JesseDuffield.lazygit"
 id = "JesseDuffield.Lazydocker"
 
 [[packages.windows.core]]
-id = "Rclone.Rclone"
-desc = "For mounting and syncing network storage"
-postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-rclone.ps1"'
-
-[[packages.windows.core]]
 id = "ajeetdsouza.zoxide"
 
 [[packages.windows.core]]
@@ -273,6 +268,11 @@ id = "Microsoft.PowerShell"
 id = "RedHat.Podman"
 precommand = "wsl --install --no-distribution"
 postcommand = "$env:PATH = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User'); podman machine init; podman machine start"
+
+[[packages.windows.core]]
+id = "Rclone.Rclone"
+desc = "For mounting and syncing network storage"
+postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-rclone.ps1"'
 
 # The below only works with Windows, and has no direct Linux Counterpart
 
