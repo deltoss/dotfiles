@@ -144,9 +144,9 @@ id = "Microsoft.VisualStudioCode"
 id = "Obsidian.Obsidian"
 
 [[packages.windows.core]]
-name = "Visual Studio Build Tools - C and C++ Tools"
-desc = "A dependency Neovim needs on Windows. Requires cl.exe for nvim.treesitter"
-command = 'winget install Microsoft.VisualStudio.BuildTools --override "--quiet --wait --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Llvm.Clang --includeRecommended"'
+name = "clang C/C++ Compiler"
+desc = "A dependency Neovim needs on Windows. Installs clang, a C compiler for nvim.treesitter"
+id = "LLVM.LLVM"
 
 [[packages.windows.core]]
 name = "Treesitter CLI"
