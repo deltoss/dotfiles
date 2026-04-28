@@ -18,7 +18,11 @@
   aichat_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AICHAT/API Key" | quote }}
   aichat_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/AICHAT/API Key" | quote }}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
+  {{ if eq $computerPurpose "personal" -}}
   opencode_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OPENCODE/API Key" | quote }}
+  {{- else if eq .computerPurpose "work" -}}
+  opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
+  {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   claude_code_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CLAUDECODE/API Key" | quote }}
   {{- end }}
