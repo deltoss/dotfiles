@@ -262,6 +262,10 @@ id = "Audacity.Audacity"
 id = "Gyan.FFmpeg"
 desc = "For Audacity to be compatible with more files"
 
+[[packages.windows.core]]
+id = "SiddharthVaddem.OpenScreen"
+desc = "Screen video recorder"
+
 [[packages.windows.personal]]
 id = "VideoLAN.VLC"
 
