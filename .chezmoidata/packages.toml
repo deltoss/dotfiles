@@ -295,6 +295,10 @@ name = "Claude Desktop"
 command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-claude-desktop.nu"'
 
 [[packages.windows.core]]
+name = "Context7 CLI"
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-context7-cli.nu"'
+
+[[packages.windows.core]]
 id = "Adobe.Acrobat.Reader.64-bit"
 
 [[packages.windows.core]]
