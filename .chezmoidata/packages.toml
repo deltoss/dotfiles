@@ -299,6 +299,10 @@ name = "Context7 CLI"
 command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-context7-cli.nu"'
 
 [[packages.windows.core]]
+name = "Redocly CLI"
+command = "if (-not (Get-Command 'redocly' -ErrorAction SilentlyContinue)) { npm install -g @redocly/cli }"
+
+[[packages.windows.core]]
 id = "Adobe.Acrobat.Reader.64-bit"
 
 [[packages.windows.core]]
