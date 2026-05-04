@@ -299,6 +299,11 @@ name = "Context7 CLI"
 command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-context7-cli.nu"'
 
 [[packages.windows.core]]
+name = "Serena"
+desc = "Semantic retrieval & editing agent"
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-serena.nu"'
+
+[[packages.windows.core]]
 name = "Redocly CLI"
 command = "if (-not (Get-Command 'redocly' -ErrorAction SilentlyContinue)) { npm install -g @redocly/cli }"
 
