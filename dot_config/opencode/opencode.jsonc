@@ -17,19 +17,13 @@
         "--context",
         "ide",
         "--project-from-cwd",
+        "--enable-web-dashboard=false"
       ]
     },
     "atlassian": {
       "type": "remote",
       "enabled": true,
       "url": "https://mcp.atlassian.com/v1/sse"
-    }
-  },
-  "agent": {
-    "explore": {
-      "permissions": {
-        "serena_*": "allow"
-      }
     }
   }
 }
