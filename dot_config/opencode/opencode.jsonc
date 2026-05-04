@@ -6,5 +6,18 @@
     "messages_half_page_up": "ctrl+u",
     "messages_half_page_down": "ctrl+d,ctrl+e",
     "editor_open": "<leader>e,ctrl+o",
+  },
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--project-from-cwd",
+      ]
+    }
   }
 }
