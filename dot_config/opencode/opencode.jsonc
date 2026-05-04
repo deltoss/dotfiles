@@ -27,19 +27,8 @@
     }
   },
   "agent": {
-    "build": {
-      "permission": {
-        "task": {
-          "explore": "deny" // Don't use built-in explore agent, as it won't be able to use serena mcp
-        }
-      }
-    },
-    "plan": {
-      "permission": {
-        "task": {
-          "explore": "deny" // Don't use built-in explore agent, as it won't be able to use serena mcp
-        }
-      }
+    "explore": {
+      "disable": true // Don't use built-in explore agent, as it won't be able to use serena mcp
     }
   }
 }
