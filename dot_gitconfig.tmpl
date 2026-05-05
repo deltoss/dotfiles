@@ -1,14 +1,14 @@
 [user]
-	name = {{ .username | quote }}
-	email = {{ .email | quote }}
+  name = {{ .username | quote }}
+  email = {{ .email | quote }}
 [core]
   compression = 9
   whitespace = error
-	autocrlf = true
-	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
-	editor = nvim
-	pager = delta
-	hooksPath = ~/.config/git/hooks
+  autocrlf = {{ if eq .osid "windows" -}}true{{ else -}}input{{- end }}
+  sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+  editor = nvim
+  pager = delta
+  hooksPath = ~/.config/git/hooks
 [status]
   branch = true
   showStash = true
@@ -34,25 +34,25 @@
   diffFilter = delta --color-only
   singleKey = true
 [delta]
-	navigate = true # n/N to jump between diff sections
-	light = true
-	side-by-side = true
+  navigate = true # n/N to jump between diff sections
+  light = true
+  side-by-side = true
   line-numbers = true
 [merge]
-	renormalize = true
-	ff = false # Even create extra merge commit when fast forward merge would be possible
+  renormalize = true
+  ff = false # Even create extra merge commit when fast forward merge would be possible
 [mergetool]
-	prompt = false
-	keepBackup = false
+  prompt = false
+  keepBackup = false
 [mergetool "nvimdiff"]
   layout = "LOCAL,BASE,REMOTE / MERGED"
 [mergetool "codediff"]
-	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
+  cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
 [pull]
-	rebase = true
-	ff = only # Disallows non ff merges on pull. Overrides merge.ff when pulling
+  rebase = true
+  ff = only # Disallows non ff merges on pull. Overrides merge.ff when pulling
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
   default = current
   followTags = true
 [rebase]

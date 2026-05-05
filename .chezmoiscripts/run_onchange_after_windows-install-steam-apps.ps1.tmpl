@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "windows" -}}
+{{ if eq .osid "windows" -}}
 
 Write-Host "Configuring necessary environment variables..."
 $env:CHEZMOI_SOURCEDIR = "{{.chezmoi.sourceDir}}"

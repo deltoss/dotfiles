@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.os "windows" -}}
+{{- if eq .osid "windows" -}}
 {{- if eq .computerPurpose "personal" -}}
 {{- onepasswordRead "op://Personal/Mobile Devices SSH Key/public key" -}}
 {{- end -}}

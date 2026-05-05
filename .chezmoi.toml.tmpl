@@ -1,12 +1,18 @@
 [cd]
   command = "nu"
 
+{{ $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 {{ $email := promptStringOnce . "email" "What is your email address (for git). Match this to your GitHub account's email(s) or your activity graph may not detect the commit." -}}
 {{ $username := promptStringOnce . "username" "What is your username (for git)" -}}
 {{ $steamUsername := promptStringOnce . "steamUsername" "What is your username (for Steam)" -}}
 {{ $computerPurposeChoices := list "personal" "work" -}}
 {{ $computerPurpose := promptChoiceOnce . "computerPurpose" "What type of computer are you on" $computerPurposeChoices -}}
 [data]
+  osid = {{ $osid | quote }}
   email = {{ $email | quote }}
   username = {{ $username | quote }}
   steamUsername = {{ $steamUsername | quote }}
