@@ -190,7 +190,9 @@ id = "sharkdp.bat"
 id = "eza-community.eza"
 
 [[packages.windows.core]]
-id = "BurntSushi.ripgrep.MSVC"
+name = "ripgrep"
+desc = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
+command = 'cargo binstall -y ripgrep'
 
 [[packages.windows.core]]
 id = "junegunn.fzf"
