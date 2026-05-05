@@ -290,6 +290,14 @@ id = "Rclone.Rclone"
 desc = "For mounting and syncing network storage"
 postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-rclone.ps1"'
 
+[[packages.windows.core]]
+name = "Claude Code"
+command = "irm https://claude.ai/install.ps1 | iex"
+
+[[packages.windows.core]]
+name = "Codex"
+command = 'npm install -g @openai/codex'
+
 # The below only works with Windows, and has no direct Linux Counterpart
 
 [[packages.windows.core]]
@@ -391,7 +399,3 @@ command = "scoop bucket add extras; scoop install jira-cli"
 name = "AWS CLI"
 command = "Get-Command aws -ErrorAction SilentlyContinue; if (-not $?) { msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi }"
 desc = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
-
-[[packages.windows.work]]
-name = "Claude Code"
-command = "irm https://claude.ai/install.ps1 | iex"
