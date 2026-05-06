@@ -269,6 +269,10 @@ id = "SiddharthVaddem.OpenScreen"
 desc = "Screen video recorder"
 
 [[packages.windows.personal]]
+name = "Codex"
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-sunshine.nu"'
+
+[[packages.windows.personal]]
 id = "VideoLAN.VLC"
 
 [[packages.windows.personal]]
