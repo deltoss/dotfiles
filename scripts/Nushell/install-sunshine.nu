@@ -1,20 +1,16 @@
 #!/usr/bin/env nu
 
-def sunshine-installed [] {
-    ("C:\\Program Files\\Sunshine\\sunshine.exe" | path exists)
-}
-
 let url = "https://github.com/LizardByte/Sunshine/releases/latest/download/Sunshine-Windows-AMD64-installer.exe"
-let installer = ($nu.temp-dir | path join "Sunshine-installer.exe")
+let temp_exe_path = ($nu.temp-dir | path join "Sunshine-installer.exe")
 
-if (sunshine-installed) {
+if (which sunshine | is-not-empty) {
     print "Sunshine is already installed, skipping."
 } else {
-    print $"Downloading Sunshine to ($installer)..."
-    http get $url | save -f $installer
+    print $"Downloading Sunshine to ($temp_exe_path)..."
+    http get $url | save -f $temp_exe_path
 
     print "Running installer..."
-    ^$installer
+    ^$temp_exe_path
 
     print "Done!"
 }
