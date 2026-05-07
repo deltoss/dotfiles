@@ -14,6 +14,10 @@ def main [] {
     print $"(ansi cyan)→ Setting up ctx7…(ansi reset)"
     npx ctx7 setup --cli
 
+    # Make sure you select CLI, not the MCP!
+    npx ctx7 setup --opencode
+    npx ctx7 setup --claude
+
     print $"(ansi green)✓ Context7 installed!(ansi reset)"
 }
 
