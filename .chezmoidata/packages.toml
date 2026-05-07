@@ -269,7 +269,7 @@ id = "SiddharthVaddem.OpenScreen"
 desc = "Screen video recorder"
 
 [[packages.windows.personal]]
-name = "Codex"
+name = "Sunshine"
 command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-sunshine.nu"'
 
 [[packages.windows.personal]]
@@ -298,9 +298,17 @@ postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-rclone.ps1"'
 name = "Claude Code"
 command = "irm https://claude.ai/install.ps1 | iex"
 
+[[packages.windows.personal]]
+name = "Claude Code ACP"
+command = 'npm install -g @agentclientprotocol/claude-agent-acp'
+
 [[packages.windows.core]]
 name = "Codex"
 command = 'npm install -g @openai/codex'
+
+[[packages.windows.personal]]
+name = "Codex ACP"
+command = 'npm install -g @agentclientprotocol/codex-acp'
 
 # The below only works with Windows, and has no direct Linux Counterpart
 
