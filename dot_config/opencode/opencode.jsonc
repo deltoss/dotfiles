@@ -18,7 +18,8 @@
         "ide",
         "--project-from-cwd",
         "--enable-web-dashboard=false"
-      ]
+      ],
+      "timeout": 60000
     },
     "atlassian": {
       "type": "remote",
