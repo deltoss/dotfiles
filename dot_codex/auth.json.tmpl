@@ -1,0 +1,6 @@
+{{- if hasKey . "codex_openai_key" -}}
+{
+  "auth_mode": "apikey",
+  "OPENAI_API_KEY": "{{ .codex_openai_key }}"
+}
+{{- end -}}
