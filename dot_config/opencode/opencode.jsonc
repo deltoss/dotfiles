@@ -24,7 +24,7 @@
     "atlassian": {
       "type": "remote",
       "enabled": true,
-      "url": "https://mcp.atlassian.com/v1/sse"
+      "url": "https://mcp.atlassian.com/v1/mcp"
     }
   },
   "agent": {
