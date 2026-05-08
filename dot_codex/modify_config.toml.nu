@@ -7,6 +7,6 @@ def main [] {
       command: "serena",
       args: ["start-mcp-server", "--context=codex", "--project-from-cwd"]
     }
-  | upsert features.codex_hooks true
+  | upsert features.hooks true
   | to toml
 }
