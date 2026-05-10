@@ -35,7 +35,6 @@
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   codex_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODEX/API Key" | quote }}
-  claude_code_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CLAUDECODE/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   ssh_connections = {{- onepasswordRead "op://Personal/SSH Connections/notesPlain" | quote -}}

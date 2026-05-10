@@ -1,8 +1,5 @@
 {
-{{- if hasKey . "claude_code_anthropic_key" }}
-  "apiKeyHelper": "echo {{ .claude_code_anthropic_key }}"
-{{- end }}
-  "autoUpdatesChannel": "latest"
+  "autoUpdatesChannel": "latest",
   "skipDangerousModePermissionPrompt": true,
   "theme": "light",
   "hooks": {
