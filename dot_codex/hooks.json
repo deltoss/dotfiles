@@ -13,6 +13,15 @@
     ],
     "SessionStart": [
       {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Load the caveman skill and activate lite mode. Acknowledge only with: [caveman lite active]'"
+          }
+        ]
+      },
+      {
         "matcher": "startup|resume",
         "hooks": [
           {
