@@ -14,4 +14,12 @@ client_secret = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive
 scope = drive
 token = 
 team_drive = 
-{{- end -}}
+
+{{ end -}}
+[notes-google-drive]
+type = drive
+client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" }}
+client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" }}
+scope = drive
+token = 
+team_drive = 
