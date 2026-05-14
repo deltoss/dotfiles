@@ -2,17 +2,24 @@
 
 print $"(ansi green)Configuring rclone...(ansi reset)"
 
-let is_config_setup = rclone config redacted | lines | any { $in =~ notes-google-drive }
+let configs = rclone config redacted | split row "\n\n"
+
+let is_config_setup = $configs | any { $in =~ notes-google-drive and $in =~ "token = .+" }
 if (not $is_config_setup) {
   print $"(ansi green)Updating sensitive values...(ansi reset)"
   rclone config update notes-google-drive # Updates the access token
 }
 
 if ($env.CHEZMOI_COMPUTERPURPOSE == "personal") {
-  let is_config_setup = rclone config redacted | lines | any { $in =~ media-dav }
+  let is_config_setup = $configs | any { $in =~ media-dav and $in =~ "pass = .+" }
   if (not $is_config_setup) {
     print $"(ansi green)Updating sensitive values specifically for personal computer...(ansi reset)"
     rclone config update media-dav pass (op read "op://Personal/Copyparty/password") # Updates the password. Note it's encrypted
+  }
+
+  let is_config_setup = $configs | any { $in =~ personal-google-drive and $in =~ "token = .+" }
+  if (not $is_config_setup) {
+    print $"(ansi green)Updating sensitive values specifically for personal-google-drive...(ansi reset)"
     rclone config update personal-google-drive # Updates the access token
   }
 }
