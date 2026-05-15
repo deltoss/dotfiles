@@ -20,6 +20,6 @@ $action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless p
 $taskName = "RClone - Mount Notes Drive - Google Drive"
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
 
-$action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"rclone mount --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M notes-google-drive:Notes '$env:USERPROFILE\Documents\Synced Notes'`""
+$action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"rclone mount --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M notes-google-drive: '$env:USERPROFILE\Documents\Synced Notes'`""
 $taskName = "RClone - Mount Notes Folder - Google Drive"
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
