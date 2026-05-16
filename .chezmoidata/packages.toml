@@ -63,6 +63,11 @@ name = "intelli-shell"
 command = 'cargo binstall -y intelli-shell --locked'
 
 [[packages.windows.core]]
+name = "podlet"
+desc = "Converts docker syntax or docker-compose.yml files to podman equivalents"
+command = 'cargo binstall -y podlet'
+
+[[packages.windows.core]]
 name = "gittype"
 command = 'cargo install gittype'
 
