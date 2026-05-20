@@ -27,14 +27,20 @@
   aider_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AIDER/API Key" | quote }}
   aichat_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AICHAT/API Key" | quote }}
   aichat_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/AICHAT/API Key" | quote }}
-  codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   {{ if eq $computerPurpose "personal" -}}
+  codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OPENCODE/API Key" | quote }}
   {{- else if eq .computerPurpose "work" -}}
+  codecompanion_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   codex_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODEX/API Key" | quote }}
+  codecompanion_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
+  opencode_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/OPENCODE/API Key" | quote }}
+  {{- else if eq .computerPurpose "work" -}}
+  codecompanion_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/CODECOMPANION.NVIM/API Key" | quote }}
+  opencode_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/OPENCODE/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   ssh_connections = {{- onepasswordRead "op://Personal/SSH Connections/notesPlain" | quote -}}
