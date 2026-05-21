@@ -25,6 +25,11 @@
       "type": "remote",
       "enabled": true,
       "url": "https://mcp.atlassian.com/v1/mcp"
+    },
+    "todoist": {
+      "type": "remote",
+      "enabled": true,
+      "url": "https://ai.todoist.net/mcp"
     }
   },
   "agent": {

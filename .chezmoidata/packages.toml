@@ -305,6 +305,7 @@ command = "irm https://claude.ai/install.ps1 | iex"
 [[packages.windows.personal]]
 name = "Claude Code ACP"
 command = 'npm install -g @agentclientprotocol/claude-agent-acp'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/setup-claude-code.nu"'
 
 [[packages.windows.core]]
 name = "Codex"
