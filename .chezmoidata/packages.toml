@@ -3,7 +3,7 @@ id = "Nushell.Nushell"
 
 [[packages.windows.core]]
 name = "dotnet"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-dotnet.ps1"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-dotnet.nu"'
 
 [[packages.windows.core]]
 name = "ilspycmd"
