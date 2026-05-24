@@ -212,7 +212,7 @@ id = "sxyazi.yazi"
 
 [[packages.windows.core]]
 name = "Weztern Nightly"
-command = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-wezterm-nightly.ps1"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-wezterm-nightly.nu"'
 
 [[packages.windows.core]]
 id = "KDE.KDEConnect"

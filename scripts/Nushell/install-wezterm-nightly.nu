@@ -5,16 +5,11 @@ if (which wezterm | is-not-empty) {
   return
 }
 
-let target_temp_path = $"($env.TEMP)/WeztermNightly"
-if ($target_temp_path | path exists) {
-  rm -rf $target_temp_path
+match (sys host).name {
+  "Windows" => {
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-wezterm-nightly-windows.nu"
+  },
+  _ => {
+    sudo apt install wezterm-nightly
+  }
 }
-mkdir $target_temp_path
-
-let installer_path = $"($target_temp_path)/WezTerm-nightly-setup.exe"
-http get "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-nightly-setup.exe"
-  | save -f $installer_path
-
-^$installer_path
-
-rm -rf $target_temp_path
