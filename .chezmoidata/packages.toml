@@ -42,7 +42,7 @@ id = "OpenJS.NodeJS"
 
 [[packages.windows.core]]
 name = "Rust"
-postcommand = '& "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-rust.ps1"'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/install-rust.nu"'
 
 [[packages.windows.core]]
 name = "Rust - Cargo Configuration"
