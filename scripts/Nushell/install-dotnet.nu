@@ -17,10 +17,10 @@ if (which dotnet | is-not-empty) {
 match (sys host).name {
   "Windows" => {
     print "Downloading and installing dotnet LTS + STS for Windows..."
-    ^powershell -ExecutionPolicy Bypass -File $"($env.CHEZMOI_SOURCEDIR)/scripts/PowerShell/install-dotnet.ps1"
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-dotnet-windows.nu"
   }
   _ => {
     print "Downloading and installing dotnet LTS + STS for Linux..."
-    ^bash $"($env.CHEZMOI_SOURCEDIR)/scripts/Bash/install-dotnet.sh"
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-dotnet-linux.sh"
   }
 }
