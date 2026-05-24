@@ -9,7 +9,7 @@ match (sys host).name {
   "Windows" => {
     nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-wezterm-nightly-windows.nu"
   },
-  _ => {
+  $x if ($x =~ Debian) => {
     sudo apt install wezterm-nightly
   }
 }
