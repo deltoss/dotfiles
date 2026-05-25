@@ -45,6 +45,11 @@ name = "Typescript"
 command = "npm install -g typescript"
 
 [[packages.windows.core]]
+name = "Biome"
+desc = "Linter + formatter for Javascript and Typescript"
+command = "npm install -g @biomejs/biome"
+
+[[packages.windows.core]]
 name = "Rust"
 postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-rust.nu"'
 
