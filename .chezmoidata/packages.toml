@@ -380,6 +380,10 @@ id = "Espanso.Espanso"
 id = "cjpais.Handy"
 
 [[packages.windows.personal]]
+name = "OpenSSH Server"
+command = 'powershell -File "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-ssh-server.ps1"'
+
+[[packages.windows.personal]]
 name = "Bitwarden"
 command = "choco install bitwarden"
 
