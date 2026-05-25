@@ -41,6 +41,10 @@ command = 'uv tool install --python python3.12 --with pip aider-chat@latest'
 id = "OpenJS.NodeJS"
 
 [[packages.windows.core]]
+name = "Typescript"
+command = "npm install -g typescript"
+
+[[packages.windows.core]]
 name = "Rust"
 postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-rust.nu"'
 
