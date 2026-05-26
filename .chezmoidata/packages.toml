@@ -3,7 +3,7 @@ id = "Nushell.Nushell"
 
 [[packages.windows.core]]
 name = "dotnet"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-dotnet.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-dotnet.nu"'
 
 [[packages.windows.core]]
 name = "ilspycmd"
@@ -51,13 +51,7 @@ command = "npm install -g @biomejs/biome"
 
 [[packages.windows.core]]
 name = "Rust"
-postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-rust.nu"'
-
-[[packages.windows.core]]
-name = "Rust - Cargo Configuration"
-desc = "Package manager for Rust"
-# Add Cargo to the PATH if not already
-postcommand = 'if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains "$env:USERPROFILE\.cargo\bin")) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.cargo\bin", "User"); $env:Path += ";$env:USERPROFILE\.cargo\bin" }'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-rust.nu"'
 
 [[packages.windows.core]]
 name = "cargo-binstall"
@@ -82,7 +76,7 @@ command = 'cargo install gittype'
 
 [[packages.windows.core]]
 id = 'tsl0922.ttyd'
-postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/setup-ttyd.nu"'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/setup-ttyd.nu"'
 
 [[packages.windows.core]]
 id = 'mitmproxy.mitmproxy'
@@ -93,7 +87,7 @@ command = "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
 
 [[packages.windows.core]]
 name = "Mechvibes"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-mechvibes-windows.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/windows/install-mechvibes.nu"'
 
 [[packages.windows.core]]
 id = "hluk.CopyQ"
@@ -221,7 +215,7 @@ id = "sxyazi.yazi"
 
 [[packages.windows.core]]
 name = "Weztern Nightly"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-wezterm-nightly.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-wezterm-nightly.nu"'
 
 [[packages.windows.core]]
 id = "KDE.KDEConnect"
@@ -279,7 +273,7 @@ desc = "Screen video recorder"
 
 [[packages.windows.personal]]
 name = "Sunshine"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-sunshine.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/windows/install-sunshine.nu"'
 
 [[packages.windows.personal]]
 id = "VideoLAN.VLC"
@@ -296,7 +290,7 @@ id = "Microsoft.PowerShell"
 [[packages.windows.core]]
 id = "RedHat.Podman"
 precommand = "wsl --install --no-distribution"
-postcommand = '$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"); nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/setup-podman.nu"'
+postcommand = '$env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User"); nu "$env:CHEZMOI_SOURCEDIR/scripts/setup-podman.nu"'
 
 [[packages.windows.core]]
 name = "podman-compose"
@@ -305,7 +299,7 @@ command = "pip3 install podman-compose"
 [[packages.windows.core]]
 id = "Rclone.Rclone"
 desc = "For mounting and syncing network storage"
-postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/setup-rclone.nu"'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/setup-rclone.nu"'
 
 [[packages.windows.core]]
 name = "Claude Code"
@@ -314,7 +308,7 @@ command = "irm https://claude.ai/install.ps1 | iex"
 [[packages.windows.personal]]
 name = "Claude Code ACP"
 command = 'npm install -g @agentclientprotocol/claude-agent-acp'
-postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/setup-claude-code.nu"'
+postcommand = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/setup-claude-code.nu"'
 
 [[packages.windows.core]]
 name = "Codex"
@@ -328,16 +322,16 @@ command = 'npm install -g @agentclientprotocol/codex-acp'
 
 [[packages.windows.core]]
 name = "Claude Desktop"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-claude-desktop.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/windows/install-claude-desktop.nu"'
 
 [[packages.windows.core]]
 name = "Context7 CLI"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-context7-cli.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-context7-cli.nu"'
 
 [[packages.windows.core]]
 name = "Serena"
 desc = "Semantic retrieval & editing agent"
-command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/Nushell/install-serena.nu"'
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-serena.nu"'
 
 [[packages.windows.core]]
 name = "Redocly CLI"
@@ -390,7 +384,7 @@ id = "cjpais.Handy"
 
 [[packages.windows.personal]]
 name = "OpenSSH Server"
-command = 'powershell -File "$env:CHEZMOI_SOURCEDIR/scripts/PowerShell/setup-ssh-server.ps1"'
+command = 'powershell -File "$env:CHEZMOI_SOURCEDIR/scripts/windows/setup-ssh-server.ps1"'
 
 [[packages.windows.personal]]
 name = "Bitwarden"

@@ -7,7 +7,7 @@ if (which wezterm | is-not-empty) {
 
 match (sys host).name {
   "Windows" => {
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-wezterm-nightly-windows.nu"
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-wezterm-nightly.nu"
   },
   $x if ($x =~ Debian) => {
     sudo apt install wezterm-nightly

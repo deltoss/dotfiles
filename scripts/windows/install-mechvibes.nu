@@ -1,3 +1,5 @@
+#!/usr/bin/env nu
+
 let locations = [
   $"($env.ProgramFiles)\\Mechvibes"
   $"($env.'ProgramFiles(x86)')\\Mechvibes"

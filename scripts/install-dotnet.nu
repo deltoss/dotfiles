@@ -17,10 +17,10 @@ if (which dotnet | is-not-empty) {
 match (sys host).name {
   "Windows" => {
     print "Downloading and installing dotnet LTS + STS for Windows..."
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-dotnet-windows.nu"
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-dotnet.nu"
   }
   _ => {
     print "Downloading and installing dotnet LTS + STS for Linux..."
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/Nushell/install-dotnet-linux.sh"
+    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-dotnet.nu"
   }
 }
