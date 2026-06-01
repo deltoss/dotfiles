@@ -155,8 +155,8 @@ id = "Obsidian.Obsidian"
 
 [[packages.windows.core]]
 name = "clang C/C++ Compiler"
-desc = "A dependency Neovim needs on Windows. Installs clang, a C compiler for nvim.treesitter"
-command = "choco install -y llvm"
+desc = "A dependency Neovim needs on Windows. Installs clang with headers, a C compiler. With headers means it comes bundled with C standard library. Needed for treesitter for Neovim, i.e. syntax highlighting"
+command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-c-compiler.nu"'
 
 [[packages.windows.core]]
 name = "Treesitter CLI"
