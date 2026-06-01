@@ -1,6 +1,9 @@
 git:
   # If true, periodically fetch from remote
   autoFetch: false
+# Can check available keybindings via
+#   lazygit --config
+#   lazygit --config | nvim -
 keybinding:
   universal:
     # Disable hjkl, as not used with alternative keyboard layouts
