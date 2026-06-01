@@ -1,6 +1,14 @@
 git:
   # If true, periodically fetch from remote
   autoFetch: false
+keybinding:
+  universal:
+    # Disable hjkl, as not used with alternative keyboard layouts
+    prevBlock-alt: '<disabled>' # Defaults to h
+    nextItem-alt: '<disabled>' # Defaults to j
+    prevItem-alt: '<disabled>' # Defaults to k
+    nextBlock-alt: '<disabled>' # Defaults to l
+    createPatchOptionsMenu: 'j'
 customCommands:
   - key: <c-a>
     context: "files"
