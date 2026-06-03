@@ -314,6 +314,7 @@ DetectHiddenWindows true
 !o:: Send "+^{Tab}"
 !t:: Send "^t" ; New Tab
 !w:: Send "^w" ; Close
+^n:: Send "^+n" ; New Folder. Ctrl+n is New Windows by default
 #HotIf
 
 #HotIf WinActive("ahk_exe Slack.exe")
