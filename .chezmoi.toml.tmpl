@@ -30,9 +30,11 @@
   {{ if eq $computerPurpose "personal" -}}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OPENCODE/API Key" | quote }}
+  fabric_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/FABRIC/API Key" | quote }}
   {{- else if eq .computerPurpose "work" -}}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
+  fabric_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/FABRIC/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   codex_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODEX/API Key" | quote }}
