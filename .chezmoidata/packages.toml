@@ -228,6 +228,11 @@ name = "Weztern Nightly"
 command = 'nu "$env:CHEZMOI_SOURCEDIR/scripts/install-wezterm-nightly.nu"'
 
 [[packages.windows.core]]
+name = "agg"
+desc = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
+command = 'cargo install --git https://github.com/asciinema/agg'
+
+[[packages.windows.core]]
 id = "KDE.KDEConnect"
 
 [[packages.windows.core]]
