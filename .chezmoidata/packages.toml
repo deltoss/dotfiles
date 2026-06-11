@@ -125,6 +125,11 @@ id = "sigoden.AIChat"
 id = "danielmiessler.Fabric"
 
 [[packages.windows.core]]
+name = "yt-dlp"
+desc = "Installs python version to be used with yt-dlp"
+command = 'uv tool install --python python3.12 --with pip yt-dlp[default]'
+
+[[packages.windows.core]]
 id = "7zip.7zip"
 # Add 7z to the PATH if not already
 postcommand = '$7zPath = (Get-ChildItem "C:\Program Files","C:\Program Files (x86)" -Filter "7-Zip").FullName; if (!([Environment]::GetEnvironmentVariable("Path", "User") -split ";" -contains $7zPath)) { [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$7zPath", "User"); $env:Path += ";$7zPath" }'
