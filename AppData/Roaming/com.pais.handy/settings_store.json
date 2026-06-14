@@ -51,6 +51,7 @@
     "paste_method": "direct",
     "post_process_api_keys": {
       "anthropic": "",
+      "bedrock_mantle": "",
       "cerebras": "",
       "custom": "",
       "groq": "",
@@ -61,6 +62,7 @@
     "post_process_enabled": false,
     "post_process_models": {
       "anthropic": "",
+      "bedrock_mantle": "",
       "cerebras": "",
       "custom": "",
       "groq": "",
@@ -132,6 +134,14 @@
         "label": "Custom",
         "models_endpoint": "/models",
         "supports_structured_output": false
+      },
+      {
+        "allow_base_url_edit": false,
+        "base_url": "https://bedrock-mantle.us-east-1.api.aws/v1",
+        "id": "bedrock_mantle",
+        "label": "AWS Bedrock (Mantle)",
+        "models_endpoint": "/models",
+        "supports_structured_output": true
       }
     ],
     "post_process_selected_prompt_id": null,
