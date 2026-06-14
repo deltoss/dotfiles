@@ -164,6 +164,16 @@ commands = [
 ]
 
 [[packages.common]]
+name = "whisperx"
+description = "Installs whisperx for audio to text transcriptions. Word-level timestamps, suitable for subtitles"
+tool = "whisperx"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'uv tool install whisperx'
+]
+
+[[packages.common]]
 name = "harlequin"
 tool = "harlequin"
 tags = ["all"]
