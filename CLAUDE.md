@@ -26,7 +26,7 @@ Entry fields:
 - `name` — display name (falls back to `id`).
 - `tool` — executable name; if present, entry is skipped when `which` finds it (preferred idempotency check for `commands` entries).
 - `commands` — list of Nushell install commands (npm, cargo, uv, choco, scoop, `winget`, or a `scripts/*.nu` script; irreducibly-PowerShell installers run via `powershell -c`). Without `tool`, they re-run every time the script triggers, so they must be idempotent themselves.
-- `precommand` / `postcommand` — run before/after the install, only when the entry is actually being installed (skipped if already present). E.g., PATH refresh, setup scripts.
+- `precommands` / `postcommands` — arrays of commands run before/after the install, only when the entry is actually being installed (skipped if already present). E.g., PATH refresh, setup scripts.
 - `description` — printed during install.
 
 Same data-file + script pattern applies to `.chezmoidata/fonts.toml`, `steam-apps.toml`, and `uninstalls.toml` with their matching `.chezmoiscripts/` scripts.

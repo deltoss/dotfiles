@@ -162,7 +162,9 @@ commands = [
 tags = ["all"]
 package_type = "winget"
 id = 'tsl0922.ttyd'
-postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-ttyd.nu"'
+postcommands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-ttyd.nu"'
+]
 
 [[packages.windows]]
 tags = ["all"]
@@ -243,7 +245,9 @@ tags = ["all"]
 package_type = "winget"
 id = "7zip.7zip"
 # Add 7-Zip to the user PATH (idempotent); refresh-path picks it up afterwards.
-postcommand = '''nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/helpers/add-path-env.nu" r#'C:\Program Files\7-Zip'#'''
+postcommands = [
+  "add-path-env 'C:\\Program Files\\7-Zip'"
+]
 
 [[packages.windows]]
 tags = ["all"]
@@ -553,8 +557,12 @@ tags = ["all"]
 package_type = "winget"
 id = "RedHat.Podman"
 tool = "podman"
-precommand = "wsl --install --no-distribution"
-postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-podman.nu"'
+precommands = [
+  "wsl --install --no-distribution"
+]
+postcommands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-podman.nu"'
+]
 
 [[packages.windows]]
 name = "podman-compose"
@@ -570,7 +578,9 @@ description = "For mounting and syncing network storage"
 tags = ["all"]
 package_type = "winget"
 id = "Rclone.Rclone"
-postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-rclone.nu"'
+postcommands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-rclone.nu"'
+]
 
 [[packages.windows]]
 name = "Claude Code"

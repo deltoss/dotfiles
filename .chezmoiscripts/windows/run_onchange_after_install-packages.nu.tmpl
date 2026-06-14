@@ -17,8 +17,9 @@ print $"(ansi green_bold)Installing packages...(ansi reset)"
 $env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
 $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
 
-# Reusable PATH refresh, shared with the scripts/windows helpers.
+# Reusable PATH helpers, shared with the scripts/windows helpers.
 use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/refresh-path.nu'
+use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/add-path-env.nu'
 
 # Installed winget IDs, via the WinGet PowerShell module (returns real objects;
 # `winget list` only gives text). Install the module first if it is missing.
@@ -55,8 +56,10 @@ if $already_installed {
   {{- if hasKey . "description" }}
   print {{ .description | quote }}
   {{- end }}
-  {{- if hasKey . "precommand" }}
-  {{ .precommand }}
+  {{- if hasKey . "precommands" }}
+    {{- range .precommands }}
+  {{ . }}
+    {{- end }}
   {{- end }}
   {{- if eq .package_type "winget" }}
   ^winget install --id {{ .id | quote }} -e --no-upgrade {{ if hasKey . "version" }}-v {{ .version | quote }}{{ end }}
@@ -65,8 +68,10 @@ if $already_installed {
   {{ . }}
     {{- end }}
   {{- end }}
-  {{- if hasKey . "postcommand" }}
-  {{ .postcommand }}
+  {{- if hasKey . "postcommands" }}
+    {{- range .postcommands }}
+  {{ . }}
+    {{- end }}
   {{- end }}
   refresh-path
 }
