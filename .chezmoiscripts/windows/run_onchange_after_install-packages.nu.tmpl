@@ -52,7 +52,9 @@ let already_installed = false
   {{- end }}
 if $already_installed {
   print $"  ($display) already installed, skipping"
-} else {
+}{{ if hasKey . "precheck" }} else if not ({{ .precheck }}) {
+  print $"  ($display) pre-check not met, skipping"
+}{{ end }} else {
   {{- if hasKey . "description" }}
   print {{ .description | quote }}
   {{- end }}

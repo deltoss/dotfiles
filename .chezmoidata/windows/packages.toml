@@ -658,10 +658,11 @@ commands = [
 
 [[packages.windows]]
 name = "Bitwarden"
+precheck = "(choco list bitwarden | lines | last | parse '{packagesInstalled} {_}' | first | get packagesInstalled | into int) < 1"
 tags = ["personal"]
 package_type = "commands"
 commands = [
-  "choco install bitwarden"
+  "choco install -y bitwarden"
 ]
 
 [[packages.windows]]
