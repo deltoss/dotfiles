@@ -1,0 +1,50 @@
+{{ if eq .osid "windows" -}}
+#!/usr/bin/env nu
+
+print "Installing steam apps..."
+print "Configuring necessary environment variables..."
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
+
+# Install prerequisites for the steam app installs below.
+# (do --ignore-errors: winget returns non-zero when Steam is already installed.)
+do --ignore-errors { ^winget install --id "Valve.Steam" -e --no-upgrade }
+nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-steamcmd.nu"
+
+{{- $steamAppsToInstall := list -}}
+{{- if hasKey .steamApps.windows "core" -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.core -}}
+{{- end -}}
+{{- if and (eq .computerPurpose "personal") (hasKey .steamApps.windows "personal") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.personal -}}
+{{- else if and (eq .computerPurpose "work") (hasKey .steamApps.windows "work") -}}
+  {{- $steamAppsToInstall = concat $steamAppsToInstall .steamApps.windows.work -}}
+{{- end }}
+
+let steam_username = {{ .steamUsername | quote }}
+let base_install_path = 'C:\Program Files (x86)\Steam\steamapps\common'
+# Steam reads app manifests from the parent (steamapps) directory.
+let manifest_dir = ($base_install_path | path dirname)
+
+{{ range $steamAppsToInstall }}
+let app_id = {{ .id | quote }}
+let app_name = {{ .name | quote }}
+let app_install_path = ($base_install_path | path join {{ .folderName | quote }})
+
+print $"(ansi green)Installing ($app_id) \(($app_name)\) to ($app_install_path)...(ansi reset)"
+if not ($app_install_path | path exists) {
+  mkdir $app_install_path
+}
+
+# steamcmd commonly exits non-zero even on success.
+do --ignore-errors { ^steamcmd "+force_install_dir" $app_install_path "+login" $steam_username "+app_update" $app_id "+quit" }
+
+print $"(ansi green)For ($app_id) \(($app_name)\): copying manifests to ($manifest_dir)...(ansi reset)"
+let manifest_src = ($app_install_path | path join "steamapps")
+if ($manifest_src | path exists) {
+  for manifest in (ls $manifest_src | where {|f| ($f.name | path basename | str starts-with "appmanifest_") and ($f.name | str ends-with ".acf") }) {
+    cp --force $manifest.name $manifest_dir
+  }
+}
+{{ end }}
+print $"(ansi green)Steam app installs complete...(ansi reset)"
+{{ end -}}

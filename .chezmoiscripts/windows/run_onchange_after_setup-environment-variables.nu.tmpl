@@ -1,0 +1,19 @@
+{{ if eq .osid "windows" -}}
+#!/usr/bin/env nu
+
+print "Configuring environment variables..."
+
+# setx persists to the user environment (registry); it does not change this
+# session. XDG_CONFIG_HOME is reused below, so capture it once.
+let xdg_config_home = $"($env.USERPROFILE)/.config"
+^setx XDG_CONFIG_HOME $xdg_config_home
+^setx EDITOR "nvim"
+
+# Configure Yazi to open files correctly on Windows.
+# See:
+#   https://yazi-rs.github.io/docs/installation#windows
+^setx YAZI_FILE_ONE 'C:\Program Files\Git\usr\bin\file.exe'
+^setx YAZI_CONFIG_HOME $"($xdg_config_home)/yazi"
+
+print "Configured environment variables..."
+{{ end -}}
