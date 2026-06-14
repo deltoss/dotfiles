@@ -32,7 +32,7 @@ let winget_ids = (
 )
 
 {{- $packagesToInstall := list -}}
-{{- range .packages.windows -}}
+{{- range (concat .packages.windows .packages.common) -}}
   {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
     {{- $packagesToInstall = append $packagesToInstall . -}}
   {{- end -}}

@@ -12,16 +12,6 @@ commands = [
 ]
 
 [[packages.windows]]
-name = "ilspycmd"
-description = "To decomplie CSharp code. Useful CLI tool for AI agents."
-tool = "ilspycmd"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'dotnet tool install --global ilspycmd'
-]
-
-[[packages.windows]]
 description = "Many applications requires these as dependencies, such as Rust (msvc)"
 tags = ["all"]
 package_type = "winget"
@@ -58,53 +48,15 @@ commands = [
 ]
 
 [[packages.windows]]
-name = "Aider"
-description = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
-tool = "aider"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'uv tool install --python python3.12 --with pip aider-chat@latest'
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "OpenJS.NodeJS"
-
-[[packages.windows]]
-name = "Typescript"
-tool = "tsc"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g typescript"
-]
-
-[[packages.windows]]
-name = "Bun"
-tool = "bun"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g bun"
-]
 
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 tool = "deno"
 id = "DenoLand.Deno"
-
-[[packages.windows]]
-name = "Biome"
-description = "Linter + formatter for Javascript and Typescript"
-tool = "biome"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @biomejs/biome"
-]
 
 [[packages.windows]]
 name = "Rust"
@@ -116,47 +68,9 @@ commands = [
 ]
 
 [[packages.windows]]
-name = "cargo-binstall"
-description = "Binary package manager for Rust"
-tool = "cargo-binstall"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "cargo install cargo-binstall"
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "jdx.mise"
-
-[[packages.windows]]
-name = "intelli-shell"
-tool = "intelli-shell"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y intelli-shell --locked'
-]
-
-[[packages.windows]]
-name = "podlet"
-description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
-tool = "podlet"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y podlet'
-]
-
-[[packages.windows]]
-name = "gittype"
-tool = "gittype"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo install gittype'
-]
 
 [[packages.windows]]
 tags = ["all"]
@@ -170,15 +84,6 @@ postcommands = [
 tags = ["all"]
 package_type = "winget"
 id = 'mitmproxy.mitmproxy'
-
-[[packages.windows]]
-name = "harlequin"
-tool = "harlequin"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
-]
 
 [[packages.windows]]
 name = "Mechvibes"
@@ -229,16 +134,6 @@ id = "sigoden.AIChat"
 tags = ["all"]
 package_type = "winget"
 id = "danielmiessler.Fabric"
-
-[[packages.windows]]
-name = "yt-dlp"
-description = "Installs python version to be used with yt-dlp"
-tool = "yt-dlp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
-]
 
 [[packages.windows]]
 tags = ["all"]
@@ -371,16 +266,6 @@ package_type = "winget"
 id = "eza-community.eza"
 
 [[packages.windows]]
-name = "ripgrep"
-description = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
-tool = "rg"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y ripgrep'
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "junegunn.fzf"
@@ -412,16 +297,6 @@ tags = ["all"]
 package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-wezterm-nightly.nu"'
-]
-
-[[packages.windows]]
-name = "agg"
-description = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
-tool = "agg"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo install --git https://github.com/asciinema/agg'
 ]
 
 [[packages.windows]]
@@ -458,24 +333,6 @@ id = "GitHub.cli"
 tags = ["all"]
 package_type = "winget"
 id = "Bruno.Bruno"
-
-[[packages.windows]]
-name = "bru - Bruno CLI"
-tool = "bru"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @usebruno/cli"
-]
-
-[[packages.windows]]
-name = "Redocly CLI"
-tool = "redocly"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @redocly/cli"
-]
 
 [[packages.windows]]
 tags = ["personal"]
@@ -593,33 +450,6 @@ commands = [
 ]
 
 [[packages.windows]]
-name = "Claude Code ACP"
-tool = "claude-agent-acp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g @agentclientprotocol/claude-agent-acp'
-]
-
-[[packages.windows]]
-name = "Codex"
-tool = "codex"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g @openai/codex'
-]
-
-[[packages.windows]]
-name = "Codex ACP"
-tags = ["all"]
-tool = "codex-acp"
-package_type = "commands"
-commands = [
-  'npm install -g @agentclientprotocol/codex-acp'
-]
-
-[[packages.windows]]
 name = "Context7 CLI"
 tags = ["all"]
 package_type = "commands"
@@ -663,15 +493,6 @@ tags = ["personal"]
 package_type = "commands"
 commands = [
   "choco install -y bitwarden"
-]
-
-[[packages.windows]]
-name = "Bitwarden CLI"
-tool = "bw"
-tags = ["personal"]
-package_type = "commands"
-commands = [
-  "npm install -g @bitwarden/cli"
 ]
 
 [[packages.windows]]

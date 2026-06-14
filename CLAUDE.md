@@ -9,7 +9,7 @@ Personal [chezmoi](https://www.chezmoi.io/) dotfiles for Windows machines (with 
 ## Structure
 
 - `.chezmoi.toml.tmpl` — machine config: prompts for email/username/`computerPurpose` (`personal` or `work`), pulls secrets from 1Password (`onepasswordRead`). Templates branch on `.computerPurpose` and `.osid`.
-- `.chezmoidata/` — TOML data driving the install scripts, split into `windows/` and `linux/` subdirs (`steam-apps.toml` stays at the root). See Packages below.
+- `.chezmoidata/` — TOML data driving the install scripts, split into `windows/`, `linux/`, and `common/` subdirs (`steam-apps.toml` stays at the root). See Packages below.
 - `.chezmoiscripts/` — `run_onchange_after_*` scripts. Scripts are Nushell (`.nu.tmpl`), with a few kept in PowerShell (`.ps1.tmpl`) for certain tasks that's easier and cleaner to do in PowerShell.
 - `.chezmoiexternal.toml.tmpl` — external git repos cloned into `~/.config` (PowerShell profile, nushell, nvim, wezterm configs live in separate repos, refreshed weekly).
 - `.chezmoiignore` — excludes `scripts/`, `README.md`, and OS-specific dirs from deployment.
@@ -19,6 +19,8 @@ Personal [chezmoi](https://www.chezmoi.io/) dotfiles for Windows machines (with 
 ## Packages
 
 `.chezmoidata/windows/packages.toml` defines a flat list of `[[packages.windows]]` entries, filtered by `tags`: `"all"` always installs; `"personal"`/`"work"` must match `.computerPurpose`. Installation happens in `.chezmoiscripts/windows/run_onchange_after_install-packages.nu.tmpl` — Nushell, self-elevates via `gsudo`.
+
+Cross-platform packages — those whose install command and idempotency check are identical on both OSes (cargo/npm/uv/dotnet `commands` with a `tool` check) — are defined **once** in `.chezmoidata/common/packages.toml` as `[[packages.common]]`. Each OS installer ranges over its own array **plus** common (`concat .packages.<os> .packages.common` — OS array first, common last, so OS-specific managers like Rust/Node install before the cross-platform `cargo install`/`npm i -g` entries). `winget`/`apt`/`choco`/`scoop` entries stay in the per-OS files.
 
 Entry fields:
 - `package_type` — `"winget"` (uses `id`) or `"commands"` (uses `commands` list).

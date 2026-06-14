@@ -1,0 +1,194 @@
+# Cross-platform packages — installed on BOTH Windows and Linux.
+#
+# Each OS's install-packages script ranges over its own array PLUS this common
+# array (OS array first, common last). Only put entries here whose install
+# command AND idempotency check are identical on both OSes — i.e.
+# package_type = "commands" via cargo/npm/uv/dotnet with a `tool` (which-)check.
+# winget / apt / choco / scoop entries stay in the per-OS files.
+#
+# The package MANAGERS (rust, node, …) have OS-specific installs, so they live in
+# the per-OS files and run before this bucket — cargo/npm are available here.
+# Order matters: cargo-binstall must precede any `cargo binstall` user.
+
+# --- cargo ---
+[[packages.common]]
+name = "cargo-binstall"
+description = "Binary package manager for Rust"
+tool = "cargo-binstall"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "cargo install cargo-binstall"
+]
+
+[[packages.common]]
+name = "ripgrep"
+description = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
+tool = "rg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y ripgrep'
+]
+
+[[packages.common]]
+name = "intelli-shell"
+tool = "intelli-shell"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y intelli-shell --locked'
+]
+
+[[packages.common]]
+name = "podlet"
+description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
+tool = "podlet"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y podlet'
+]
+
+[[packages.common]]
+name = "gittype"
+tool = "gittype"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install gittype'
+]
+
+[[packages.common]]
+name = "agg"
+description = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
+tool = "agg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install --git https://github.com/asciinema/agg'
+]
+
+# --- npm ---
+[[packages.common]]
+name = "Typescript"
+tool = "tsc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g typescript"
+]
+
+[[packages.common]]
+name = "Bun"
+tool = "bun"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g bun"
+]
+
+[[packages.common]]
+name = "Biome"
+description = "Linter + formatter for Javascript and Typescript"
+tool = "biome"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @biomejs/biome"
+]
+
+[[packages.common]]
+name = "bru - Bruno CLI"
+tool = "bru"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @usebruno/cli"
+]
+
+[[packages.common]]
+name = "Redocly CLI"
+tool = "redocly"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @redocly/cli"
+]
+
+[[packages.common]]
+name = "Claude Code ACP"
+tool = "claude-agent-acp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g @agentclientprotocol/claude-agent-acp'
+]
+
+[[packages.common]]
+name = "Codex"
+tool = "codex"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g @openai/codex'
+]
+
+[[packages.common]]
+name = "Codex ACP"
+tool = "codex-acp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g @agentclientprotocol/codex-acp'
+]
+
+[[packages.common]]
+name = "Bitwarden CLI"
+tool = "bw"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  "npm install -g @bitwarden/cli"
+]
+
+# --- uv ---
+[[packages.common]]
+name = "Aider"
+description = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
+tool = "aider"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'uv tool install --python python3.12 --with pip aider-chat@latest'
+]
+
+[[packages.common]]
+name = "harlequin"
+tool = "harlequin"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
+]
+
+[[packages.common]]
+name = "yt-dlp"
+description = "Installs python version to be used with yt-dlp"
+tool = "yt-dlp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
+]
+
+# --- dotnet ---
+[[packages.common]]
+name = "ilspycmd"
+description = "To decomplie CSharp code. Useful CLI tool for AI agents."
+tool = "ilspycmd"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'dotnet tool install --global ilspycmd'
+]
