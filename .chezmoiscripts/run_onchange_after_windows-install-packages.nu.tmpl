@@ -1,0 +1,75 @@
+{{ if eq .osid "windows" -}}
+#!/usr/bin/env nu
+
+# Installs the Windows packages defined in .chezmoidata/packages/windows.toml.
+
+# Self-elevate to Administrator if needed
+let is_admin = gsudo status --json | from json | get IsElevated
+if not $is_admin {
+  print "Requesting administrator privileges..."
+  gsudo nu $env.CURRENT_FILE
+  exit
+}
+
+print $"(ansi green_bold)Installing packages...(ansi reset)"
+
+# Context made available to the per-package install commands below.
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
+$env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
+
+# Reusable PATH refresh, shared with the scripts/windows helpers.
+use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/refresh-path.nu'
+
+# Installed winget IDs, via the WinGet PowerShell module (returns real objects;
+# `winget list` only gives text). Install the module first if it is missing.
+print "Querying installed winget packages..."
+let winget_ids = (
+  ^pwsh -NoProfile -Command "if (-not (Get-Module -ListAvailable -Name Microsoft.WinGet.Client)) { Install-Module -Name Microsoft.WinGet.Client -Force -AllowClobber -Scope CurrentUser -Repository PSGallery -Confirm:$false }; Import-Module Microsoft.WinGet.Client; Get-WinGetPackage -Source winget | Select-Object -ExpandProperty Id"
+  | lines
+  | str trim
+  | where {|it| $it != "" }
+)
+
+{{- $packagesToInstall := list -}}
+{{- range .packages.windows -}}
+  {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
+    {{- $packagesToInstall = append $packagesToInstall . -}}
+  {{- end -}}
+{{- end -}}
+
+{{ range $packagesToInstall }}
+  {{- $name := "Unknown" -}}
+  {{- if hasKey . "name" }}{{ $name = .name }}{{ else if hasKey . "id" }}{{ $name = .id }}{{ end }}
+let display = {{ $name | quote }}
+print $"(ansi blue)Checking ($display)...(ansi reset)"
+  {{- if hasKey . "tool" }}
+let already_installed = (which ^{{ .tool }} | is-not-empty)
+  {{- else if eq .package_type "winget" }}
+let already_installed = ({{ .id | quote }} in $winget_ids)
+  {{- else }}
+let already_installed = false
+  {{- end }}
+if $already_installed {
+  print $"  ($display) already installed, skipping"
+} else {
+  {{- if hasKey . "description" }}
+  print {{ .description | quote }}
+  {{- end }}
+  {{- if hasKey . "precommand" }}
+  {{ .precommand }}
+  {{- end }}
+  {{- if eq .package_type "winget" }}
+  ^winget install --id {{ .id | quote }} -e --no-upgrade {{ if hasKey . "version" }}-v {{ .version | quote }}{{ end }}
+  {{- else if eq .package_type "commands" }}
+    {{- range .commands }}
+  {{ . }}
+    {{- end }}
+  {{- end }}
+  {{- if hasKey . "postcommand" }}
+  {{ .postcommand }}
+  {{- end }}
+  refresh-path
+}
+{{ end -}}
+print $"(ansi green_bold)Package install complete. Review the output above.(ansi reset)"
+{{ end -}}

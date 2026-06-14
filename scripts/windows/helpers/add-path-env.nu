@@ -5,6 +5,8 @@
 # Usage:
 #   use windows/helpers/add-path-env.nu
 #   add-path-env $cargo_dir
+use ./refresh-path.nu
+
 export def --env main [dir: string] {
   if ($dir in $env.Path) {
     return
@@ -13,5 +15,5 @@ export def --env main [dir: string] {
   let user_paths = ^powershell -Command "[Environment]::GetEnvironmentVariable('PATH', 'User')" | str trim --right --char ";"
   let user_paths = $'($user_paths);($dir)'
   ^powershell -Command $"[Environment]::SetEnvironmentVariable\('PATH', '($user_paths)', 'User'\)"
-  source ./refresh-path.nu # Refresh paths so it'd work immediately
+  refresh-path # Refresh paths so it'd work immediately
 }

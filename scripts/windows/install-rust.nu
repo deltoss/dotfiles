@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+use ./helpers/refresh-path.nu
+
 let url = "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
 let output_path = $"($env.TEMP)\\rustup-init.exe"
 
@@ -13,7 +15,7 @@ if ($output_path | path exists) {
   print $"(ansi green)Installation complete and installer cleaned up.(ansi reset)"
 
   # Refresh PATH for current session
-  source ./helpers/refresh-path.nu
+  refresh-path
 
   # Swap to GNU toolchain instead of MSVC
   rustup toolchain install stable-x86_64-pc-windows-gnu

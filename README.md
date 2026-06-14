@@ -4,11 +4,18 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 
 ## Prerequisites
 
-- `PowerShell 7+` → To install Nerd fonts using [nerd-fonts-installer-PS](https://github.com/deltoss/nerd-fonts-installer-ps)
+- `Nushell` → To run the shell scripts
 - `Git` → To clone/pull from public repositories
 - `1Password CLI` → For secrets in templates
 
-## Windows Installation
+### Windows
+
+- `PowerShell 7+` → To install Nerd fonts using [nerd-fonts-installer-PS](https://github.com/deltoss/nerd-fonts-installer-ps)
+- `gsudo` → For command elevation on Windows
+
+## Installation
+
+### Windows
 
 1. Open up `PowerShell` as administrator.
 
@@ -23,11 +30,14 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 2. Run the below command to install the pre-requisites and Chezmoi
 
    ```powershell
+   winget install --id Nushell.Nushell -e
    winget install --id Git.Git -e
    winget install --id AgileBits.1Password -e
    winget install --id AgileBits.1Password.CLI -e
-   winget install --id Microsoft.PowerShell -e
    winget install --id twpayne.chezmoi -e
+
+   winget install --id Microsoft.PowerShell -e
+   winget install --id gerardog.gsudo -e
    ```
 
 3. [Optional] Set up your SSH credentials with git. Otherwise Chezmoi will use HTTPS instead of your SSH keys when cloning external repositories. See [GitHub Gists - SSH on Windows](https://gist.github.com/deltoss/d7aa8beb0e6d456b223041f9fe120b61)

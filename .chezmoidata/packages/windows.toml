@@ -1,0 +1,798 @@
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Nushell.Nushell"
+
+[[packages.windows]]
+name = "dotnet"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-dotnet.nu"'
+]
+
+[[packages.windows]]
+name = "ilspycmd"
+description = "To decomplie CSharp code. Useful CLI tool for AI agents."
+tool = "ilspycmd"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'dotnet tool install --global ilspycmd'
+]
+
+[[packages.windows]]
+description = "Many applications requires these as dependencies, such as Rust (msvc)"
+tags = ["all"]
+package_type = "winget"
+id = "Microsoft.VCRedist.2015+.x64"
+
+[[packages.windows]]
+description = "Many applications requires these as dependencies, such as Rust (msvc)"
+tags = ["all"]
+package_type = "winget"
+id = "Microsoft.VisualStudio.BuildTools"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Chocolatey.Chocolatey"
+
+[[packages.windows]]
+name = "Scoop"
+tool = "scoop"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "powershell -Command 'iex \"& {$(irm get.scoop.sh)} -RunAsAdmin\"'"
+]
+
+[[packages.windows]]
+name = "uv"
+description = "Package manager for Python"
+tool = "uv"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"'
+]
+
+[[packages.windows]]
+name = "Aider"
+description = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
+tool = "aider"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'uv tool install --python python3.12 --with pip aider-chat@latest'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "OpenJS.NodeJS"
+
+[[packages.windows]]
+name = "Typescript"
+tool = "tsc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g typescript"
+]
+
+[[packages.windows]]
+name = "Bun"
+tool = "bun"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g bun"
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+tool = "deno"
+id = "DenoLand.Deno"
+
+[[packages.windows]]
+name = "Biome"
+description = "Linter + formatter for Javascript and Typescript"
+tool = "biome"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @biomejs/biome"
+]
+
+[[packages.windows]]
+name = "Rust"
+tool = "rustc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-rust.nu"'
+]
+
+[[packages.windows]]
+name = "cargo-binstall"
+description = "Binary package manager for Rust"
+tool = "cargo-binstall"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "cargo install cargo-binstall"
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "jdx.mise"
+
+[[packages.windows]]
+name = "intelli-shell"
+tool = "intelli-shell"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y intelli-shell --locked'
+]
+
+[[packages.windows]]
+name = "podlet"
+description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
+tool = "podlet"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y podlet'
+]
+
+[[packages.windows]]
+name = "gittype"
+tool = "gittype"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install gittype'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = 'tsl0922.ttyd'
+postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-ttyd.nu"'
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = 'mitmproxy.mitmproxy'
+
+[[packages.windows]]
+name = "harlequin"
+tool = "harlequin"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
+]
+
+[[packages.windows]]
+name = "Mechvibes"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-mechvibes.nu"'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "hluk.CopyQ"
+
+[[packages.windows]]
+name = "OpenCode"
+description = "Agentic AI in the terminal"
+tool = "opencode"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "choco install -y opencode"
+]
+
+[[packages.windows]]
+description = "Dependency for Neovim plugins"
+tags = ["all"]
+package_type = "winget"
+id = "Python.Python.3.13"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Git.Git"
+
+[[packages.windows]]
+description = "Better CLI to interact with Git Worktrees"
+tags = ["all"]
+package_type = "winget"
+id = "max-sixty.worktrunk"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "sigoden.AIChat"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "danielmiessler.Fabric"
+
+[[packages.windows]]
+name = "yt-dlp"
+description = "Installs python version to be used with yt-dlp"
+tool = "yt-dlp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "7zip.7zip"
+# Add 7-Zip to the user PATH (idempotent); refresh-path picks it up afterwards.
+postcommand = '''nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/helpers/add-path-env.nu" r#'C:\Program Files\7-Zip'#'''
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "JohnMacFarlane.Pandoc"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Pinta.Pinta"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Meld.Meld"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "glzr-io.glazewm"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Doist.Todoist"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Anki.Anki"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Zen-Team.Zen-Browser"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Microsoft.VisualStudioCode"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Obsidian.Obsidian"
+
+[[packages.windows]]
+name = "clang C/C++ Compiler"
+description = "A dependency Neovim needs on Windows. Installs clang with headers, a C compiler. With headers means it comes bundled with C standard library. Needed for treesitter for Neovim, i.e. syntax highlighting"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-c-compiler.nu"'
+]
+
+[[packages.windows]]
+name = "Treesitter CLI"
+description = "CLI for managing parsers for Neovim"
+tags = ["all"]
+package_type = "winget"
+id = 'tree-sitter.tree-sitter-cli'
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Neovim.Neovim"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "AutoHotkey.AutoHotkey"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "JesseDuffield.lazygit"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "JesseDuffield.Lazydocker"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "ajeetdsouza.zoxide"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Gyan.FFmpeg"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "jqlang.jq"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "MikeFarah.yq"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "oschwartz10612.Poppler"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "sharkdp.fd"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "sharkdp.bat"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "eza-community.eza"
+
+[[packages.windows]]
+name = "ripgrep"
+description = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
+tool = "rg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y ripgrep'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "junegunn.fzf"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "alexpasmantier.television"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Flameshot.Flameshot"
+version = "12.1.0" # Wait until v14 is released before I remove this version pin. I experience issues with V13 for mixed monitor setups
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "ImageMagick.ImageMagick"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "sxyazi.yazi"
+
+[[packages.windows]]
+name = "Weztern Nightly"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-wezterm-nightly.nu"'
+]
+
+[[packages.windows]]
+name = "agg"
+description = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
+tool = "agg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install --git https://github.com/asciinema/agg'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "KDE.KDEConnect"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Starship.Starship"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "dbrgn.tealdeer"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "dandavison.delta"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "ImageMagick.Q16-HDRI"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "GitHub.cli"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Bruno.Bruno"
+
+[[packages.windows]]
+name = "bru - Bruno CLI"
+tool = "bru"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @usebruno/cli"
+]
+
+[[packages.windows]]
+name = "Redocly CLI"
+tool = "redocly"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @redocly/cli"
+]
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "Foundry376.Mailspring"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "calibre.calibre"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "AppByTroye.KoodoReader"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "ONLYOFFICE.DesktopEditors"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "qBittorrent.qBittorrent"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "HandBrake.HandBrake"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "Audacity.Audacity"
+
+[[packages.windows]]
+description = "For Audacity to be compatible with more files"
+tags = ["personal"]
+package_type = "winget"
+id = "Gyan.FFmpeg"
+
+[[packages.windows]]
+description = "Screen video recorder"
+tags = ["all"]
+package_type = "winget"
+id = "SiddharthVaddem.OpenScreen"
+
+[[packages.windows]]
+name = "Sunshine"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-sunshine.nu"'
+]
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "VideoLAN.VLC"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "KDE.Kdenlive"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "SoftFever.OrcaSlicer"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Microsoft.PowerShell"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "RedHat.Podman"
+tool = "podman"
+precommand = "wsl --install --no-distribution"
+postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-podman.nu"'
+
+[[packages.windows]]
+name = "podman-compose"
+tool = "podman-compose"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "pip3 install podman-compose"
+]
+
+[[packages.windows]]
+description = "For mounting and syncing network storage"
+tags = ["all"]
+package_type = "winget"
+id = "Rclone.Rclone"
+postcommand = 'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-rclone.nu"'
+
+[[packages.windows]]
+name = "Claude Code"
+tool = "claude"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'powershell -NoProfile -Command "irm https://claude.ai/install.ps1 | iex"',
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-claude-code.nu"'
+]
+
+[[packages.windows]]
+name = "Claude Code ACP"
+tool = "claude-agent-acp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g @agentclientprotocol/claude-agent-acp'
+]
+
+[[packages.windows]]
+name = "Codex"
+tool = "codex"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g @openai/codex'
+]
+
+[[packages.windows]]
+name = "Codex ACP"
+tags = ["all"]
+tool = "codex-acp"
+package_type = "commands"
+commands = [
+  'npm install -g @agentclientprotocol/codex-acp'
+]
+
+[[packages.windows]]
+name = "Context7 CLI"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-context7-cli.nu"'
+]
+
+[[packages.windows]]
+name = "Serena"
+description = "Semantic retrieval & editing agent"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Espanso.Espanso"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "cjpais.Handy"
+
+[[packages.windows]]
+name = "Obsidian CLI"
+tool = "notesmd-cli"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git",
+  "scoop install notesmd-cli"
+]
+
+[[packages.windows]]
+name = "Bitwarden"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  "choco install bitwarden"
+]
+
+[[packages.windows]]
+name = "Bitwarden CLI"
+tool = "bw"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  "npm install -g @bitwarden/cli"
+]
+
+[[packages.windows]]
+name = "Vultr CLI"
+description = "CLI for Vultr VPS & cloud services"
+tool = "vultr-cli"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  "choco install -y vultr-cli"
+]
+
+# The below only works with Windows, and has no direct Linux Counterpart
+
+[[packages.windows]]
+name = "Claude Desktop"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-claude-desktop.nu"'
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Adobe.Acrobat.Reader.64-bit"
+
+[[packages.windows]]
+name = "MinGW"
+description = "Required dependency for Neovim plugins"
+tool = "gcc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "choco install -y mingw"
+]
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "SSHFS-Win.SSHFS-Win"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Microsoft.PowerToys"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "Flow-Launcher.Flow-Launcher"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "NickeManarin.ScreenToGif"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "voidtools.Everything"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "voidtools.Everything.Cli"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "AstroComma.AstroGrep"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "xanderfrangos.twinkletray"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "jftuga.less"
+
+[[packages.windows]]
+name = "OpenSSH Server"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'powershell -File $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/setup-ssh-server.ps1"'
+]
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "Microsoft.VisualStudio.Community.Insiders"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "TGRMNSoftware.BulkRenameUtility"
+
+[[packages.windows]]
+description = "For Media Player Classic. Note VLC uses its own Codec."
+tags = ["personal"]
+package_type = "winget"
+id = "CodecGuide.K-LiteCodecPack.Full"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "clsid2.mpc-hc"
+
+[[packages.windows]]
+tags = ["personal"]
+package_type = "winget"
+id = "Oracle.VirtualBox"
+
+[[packages.windows]]
+name = "Jira CLI"
+tool = "jira"
+tags = ["work"]
+package_type = "commands"
+commands = [
+  "scoop bucket add extras",
+  "scoop install jira-cli"
+]
+
+[[packages.windows]]
+name = "AWS CLI"
+description = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
+tool = "aws"
+tags = ["work"]
+package_type = "commands"
+commands = [
+  "msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi"
+]
