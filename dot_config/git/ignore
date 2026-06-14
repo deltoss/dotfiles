@@ -1,6 +1,4 @@
 .gittype/
-AGENTS.md
-CLAUDE.md
 .aider*
 **/.claude/settings.local.json
 **/.serena
