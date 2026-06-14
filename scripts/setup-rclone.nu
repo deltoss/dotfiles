@@ -14,7 +14,7 @@ if ($env.CHEZMOI_COMPUTERPURPOSE == "personal") {
   let is_config_setup = $configs | any { $in =~ media-dav and $in =~ "pass = .+" }
   if (not $is_config_setup) {
     print $"(ansi green)Updating sensitive values specifically for personal computer...(ansi reset)"
-    rclone config update media-dav pass (op read "op://Personal/Copyparty/password") # Updates the password. Note it's encrypted
+    rclone config update media-dav pass (^chezmoi data --format json | from json | get copyparty_password) # Updates the password. Note it's encrypted
   }
 
   let is_config_setup = $configs | any { $in =~ personal-google-drive and $in =~ "token = .+" }

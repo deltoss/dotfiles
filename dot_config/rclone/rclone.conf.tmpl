@@ -1,16 +1,16 @@
 {{- if eq .computerPurpose "personal" -}}
 [media-dav]
 type = webdav
-url = {{ onepasswordRead "op://Personal/Copyparty/website" }}
+url = {{ .copyparty_website }}
 vendor = owncloud
 pacer_min_sleep = 0.01ms
-user = {{ onepasswordRead "op://Personal/Copyparty/username" }}
+user = {{ .copyparty_username }}
 pass = 
 
 [personal-google-drive]
 type = drive
-client_id = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client ID" }}
-client_secret = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client Secret" }}
+client_id = {{ .rclone_personal_gdrive_client_id }}
+client_secret = {{ .rclone_personal_gdrive_client_secret }}
 scope = drive
 token = 
 team_drive = 
@@ -18,8 +18,8 @@ team_drive =
 {{ end -}}
 [notes-google-drive]
 type = drive
-client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" }}
-client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" }}
+client_id = {{ .rclone_notes_gdrive_client_id }}
+client_secret = {{ .rclone_notes_gdrive_client_secret }}
 scope = drive
 token = 
 team_drive = 

@@ -20,7 +20,7 @@ global ticksSinceLastRequest := 0
 
   ; Check if this is the first request or a certain amount of seconds have elapsed
   if (firstRequest) {
-    Run "curl -X GET `"{{ onepasswordRead "op://Personal/Hostnames/iot" }}/endpoint/light-keep-alive`" -s", , "Hide"
+    Run "curl -X GET `"{{ .iot_hostname }}/endpoint/light-keep-alive`" -s", , "Hide"
 
     firstRequest := false
     return
@@ -28,7 +28,7 @@ global ticksSinceLastRequest := 0
 
   ticksSinceLastRequest += A_TimeSincePriorHotkey
   if (ticksSinceLastRequest >= 15000) {
-    Run "curl -X GET `"{{ onepasswordRead "op://Personal/Hostnames/iot" }}/endpoint/light-keep-alive`" -s", , "Hide"
+    Run "curl -X GET `"{{ .iot_hostname }}/endpoint/light-keep-alive`" -s", , "Hide"
     ticksSinceLastRequest := 0
   }
 }

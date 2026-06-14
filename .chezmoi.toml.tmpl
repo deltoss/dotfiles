@@ -54,6 +54,17 @@
   {{ else if eq .computerPurpose "work" -}}
   harlequin_configs = {{- onepasswordRead "op://Work/Harlequin/Configs" | quote -}}
   {{- end }}
+  {{ if eq $computerPurpose "personal" -}}
+  mobile_ssh_public_key = {{ onepasswordRead "op://Personal/Mobile Devices SSH Key/public key" | quote }}
+  iot_hostname = {{ onepasswordRead "op://Personal/Hostnames/iot" | quote }}
+  copyparty_website = {{ onepasswordRead "op://Personal/Copyparty/website" | quote }}
+  copyparty_username = {{ onepasswordRead "op://Personal/Copyparty/username" | quote }}
+  copyparty_password = {{ onepasswordRead "op://Personal/Copyparty/password" | quote }}
+  rclone_personal_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client ID" | quote }}
+  rclone_personal_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client Secret" | quote }}
+  {{- end }}
+  rclone_notes_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" | quote }}
+  rclone_notes_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" | quote }}
 
 [diff]
   pager = "delta"

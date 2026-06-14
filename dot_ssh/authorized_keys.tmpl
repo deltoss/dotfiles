@@ -1,5 +1,5 @@
 {{- if eq .osid "windows" -}}
 {{- if eq .computerPurpose "personal" -}}
-{{- onepasswordRead "op://Personal/Mobile Devices SSH Key/public key" -}}
+{{- .mobile_ssh_public_key -}}
 {{- end -}}
 {{- end -}}
