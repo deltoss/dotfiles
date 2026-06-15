@@ -1,0 +1,26 @@
+# Linux-only package definitions (stub).
+#
+# Same schema as windows/packages.toml, keyed under [[packages.linux]]. Use
+# package_type = "apt" (installs via `sudo apt-get install -y <id>`) or
+# "commands". winget/choco/scoop do not apply here.
+#
+# Cross-platform packages (cargo/npm/uv/dotnet) live in common/packages.toml, not
+# here. But their MANAGERS are OS-specific, so define them here so they install
+# before the common bucket runs, e.g.:
+#
+#   [[packages.linux]]
+#   name = "Rust"
+#   tool = "cargo"
+#   tags = ["all"]
+#   package_type = "commands"
+#   commands = ["curl https://sh.rustup.rs -sSf | sh -s -- -y"]
+#
+#   [[packages.linux]]
+#   name = "fd"
+#   tool = "fd"
+#   tags = ["all"]
+#   package_type = "apt"
+#   id = "fd-find"
+#
+# Until real entries are added, this file is comment-only and contributes no data
+# (the install-packages script guards on `hasKey .packages "linux"`).
