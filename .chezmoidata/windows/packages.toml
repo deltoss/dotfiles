@@ -81,6 +81,14 @@ postcommands = [
 ]
 
 [[packages.windows]]
+name = "Libation"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-libation.nu"'
+]
+
+[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = 'mitmproxy.mitmproxy'
