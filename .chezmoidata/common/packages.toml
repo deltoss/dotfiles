@@ -69,6 +69,17 @@ commands = [
   'cargo install --git https://github.com/asciinema/agg'
 ]
 
+[[packages.common]]
+name = "zellij"
+description = "Terminal multiplexer"
+tool = "zellij"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  # Extra flags to disable the web client at it was causing issues with Windows
+  'cargo install --locked zellij --no-default-features --features plugins_from_target'
+]
+
 # --- npm ---
 [[packages.common]]
 name = "Typescript"
