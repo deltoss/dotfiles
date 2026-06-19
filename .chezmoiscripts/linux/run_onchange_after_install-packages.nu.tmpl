@@ -22,7 +22,7 @@ $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
   {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
     {{- $packagesToInstall = append $packagesToInstall . -}}
   {{- end -}}
-{{- end -}}
+{{- end }}
 #
 # Refresh apt's package lists so installs resolve.
 sudo apt-get update
