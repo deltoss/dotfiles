@@ -1,0 +1,28 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane name="Coding" focus=true {
+        pane split_direction="vertical" {
+            pane name="NVim" size="65%" focus=true {
+                command "nvim"
+                args "."
+            }
+            pane split_direction="horizontal" size="35%" stacked=true {
+                pane name="HTTP" {
+                    command "nvim"
+                    args "~/HTTP/"
+                }
+                pane name="Terminal" {
+                    command "nu"
+                }
+                pane name="AI" {
+                    command "claude"
+                }
+            }
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}
