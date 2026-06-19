@@ -7,4 +7,6 @@ edit = [
 	{ run = "%EDITOR% %s", block = true, desc = "Editor", for = "windows" },
   { run = '$SHELL', block = true, desc = "Terminal", for = "unix" },
   { run = 'nu.exe', block = true, desc = "Terminal", for = "windows" },
+  { run = 'zellij edit %s1', desc = "Zellij Edit", for = "unix" },
+  { run = 'zellij edit %s1', desc = "Zellij Edit", for = "windows" },
 ]
