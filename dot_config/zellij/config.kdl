@@ -151,10 +151,6 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
     }
-    shared_among "normal" "locked" {
-        bind "Ctrl Alt f" { ToggleFloatingPanes; }
-        bind "Alt n" { NewPane; }
-    }
     shared_among "normal" {
         bind "left" { MoveFocusOrTab "left"; }
         bind "down" { MoveFocus "down"; }
@@ -169,6 +165,10 @@ keybinds clear-defaults=true {
         bind "Ctrl right" { MoveTab "right"; }
         bind "Ctrl p" { TogglePaneInGroup; }
         bind "Ctrl Shift p" { ToggleGroupMarking; }
+    }
+    shared_among "normal" "locked" {
+        bind "Ctrl Alt f" { ToggleFloatingPanes; }
+        bind "Alt n" { NewPane; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
@@ -277,7 +277,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "pencil-light"
+theme "catppuccin-latte"
  
 // Theme to use when the host terminal reports a dark color palette.
 // Requires `theme_light` to also be set; otherwise `theme` is used.
@@ -508,7 +508,7 @@ default_shell "nu"
 // Whether to show tips on startup
 // Default: true
 // 
-// show_startup_tips false
+show_startup_tips false
  
 // Whether to show release notes on first version run
 // Default: true

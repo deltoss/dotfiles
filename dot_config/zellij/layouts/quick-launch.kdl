@@ -3,7 +3,6 @@ layout {
         plugin location="tab-bar"
     }
     pane {
-        name "Quick Launch"
         command "nu"
         args "--no-config-file" "--no-std-lib" "~/.config/nushell/custom-commands/quick-launch.nu"
         close_on_exit true
