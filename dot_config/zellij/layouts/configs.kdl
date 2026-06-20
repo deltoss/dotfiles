@@ -1,5 +1,4 @@
 layout {
-    cwd "~/.config"
     pane_template name="tools_pane" {
         pane stacked=true {
             pane {
@@ -46,10 +45,10 @@ layout {
         }
     }
 
-    config_tab name="Config"
-    config_tab name="Neovim" cwd="nvim"
-    config_tab name="Nushell" cwd="nushell"
-    config_tab name="Wezterm" cwd="wezterm"
+    config_tab name="Config" cwd="~/.config"
+    config_tab name="Neovim" cwd="~/.config/nvim"
+    config_tab name="Nushell" cwd="~/.config/nushell"
+    config_tab name="Wezterm" cwd="~/.config/wezterm"
 
     tab name="Chezmoi" {
         pane size=1 borderless=true {
