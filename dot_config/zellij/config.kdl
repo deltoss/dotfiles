@@ -171,54 +171,14 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
     }
     shared {
-      bind "Alt left" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "move_focus";
-              payload "left";
-          };
-      }
-      bind "Alt down" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "move_focus";
-              payload "down";
-          };
-      }
-      bind "Alt up" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "move_focus";
-              payload "up";
-          };
-      }
-      bind "Alt right" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "move_focus";
-              payload "right";
-          };
-      }
-      bind "Ctrl Alt left" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "resize";
-              payload "left";
-          };
-      }
-      bind "Ctrl Alt down" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "resize";
-              payload "down";
-          };
-      }
-      bind "Ctrl Alt up" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "resize";
-              payload "up";
-          };
-      }
-      bind "Ctrl Alt right" {
-          MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm" {
-              name "resize";
-              payload "right";
-          };
-      }
+      bind "Alt left" { MoveFocusOrTab "left"; }
+      bind "Alt down" { MoveFocus "down"; }
+      bind "Alt up" { MoveFocus "up"; }
+      bind "Alt right" { MoveFocusOrTab "right"; }
+      bind "Ctrl Alt left" { Resize "Increase left"; }
+      bind "Ctrl Alt down" { Resize "Increase down"; }
+      bind "Ctrl Alt up" { Resize "Increase up"; }
+      bind "Ctrl Alt right" { Resize "Increase right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
