@@ -4,13 +4,16 @@ layout {
         pane size=1 borderless=true {
             plugin location="tab-bar"
         }
-        children
-        pane size=1 borderless=true {
-            plugin location="status-bar"
-        }
-    }
-    pane_template name="tools_pane" {
         pane stacked=true {
+            pane {
+                name "Main"
+                command "nu"
+                args "-e" "y"
+                start_suspended true
+                expanded true
+                focus true
+            }
+            children
             pane {
                 name "OpenCode"
                 command "opencode"
@@ -26,31 +29,11 @@ layout {
                 plugin location="zellij:session-manager"
             }
         }
-    }
-    tab name="Org Notes" split_direction="vertical" cwd="Org Notes" {
-        pane size="65%" stacked=true {
-          pane {
-              name "Yazi"
-              command "nu"
-              args "-e" "y"
-              start_suspended true
-              expanded true
-              focus true
-          }
+        pane size=1 borderless=true {
+            plugin location="status-bar"
         }
-        tools_pane size="35%"
     }
-    tab name="Note Taking" split_direction="vertical" cwd="Note Taking" {
-        pane size="65%" stacked=true {
-          pane {
-              name "Yazi"
-              command "nu"
-              args "-e" "y"
-              start_suspended true
-              expanded true
-              focus true
-          }
-        }
-        tools_pane size="35%"
-    }
+
+    tab name="Org Notes" split_direction="vertical" cwd="Org Notes"
+    tab name="Note Taking" split_direction="vertical" cwd="Note Taking"
 }

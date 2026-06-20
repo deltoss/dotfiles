@@ -31,7 +31,7 @@ layout {
         pane split_direction="vertical" {
             pane size="65%" stacked=true {
               pane {
-                  name "Yazi"
+                  name "Main"
                   command "nu"
                   args "-e" "y"
                   start_suspended true
@@ -45,6 +45,7 @@ layout {
             plugin location="status-bar"
         }
     }
+
     config_tab name="Config"
     config_tab name="Neovim" cwd="nvim"
     config_tab name="Nushell" cwd="nushell"
