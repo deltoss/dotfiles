@@ -1,5 +1,4 @@
 layout {
-    cwd "~/Documents"
     default_tab_template {
         pane size=1 borderless=true {
             plugin location="tab-bar"
@@ -34,6 +33,6 @@ layout {
         }
     }
 
-    tab name="Org Notes" split_direction="vertical" cwd="Org Notes"
-    tab name="Note Taking" split_direction="vertical" cwd="Note Taking"
+    tab name="Org Notes" split_direction="vertical" cwd="~/Documents/Org Notes"
+    tab name="Note Taking" split_direction="vertical" cwd="~/Documents/Note Taking"
 }
