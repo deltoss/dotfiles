@@ -10,3 +10,8 @@ edit = [
   { run = '$SHELL', block = true, desc = "Terminal", for = "unix" },
   { run = 'nu.exe', block = true, desc = "Terminal", for = "windows" },
 ]
+
+[open]
+append_rules = [
+	{ url = "*", use = [ "edit", "open" ] },
+]
