@@ -2,10 +2,19 @@ layout {
     pane size=1 borderless=true {
         plugin location="tab-bar"
     }
-    pane {
-        command "nu"
-        args "--no-config-file" "--no-std-lib" "~/.config/nushell/custom-commands/quick-launch.nu"
-        close_on_exit true
+    pane stacked=true {
+        pane {
+            name "Main"
+            command "nu"
+            args "--no-config-file" "--no-std-lib" "~/.config/nushell/custom-commands/quick-launch.nu"
+            focus true
+            expanded true
+            close_on_exit true
+        }
+        pane {
+            name "Sessions"
+            plugin location="zellij:session-manager"
+        }
     }
     pane size=1 borderless=true {
         plugin location="status-bar"

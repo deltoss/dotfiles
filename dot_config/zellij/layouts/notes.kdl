@@ -1,0 +1,56 @@
+layout {
+    cwd "~/Documents"
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        children
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+    pane_template name="tools_pane" {
+        pane stacked=true {
+            pane {
+                name "OpenCode"
+                command "opencode"
+                start_suspended true
+            }
+            pane {
+                name "Claude"
+                command "claude"
+                start_suspended true
+            }
+            pane {
+                name "Sessions"
+                plugin location="zellij:session-manager"
+            }
+        }
+    }
+    tab name="Org Notes" split_direction="vertical" cwd="Org Notes" {
+        pane size="65%" stacked=true {
+          pane {
+              name "Yazi"
+              command "nu"
+              args "-e" "y"
+              start_suspended true
+              expanded true
+              focus true
+          }
+        }
+        tools_pane size="35%"
+    }
+    tab name="Note Taking" split_direction="vertical" cwd="Note Taking" {
+        pane size="65%" stacked=true {
+          pane {
+              name "Yazi"
+              command "nu"
+              args "-e" "y"
+              start_suspended true
+              expanded true
+              focus true
+          }
+        }
+        tools_pane size="35%"
+    }
+}

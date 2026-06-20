@@ -2,22 +2,43 @@ layout {
     pane size=1 borderless=true {
         plugin location="tab-bar"
     }
-    pane name="Coding" focus=true {
+    pane name="Coding" {
         pane split_direction="vertical" {
-            pane name="NVim" size="65%" focus=true {
-                command "nvim"
-                args "."
+            pane size="65%" stacked=true {
+              pane {
+                  name "Yazi"
+                  command "nu"
+                  args "-e" "y"
+                  expanded true
+                  focus true
+              }
             }
             pane split_direction="horizontal" size="35%" stacked=true {
-                pane name="HTTP" {
+                pane {
+                    name "Terminal"
+                    command "nu"
+                    start_suspended true
+                    expanded true
+                }
+                pane {
+                    name "OpenCode"
+                    command "opencode"
+                    start_suspended true
+                }
+                pane {
+                    name "Claude"
+                    command "claude"
+                    start_suspended true
+                }
+                pane {
+                    name "HTTP"
                     command "nvim"
                     args "~/HTTP/"
+                    start_suspended true
                 }
-                pane name="Terminal" {
-                    command "nu"
-                }
-                pane name="AI" {
-                    command "claude"
+                pane {
+                    name "Sessions"
+                    plugin location="zellij:session-manager"
                 }
             }
         }

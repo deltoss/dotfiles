@@ -1,0 +1,96 @@
+layout {
+    cwd "~/.config"
+    pane_template name="tools_pane" {
+        pane stacked=true {
+            pane {
+                name "Terminal"
+                command "nu"
+                start_suspended true
+                expanded true
+            }
+            pane {
+                name "OpenCode"
+                command "opencode"
+                start_suspended true
+            }
+            pane {
+                name "Claude"
+                command "claude"
+                start_suspended true
+            }
+            pane {
+                name "Sessions"
+                plugin location="zellij:session-manager"
+            }
+        }
+    }
+    tab_template name="config_tab" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane size="65%" stacked=true {
+              pane {
+                  name "Yazi"
+                  command "nu"
+                  args "-e" "y"
+                  start_suspended true
+                  expanded true
+                  focus true
+              }
+            }
+            tools_pane size="35%"
+        }
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+    config_tab name="Config"
+    config_tab name="Neovim" cwd="nvim"
+    config_tab name="Nushell" cwd="nushell"
+    config_tab name="Wezterm" cwd="wezterm"
+
+    tab name="Chezmoi" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane size="65%" stacked=true {
+              pane {
+                  name "Yazi"
+                  command "nu"
+                  args "-e" "cd (^chezmoi source-path | str trim); y"
+                  start_suspended true
+                  expanded true
+                  focus true
+              }
+            }
+            tools_pane size="35%"
+        }
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+    tab name="Servers Chezmoi" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane size="65%" stacked=true {
+              pane {
+                  name "Yazi"
+                  command "nu"
+                  args "-e" "cd (^zoxide query serversdotfiles | str trim); y"
+                  start_suspended true
+                  expanded true
+                  focus true
+              }
+            }
+            tools_pane size="35%"
+        }
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+
+}
