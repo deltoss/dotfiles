@@ -31,7 +31,7 @@ layout {
         pane split_direction="vertical" {
             pane size="65%" stacked=true {
               pane {
-                  name "Main"
+                  name "Editor"
                   command "nu"
                   args "-e" "y"
                   start_suspended true
@@ -58,7 +58,7 @@ layout {
         pane split_direction="vertical" {
             pane size="65%" stacked=true {
               pane {
-                  name "Main"
+                  name "Editor"
                   command "nu"
                   args "-e" "cd (^chezmoi source-path | str trim); y"
                   start_suspended true
@@ -79,7 +79,7 @@ layout {
         pane split_direction="vertical" {
             pane size="65%" stacked=true {
               pane {
-                  name "Main"
+                  name "Editor"
                   command "nu"
                   args "-e" "cd (^zoxide query serversdotfiles | str trim); y"
                   start_suspended true

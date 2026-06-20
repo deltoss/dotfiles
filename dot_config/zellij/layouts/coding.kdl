@@ -5,7 +5,7 @@ layout name="Coding" {
     pane split_direction="vertical" {
         pane size="65%" stacked=true {
           pane {
-              name "Main"
+              name "Editor"
               command "nu"
               args "-e" "y"
               expanded true

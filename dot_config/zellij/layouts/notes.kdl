@@ -6,7 +6,7 @@ layout {
         }
         pane stacked=true {
             pane {
-                name "Main"
+                name "Editor"
                 command "nu"
                 args "-e" "y"
                 start_suspended true
