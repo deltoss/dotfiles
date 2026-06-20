@@ -91,6 +91,7 @@ keybinds clear-defaults=true {
         bind "Alt up" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt right" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
         bind "e" { EditScrollback; SwitchToMode "locked"; }
+        bind "o" { EditScrollback; SwitchToMode "locked"; }
         bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "Alt h" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
         bind "Alt j" { MoveFocus "down"; SwitchToMode "locked"; }
@@ -161,24 +162,38 @@ keybinds clear-defaults=true {
         bind "=" { Resize "Increase"; }
         bind "[" { PreviousSwapLayout; }
         bind "]" { NextSwapLayout; }
-        bind "Ctrl left" { MoveTab "left"; }
-        bind "Ctrl right" { MoveTab "right"; }
+        bind "Shift o" { MoveTab "left"; }
+        bind "Shift u" { MoveTab "right"; }
         bind "Ctrl p" { TogglePaneInGroup; }
         bind "Ctrl Shift p" { ToggleGroupMarking; }
+
+        // Matches Neovim configs
+        bind "Ctrl left" { MoveFocusOrTab "left"; }
+        bind "Ctrl down" { MoveFocus "down"; }
+        bind "Ctrl up" { MoveFocus "up"; }
+        bind "Ctrl right" { MoveFocusOrTab "right"; }
+        bind "Shift left" { Resize "Increase left"; }
+        bind "Shift down" { Resize "Increase down"; }
+        bind "Shift up" { Resize "Increase up"; }
+        bind "Shift right" { Resize "Increase right"; }
+        bind "<" { GoToPreviousTab; }
+        bind ">" { GoToNextTab; }
+        bind "Ctrl o" { GoToPreviousTab; }
+        bind "Ctrl u" { GoToNextTab; }
     }
     shared_among "normal" "locked" {
         bind "Ctrl Alt f" { ToggleFloatingPanes; }
         bind "Alt n" { NewPane; }
     }
     shared {
-      bind "Alt left" { MoveFocusOrTab "left"; }
-      bind "Alt down" { MoveFocus "down"; }
-      bind "Alt up" { MoveFocus "up"; }
-      bind "Alt right" { MoveFocusOrTab "right"; }
-      bind "Ctrl Alt left" { Resize "Increase left"; }
-      bind "Ctrl Alt down" { Resize "Increase down"; }
-      bind "Ctrl Alt up" { Resize "Increase up"; }
-      bind "Ctrl Alt right" { Resize "Increase right"; }
+        bind "Alt left" { MoveFocusOrTab "left"; }
+        bind "Alt down" { MoveFocus "down"; }
+        bind "Alt up" { MoveFocus "up"; }
+        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Ctrl Alt left" { Resize "Increase left"; }
+        bind "Ctrl Alt down" { Resize "Increase down"; }
+        bind "Ctrl Alt up" { Resize "Increase up"; }
+        bind "Ctrl Alt right" { Resize "Increase right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
