@@ -180,6 +180,16 @@ keybinds clear-defaults=true {
         bind ">" { GoToNextTab; }
         bind "Ctrl o" { GoToPreviousTab; }
         bind "Ctrl u" { GoToNextTab; }
+
+        bind "1" { GoToTab 1; }
+        bind "2" { GoToTab 2; }
+        bind "3" { GoToTab 3; }
+        bind "4" { GoToTab 4; }
+        bind "5" { GoToTab 5; }
+        bind "6" { GoToTab 6; }
+        bind "7" { GoToTab 7; }
+        bind "8" { GoToTab 8; }
+        bind "9" { GoToTab 9; }
     }
     shared_among "normal" "locked" {
         bind "Ctrl Alt f" { ToggleFloatingPanes; }
