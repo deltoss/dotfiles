@@ -384,10 +384,13 @@ package_type = "winget"
 id = "Gyan.FFmpeg"
 
 [[packages.windows]]
+name = "Recordly"
 description = "Screen video recorder"
 tags = ["all"]
-package_type = "winget"
-id = "SiddharthVaddem.OpenScreen"
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-recordly.nu"'
+]
 
 [[packages.windows]]
 name = "Sunshine"
