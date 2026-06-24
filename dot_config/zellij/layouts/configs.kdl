@@ -65,7 +65,32 @@ layout {
                   focus true
               }
             }
-            tools_pane size="35%"
+            pane size="35%" stacked=true {
+                pane {
+                    name "Terminal"
+                    command "nu"
+                    args "-e" "cd (^chezmoi source-path | str trim)"
+                    start_suspended true
+                    expanded true
+                }
+                pane {
+                    name "OpenCode"
+                    command "nu"
+                    args "-n" "-c" "cd (^chezmoi source-path | str trim); opencode"
+                    command "opencode"
+                    start_suspended true
+                }
+                pane {
+                    name "Claude"
+                    command "nu"
+                    args "-n" "-c" "cd (^chezmoi source-path | str trim); claude"
+                    start_suspended true
+                }
+                pane {
+                    name "Sessions"
+                    plugin location="zellij:session-manager"
+                }
+            }
         }
         pane size=1 borderless=true {
             plugin location="status-bar"
@@ -86,7 +111,32 @@ layout {
                   focus true
               }
             }
-            tools_pane size="35%"
+            pane stacked=true size="35%" {
+                pane {
+                    name "Terminal"
+                    command "nu"
+                    args "-e" "cd (^zoxide query serversdotfiles | str trim)"
+                    start_suspended true
+                    expanded true
+                }
+                pane {
+                    name "OpenCode"
+                    command "nu"
+                    args "-n" "-c" "cd (^zoxide query serversdotfiles | str trim); opencode"
+                    command "opencode"
+                    start_suspended true
+                }
+                pane {
+                    name "Claude"
+                    command "nu"
+                    args "-n" "-c" "cd (^zoxide query serversdotfiles | str trim); claude"
+                    start_suspended true
+                }
+                pane {
+                    name "Sessions"
+                    plugin location="zellij:session-manager"
+                }
+            }
         }
         pane size=1 borderless=true {
             plugin location="status-bar"
