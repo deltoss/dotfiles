@@ -5,11 +5,12 @@
 #   use refresh-path.nu
 #   refresh-path
 export def --env main [] {
-  $env.Path = (
-    [
-      (registry query --hklm "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment" "Path" | get value | split row ";"),
-      (registry query --hkcu "Environment" "Path" | get value | split row ";")
-    ]
-    | flatten
-  )
+  let sys_path = registry query --hklm 'SYSTEM\CurrentControlSet\Control\Session Manager\Environment' Path
+    | get value | split row ';' | compact --empty
+  let user_path = registry query --hkcu Environment Path
+    | get value | split row ';' | compact --empty
+
+  # System first, then user (Windows precedence), then any session-local
+  # additions; dedup case-insensitively.
+  $env.Path = $sys_path ++ $user_path ++ $env.Path | uniq --ignore-case
 }
