@@ -177,8 +177,6 @@ keybinds clear-defaults=true {
         bind "Shift up" { Resize "Increase up"; }
         bind "Shift right" { Resize "Increase right"; }
 
-        bind "," { GoToPreviousTab; }
-        bind "." { GoToNextTab; }
         bind "Ctrl o" { GoToPreviousTab; }
         bind "Ctrl u" { GoToNextTab; }
 
@@ -202,8 +200,8 @@ keybinds clear-defaults=true {
         bind "Alt up" { MoveFocus "up"; }
         bind "Alt right" { MoveFocusOrTab "right"; }
 
-        bind "Alt ," { GoToPreviousTab; }
-        bind "Alt ." { GoToNextTab; }
+        bind "Alt o" { GoToPreviousTab; }
+        bind "Alt u" { GoToNextTab; }
         bind "Alt t" { NewTab; }
         bind "Alt z" { ToggleFocusFullscreen; }
         bind "Alt f" { SwitchToMode "entersearch"; SearchInput 0; }
