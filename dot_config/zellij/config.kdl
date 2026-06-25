@@ -176,8 +176,9 @@ keybinds clear-defaults=true {
         bind "Shift down" { Resize "Increase down"; }
         bind "Shift up" { Resize "Increase up"; }
         bind "Shift right" { Resize "Increase right"; }
-        bind "<" { GoToPreviousTab; }
-        bind ">" { GoToNextTab; }
+
+        bind "," { GoToPreviousTab; }
+        bind "." { GoToNextTab; }
         bind "Ctrl o" { GoToPreviousTab; }
         bind "Ctrl u" { GoToNextTab; }
 
@@ -200,6 +201,13 @@ keybinds clear-defaults=true {
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
         bind "Alt right" { MoveFocusOrTab "right"; }
+
+        bind "Alt ," { GoToPreviousTab; }
+        bind "Alt ." { GoToNextTab; }
+        bind "Alt z" { ToggleFocusFullscreen; }
+        bind "Alt f" { SwitchToMode "entersearch"; SearchInput 0; }
+        bind "Alt w" { CloseFocus; }
+        bind "Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "Ctrl Alt left" { Resize "Increase left"; }
         bind "Ctrl Alt down" { Resize "Increase down"; }
         bind "Ctrl Alt up" { Resize "Increase up"; }
