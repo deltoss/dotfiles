@@ -153,10 +153,10 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" {
-        bind "left" { MoveFocusOrTab "left"; }
+        bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
-        bind "right" { MoveFocusOrTab "right"; }
+        bind "right" { MoveFocus "right"; }
         bind "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
         bind "=" { Resize "Increase"; }
@@ -168,10 +168,10 @@ keybinds clear-defaults=true {
         bind "Ctrl Shift p" { ToggleGroupMarking; }
 
         // Matches Neovim configs
-        bind "Ctrl left" { MoveFocusOrTab "left"; }
+        bind "Ctrl left" { MoveFocus "left"; }
         bind "Ctrl down" { MoveFocus "down"; }
         bind "Ctrl up" { MoveFocus "up"; }
-        bind "Ctrl right" { MoveFocusOrTab "right"; }
+        bind "Ctrl right" { MoveFocus "right"; }
         bind "Shift left" { Resize "Increase left"; }
         bind "Shift down" { Resize "Increase down"; }
         bind "Shift up" { Resize "Increase up"; }
@@ -195,13 +195,16 @@ keybinds clear-defaults=true {
         bind "Alt n" { NewPane; }
     }
     shared {
-        bind "Alt left" { MoveFocusOrTab "left"; }
+        bind "Alt left" { MoveFocus "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Alt right" { MoveFocus "right"; }
 
         bind "Alt o" { GoToPreviousTab; }
         bind "Alt u" { GoToNextTab; }
+        bind "Ctrl Alt o" { MoveTab "left"; }
+        bind "Ctrl Alt u" { MoveTab "right"; }
+
         bind "Alt t" { NewTab; }
         bind "Alt z" { ToggleFocusFullscreen; }
         bind "Alt f" { SwitchToMode "entersearch"; SearchInput 0; }
