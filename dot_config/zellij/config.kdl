@@ -209,6 +209,7 @@ keybinds clear-defaults=true {
         bind "Alt z" { ToggleFocusFullscreen; }
         bind "Alt f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "Alt w" { CloseFocus; }
+        bind "Ctrl Alt w" { CloseTab; }
         bind "Alt r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "Ctrl Alt left" { Resize "Increase left"; }
         bind "Ctrl Alt down" { Resize "Increase down"; }
