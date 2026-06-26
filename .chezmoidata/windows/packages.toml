@@ -142,6 +142,9 @@ id = "sigoden.AIChat"
 tags = ["all"]
 package_type = "winget"
 id = "danielmiessler.Fabric"
+postcommands = [
+  "fabric --setup"
+]
 
 [[packages.windows]]
 tags = ["all"]
