@@ -1,26 +1,652 @@
-# Linux-only package definitions (stub).
+# Linux package definitions — target distro: CachyOS (Arch-based).
 #
-# Same schema as windows/packages.toml, keyed under [[packages.linux]]. Use
-# package_type = "apt" (installs via `sudo apt-get install -y <id>`) or
-# "commands". winget/choco/scoop do not apply here.
+# `distros` scopes an entry to specific distros, matched against the running
+# distro's /etc/os-release id (e.g. "cachyos"). Omit it to apply to all distros.
 #
-# Cross-platform packages (cargo/npm/uv/dotnet) live in common/packages.toml, not
-# here. But their MANAGERS are OS-specific, so define them here so they install
-# before the common bucket runs, e.g.:
-#
-#   [[packages.linux]]
-#   name = "Rust"
-#   tool = "cargo"
-#   tags = ["all"]
-#   package_type = "commands"
-#   commands = ["curl https://sh.rustup.rs -sSf | sh -s -- -y"]
-#
-#   [[packages.linux]]
-#   name = "fd"
-#   tool = "fd"
-#   tags = ["all"]
-#   package_type = "apt"
-#   id = "fd-find"
-#
-# Until real entries are added, this file is comment-only and contributes no data
-# (the install-packages script guards on `hasKey .packages "linux"`).
+# Cross-platform packages installed identically on both OSes (cargo/npm/uv/dotnet
+# `commands` + a `tool` check) live in common/packages.toml, NOT here. Their
+# MANAGERS are OS-specific, so they are defined here and — because the consumer
+# ranges linux-first, common-last — install before the common bucket.
+
+###############################################################################
+# Package managers / language runtimes (must precede the common bucket)
+###############################################################################
+
+[[packages.linux]]
+name = "Rust"
+tool = "rustc"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm rustup",
+  "rustup default stable",
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".cargo" "bin"))',
+]
+
+[[packages.linux]]
+name = "cargo-binstall"
+tool = "cargo-binstall"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "cargo-binstall"
+
+[[packages.linux]]
+name = "Go"
+tool = "go"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "go"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join "go" "bin"))',
+]
+
+[[packages.linux]]
+name = "uv"
+tool = "uv"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "uv"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
+]
+
+# Global npm prefix -> ~/.local so `npm install -g` writes to ~/.local/bin (no sudo).
+[[packages.linux]]
+name = "Node.js"
+tool = "node"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm nodejs npm",
+  'npm config set prefix ($nu.home-dir | path join ".local")',
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
+]
+
+[[packages.linux]]
+name = "dotnet"
+tool = "dotnet"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "dotnet-sdk"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".dotnet" "tools"))',
+]
+
+[[packages.linux]]
+name = "mise"
+tool = "mise"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mise"
+
+[[packages.linux]]
+name = "Deno"
+tool = "deno"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "deno"
+
+[[packages.linux]]
+name = "Python"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm python python-pip",
+]
+
+###############################################################################
+# CLI tools — pacman (official Arch repos)
+###############################################################################
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git"
+tool = "git"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "jq"
+tool = "jq"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "ffmpeg"
+tool = "ffmpeg"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fzf"
+tool = "fzf"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "poppler"
+tool = "pdftotext"
+
+# Arch ships ImageMagick v7, whose binary is `magick` (not v6's `convert`).
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "imagemagick"
+tool = "magick"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "7zip"
+tool = "7z"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "pandoc-cli"
+tool = "pandoc"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "less"
+tool = "less"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "ttyd"
+tool = "ttyd"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "sshfs"
+tool = "sshfs"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fd"
+tool = "fd"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bat"
+tool = "bat"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git-delta"
+tool = "delta"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tealdeer"
+tool = "tldr"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "clang"
+tool = "clang"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tree-sitter-cli"
+tool = "tree-sitter"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "zoxide"
+tool = "zoxide"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "starship"
+tool = "starship"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lazygit"
+tool = "lazygit"
+
+# mikefarah's yq is packaged as `go-yq`; binary is `yq`.
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "go-yq"
+tool = "yq"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "rclone"
+tool = "rclone"
+
+[[packages.linux]]
+name = "GitHub CLI"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "github-cli"
+tool = "gh"
+
+[[packages.linux]]
+name = "Nushell"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "nushell"
+tool = "nu"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "yazi"
+tool = "yazi"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "eza"
+tool = "eza"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mitmproxy"
+tool = "mitmproxy"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "copyq"
+tool = "copyq"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "flameshot"
+tool = "flameshot"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "meld"
+tool = "meld"
+
+[[packages.linux]]
+name = "AWS CLI"
+tool = "aws"
+tags = ["work"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "aws-cli-v2"
+
+[[packages.linux]]
+name = "lazydocker"
+tool = "lazydocker"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lazydocker"
+
+[[packages.linux]]
+name = "OpenCode"
+tool = "opencode"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "opencode"
+
+# television's binary is `tv`.
+[[packages.linux]]
+name = "television"
+tool = "tv"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "television"
+
+[[packages.linux]]
+name = "aichat"
+tool = "aichat"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "aichat"
+
+# worktrunk's binary is `wt`.
+[[packages.linux]]
+name = "worktrunk"
+tool = "wt"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "worktrunk"
+
+###############################################################################
+# CLI tools — AUR (paru)
+###############################################################################
+
+# Real Microsoft build; the repo `code` is the OSS build without the marketplace.
+[[packages.linux]]
+name = "Visual Studio Code"
+tool = "code"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "visual-studio-code-bin"
+
+# X11 build; use `espanso-wayland` on a Wayland session.
+[[packages.linux]]
+name = "Espanso"
+tool = "espanso"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "espanso-x11"
+postcommands = [
+  "espanso service register",
+]
+
+###############################################################################
+# CLI tools — Go (`go install`, binaries land in ~/go/bin)
+###############################################################################
+
+[[packages.linux]]
+name = "Fabric"
+tool = "fabric"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "go install github.com/danielmiessler/fabric/cmd/fabric@latest",
+]
+postcommands = [
+  # ~/go/bin isn't on PATH yet on a fresh run; prepend it before `fabric --setup`.
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join "go" "bin"))',
+  "fabric --setup",
+]
+
+[[packages.linux]]
+name = "Obsidian CLI (notesmd-cli)"
+tool = "notesmd-cli"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "go install github.com/yakitrak/notesmd-cli@latest",
+]
+
+[[packages.linux]]
+name = "Jira CLI"
+tool = "jira"
+tags = ["work"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest",
+]
+
+[[packages.linux]]
+name = "Vultr CLI"
+tool = "vultr-cli"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "go install github.com/vultr/vultr-cli/v3@latest",
+]
+
+###############################################################################
+# CLI tools — scripts (cross-platform / native installers)
+###############################################################################
+
+[[packages.linux]]
+name = "Claude Code"
+tool = "claude"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "curl -fsSL https://claude.ai/install.sh | bash",
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-claude-code.nu"',
+]
+
+[[packages.linux]]
+name = "Context7 CLI"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-context7-cli.nu"',
+]
+
+[[packages.linux]]
+name = "Serena"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"',
+]
+
+[[packages.linux]]
+name = "Recordly"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-recordly.nu"',
+]
+
+###############################################################################
+# GUI apps — pacman (official Arch repos)
+###############################################################################
+
+[[packages.linux]]
+name = "WezTerm"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "wezterm"
+tool = "wezterm"
+
+[[packages.linux]]
+name = "Obsidian"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "obsidian"
+
+[[packages.linux]]
+name = "Anki"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "anki"
+
+[[packages.linux]]
+name = "OpenSSH"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "openssh"
+
+[[packages.linux]]
+name = "VirtualBox"
+tool = "VBoxManage"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "virtualbox"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qbittorrent"
+tool = "qbittorrent"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "vlc"
+tool = "vlc"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "audacity"
+tool = "audacity"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "kdenlive"
+tool = "kdenlive"
+
+# HandBrake's GUI binary is `ghb`.
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "handbrake"
+tool = "ghb"
+
+[[packages.linux]]
+name = "calibre"
+tool = "calibre"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "calibre"
+
+[[packages.linux]]
+name = "Bitwarden"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bitwarden"
+
+###############################################################################
+# GUI apps — AUR (paru)
+###############################################################################
+
+[[packages.linux]]
+name = "Zen Browser"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "zen-browser-bin"
+
+[[packages.linux]]
+name = "OrcaSlicer"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "orca-slicer-bin"
+
+[[packages.linux]]
+name = "ONLYOFFICE Desktop Editors"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "onlyoffice-bin"
+
+[[packages.linux]]
+name = "Mailspring"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "mailspring"
+
+[[packages.linux]]
+name = "Sunshine"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "sunshine"
+
+[[packages.linux]]
+name = "Libation"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "libation"
+
+###############################################################################
+# GUI apps — AppImage (via scripts)
+###############################################################################
+
+[[packages.linux]]
+name = "Todoist"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-todoist.nu"',
+]
+
+[[packages.linux]]
+name = "Handy"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-handy.nu"',
+]

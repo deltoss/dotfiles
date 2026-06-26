@@ -4,10 +4,11 @@
 # Installs the Linux packages defined in .chezmoidata/linux/packages.toml plus
 # the cross-platform ones in .chezmoidata/common/packages.toml.
 #
-# Runs as the normal user (cargo/npm/uv/dotnet install user-scoped); apt entries
-# elevate per-command with `sudo`. NOTE: the package MANAGERS that the common
-# entries rely on (rust, node, python, dotnet) must be defined in
-# linux/packages.toml so they install first.
+# Target distro: CachyOS (Arch-based). `pacman` entries install from the official
+# repos; `aur` entries use paru (shipped with CachyOS). Runs as the normal user
+# (cargo/npm/uv/dotnet install user-scoped); pacman/paru elevate themselves.
+# NOTE: the package MANAGERS the common entries rely on (rust, node, dotnet, …)
+# must be defined in linux/packages.toml so they install first.
 
 print $"(ansi green_bold)Installing packages...(ansi reset)"
 
@@ -15,17 +16,19 @@ print $"(ansi green_bold)Installing packages...(ansi reset)"
 $env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
 $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
 
-{{- $linux := list -}}
-{{- if hasKey .packages "linux" -}}{{- $linux = .packages.linux -}}{{- end -}}
 {{- $packagesToInstall := list -}}
-{{- range (concat $linux .packages.common) -}}
-  {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
-    {{- $packagesToInstall = append $packagesToInstall . -}}
+{{- range (concat .packages.linux .packages.common) -}}
+  {{- $crossDistro := or (not (hasKey . "distros")) (has "all" .distros) -}}
+  {{- if or $crossDistro (and (eq $.osid "linux-cachyos") (has "cachyos" .distros)) -}}
+    {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
+      {{- $packagesToInstall = append $packagesToInstall . -}}
+    {{- end -}}
   {{- end -}}
 {{- end }}
-#
-# Refresh apt's package lists so installs resolve.
-sudo apt-get update
+
+# Sync the package databases and upgrade first (Arch requires a full -Syu rather
+# than a partial -Sy to avoid breakage), so subsequent installs resolve cleanly.
+sudo pacman -Syu --noconfirm
 
 {{- range $packagesToInstall }}
   {{- $name := "Unknown" -}}
@@ -50,8 +53,10 @@ if $already_installed {
   {{ . }}
     {{- end }}
   {{- end }}
-  {{- if eq .package_type "apt" }}
-  sudo apt-get install -y {{ .id | quote }}
+  {{- if eq .package_type "pacman" }}
+  sudo pacman -S --needed --noconfirm {{ .id | quote }}
+  {{- else if eq .package_type "aur" }}
+  paru -S --needed --noconfirm {{ .id | quote }}
   {{- else if eq .package_type "commands" }}
     {{- range .commands }}
   {{ . }}

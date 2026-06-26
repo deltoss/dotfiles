@@ -20,7 +20,6 @@ match (sys host).name {
     nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-dotnet.nu"
   }
   _ => {
-    print "Downloading and installing dotnet LTS + STS for Linux..."
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-dotnet.nu"
+    print "On Linux, dotnet is installed via the system package manager (pacman: dotnet-sdk), not this script."
   }
 }

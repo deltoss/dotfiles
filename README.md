@@ -1,6 +1,8 @@
 # Dotfiles
 
-This repository serves as my personal dotfiles and system configuration hub, powered by `Chezmoi` for seamless management across Windows machines. It contains my curated configuration files, automated package installations, and setup scripts for both personal and work environments. Whether setting up a fresh install or keeping multiple machines in sync, this repo acts as my single source of truth, saving hours of manual configuration time through version-controlled, easily deployable setups.
+This repository serves as my personal dotfiles and system configuration hub, powered by `Chezmoi` for seamless management across Windows and Linux machines.
+
+It contains my curated configuration files, automated package installations, and setup scripts for both personal and work environments. Whether setting up a fresh install or keeping multiple machines in sync, this repo acts as my single source of truth, saving hours of manual configuration time through version-controlled, easily deployable setups.
 
 ## Prerequisites
 
@@ -14,6 +16,35 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 - `gsudo` → For command elevation on Windows
 
 ## Installation
+
+### Linux
+
+#### CachyOS
+
+1. Open up a terminal.
+
+2. Run the below commands to install the pre-requisites and Chezmoi:
+
+   ```bash
+   # Nushell (runs the scripts), Git, and Chezmoi — all in the official repos
+   sudo pacman -S --needed --noconfirm nushell git chezmoi
+
+   # 1Password's AUR packages are signature-verified, so import its signing key first
+   curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
+   paru -S 1password 1password-cli
+   ```
+
+3. [Optional] Set up your SSH credentials with git. Otherwise Chezmoi will use HTTPS instead of your SSH keys when cloning external repositories. See [GitHub Gists - SSH on Linux](https://gist.github.com/deltoss/5eeb3985fac481bba00bcec8da249875)
+
+4. To authenticate with `1Password`, enable CLI integration in the desktop app (Settings → Developer → "Integrate with 1Password CLI"), or run `op signin`. See [1Password - Get started with 1Password CLI](https://developer.1password.com/docs/cli/get-started/).
+
+5. Restart the terminal.
+
+6. Run the below command:
+
+   ```bash
+   chezmoi init deltoss/dotfiles --ssh --apply --verbose
+   ```
 
 ### Windows
 
