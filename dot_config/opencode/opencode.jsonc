@@ -23,6 +23,14 @@
       "type": "remote",
       "enabled": true,
       "url": "https://ai.todoist.net/mcp"
+    },
+    "anki-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "@ankimcp/anki-mcp-server", "--stdio"],
+      "enabled": true,
+      "environment": {
+        "ANKI_CONNECT_URL": "http://localhost:8765"
+      }
     }
   },
   "agent": {
