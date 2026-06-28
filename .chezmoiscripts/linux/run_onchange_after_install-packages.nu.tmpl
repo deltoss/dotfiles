@@ -57,6 +57,8 @@ if $already_installed {
   sudo pacman -S --needed --noconfirm {{ .id | quote }}
   {{- else if eq .package_type "aur" }}
   paru -S --needed --noconfirm {{ .id | quote }}
+  {{- else if eq .package_type "flatpak" }}
+  flatpak install -y flathub {{ .id | quote }}
   {{- else if eq .package_type "commands" }}
     {{- range .commands }}
   {{ . }}

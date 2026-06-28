@@ -326,6 +326,35 @@ id = "meld"
 tool = "meld"
 
 [[packages.linux]]
+name = "Neovim"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "neovim"
+tool = "nvim"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "podman"
+tool = "podman"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "podman-compose"
+tool = "podman-compose"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "kdeconnect"
+tool = "kdeconnect-cli"
+
+[[packages.linux]]
 name = "AWS CLI"
 tool = "aws"
 tags = ["work"]
@@ -587,26 +616,14 @@ id = "bitwarden"
 # GUI apps — AUR (paru)
 ###############################################################################
 
-[[packages.linux]]
-name = "Zen Browser"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "zen-browser-bin"
-
+# OrcaSlicer/Mailspring: no developer-verified Flathub; AUR repackages the
+# official binaries. Libation: its docs list AUR as the official Arch method.
 [[packages.linux]]
 name = "OrcaSlicer"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "aur"
 id = "orca-slicer-bin"
-
-[[packages.linux]]
-name = "ONLYOFFICE Desktop Editors"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "onlyoffice-bin"
 
 [[packages.linux]]
 name = "Mailspring"
@@ -616,18 +633,66 @@ package_type = "aur"
 id = "mailspring"
 
 [[packages.linux]]
-name = "Sunshine"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "sunshine"
-
-[[packages.linux]]
 name = "Libation"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "aur"
 id = "libation"
+
+###############################################################################
+# GUI apps — Flatpak (Flathub). Both projects ship Flatpak as their main Linux
+# install method. `bru` CLI is separate (common bucket).
+###############################################################################
+
+# Ensure flatpak + the flathub remote exist before the flatpak apps below.
+[[packages.linux]]
+name = "Flatpak"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm flatpak",
+  "sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo",
+]
+
+[[packages.linux]]
+name = "Pinta"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.github.PintaProject.Pinta"
+
+[[packages.linux]]
+name = "Bruno"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.usebruno.Bruno"
+
+[[packages.linux]]
+name = "Zen Browser"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "app.zen_browser.zen"
+
+[[packages.linux]]
+name = "ONLYOFFICE Desktop Editors"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "org.onlyoffice.desktopeditors"
+
+# Sunshine's Flatpak needs a one-time post-install step (per LizardByte docs).
+[[packages.linux]]
+name = "Sunshine"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "dev.lizardbyte.app.Sunshine"
+postcommands = [
+  "flatpak run --command=additional-install.sh dev.lizardbyte.app.Sunshine",
+]
 
 ###############################################################################
 # GUI apps — AppImage (via scripts)
