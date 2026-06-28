@@ -15,6 +15,7 @@ layout {
             pane {
                 name "Claude"
                 command "claude"
+                args "--allow-dangerously-skip-permissions"
                 start_suspended true
             }
             pane {
@@ -83,7 +84,8 @@ layout {
                 pane {
                     name "Claude"
                     command "nu"
-                    args "-n" "-c" "cd (^chezmoi source-path | str trim); claude"
+                    args "-n" "-c" "cd (^chezmoi source-path | str trim); claude --allow-dangerously-skip-permissions"
+                args 
                     start_suspended true
                 }
                 pane {
@@ -129,7 +131,7 @@ layout {
                 pane {
                     name "Claude"
                     command "nu"
-                    args "-n" "-c" "cd (^zoxide query serversdotfiles | str trim); claude"
+                    args "-n" "-c" "cd (^zoxide query serversdotfiles | str trim); claude --allow-dangerously-skip-permissions"
                     start_suspended true
                 }
                 pane {

@@ -21,6 +21,7 @@ layout {
             pane {
                 name "Claude"
                 command "claude"
+                args "--allow-dangerously-skip-permissions"
                 start_suspended true
             }
             pane {
