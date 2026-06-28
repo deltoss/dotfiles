@@ -12,6 +12,17 @@
 # Package managers / language runtimes (must precede the common bucket)
 ###############################################################################
 
+# Must be first: a full -Syu (Arch requires it over a partial -Sy to avoid
+# breakage) so subsequent `pacman -S` installs resolve against a fresh database.
+[[packages.linux]]
+name = "System update"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -Syu --noconfirm",
+]
+
 [[packages.linux]]
 name = "Rust"
 tool = "rustc"

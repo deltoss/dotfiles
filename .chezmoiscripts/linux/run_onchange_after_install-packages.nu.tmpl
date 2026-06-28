@@ -26,10 +26,6 @@ $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
   {{- end -}}
 {{- end }}
 
-# Sync the package databases and upgrade first (Arch requires a full -Syu rather
-# than a partial -Sy to avoid breakage), so subsequent installs resolve cleanly.
-sudo pacman -Syu --noconfirm
-
 {{- range $packagesToInstall }}
   {{- $name := "Unknown" -}}
   {{- if hasKey . "name" }}{{ $name = .name }}{{ else if hasKey . "id" }}{{ $name = .id }}{{ end }}
