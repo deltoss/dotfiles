@@ -30,7 +30,7 @@ Existing entries = schema source of truth. Read the target file first; fields ar
 Default both machines. Cross-platform cargo/npm/uv/dotnet tool → one `common`
 entry. Else → one entry per OS file.
 
-**2. Official method — research, don't guess.** Read project's own GitHub/docs/Flathub. Not memory/community.
+**2. Official method — research, don't guess.** Determine the correct installation method by consulting the project's own official sources. Usually its' GitHub repository, official website, or documentation. **Not training data or community guesses**.
 
 Priority:
 1. Official vendor method. Flathub must be **developer-verified** (badge).
@@ -38,9 +38,9 @@ Priority:
 3. In official repos → per-OS manager: **winget** (Win), **pacman** (Arch).
 4. AUR/repackage = last resort, only if officially named or no first-party. Add
    `#` comment saying why (see existing AUR entries).
-5. **Never Snap**
+5. **Never Snap, and compiling from source**
 
-No repo/flatpak/winget? → official `.msi`/installer/`curl|bash` as `commands`.
+No repo/flatpak/winget? → official `.msi`/installer on repository releases. Create scripts to download the setup file and start the installation process. **Ask user before doing this!**
 **No official method for an OS → STOP, ask user.**
 
 **3. Verify id exists.** Use package manager commands to verify if they actually exists. Otherwise, use the web search tools to check.
