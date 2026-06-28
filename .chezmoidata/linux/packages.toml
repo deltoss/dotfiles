@@ -1,21 +1,13 @@
-# Linux package definitions — target distro: CachyOS (Arch-based).
-#
 # `distros` scopes an entry to specific distros, matched against the running
 # distro's /etc/os-release id (e.g. "cachyos"). Omit it to apply to all distros.
 #
-# Cross-platform packages installed identically on both OSes (cargo/npm/uv/dotnet
-# `commands` + a `tool` check) live in common/packages.toml, NOT here. Their
-# MANAGERS are OS-specific, so they are defined here and — because the consumer
-# ranges linux-first, common-last — install before the common bucket.
-
 ###############################################################################
 # Package managers / language runtimes (must precede the common bucket)
 ###############################################################################
 
-# Must be first: a full -Syu (Arch requires it over a partial -Sy to avoid
-# breakage) so subsequent `pacman -S` installs resolve against a fresh database.
 [[packages.linux]]
 name = "System update"
+description = "Updates system by refreshing package databases from configured mirrors, then upgrade all installed packages"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -39,6 +31,7 @@ postcommands = [
 
 [[packages.linux]]
 name = "cargo-binstall"
+description = "Binary package manager for Rust"
 tool = "cargo-binstall"
 tags = ["all"]
 distros = ["cachyos"]
@@ -56,8 +49,26 @@ postcommands = [
   '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join "go" "bin"))',
 ]
 
+# NONINTERACTIVE=1 keeps the installer from prompting; brew lives at
+# /home/linuxbrew/.linuxbrew. Persistent PATH needs the brew shellenv in your
+# shell profile; the postcommand only fixes PATH for this run.
+[[packages.linux]]
+name = "Homebrew"
+description = "Homebrew package manager for Linux"
+tool = "brew"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'with-env { NONINTERACTIVE: "1" } { bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" }',
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ["/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"])',
+]
+
 [[packages.linux]]
 name = "uv"
+description = "Package manager for Python"
 tool = "uv"
 tags = ["all"]
 distros = ["cachyos"]
@@ -95,6 +106,7 @@ postcommands = [
 
 [[packages.linux]]
 name = "mise"
+description = "Dev tool version manager (asdf-compatible)"
 tool = "mise"
 tags = ["all"]
 distros = ["cachyos"]
@@ -111,6 +123,7 @@ id = "deno"
 
 [[packages.linux]]
 name = "Python"
+description = "Dependency for Neovim plugins"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -119,7 +132,7 @@ commands = [
 ]
 
 ###############################################################################
-# CLI tools — pacman (official Arch repos)
+# CLI tools
 ###############################################################################
 
 [[packages.linux]]
@@ -151,6 +164,7 @@ id = "fzf"
 tool = "fzf"
 
 [[packages.linux]]
+description = "PDF rendering toolkit; provides pdftotext"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -173,6 +187,7 @@ id = "7zip"
 tool = "7z"
 
 [[packages.linux]]
+description = "Universal document converter"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -187,6 +202,7 @@ id = "less"
 tool = "less"
 
 [[packages.linux]]
+description = "Share your terminal over the web"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -194,6 +210,7 @@ id = "ttyd"
 tool = "ttyd"
 
 [[packages.linux]]
+description = "Mount remote filesystems over SSH"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -201,6 +218,7 @@ id = "sshfs"
 tool = "sshfs"
 
 [[packages.linux]]
+description = "Simple, fast alternative to find"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -208,6 +226,7 @@ id = "fd"
 tool = "fd"
 
 [[packages.linux]]
+description = "cat clone with syntax highlighting"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -215,6 +234,7 @@ id = "bat"
 tool = "bat"
 
 [[packages.linux]]
+description = "Syntax-highlighting pager for git diffs"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -222,6 +242,7 @@ id = "git-delta"
 tool = "delta"
 
 [[packages.linux]]
+description = "Fast tldr client for simplified man pages"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -229,6 +250,7 @@ id = "tealdeer"
 tool = "tldr"
 
 [[packages.linux]]
+description = "A dependency Neovim needs for treesitter (a C compiler)"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -236,6 +258,7 @@ id = "clang"
 tool = "clang"
 
 [[packages.linux]]
+description = "CLI for managing parsers for Neovim"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -243,6 +266,7 @@ id = "tree-sitter-cli"
 tool = "tree-sitter"
 
 [[packages.linux]]
+description = "Smarter cd that learns your most-used directories"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -250,6 +274,7 @@ id = "zoxide"
 tool = "zoxide"
 
 [[packages.linux]]
+description = "Customizable cross-shell prompt"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -257,21 +282,26 @@ id = "starship"
 tool = "starship"
 
 [[packages.linux]]
+description = "Terminal UI for git"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "lazygit"
 tool = "lazygit"
 
-# mikefarah's yq is packaged as `go-yq`; binary is `yq`.
 [[packages.linux]]
+name = "yq"
+description = "Command-line YAML/JSON/XML processor"
+tool = "yq"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "pacman"
-id = "go-yq"
-tool = "yq"
+package_type = "commands"
+commands = [
+  "brew install yq",
+]
 
 [[packages.linux]]
+description = "For mounting and syncing network storage"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -295,6 +325,7 @@ id = "nushell"
 tool = "nu"
 
 [[packages.linux]]
+description = "Terminal file manager"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -302,6 +333,7 @@ id = "yazi"
 tool = "yazi"
 
 [[packages.linux]]
+description = "Modern replacement for ls"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -309,6 +341,7 @@ id = "eza"
 tool = "eza"
 
 [[packages.linux]]
+description = "Interactive HTTPS proxy"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -316,6 +349,7 @@ id = "mitmproxy"
 tool = "mitmproxy"
 
 [[packages.linux]]
+description = "Clipboard manager with history"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -323,6 +357,7 @@ id = "copyq"
 tool = "copyq"
 
 [[packages.linux]]
+description = "Screenshot tool with annotation"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -330,6 +365,7 @@ id = "flameshot"
 tool = "flameshot"
 
 [[packages.linux]]
+description = "Visual diff and merge tool"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -359,6 +395,7 @@ id = "podman-compose"
 tool = "podman-compose"
 
 [[packages.linux]]
+description = "Integrate your phone with your desktop"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -366,15 +403,8 @@ id = "kdeconnect"
 tool = "kdeconnect-cli"
 
 [[packages.linux]]
-name = "AWS CLI"
-tool = "aws"
-tags = ["work"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "aws-cli-v2"
-
-[[packages.linux]]
 name = "lazydocker"
+description = "Terminal UI for Docker/Podman"
 tool = "lazydocker"
 tags = ["all"]
 distros = ["cachyos"]
@@ -383,6 +413,7 @@ id = "lazydocker"
 
 [[packages.linux]]
 name = "OpenCode"
+description = "Agentic AI in the terminal"
 tool = "opencode"
 tags = ["all"]
 distros = ["cachyos"]
@@ -392,6 +423,7 @@ id = "opencode"
 # television's binary is `tv`.
 [[packages.linux]]
 name = "television"
+description = "Fuzzy finder TUI"
 tool = "tv"
 tags = ["all"]
 distros = ["cachyos"]
@@ -400,24 +432,21 @@ id = "television"
 
 [[packages.linux]]
 name = "aichat"
+description = "All-in-one LLM CLI tool"
 tool = "aichat"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "aichat"
 
-# worktrunk's binary is `wt`.
 [[packages.linux]]
 name = "worktrunk"
+description = "Better CLI to interact with Git Worktrees"
 tool = "wt"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "worktrunk"
-
-###############################################################################
-# CLI tools — AUR (paru)
-###############################################################################
 
 # Real Microsoft build; the repo `code` is the OSS build without the marketplace.
 [[packages.linux]]
@@ -431,6 +460,7 @@ id = "visual-studio-code-bin"
 # X11 build; use `espanso-wayland` on a Wayland session.
 [[packages.linux]]
 name = "Espanso"
+description = "Cross-platform text expander"
 tool = "espanso"
 tags = ["all"]
 distros = ["cachyos"]
@@ -440,53 +470,41 @@ postcommands = [
   "espanso service register",
 ]
 
-###############################################################################
-# CLI tools — Go (`go install`, binaries land in ~/go/bin)
-###############################################################################
-
 [[packages.linux]]
 name = "Fabric"
+description = "AI framework for augmenting humans using prompts"
 tool = "fabric"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  "go install github.com/danielmiessler/fabric/cmd/fabric@latest",
+  "curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash",
 ]
 postcommands = [
-  # ~/go/bin isn't on PATH yet on a fresh run; prepend it before `fabric --setup`.
-  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join "go" "bin"))',
   "fabric --setup",
 ]
 
 [[packages.linux]]
 name = "Obsidian CLI (notesmd-cli)"
+description = "Interact with Obsidian vaults from the terminal"
 tool = "notesmd-cli"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  "go install github.com/yakitrak/notesmd-cli@latest",
-]
-
-[[packages.linux]]
-name = "Jira CLI"
-tool = "jira"
-tags = ["work"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest",
+  "brew tap yakitrak/yakitrak",
+  "brew install yakitrak/yakitrak/notesmd-cli"
 ]
 
 [[packages.linux]]
 name = "Vultr CLI"
+description = "CLI for Vultr VPS & cloud services"
 tool = "vultr-cli"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  "go install github.com/vultr/vultr-cli/v3@latest",
+  "brew install vultr/vultr-cli/vultr-cli",
 ]
 
 ###############################################################################
@@ -506,6 +524,7 @@ commands = [
 
 [[packages.linux]]
 name = "Context7 CLI"
+description = "Fetches up-to-date library docs for AI agents"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -515,6 +534,7 @@ commands = [
 
 [[packages.linux]]
 name = "Serena"
+description = "Semantic retrieval & editing agent"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -524,6 +544,7 @@ commands = [
 
 [[packages.linux]]
 name = "Recordly"
+description = "Screen video recorder"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -594,6 +615,7 @@ id = "audacity"
 tool = "audacity"
 
 [[packages.linux]]
+description = "Non-linear video editor"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -602,6 +624,7 @@ tool = "kdenlive"
 
 # HandBrake's GUI binary is `ghb`.
 [[packages.linux]]
+description = "Video transcoder/converter"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "pacman"
@@ -610,6 +633,7 @@ tool = "ghb"
 
 [[packages.linux]]
 name = "calibre"
+description = "E-book library manager"
 tool = "calibre"
 tags = ["personal"]
 distros = ["cachyos"]
@@ -627,17 +651,9 @@ id = "bitwarden"
 # GUI apps — AUR (paru)
 ###############################################################################
 
-# OrcaSlicer/Mailspring: no developer-verified Flathub; AUR repackages the
-# official binaries. Libation: its docs list AUR as the official Arch method.
-[[packages.linux]]
-name = "OrcaSlicer"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "orca-slicer-bin"
-
 [[packages.linux]]
 name = "Mailspring"
+description = "Desktop email client"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "aur"
@@ -645,14 +661,14 @@ id = "mailspring"
 
 [[packages.linux]]
 name = "Libation"
+description = "Audible audiobook manager and downloader"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "aur"
 id = "libation"
 
 ###############################################################################
-# GUI apps — Flatpak (Flathub). Both projects ship Flatpak as their main Linux
-# install method. `bru` CLI is separate (common bucket).
+# GUI apps — Flatpak (Flathub)
 ###############################################################################
 
 # Ensure flatpak + the flathub remote exist before the flatpak apps below.
@@ -667,7 +683,16 @@ commands = [
 ]
 
 [[packages.linux]]
+name = "OrcaSlicer"
+description = "Slicer for 3D printing"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.orcaslicer.OrcaSlicer"
+
+[[packages.linux]]
 name = "Pinta"
+description = "Simple drawing and image editing"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "flatpak"
@@ -675,6 +700,7 @@ id = "com.github.PintaProject.Pinta"
 
 [[packages.linux]]
 name = "Bruno"
+description = "Git-friendly API client"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "flatpak"
@@ -689,6 +715,7 @@ id = "app.zen_browser.zen"
 
 [[packages.linux]]
 name = "ONLYOFFICE Desktop Editors"
+description = "Office suite compatible with MS formats"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "flatpak"
@@ -697,6 +724,7 @@ id = "org.onlyoffice.desktopeditors"
 # Sunshine's Flatpak needs a one-time post-install step (per LizardByte docs).
 [[packages.linux]]
 name = "Sunshine"
+description = "Self-hosted game streaming host"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "flatpak"
@@ -720,6 +748,7 @@ commands = [
 
 [[packages.linux]]
 name = "Handy"
+description = "Offline speech-to-text dictation"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"

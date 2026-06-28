@@ -132,6 +132,7 @@ description = "Better CLI to interact with Git Worktrees"
 tags = ["all"]
 package_type = "winget"
 id = "max-sixty.worktrunk"
+tool = "git-wt"
 
 [[packages.windows]]
 tags = ["all"]
