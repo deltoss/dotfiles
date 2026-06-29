@@ -1,3 +1,5 @@
+const HERE = (path self | path dirname)
+
 if (which clang | is-not-empty) {
   print "clang already installed"
   exit 0
@@ -5,7 +7,7 @@ if (which clang | is-not-empty) {
 
 match (sys host).name {
   "Windows" => {
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-msys2-clang-with-headers.nu"
+    nu $"($HERE)/windows/install-msys2-clang-with-headers.nu"
   },
   $x if ($x =~ Debian) => {
     sudo apt install clang llvm

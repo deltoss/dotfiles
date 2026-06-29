@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+const HERE = (path self | path dirname)
+
 if (which steamcmd | is-not-empty) {
   let path = (which steamcmd | get path.0)
   print $"(ansi green)Already installed at: ($path)(ansi reset)"
@@ -9,9 +11,9 @@ if (which steamcmd | is-not-empty) {
 
 match (sys host).name {
   "Windows" => {
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-steamcmd.nu"
+    nu $"($HERE)/windows/install-steamcmd.nu"
   },
   $x if ($x =~ Debian) => {
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-steamcmd-debian.nu"
+    nu $"($HERE)/linux/install-steamcmd-debian.nu"
   }
 }

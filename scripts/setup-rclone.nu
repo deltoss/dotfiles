@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+const HERE = (path self | path dirname)
+
 print $"(ansi green)Configuring rclone...(ansi reset)"
 
 let configs = rclone config redacted | split row "\n\n"
@@ -26,6 +28,6 @@ if ($env.CHEZMOI_COMPUTERPURPOSE == "personal") {
 
 if (sys host).name =~ "Windows" {
   print $"(ansi green)Configuring startup for Windows...(ansi reset)"
-  ^powershell -ExecutionPolicy Bypass -File $'($env.CHEZMOI_SOURCEDIR)/scripts/windows/setup-rclone-tasks.ps1'
+  ^powershell -ExecutionPolicy Bypass -File $'($HERE)/windows/setup-rclone-tasks.ps1'
 }
 print $"(ansi green)Done. rclone services will start at next login.(ansi reset)"

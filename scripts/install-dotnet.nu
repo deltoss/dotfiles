@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+const HERE = (path self | path dirname)
+
 # See:
 # - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
 # - https://github.com/dotnet/install-scripts
@@ -17,7 +19,7 @@ if (which dotnet | is-not-empty) {
 match (sys host).name {
   "Windows" => {
     print "Downloading and installing dotnet LTS + STS for Windows..."
-    nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-dotnet.nu"
+    nu $"($HERE)/windows/install-dotnet.nu"
   }
   _ => {
     print "On Linux, dotnet is installed via the system package manager (pacman: dotnet-sdk), not this script."
