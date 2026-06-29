@@ -1,0 +1,13 @@
+jira_api_username: {{ .jira_username | quote }}
+jira_api_token: {{ .jira_api_token | quote }}
+jira_api_base_url: {{ .jira_base_url | quote }}
+theme: "catppuccin-latte"
+pre_defined_jql_expressions:
+    1:  {
+            "label": "My Relevant Issues",
+            "expression": "(assignee = currentUser() OR assignee WAS currentUser() OR reporter = currentUser()) AND resolution = Unresolved order by updated DESC"
+    }
+    2:  {
+          "label": "My Open Work Items",
+          "expression": "assignee = currentUser() AND resolution = Unresolved order by updated DESC"
+    }

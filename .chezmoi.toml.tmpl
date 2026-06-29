@@ -65,6 +65,11 @@
   {{- end }}
   rclone_notes_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" | quote }}
   rclone_notes_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" | quote }}
+  {{ if eq $computerPurpose "work" -}}
+  jira_api_token = {{ onepasswordRead "op://Work/Atlassian - Work/JiraTUI API Token" | quote }}
+  jira_base_url = {{ onepasswordRead "op://Work/Atlassian - Work/Base URL" | quote }}
+  jira_username = {{ onepasswordRead "op://Work/Atlassian - Work/username" | quote }}
+  {{- end }}
 
 [diff]
   pager = "delta"

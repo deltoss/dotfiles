@@ -625,16 +625,6 @@ package_type = "winget"
 id = "Oracle.VirtualBox"
 
 [[packages.windows]]
-name = "Jira CLI"
-tool = "jira"
-tags = ["work"]
-package_type = "commands"
-commands = [
-  "scoop bucket add extras",
-  "scoop install jira-cli"
-]
-
-[[packages.windows]]
 name = "AWS CLI"
 description = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
 tool = "aws"

@@ -203,6 +203,16 @@ commands = [
   'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
 ]
 
+[[packages.common]]
+name = "JiraTUI"
+description = "A Text User Interface (TUI) for interacting with Atlassian Jira directly from your shell"
+tool = "jiratui"
+tags = ["work"]
+package_type = "commands"
+commands = [
+  'uv tool install jiratui'
+]
+
 # --- dotnet ---
 [[packages.common]]
 name = "ilspycmd"
