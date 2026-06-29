@@ -1,6 +1,8 @@
+{{- if hasKey . "jira_username" -}}
 jira_api_username: {{ .jira_username | quote }}
 jira_api_token: {{ .jira_api_token | quote }}
 jira_api_base_url: {{ .jira_base_url | quote }}
+{{- end }}
 theme: "catppuccin-latte"
 pre_defined_jql_expressions:
     1:  {
