@@ -10,7 +10,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "d" { NewPane "down"; SwitchToMode "locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "i" { TogglePanePinned; SwitchToMode "locked"; }
         bind "n" { NewPane; SwitchToMode "locked"; }
@@ -19,7 +19,7 @@ keybinds clear-defaults=true {
         bind "s" { NewPane "stacked"; SwitchToMode "locked"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
         bind "x" { CloseFocus; SwitchToMode "locked"; }
-        bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
+        bind "F" { TogglePaneFrames; SwitchToMode "locked"; }
         bind "tab" { SwitchFocus; }
     }
     tab {
@@ -149,6 +149,8 @@ keybinds clear-defaults=true {
         bind "]" { NextSwapLayout; }
         bind "Shift o" { MoveTab "left"; }
         bind "Shift u" { MoveTab "right"; }
+        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "Ctrl p" { TogglePaneInGroup; }
         bind "Ctrl Shift p" { ToggleGroupMarking; }
 
