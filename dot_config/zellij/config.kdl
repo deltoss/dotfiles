@@ -154,11 +154,10 @@ keybinds clear-defaults=true {
         bind "Ctrl p" { TogglePaneInGroup; }
         bind "Ctrl Shift p" { ToggleGroupMarking; }
 
-        // Matches Neovim configs
-        bind "Ctrl left" { MoveFocus "left"; }
-        bind "Ctrl down" { MoveFocus "down"; }
-        bind "Ctrl up" { MoveFocus "up"; }
-        bind "Ctrl right" { MoveFocus "right"; }
+        bind "Ctrl left" { MovePane "left"; }
+        bind "Ctrl down" { MovePane "down"; }
+        bind "Ctrl up" { MovePane "up"; }
+        bind "Ctrl right" { MovePane "right"; }
         bind "Shift left" { Resize "Increase left"; }
         bind "Shift down" { Resize "Increase down"; }
         bind "Shift up" { Resize "Increase up"; }
