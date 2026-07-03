@@ -194,11 +194,6 @@ id = "Zen-Team.Zen-Browser"
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"
-id = "Microsoft.VisualStudioCode"
-
-[[packages.windows]]
-tags = ["all"]
-package_type = "winget"
 id = "Obsidian.Obsidian"
 
 [[packages.windows]]
