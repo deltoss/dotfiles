@@ -1,4 +1,4 @@
-{{ if eq .osid "linux" -}}
+{{ if hasPrefix "linux" .osid -}}
 #!/bin/bash
 
 DIR="~/nerd-fonts"
