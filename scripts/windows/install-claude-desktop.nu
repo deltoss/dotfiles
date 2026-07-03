@@ -1,14 +1,14 @@
 #!/usr/bin/env nu
 
 def is_installed [] {
-  # Claude Desktop installs as an MSIX package — query via Get-AppxPackage
+  # Claude Desktop installs as an MSIX package, query via Get-AppxPackage
   let result = (^powershell -NoProfile -Command "Get-AppxPackage -Name '*Claude*' | Select-Object -ExpandProperty Name" | str trim)
   $result | is-not-empty
 }
 
 def main [] {
   if (is_installed) {
-    print $"(ansi yellow)✓ Claude Desktop is already installed — nothing to do.(ansi reset)"
+    print $"(ansi yellow)✓ Claude Desktop is already installed, nothing to do.(ansi reset)"
     return
   }
 

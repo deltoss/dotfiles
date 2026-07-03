@@ -1,0 +1,18 @@
+FROM docker.io/cachyos/cachyos-v3:latest
+# Repo prerequisites (README.md) plus the systemd stack. Nushell runs the
+# scripts, Git clones repos, Chezmoi renders/applies. flatpak + polkit let the
+# container boot systemd and run Flatpak *system* installs like a real machine
+# (they need D-Bus + polkit). 1Password is intentionally omitted for container
+# tests. Retried because CachyOS mirrors occasionally drop a connection.
+RUN for i in 1 2 3; do pacman -Syu --noconfirm nushell git chezmoi flatpak polkit && break; sleep 3; done
+
+# Authorize Flatpak system installs without an interactive polkit agent, so an
+# unattended test run is not blocked waiting for a password.
+RUN mkdir -p /etc/polkit-1/rules.d && printf '%s\n' \
+  'polkit.addRule(function(action, subject) {' \
+  '    if (action.id.indexOf("org.freedesktop.Flatpak.") === 0) { return polkit.Result.YES; }' \
+  '});' > /etc/polkit-1/rules.d/49-flatpak.rules
+
+# Boot systemd as PID 1. Run with: --privileged --systemd=always
+STOPSIGNAL SIGRTMIN+3
+CMD ["/usr/lib/systemd/systemd"]

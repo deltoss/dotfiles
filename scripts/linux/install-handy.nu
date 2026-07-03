@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-# Installs Handy (speech-to-text, cjpais/Handy) as an AppImage — no Arch package.
+# Installs Handy (speech-to-text, cjpais/Handy) as an AppImage, no Arch package.
 # Pulls the latest AppImage from GitHub releases into ~/.local/bin and writes a
 # .desktop launcher.
 #

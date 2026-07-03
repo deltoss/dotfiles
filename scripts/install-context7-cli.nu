@@ -5,9 +5,20 @@ def is_installed [] {
   $result.stdout =~ 'Logged in'
 }
 
+# ctx7 setup performs an interactive OAuth device login; only run it with a TTY.
+def is_interactive [] {
+  (do -i { ^test -t 0 } | complete | get exit_code) == 0
+}
+
 def main [] {
   if (is_installed) {
-    print $"(ansi yellow)✓ Context7 CLI is already installed — nothing to do.(ansi reset)"
+    print $"(ansi yellow)✓ Context7 CLI is already installed, nothing to do.(ansi reset)"
+    return
+  }
+
+  if not (is_interactive) {
+    print $"(ansi yellow)⚠ Context7 needs interactive OAuth login; skipping in unattended run.(ansi reset)"
+    print $"(ansi yellow)  Run manually: npx ctx7 setup --cli; npx ctx7 setup --opencode; npx ctx7 setup --claude(ansi reset)"
     return
   }
 

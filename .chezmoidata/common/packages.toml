@@ -1,13 +1,13 @@
-# Cross-platform packages — installed on BOTH Windows and Linux.
+# Cross-platform packages, installed on BOTH Windows and Linux.
 #
 # Each OS's install-packages script ranges over its own array PLUS this common
 # array (OS array first, common last). Only put entries here whose install
-# command AND idempotency check are identical on both OSes — i.e.
+# command AND idempotency check are identical on both OSes, i.e.
 # package_type = "commands" via cargo/npm/uv/dotnet with a `tool` (which-)check.
 # winget / apt / choco / scoop entries stay in the per-OS files.
 #
 # The package MANAGERS (rust, node, …) have OS-specific installs, so they live in
-# the per-OS files and run before this bucket — cargo/npm are available here.
+# the per-OS files and run before this bucket, cargo/npm are available here.
 # Order matters: cargo-binstall must precede any `cargo binstall` user.
 
 # --- cargo ---
@@ -143,6 +143,12 @@ tags = ["all"]
 package_type = "commands"
 commands = [
   'npm install -g @openai/codex'
+]
+postcommands = [
+  # Configure Serena for codex now that codex exists (Serena installs earlier,
+  # from the Linux list, before codex was available). Guarded so it is a no-op
+  # where Serena is not installed.
+  'if (which serena | is-not-empty) { serena setup codex }',
 ]
 
 [[packages.common]]

@@ -26,7 +26,7 @@ It contains my curated configuration files, automated package installations, and
 2. Run the below commands to install the pre-requisites and Chezmoi:
 
    ```bash
-   # Nushell (runs the scripts), Git, and Chezmoi — all in the official repos
+   # Nushell (runs the scripts), Git, and Chezmoi, all in the official repos
    sudo pacman -S --needed --noconfirm nushell git chezmoi
 
    # 1Password's AUR packages are signature-verified, so import its signing key first
@@ -88,3 +88,4 @@ It contains my curated configuration files, automated package installations, and
 - Test templates with `chezmoi execute-template '{{ .osid }}'`. See [Chezmoi References - Commands - execute-template - examples](https://www.chezmoi.io/reference/commands/execute-template/#examples)
 - Test an entire template file with `cat mytemplate.nu.tmpl | chezmoi execute-template`
 - View variables with `chezmoi data`. See [Chezmoi References - Variables](https://www.chezmoi.io/reference/templates/variables/)
+- Try the Linux install scripts in a throwaway container before applying (see `.containers/`).
