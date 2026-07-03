@@ -60,7 +60,7 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  'with-env { NONINTERACTIVE: "1" } { bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" }',
+  'with-env { NONINTERACTIVE: "1" } { http get https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash }',
 ]
 postcommands = [
   '$env.PATH = ($env.PATH | prepend ["/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"])',
@@ -178,6 +178,15 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "imagemagick"
 tool = "magick"
+
+# Native ODBC driver manager (libodbc.so.2) required by harlequin's `odbc` extra
+# (pyodbc). harlequin is in the cross-platform list; Windows has ODBC built in.
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "unixodbc"
+tool = "isql"
 
 [[packages.linux]]
 tags = ["all"]
@@ -448,15 +457,6 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "worktrunk"
 
-# Real Microsoft build; the repo `code` is the OSS build without the marketplace.
-[[packages.linux]]
-name = "Visual Studio Code"
-tool = "code"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "visual-studio-code-bin"
-
 # X11 build; use `espanso-wayland` on a Wayland session.
 [[packages.linux]]
 name = "Espanso"
@@ -508,7 +508,7 @@ commands = [
 ]
 
 ###############################################################################
-# CLI tools — scripts (cross-platform / native installers)
+# CLI tools: scripts (cross-platform / native installers)
 ###############################################################################
 
 [[packages.linux]]
@@ -553,7 +553,7 @@ commands = [
 ]
 
 ###############################################################################
-# GUI apps — pacman (official Arch repos)
+# GUI apps: pacman (official Arch repos)
 ###############################################################################
 
 [[packages.linux]]
@@ -648,7 +648,7 @@ package_type = "pacman"
 id = "bitwarden"
 
 ###############################################################################
-# GUI apps — AUR (paru)
+# GUI apps: AUR (paru)
 ###############################################################################
 
 [[packages.linux]]
@@ -668,7 +668,7 @@ package_type = "aur"
 id = "libation"
 
 ###############################################################################
-# GUI apps — Flatpak (Flathub)
+# GUI apps: Flatpak (Flathub)
 ###############################################################################
 
 # Ensure flatpak + the flathub remote exist before the flatpak apps below.
@@ -734,7 +734,7 @@ postcommands = [
 ]
 
 ###############################################################################
-# GUI apps — AppImage (via scripts)
+# GUI apps: AppImage (via scripts)
 ###############################################################################
 
 [[packages.linux]]
