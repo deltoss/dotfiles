@@ -1,0 +1,79 @@
+/* Rose Pine */
+@define-color base #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlightMed #403d52;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @base;
+  color: @text;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: @subtle;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+#workspaces button.active {
+  color: @text;
+  background: @highlightMed;
+}
+
+#workspaces button.urgent {
+  color: @base;
+  background: @love;
+}
+
+#workspaces button:hover {
+  color: @text;
+  background: @overlay;
+}
+
+#window {
+  padding: 0 10px;
+  color: @subtle;
+}
+
+#clock {
+  color: @rose;
+}
+
+#pulseaudio {
+  padding: 0 10px;
+  color: @foam;
+}
+
+#pulseaudio.muted {
+  color: @muted;
+}
+
+#network {
+  padding: 0 10px;
+  color: @iris;
+}
+
+#network.disconnected {
+  color: @love;
+}
+
+#tray {
+  padding: 0 10px;
+}

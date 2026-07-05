@@ -357,6 +357,7 @@ package_type = "pacman"
 id = "mitmproxy"
 tool = "mitmproxy"
 
+# Wayland: no global hotkeys; bind `copyq toggle` in hyprland.lua instead.
 [[packages.linux]]
 description = "Clipboard manager with history"
 tags = ["all"]
@@ -366,12 +367,36 @@ id = "copyq"
 tool = "copyq"
 
 [[packages.linux]]
-description = "Screenshot tool with annotation"
+description = "CLI clipboard for Wayland (wl-copy/wl-paste)"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
-id = "flameshot"
-tool = "flameshot"
+id = "wl-clipboard"
+tool = "wl-copy"
+
+[[packages.linux]]
+description = "Screenshot tool for Hyprland (grim+slurp based)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprshot"
+tool = "hyprshot"
+
+[[packages.linux]]
+description = "Screenshot annotation tool (pairs with hyprshot)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "satty"
+tool = "satty"
+
+[[packages.linux]]
+description = "PulseAudio/PipeWire volume control GUI (Waybar on-click)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "pavucontrol"
+tool = "pavucontrol"
 
 [[packages.linux]]
 description = "Visual diff and merge tool"
@@ -457,16 +482,20 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "worktrunk"
 
-# X11 build; use `espanso-wayland` on a Wayland session.
+# NOTE: if an X11 espanso build is already installed, the `tool` precheck skips
+# this entry — uninstall espanso-x11 first. Re-run the setcap after espanso
+# package updates (pacman strips file capabilities on upgrade).
 [[packages.linux]]
 name = "Espanso"
-description = "Cross-platform text expander"
+description = "Cross-platform text expander (Wayland build)"
 tool = "espanso"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "aur"
-id = "espanso-x11"
+id = "espanso-wayland"
 postcommands = [
+  # Wayland build injects text via /dev/uinput, which needs this capability
+  "sudo setcap 'cap_dac_override+p' /usr/bin/espanso",
   "espanso service register",
 ]
 
@@ -755,3 +784,56 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-handy.nu"',
 ]
+###############################################################################
+# Hyprland desktop (WM + bar; launcher/notifications/lock come later)
+###############################################################################
+
+[[packages.linux]]
+name = "Hyprland"
+description = "Dynamic tiling Wayland compositor"
+tool = "Hyprland"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprland"
+
+[[packages.linux]]
+name = "Waybar"
+description = "Wayland status bar (replaces Zebar from the Windows setup)"
+tool = "waybar"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "waybar"
+
+[[packages.linux]]
+name = "xdg-desktop-portal-hyprland"
+description = "Portal backend for Hyprland (screenshare, file pickers)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "xdg-desktop-portal-hyprland"
+
+[[packages.linux]]
+name = "hyprpolkitagent"
+description = "Polkit authentication agent for GUI privilege prompts"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprpolkitagent"
+
+[[packages.linux]]
+name = "qt5-wayland"
+description = "Qt5 Wayland support"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qt5-wayland"
+
+[[packages.linux]]
+name = "qt6-wayland"
+description = "Qt6 Wayland support"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qt6-wayland"
