@@ -17,6 +17,9 @@ hl.config({
     ["col.active_border"] = "#567594",
     ["col.inactive_border"] = "#a1a1a1",
   },
+  dwindle = {
+    preserve_split = true, -- required for the togglesplit bind
+  },
   decoration = {
     inactive_opacity = 0.97,
   },
