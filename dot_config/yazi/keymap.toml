@@ -70,7 +70,12 @@ prepend_keymap = [
     "<Space>",
     "s",
     "e",
-  ], run = 'shell "nu -l -c \"ya emit cd (search everything)\"" --block', desc = "Search everything" },
+  ], run = 'shell "nu -n ~/.config/yazi/scripts/search-everything.nu" --block', desc = "Search everything", for = "windows" },
+  { on = [
+    "<Space>",
+    "s",
+    "e",
+  ], run = 'shell "nu -n ~/.config/yazi/scripts/search-plocate.nu" --block', desc = "Search everywhere via plocate", for = "linux" },
   { on = [
     "<Space>",
     "s",
