@@ -12,5 +12,5 @@ edit = [
 
 [open]
 append_rules = [
-	{ url = "*", use = [ "edit", "open" ] },
+	{ url = "*", use = [ "edit", "open", "reveal"] },
 ]
