@@ -613,6 +613,9 @@ tags = ["personal"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "openssh"
+postcommands = [
+  "sudo systemctl enable --now sshd.service",
+]
 
 [[packages.linux]]
 name = "VirtualBox"
