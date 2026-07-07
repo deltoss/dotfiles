@@ -3,7 +3,7 @@ show_hidden = true
 
 [opener]
 edit = [
-  { run = "nu.exe ~/.config/yazi/zellij-edit.nu %s", block = true, desc = "Zellij Edit" },
+  { run = "nu.exe ~/.config/yazi/scripts/zellij-edit.nu %s", block = true, desc = "Zellij Edit" },
   { run = "$EDITOR %s", block = true, desc = "Editor", for = "unix" },
   { run = "%EDITOR% %s", block = true, desc = "Editor", for = "windows" },
   { run = '$SHELL', block = true, desc = "Terminal", for = "unix" },
