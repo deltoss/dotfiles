@@ -179,6 +179,11 @@ id = "glzr-io.glazewm"
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"
+id = "glzr-io.zebar"
+
+[[packages.windows]]
+tags = ["all"]
+package_type = "winget"
 id = "Doist.Todoist"
 
 [[packages.windows]]
