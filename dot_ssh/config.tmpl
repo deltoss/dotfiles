@@ -1,6 +1,11 @@
 {{- $config := dict -}}
 {{- $config = ( .ssh_connections | fromToml) -}}
 
+{{- if hasPrefix "linux" .osid }}
+Host *
+  IdentityAgent ~/.1password/agent.sock
+
+{{ end }}
 {{- if $config }}
 {{- range $config.hosts -}}
 Host {{ .alias }}
