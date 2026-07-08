@@ -788,7 +788,7 @@ commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-handy.nu"',
 ]
 ###############################################################################
-# Hyprland desktop (WM + bar; launcher/notifications/lock come later)
+# Hyprland desktop (WM + bar + launcher + notifications + lock)
 ###############################################################################
 
 [[packages.linux]]
@@ -818,6 +818,15 @@ package_type = "pacman"
 id = "xdg-desktop-portal-hyprland"
 
 [[packages.linux]]
+name = "polkit"
+description = "Privilege authorization framework (lets GUI apps request root)"
+tool = "pkexec"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "polkit"
+
+[[packages.linux]]
 name = "hyprpolkitagent"
 description = "Polkit authentication agent for GUI privilege prompts"
 tags = ["all"]
@@ -840,3 +849,39 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "qt6-wayland"
+
+[[packages.linux]]
+name = "wofi"
+description = "Application launcher / dmenu replacement for Wayland"
+tool = "wofi"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "wofi"
+
+[[packages.linux]]
+name = "swaync"
+description = "Notification daemon with a pull-out notification center panel"
+tool = "swaync"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "swaync"
+
+[[packages.linux]]
+name = "hyprlock"
+description = "Hyprland's GPU-accelerated screen locker"
+tool = "hyprlock"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprlock"
+
+[[packages.linux]]
+name = "hypridle"
+description = "Hyprland's idle daemon (triggers hyprlock/dpms on timeout)"
+tool = "hypridle"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hypridle"
