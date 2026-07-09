@@ -149,8 +149,6 @@ window_rules:
         window_process:
           regex: '[Aa]nki'
       - window_process:
-          equals: 'ScreenToGif'
-      - window_process:
           equals: 'ApplicationFrameHost' # Windows settings
       - window_process:
           equals: 'WindowsTerminal'
@@ -332,6 +330,8 @@ window_rules:
           equals: 'Pinta'
       - window_process:
           equals: copyq
+      - window_process:
+          equals: 'ScreenToGif'
       - window_process:
           equals: 'SnagitCapture'
       - window_process:
