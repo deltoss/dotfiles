@@ -116,16 +116,16 @@ workspaces:
     bind_to_monitor: 0
   - name: "6"
     display_name: VI
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "7"
     display_name: VII
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "8"
     display_name: VIII
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "9"
     display_name: IX
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: "S1"
     display_name: "S1"
   - name: "S2"
