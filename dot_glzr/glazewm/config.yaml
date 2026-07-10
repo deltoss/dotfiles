@@ -128,8 +128,11 @@ workspaces:
     bind_to_monitor: 1
   - name: "S1"
     display_name: "S1"
+    bind_to_monitor: 1
   - name: "S2"
     display_name: "S2"
+  - name: "S3"
+    display_name: "S3"
 window_rules:
   - commands:
       - set-floating
