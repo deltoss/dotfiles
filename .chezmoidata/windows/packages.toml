@@ -111,10 +111,8 @@ name = "OpenCode"
 description = "Agentic AI in the terminal"
 tool = "opencode"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "choco install -y opencode"
-]
+package_type = "winget"
+id = "SST.opencode"
 
 [[packages.windows]]
 description = "Dependency for Neovim plugins"
