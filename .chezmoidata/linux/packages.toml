@@ -885,3 +885,30 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "hypridle"
+
+[[packages.linux]]
+name = "blueman"
+description = "GTK Bluetooth manager (pair/connect/switch devices, launchable from wofi)"
+tool = "blueman-manager"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "blueman"
+
+[[packages.linux]]
+name = "xdg-desktop-portal-gtk"
+description = "GTK portal backend (file picker dialogs, GTK theme info)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "xdg-desktop-portal-gtk"
+
+# Not yet in the official Arch repos; AUR is the first-party hyprwm distribution.
+[[packages.linux]]
+name = "hyprshutdown"
+description = "Graceful Hyprland shutdown/logout utility (asks apps to close before exiting)"
+tool = "hyprshutdown"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "hyprshutdown"
