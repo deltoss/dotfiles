@@ -850,14 +850,16 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "qt6-wayland"
 
+# Not in the official Arch repos; the AUR is the officially documented install
+# method (docs.vicinae.com/install/repo). `vicinae-bin` = prebuilt stable release.
 [[packages.linux]]
-name = "wofi"
-description = "Application launcher / dmenu replacement for Wayland"
-tool = "wofi"
+name = "Vicinae"
+description = "Raycast-like application launcher (replaces wofi)"
+tool = "vicinae"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "pacman"
-id = "wofi"
+package_type = "aur"
+id = "vicinae-bin"
 
 [[packages.linux]]
 name = "swaync"
@@ -888,7 +890,7 @@ id = "hypridle"
 
 [[packages.linux]]
 name = "blueman"
-description = "GTK Bluetooth manager (pair/connect/switch devices, launchable from wofi)"
+description = "GTK Bluetooth manager (pair/connect/switch devices, launchable from the launcher)"
 tool = "blueman-manager"
 tags = ["all"]
 distros = ["cachyos"]

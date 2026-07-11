@@ -37,6 +37,7 @@ hl.config({
 hl.on("hyprland.start", function()
   hl.exec_cmd("waybar")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("vicinae server")
 end)
 
 ------------------------------------------------------------------------------
@@ -86,6 +87,21 @@ hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
 -- Utility floats
 hl.window_rule({ match = { class = "^(com\\.github\\.hluk\\.copyq)$" }, float = true })
 hl.window_rule({ match = { title = "^([Pp]icture.in.[Pp]icture)$" }, float = true, pin = true })
+
+------------------------------------------------------------------------------
+-- Layer rules (Vicinae launcher, per docs.vicinae.com/quickstart/hyprland-lua)
+------------------------------------------------------------------------------
+hl.layer_rule({
+  match = { namespace = "vicinae" },
+  name = "vicinae-blur",
+  blur = true,
+  ignore_alpha = 0,
+})
+hl.layer_rule({
+  match = { namespace = "vicinae" },
+  name = "vicinae-no-animation",
+  no_anim = true,
+})
 
 ------------------------------------------------------------------------------
 -- Keybinds: focus / move (y=left, e=right, a=up, h=down)
@@ -140,6 +156,7 @@ hl.bind(FOCUS .. " + c", hl.dsp.window.cycle_next())
 ------------------------------------------------------------------------------
 -- Keybinds: utilities
 ------------------------------------------------------------------------------
+hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + v", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
