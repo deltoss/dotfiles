@@ -154,6 +154,12 @@ hl.bind(FOCUS .. " + d", hl.dsp.layout("togglesplit"))
 hl.bind(FOCUS .. " + c", hl.dsp.window.cycle_next())
 
 ------------------------------------------------------------------------------
+-- Keybinds: application shortcuts
+------------------------------------------------------------------------------
+hl.bind("SUPER + Q", hl.dsp.exit())
+hl.bind("SUPER + T", hl.dsp.exec_cmd("wezterm"))
+
+------------------------------------------------------------------------------
 -- Keybinds: utilities
 ------------------------------------------------------------------------------
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
