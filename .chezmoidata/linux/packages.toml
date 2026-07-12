@@ -586,11 +586,18 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
+name = "Nerd Fonts Symbols"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "ttf-nerd-fonts-symbols-mono"
+
+[[packages.linux]]
 name = "WezTerm"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "pacman"
-id = "wezterm"
+package_type = "aur"
+id = "wezterm-git"
 tool = "wezterm"
 
 [[packages.linux]]
