@@ -31,7 +31,7 @@
   codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OPENCODE/API Key" | quote }}
   fabric_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/FABRIC/API Key" | quote }}
-  {{- else if eq .computerPurpose "work" -}}
+  {{- else if eq $computerPurpose "work" -}}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
   fabric_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/FABRIC/API Key" | quote }}
@@ -40,18 +40,18 @@
   codex_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODEX/API Key" | quote }}
   codecompanion_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/OPENCODE/API Key" | quote }}
-  {{- else if eq .computerPurpose "work" -}}
+  {{- else if eq $computerPurpose "work" -}}
   codecompanion_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/OPENCODE/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
   ssh_connections = {{- onepasswordRead "op://Personal/SSH Connections/notesPlain" | quote -}}
-  {{- else if eq .computerPurpose "work" -}}
+  {{- else if eq $computerPurpose "work" -}}
   ssh_connections = {{- onepasswordRead "op://Work/SSH Connections/notesPlain" | quote -}}
   {{- end }}
-  {{ if eq .computerPurpose "personal" -}}
+  {{ if eq $computerPurpose "personal" -}}
   harlequin_configs = {{- onepasswordRead "op://Personal/Harlequin/Configs" | quote -}}
-  {{ else if eq .computerPurpose "work" -}}
+  {{ else if eq $computerPurpose "work" -}}
   harlequin_configs = {{- onepasswordRead "op://Work/Harlequin/Configs" | quote -}}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}

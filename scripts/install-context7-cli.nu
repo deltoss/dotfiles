@@ -12,7 +12,7 @@ def main [] {
 
   # ctx7 setup performs an interactive OAuth device login; only run it with a TTY.
   let is_interactive = is-terminal --stdin
-  if not (is_interactive) {
+  if not ($is_interactive) {
     print $"(ansi yellow)⚠ Context7 needs interactive OAuth login; skipping in unattended run.(ansi reset)"
     print $"(ansi yellow)  Run manually: npm install -g ctx7 && ctx7 setup --cli && ctx7 setup --opencode && ctx7 setup --claude(ansi reset)"
     return
