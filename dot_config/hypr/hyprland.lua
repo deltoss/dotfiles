@@ -167,6 +167,12 @@ hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 hl.bind("SUPER + X", hl.dsp.window.close())
 hl.bind("SUPER + Q", hl.dsp.exit())
 hl.bind("SUPER + T", hl.dsp.exec_cmd("wezterm"))
+hl.bind("SUPER + R", hl.dsp.exec_cmd("flatpak run app.zen_browser.zen"))
+hl.bind("SUPER + Z", hl.dsp.exec_cmd("obsidian"))
+hl.bind("SUPER + H", hl.dsp.exec_cmd("~/.local/bin/Todoist.AppImage"))
+hl.bind("SUPER + W", hl.dsp.exec_cmd("flatpak run org.onlyoffice.desktopeditors"))
+hl.bind("SUPER + M", hl.dsp.exec_cmd("mailspring"))
+hl.bind(FOCUS .. " + Period", hl.dsp.exec_cmd("1password"))
 
 ------------------------------------------------------------------------------
 -- Keybinds: utilities
