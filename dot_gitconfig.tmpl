@@ -5,7 +5,9 @@
   compression = 9
   whitespace = error
   autocrlf = {{ if eq .osid "windows" -}}true{{ else -}}input{{- end }}
+{{- if eq .osid "windows" }}
   sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+{{- end }}
   editor = nvim
   pager = delta
   hooksPath = ~/.config/git/hooks
