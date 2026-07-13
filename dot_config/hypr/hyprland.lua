@@ -88,6 +88,9 @@ hl.config({
 	cursor = {
 		warp_on_change_workspace = 1,
 	},
+	misc = {
+		focus_on_activate = true,
+	},
 })
 
 -------------------
@@ -117,41 +120,23 @@ end
 -----------------------
 -- Verify classes with `hyprctl clients` and adjust.
 
--- Terminal
 hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace = "name:0" })
-
--- Dev
 hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" })
 hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
-
--- Browsers / Anki
 hl.window_rule({
 	match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen|app.zen_browser.zen)$" },
 	workspace = "3",
 })
 hl.window_rule({ match = { class = "^([Aa]nki)$" }, workspace = "3" })
 -- TODO: float Anki dialogs (title not ending in "Anki"); verify titles with `hyprctl clients`.
-
--- API clients / VMs
 hl.window_rule({ match = { class = "^(Postman|postman|[Bb]runo)$" }, workspace = "4" })
 hl.window_rule({ match = { class = "^(VirtualBoxVM)$" }, workspace = "4" })
-
--- Notes
 hl.window_rule({ match = { class = "^(obsidian)$" }, workspace = "5" })
-
--- Tasks
 hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
-
--- Mail / VM manager
 hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
-
--- Chat
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
-
--- Utility floats
 hl.window_rule({ match = { class = "^(com\\.github\\.hluk\\.copyq)$" }, float = true })
-hl.window_rule({ match = { title = "^([Pp]icture.in.[Pp]icture)$" }, float = true, pin = true })
 
 ------------------------------------------------------------------------------
 -- Layer rules (Vicinae launcher, per docs.vicinae.com/quickstart/hyprland-lua)
