@@ -1,3 +1,4 @@
+local apps = require("lib/apps")
 ------------------------------------------------------------------------------
 -- Monitors
 ------------------------------------------------------------------------------
@@ -63,7 +64,10 @@ hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" }
 hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
 
 -- Browsers / Anki
-hl.window_rule({ match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen)$" }, workspace = "3" })
+hl.window_rule({
+	match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen|app.zen_browser.zen)$" },
+	workspace = "3",
+})
 hl.window_rule({ match = { class = "^([Aa]nki)$" }, workspace = "3" })
 -- TODO: float Anki dialogs (title not ending in "Anki"); verify titles with `hyprctl clients`.
 
@@ -166,13 +170,13 @@ hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 ------------------------------------------------------------------------------
 hl.bind("SUPER + X", hl.dsp.window.close())
 hl.bind("SUPER + Q", hl.dsp.exit())
-hl.bind("SUPER + T", hl.dsp.exec_cmd("wezterm"))
-hl.bind("SUPER + R", hl.dsp.exec_cmd("flatpak run app.zen_browser.zen"))
-hl.bind("SUPER + Z", hl.dsp.exec_cmd("obsidian"))
-hl.bind("SUPER + H", hl.dsp.exec_cmd("~/.local/bin/Todoist.AppImage"))
-hl.bind("SUPER + W", hl.dsp.exec_cmd("flatpak run org.onlyoffice.desktopeditors"))
-hl.bind("SUPER + M", hl.dsp.exec_cmd("mailspring"))
-hl.bind(FOCUS .. " + Period", hl.dsp.exec_cmd("1password"))
+hl.bind("SUPER + T", apps.run_or_raise("org.wezfurlong.wezterm", "wezterm"))
+hl.bind("SUPER + R", apps.run_or_raise("app.zen_browser.zen", "flatpak run app.zen_browser.zen"))
+hl.bind("SUPER + Z", apps.run_or_raise("obsidian", "obsidian"))
+hl.bind("SUPER + H", apps.run_or_raise("todoist", "~/.local/bin/Todoist.AppImage"))
+hl.bind("SUPER + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice.desktopeditors"))
+hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
+hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
 
 ------------------------------------------------------------------------------
 -- Keybinds: utilities
