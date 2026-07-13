@@ -357,7 +357,6 @@ package_type = "pacman"
 id = "mitmproxy"
 tool = "mitmproxy"
 
-# Wayland: no global hotkeys; bind `copyq toggle` in hyprland.lua instead.
 [[packages.linux]]
 description = "Clipboard manager with history"
 tags = ["all"]
@@ -869,13 +868,13 @@ package_type = "aur"
 id = "vicinae-bin"
 
 [[packages.linux]]
-name = "swaync"
-description = "Notification daemon with a pull-out notification center panel"
-tool = "swaync"
+name = "dunst"
+description = "Notification daemon"
+tool = "dunst"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
-id = "swaync"
+id = "dunst"
 
 [[packages.linux]]
 name = "hyprlock"
