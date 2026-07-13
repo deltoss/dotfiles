@@ -1,40 +1,98 @@
 local apps = require("lib/apps")
-------------------------------------------------------------------------------
--- Monitors
-------------------------------------------------------------------------------
--- TODO: run `hyprctl monitors` and replace these names.
-local MON_MAIN = "DP-1"
-local MON_SECOND = "HDMI-A-1"
+------------------
+---- MONITORS ----
+------------------
 
-------------------------------------------------------------------------------
--- General / looks
-------------------------------------------------------------------------------
+-- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+hl.monitor({
+	output = "",
+	mode = "preferred",
+	position = "auto",
+	scale = "1.33",
+})
+
+local MON_MAIN = "DP-1"
+local MON_SECOND = "DP-2"
+
+-------------------------------
+---- ENVIRONMENT VARIABLES ----
+-------------------------------
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+
+hl.env("XCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_SIZE", "32")
+
+-----------------------
+----- PERMISSIONS -----
+-----------------------
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
+-- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
+-- for security reasons
+
+-- hl.config({
+--   ecosystem = {
+--     enforce_permissions = true,
+--   },
+-- })
+
+-- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
+-- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
+-- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
+
+-- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
 		layout = "dwindle",
-		border_size = 2,
+		border_size = 3,
 		gaps_in = 3,
-		gaps_out = 13,
+		gaps_out = 17,
 		["col.active_border"] = "#567594",
 		["col.inactive_border"] = "#a1a1a1",
 	},
+	-- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 	dwindle = {
 		preserve_split = true, -- required for the togglesplit bind
 	},
 	decoration = {
 		inactive_opacity = 0.97,
+		rounding = 10,
+		rounding_power = 2,
+
+		-- Change transparency of focused and unfocused windows
+		active_opacity = 1.0,
+		inactive_opacity = 0.7,
+
+		shadow = {
+			enabled = true,
+			range = 4,
+			render_power = 3,
+			color = 0xee1a1a1a,
+		},
+
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 1,
+			vibrancy = 0.1696,
+		},
 	},
-	input = {
-		follow_mouse = 0,
+	animations = {
+		enabled = true,
 	},
 	cursor = {
 		warp_on_change_workspace = 1,
 	},
 })
 
-------------------------------------------------------------------------------
--- Autostart
-------------------------------------------------------------------------------
+-------------------
+---- AUTOSTART ----
+-------------------
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -44,9 +102,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("dunst")
 end)
 
-------------------------------------------------------------------------------
--- Workspaces
-------------------------------------------------------------------------------
+--------------------
+---- WORKSPACES ----
+--------------------
 for _, ws in ipairs({ "name:0", "1", "2", "3", "4", "5" }) do
 	hl.workspace_rule({ workspace = ws, monitor = MON_MAIN, default = ws == "1" })
 end
@@ -54,9 +112,9 @@ for _, ws in ipairs({ "6", "7", "8", "9" }) do
 	hl.workspace_rule({ workspace = ws, monitor = MON_SECOND, default = ws == "6" })
 end
 
-------------------------------------------------------------------------------
--- Window rules
-------------------------------------------------------------------------------
+-----------------------
+---- WINDOWS RULES ----
+-----------------------
 -- Verify classes with `hyprctl clients` and adjust.
 
 -- Terminal
@@ -110,9 +168,9 @@ hl.layer_rule({
 	no_anim = true,
 })
 
-------------------------------------------------------------------------------
--- Keybinds: focus / move (y=left, e=right, a=up, h=down)
-------------------------------------------------------------------------------
+----------------------------------
+---- KEYBINDINGS: NAVIGATIONS ----
+----------------------------------
 local FOCUS = "CTRL + ALT + SHIFT"
 local MOVE = "ALT + SHIFT"
 
@@ -126,9 +184,9 @@ for _, k in ipairs(dirKeys) do
 	hl.bind(MOVE .. " + " .. arrow, hl.dsp.window.move({ direction = dir }))
 end
 
-------------------------------------------------------------------------------
--- Keybinds: workspaces (key 0 -> workspace 0)
-------------------------------------------------------------------------------
+---------------------------------
+---- KEYBINDINGS: WORKSPACES ----
+---------------------------------
 local wsKeys = {
 	["1"] = 1,
 	["2"] = 2,
@@ -150,16 +208,16 @@ hl.bind(FOCUS .. " + U", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(FOCUS .. " + Page_Up", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(FOCUS .. " + O", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(FOCUS .. " + Page_Down", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(FOCUS .. " + P", hl.dsp.focus({ workspace = "previous" }))
 
-------------------------------------------------------------------------------
--- Keybinds: window state
-------------------------------------------------------------------------------
+------------------------------------
+---- KEYBINDINGS: WINDOW STATES ----
+------------------------------------
+hl.bind(FOCUS .. " + P", hl.dsp.window.pseudo())
 hl.bind(FOCUS .. " + S", function()
 	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
 	hl.dispatch(hl.dsp.window.center())
 end)
-hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "disable" }))
+hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(FOCUS .. " + X", hl.dsp.window.close())
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
@@ -168,9 +226,19 @@ hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(FOCUS .. " + D", hl.dsp.layout("togglesplit"))
 hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 
-------------------------------------------------------------------------------
--- Keybinds: application shortcuts
-------------------------------------------------------------------------------
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+------------------------------------
+---- KEYBINDINGS: APPLICATIONS ----
+------------------------------------
+
+hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind("SUPER + X", hl.dsp.window.close())
 hl.bind("SUPER + Q", hl.dsp.exit())
 hl.bind("SUPER + T", apps.run_or_raise("org.wezfurlong.wezterm", "wezterm"))
@@ -181,17 +249,17 @@ hl.bind("SUPER + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice
 hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
 hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
 
-------------------------------------------------------------------------------
--- Keybinds: utilities
-------------------------------------------------------------------------------
+--------------------------------
+---- KEYBINDINGS: UTILITIES ----
+--------------------------------
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
 
-------------------------------------------------------------------------------
--- Resize submap
-------------------------------------------------------------------------------
+-----------------------
+---- RESIZE SUBMAP ----
+-----------------------
 hl.bind(FOCUS .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("resize", function()
