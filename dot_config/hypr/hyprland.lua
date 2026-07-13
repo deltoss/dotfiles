@@ -221,16 +221,17 @@ hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(FOCUS .. " + X", hl.dsp.window.close())
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
+hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(FOCUS .. " + Q", hl.dsp.exit())
 hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(FOCUS .. " + D", hl.dsp.layout("togglesplit"))
 hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 
--- Scroll through existing workspaces with mainMod + scroll
+-- Scroll through existing workspaces with SUPER + scroll
 hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
--- Move/resize windows with mainMod + LMB/RMB and dragging
+-- Move/resize windows with SUPER + LMB/RMB and dragging
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
