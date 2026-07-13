@@ -614,6 +614,15 @@ package_type = "pacman"
 id = "anki"
 
 [[packages.linux]]
+name = "Steam"
+description = "Digital game storefront and launcher"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "steam"
+tool = "steam"
+
+[[packages.linux]]
 name = "OpenSSH"
 tags = ["personal"]
 distros = ["cachyos"]
