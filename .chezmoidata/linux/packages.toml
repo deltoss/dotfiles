@@ -615,7 +615,7 @@ id = "anki"
 
 [[packages.linux]]
 name = "Steam"
-description = "Digital game storefront and launcher; multilib is enabled by default on CachyOS"
+description = "Digital game storefront and launcher"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
