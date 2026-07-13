@@ -614,6 +614,15 @@ package_type = "pacman"
 id = "anki"
 
 [[packages.linux]]
+name = "Steam"
+description = "Digital game storefront and launcher; multilib is enabled by default on CachyOS"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "steam"
+tool = "steam"
+
+[[packages.linux]]
 name = "OpenSSH"
 tags = ["personal"]
 distros = ["cachyos"]
@@ -637,15 +646,6 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "qbittorrent"
 tool = "qbittorrent"
-
-[[packages.linux]]
-name = "Steam"
-description = "Digital game storefront and launcher; multilib is enabled by default on CachyOS"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "steam"
-tool = "steam"
 
 [[packages.linux]]
 tags = ["personal"]
