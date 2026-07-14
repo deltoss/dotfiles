@@ -1,2 +1,2 @@
 [fonts]
-linux = ["JetBrainsMono", "HeavyData", "DepartureMono", "CascadiaCode", "MartianMono" ] # For full list of fonts, see https://github.com/ryanoasis/nerd-fonts/blob/master/bin/scripts/lib/fonts.json
+linux = ["JetBrainsMono", "HeavyData", "CascadiaCode" ] # For full list of fonts, see https://github.com/ryanoasis/nerd-fonts/blob/master/bin/scripts/lib/fonts.json
