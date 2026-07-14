@@ -11,9 +11,6 @@ hl.monitor({
 	scale = "1.33",
 })
 
-local MON_MAIN = "DP-1"
-local MON_SECOND = "DP-2"
-
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
@@ -109,16 +106,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("copyq --start-server")
 	hl.exec_cmd("dunst")
 end)
-
---------------------
----- WORKSPACES ----
---------------------
-for _, ws in ipairs({ "name:0", "1", "2", "3", "4", "5" }) do
-	hl.workspace_rule({ workspace = ws, monitor = MON_MAIN, default = ws == "1" })
-end
-for _, ws in ipairs({ "6", "7", "8", "9" }) do
-	hl.workspace_rule({ workspace = ws, monitor = MON_SECOND, default = ws == "6" })
-end
 
 -----------------------
 ---- WINDOWS RULES ----

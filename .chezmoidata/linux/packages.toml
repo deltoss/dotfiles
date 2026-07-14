@@ -374,6 +374,18 @@ id = "wl-clipboard"
 tool = "wl-copy"
 
 [[packages.linux]]
+name = "ydotool"
+description = "Needed for CopyQ to paste on wayland. See https://github.com/hluk/copyq-commands/tree/master#wayland-support & https://github.com/hluk/copyq-commands/blob/master/commands/wayland-support.ini"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "ydotool"
+postcommands = [
+  "systemctl --user enable --now ydotool.service"
+]
+tool = "ydotool"
+
+[[packages.linux]]
 description = "Screenshot tool for Hyprland (grim+slurp based)"
 tags = ["all"]
 distros = ["cachyos"]
