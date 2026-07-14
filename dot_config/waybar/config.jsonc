@@ -1,8 +1,11 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
+  "height": 42,
   "spacing": 4,
+  "margin-top": 6,
+  "margin-left": 12,
+  "margin-right": 12,
 
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],

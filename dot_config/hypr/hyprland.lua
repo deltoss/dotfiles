@@ -51,7 +51,12 @@ hl.config({
 		layout = "dwindle",
 		border_size = 3,
 		gaps_in = 3,
-		gaps_out = 17,
+		gaps_out = {
+			top = 8,
+			left = 12,
+			right = 12,
+			bottom = 8,
+		},
 		["col.active_border"] = "#567594",
 		["col.inactive_border"] = "#a1a1a1",
 	},

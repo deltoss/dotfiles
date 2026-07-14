@@ -1,79 +1,90 @@
-/* Rose Pine */
-@define-color base #191724;
-@define-color surface #1f1d2e;
-@define-color overlay #26233a;
-@define-color muted #6e6a86;
-@define-color subtle #908caa;
-@define-color text #e0def4;
-@define-color love #eb6f92;
-@define-color gold #f6c177;
-@define-color rose #ebbcba;
-@define-color pine #31748f;
-@define-color foam #9ccfd8;
-@define-color iris #c4a7e7;
-@define-color highlightMed #403d52;
+/* Catppuccin Latte — https://github.com/catppuccin/waybar */
+@import "latte.css";
 
 * {
-  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
-  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: "CaskaydiaCove Nerd Font", "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
+  font-size: 13pt;
   min-height: 0;
 }
 
 window#waybar {
-  background: @base;
+  background: transparent;
   color: @text;
+}
+
+#workspaces {
+  margin: 5px 0 5px 5px;
+  padding: 0 4px;
+  border-radius: 1rem;
+  background-color: @surface0;
 }
 
 #workspaces button {
-  padding: 0 8px;
-  color: @subtle;
-  background: transparent;
+  padding: 0.3rem 0.6rem;
+  margin: 3px 2px;
   border: none;
-  border-radius: 0;
+  border-radius: 1rem;
+  box-shadow: none;
+  color: @subtext0;
+  background: transparent;
 }
 
 #workspaces button.active {
-  color: @text;
-  background: @highlightMed;
+  color: @base;
+  background: @mauve;
 }
 
 #workspaces button.urgent {
   color: @base;
-  background: @love;
+  background: @red;
 }
 
 #workspaces button:hover {
   color: @text;
-  background: @overlay;
+  background: @surface2;
 }
 
 #window {
-  padding: 0 10px;
-  color: @subtle;
+  margin: 5px;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  background-color: @surface0;
+  color: @subtext0;
+}
+
+#clock,
+#pulseaudio,
+#network,
+#tray {
+  margin: 5px 3px;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  background-color: @surface0;
 }
 
 #clock {
-  color: @rose;
+  color: @rosewater;
 }
 
 #pulseaudio {
-  padding: 0 10px;
-  color: @foam;
+  color: @sky;
 }
 
 #pulseaudio.muted {
-  color: @muted;
+  color: @overlay0;
 }
 
 #network {
-  padding: 0 10px;
-  color: @iris;
+  color: @mauve;
 }
 
 #network.disconnected {
-  color: @love;
+  color: @red;
 }
 
 #tray {
-  padding: 0 10px;
+  margin-right: 5px;
 }
