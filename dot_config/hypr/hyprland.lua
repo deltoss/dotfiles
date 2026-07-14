@@ -128,7 +128,11 @@ hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
 hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
-hl.window_rule({ match = { class = "^(com\\.github\\.hluk\\.copyq)$" }, float = true })
+hl.window_rule({
+	match = { class = "com\\.github\\.hluk\\.copyq" },
+	float = true,
+	center = true,
+})
 
 ------------------------------------------------------------------------------
 -- Layer rules (Vicinae launcher, per docs.vicinae.com/quickstart/hyprland-lua)
