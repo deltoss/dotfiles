@@ -108,6 +108,15 @@ hl.on("hyprland.start", function()
 end)
 
 -----------------------
+--- WORKSPACE RULES ---
+-----------------------
+
+hl.workspace_rule({
+	workspace = "special:term",
+	on_created_empty = "wezterm start --class wezterm-special",
+})
+
+-----------------------
 ---- WINDOWS RULES ----
 -----------------------
 -- Verify classes with `hyprctl clients` and adjust.
@@ -132,6 +141,15 @@ hl.window_rule({
 	match = { class = "com\\.github\\.hluk\\.copyq" },
 	float = true,
 	center = true,
+})
+hl.window_rule({
+	match = { class = "wezterm-special" },
+	float = true,
+	center = true,
+	size = {
+		"(monitor_w*0.75)",
+		"(monitor_h*0.75)",
+	},
 })
 
 ------------------------------------------------------------------------------
@@ -230,6 +248,7 @@ hl.bind("SUPER + H", apps.run_or_raise("todoist", "~/.local/bin/Todoist.AppImage
 hl.bind("SUPER + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice.desktopeditors"))
 hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
 hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
+hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 
 --------------------------------
 ---- KEYBINDINGS: UTILITIES ----
