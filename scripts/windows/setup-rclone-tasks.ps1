@@ -14,6 +14,16 @@ if ($env:CHEZMOI_COMPUTERPURPOSE -eq "personal") {
   $action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"Remove-Item '$env:USERPROFILE\Documents\Personal' -Force -ErrorAction SilentlyContinue; rclone mount --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M personal-google-drive: '$env:USERPROFILE\Documents\Personal'`""
   $taskName = "RClone - Mount Personal Folder - Google Drive"
   Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
+
+} else {
+
+  $action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"rclone mount --network-mode --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M 'personal-google-drive:PC-Related Files' R:`""
+  $taskName = "RClone - Mount Personal Drive - Google Drive"
+  Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
+
+  $action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"Remove-Item '$env:USERPROFILE\Documents\Personal' -Force -ErrorAction SilentlyContinue; rclone mount --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M 'personal-google-drive:PC-Related Files' '$env:USERPROFILE\Documents\Personal'`""
+  $taskName = "RClone - Mount Personal Folder - Google Drive"
+  Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
 }
 
 $action = New-ScheduledTaskAction -Execute "conhost.exe" -Argument "--headless powershell -Command `"rclone mount --network-mode --vfs-cache-mode full --vfs-cache-max-size 20G --buffer-size 32M --dir-cache-time 1h --poll-interval 30s --vfs-read-chunk-size 32M notes-google-drive: N:`""

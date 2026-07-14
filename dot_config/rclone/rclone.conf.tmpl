@@ -6,6 +6,7 @@ vendor = owncloud
 pacer_min_sleep = 0.01ms
 user = {{ .copyparty_username }}
 pass = 
+{{- end }}
 
 [personal-google-drive]
 type = drive
@@ -15,7 +16,6 @@ scope = drive
 token = 
 team_drive = 
 
-{{ end -}}
 [notes-google-drive]
 type = drive
 client_id = {{ .rclone_notes_gdrive_client_id }}

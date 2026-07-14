@@ -60,9 +60,9 @@
   copyparty_website = {{ onepasswordRead "op://Personal/Copyparty/website" | quote }}
   copyparty_username = {{ onepasswordRead "op://Personal/Copyparty/username" | quote }}
   copyparty_password = {{ onepasswordRead "op://Personal/Copyparty/password" | quote }}
+  {{- end }}
   rclone_personal_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client ID" | quote }}
   rclone_personal_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client Secret" | quote }}
-  {{- end }}
   rclone_notes_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" | quote }}
   rclone_notes_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" | quote }}
   {{ if eq $computerPurpose "work" -}}
