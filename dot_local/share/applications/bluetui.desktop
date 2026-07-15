@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bluetui
+Comment=Bluetooth device manager
+Exec=wezterm start --class bluetui -- bluetui
+Icon=bluetooth
+Terminal=false
+Categories=Settings;HardwareSettings;
+Keywords=bluetooth;pair;headphones;devices;

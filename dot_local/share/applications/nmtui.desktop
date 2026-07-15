@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Network Connections (nmtui)
-Comment=Manage Wi-Fi and network connections via NetworkManager's TUI
+Name=Network Manager (nmtui)
+Comment=WiFi and network manager
+Exec=wezterm start --class nmtui -- nmtui
 Icon=network-wireless
-Exec=wezterm start -- nmtui
 Terminal=false
-Categories=System;Network;
-Keywords=wifi;network;bluetooth;nmtui;
+Categories=Settings;Network;
+Keywords=wifi;network;internet;connect;

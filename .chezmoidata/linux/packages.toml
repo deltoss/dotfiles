@@ -410,6 +410,15 @@ id = "pavucontrol"
 tool = "pavucontrol"
 
 [[packages.linux]]
+name = "wiremix"
+description = "TUI audio mixer for PipeWire"
+tool = "wiremix"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "wiremix"
+
+[[packages.linux]]
 description = "Visual diff and merge tool"
 tags = ["all"]
 distros = ["cachyos"]
@@ -937,6 +946,23 @@ package_type = "pacman"
 id = "hypridle"
 
 [[packages.linux]]
+name = "bluez"
+description = "Bluetooth protocol stack daemons (bluetoothd)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluez"
+
+[[packages.linux]]
+name = "bluez-utils"
+description = "Bluetooth CLI utilities (bluetoothctl)"
+tool = "bluetoothctl"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluez-utils"
+
+[[packages.linux]]
 name = "blueman"
 description = "GTK Bluetooth manager (pair/connect/switch devices, launchable from the launcher)"
 tool = "blueman-manager"
@@ -944,6 +970,15 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "blueman"
+
+[[packages.linux]]
+name = "bluetui"
+description = "TUI for managing bluetooth devices"
+tool = "bluetui"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluetui"
 
 [[packages.linux]]
 name = "xdg-desktop-portal-gtk"

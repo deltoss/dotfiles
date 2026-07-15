@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Wiremix
+Comment=PipeWire audio mixer
+Exec=wezterm start --class wiremix -- wiremix
+Icon=audio-volume-high
+Terminal=false
+Categories=AudioVideo;Audio;Mixer;
+Keywords=sound;volume;audio;mixer;pipewire;

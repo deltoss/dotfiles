@@ -152,6 +152,18 @@ hl.window_rule({
 	},
 })
 
+for _, c in ipairs({ "wiremix", "bluetui", "nmtui" }) do
+	hl.window_rule({
+		match = { class = c },
+		float = true,
+		center = true,
+		size = {
+			"(monitor_w*0.85)",
+			"(monitor_h*0.85)",
+		},
+	})
+end
+
 ------------------------------------------------------------------------------
 -- Layer rules (Vicinae launcher, per docs.vicinae.com/quickstart/hyprland-lua)
 ------------------------------------------------------------------------------
@@ -258,6 +270,21 @@ hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
 
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+	{ locked = true, repeating = true }
+)
 -----------------------
 ---- RESIZE SUBMAP ----
 -----------------------
