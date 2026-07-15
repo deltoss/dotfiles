@@ -39,8 +39,6 @@ DetectHiddenWindows true
 !u:: Send "^+{Tab}" ; Go to above tab
 !PgDn:: Send "^+{Tab}" ; Go to left tab
 !PgUp:: Send "^{Tab}" ; Go to right tab
-!w:: Send "^w" ; Close tab
-!t:: Send "^t" ; New tab
 #HotIf
 
 ; Window + R - [R]esearch/Browser
