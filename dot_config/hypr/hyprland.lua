@@ -5,10 +5,10 @@ local apps = require("lib/apps")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
-	scale = "1.33",
+  output = "",
+  mode = "preferred",
+  position = "auto",
+  scale = "1.33",
 })
 
 -------------------------------
@@ -44,67 +44,74 @@ hl.env("HYPRCURSOR_SIZE", "32")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-	general = {
-		layout = "dwindle",
-		border_size = 3,
-		gaps_in = 3,
-		gaps_out = {
-			top = 8,
-			left = 12,
-			right = 12,
-			bottom = 8,
-		},
-		["col.active_border"] = "#567594",
-		["col.inactive_border"] = "#a1a1a1",
-	},
-	-- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
-	dwindle = {
-		preserve_split = true, -- required for the togglesplit bind
-	},
-	decoration = {
-		inactive_opacity = 0.97,
-		rounding = 10,
-		rounding_power = 2,
+  general = {
+    layout = "scrolling",
+    border_size = 3,
+    gaps_in = 3,
+    gaps_out = {
+      top = 8,
+      left = 12,
+      right = 12,
+      bottom = 8,
+    },
+    ["col.active_border"] = "#567594",
+    ["col.inactive_border"] = "#a1a1a1",
 
-		-- Change transparency of focused and unfocused windows
-		active_opacity = 1.0,
-		inactive_opacity = 0.7,
+    -- Snap windows/monitors together when dragging/resizing
+    snap = {
+      enabled = true,
+      window_gap = 4,
+      monitor_gap = 5,
+      respect_gaps = true,
+    },
 
-		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
-			color = 0xee1a1a1a,
-		},
+    -- Lets window_rule { immediate = true } (see TEARING below) actually skip vsync for matched windows
+    allow_tearing = true,
+  },
+  decoration = {
+    inactive_opacity = 0.97,
+    rounding = 10,
+    rounding_power = 2,
 
-		blur = {
-			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
-		},
-	},
-	animations = {
-		enabled = true,
-	},
-	cursor = {
-		warp_on_change_workspace = 1,
-	},
-	misc = {
-		focus_on_activate = true,
-	},
+    -- Change transparency of focused and unfocused windows
+    active_opacity = 1.0,
+    inactive_opacity = 0.7,
+
+    shadow = {
+      enabled = true,
+      range = 4,
+      render_power = 3,
+      color = 0xee1a1a1a,
+    },
+
+    blur = {
+      enabled = true,
+      size = 3,
+      passes = 1,
+      vibrancy = 0.1696,
+    },
+  },
+  animations = {
+    enabled = true,
+  },
+  cursor = {
+    warp_on_change_workspace = 1,
+  },
+  misc = {
+    focus_on_activate = true,
+  },
 })
 
 -------------------
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar")
-	hl.exec_cmd("systemctl --user start hyprpolkitagent")
-	hl.exec_cmd("vicinae server")
-	hl.exec_cmd("1password --silent")
-	hl.exec_cmd("copyq --start-server")
-	hl.exec_cmd("dunst")
+  hl.exec_cmd("waybar")
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("vicinae server")
+  hl.exec_cmd("1password --silent")
+  hl.exec_cmd("copyq --start-server")
+  hl.exec_cmd("dunst")
 end)
 
 -----------------------
@@ -112,8 +119,8 @@ end)
 -----------------------
 
 hl.workspace_rule({
-	workspace = "special:term",
-	on_created_empty = "wezterm start --class wezterm-special",
+  workspace = "special:term",
+  on_created_empty = "wezterm start --class wezterm-special",
 })
 
 -----------------------
@@ -125,8 +132,8 @@ hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace
 hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" })
 hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
 hl.window_rule({
-	match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen|app.zen_browser.zen)$" },
-	workspace = "3",
+  match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen|app.zen_browser.zen)$" },
+  workspace = "3",
 })
 hl.window_rule({ match = { class = "^([Aa]nki)$" }, workspace = "3" })
 -- TODO: float Anki dialogs (title not ending in "Anki"); verify titles with `hyprctl clients`.
@@ -138,45 +145,73 @@ hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
 hl.window_rule({
-	match = { class = "com\\.github\\.hluk\\.copyq" },
-	float = true,
-	center = true,
+  match = { class = "com\\.github\\.hluk\\.copyq" },
+  float = true,
+  center = true,
 })
 hl.window_rule({
-	match = { class = "wezterm-special" },
-	float = true,
-	center = true,
-	size = {
-		"(monitor_w*0.75)",
-		"(monitor_h*0.75)",
-	},
+  match = { class = "wezterm-special" },
+  float = true,
+  center = true,
+  size = {
+    "(monitor_w*0.75)",
+    "(monitor_h*0.75)",
+  },
 })
 
 for _, c in ipairs({ "wiremix", "bluetui", "nmtui" }) do
-	hl.window_rule({
-		match = { class = c },
-		float = true,
-		center = true,
-		size = {
-			"(monitor_w*0.85)",
-			"(monitor_h*0.85)",
-		},
-	})
+  hl.window_rule({
+    match = { class = c },
+    float = true,
+    center = true,
+    size = {
+      "(monitor_w*0.85)",
+      "(monitor_h*0.85)",
+    },
+  })
 end
+
+-------------------------------------
+---- SCREEN SHARE / PIP HANDLING ----
+-------------------------------------
+hl.window_rule({
+  match = { title = ".*is sharing (a window|your screen).*" },
+  float = true,
+  pin = true,
+})
+hl.window_rule({
+  match = { title = "^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$" },
+  float = true,
+  pin = true,
+  keep_aspect_ratio = true,
+  size = { "(monitor_w*0.25)", "(monitor_h*0.25)" },
+  move = { "(monitor_w*0.73)", "(monitor_h*0.72)" },
+})
+
+-----------------------------
+---- TEARING (for games) ----
+-----------------------------
+-- `immediate = true` lets the matched window skip vsync and present frames as soon as
+-- they're rendered instead of waiting for the next refresh, cutting input latency at the
+-- cost of possible visible tearing. It only does anything if general.allow_tearing = true
+-- (set above) AND the app itself requests an immediate/tearing present mode -- most
+-- fullscreen games under Proton/gamescope/native Vulkan do this automatically, so this is
+-- effectively "allow tearing for Steam games, keep vsync for everything else".
+hl.window_rule({ match = { class = "^(steam_app).*" }, immediate = true })
 
 ------------------------------------------------------------------------------
 -- Layer rules (Vicinae launcher, per docs.vicinae.com/quickstart/hyprland-lua)
 ------------------------------------------------------------------------------
 hl.layer_rule({
-	match = { namespace = "vicinae" },
-	name = "vicinae-blur",
-	blur = true,
-	ignore_alpha = 0,
+  match = { namespace = "vicinae" },
+  name = "vicinae-blur",
+  blur = true,
+  ignore_alpha = 0,
 })
 hl.layer_rule({
-	match = { namespace = "vicinae" },
-	name = "vicinae-no-animation",
-	no_anim = true,
+  match = { namespace = "vicinae" },
+  name = "vicinae-no-animation",
+  no_anim = true,
 })
 
 ----------------------------------
@@ -188,31 +223,31 @@ local MOVE = "ALT + SHIFT"
 local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" }, { "h", "down", "d" } }
 
 for _, k in ipairs(dirKeys) do
-	local key, arrow, dir = k[1], k[2], k[3]
-	hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ direction = dir }))
-	hl.bind(FOCUS .. " + " .. arrow, hl.dsp.focus({ direction = dir }))
-	hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ direction = dir }))
-	hl.bind(MOVE .. " + " .. arrow, hl.dsp.window.move({ direction = dir }))
+  local key, arrow, dir = k[1], k[2], k[3]
+  hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ direction = dir }))
+  hl.bind(FOCUS .. " + " .. arrow, hl.dsp.focus({ direction = dir }))
+  hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ direction = dir }))
+  hl.bind(MOVE .. " + " .. arrow, hl.dsp.window.move({ direction = dir }))
 end
 
 ---------------------------------
 ---- KEYBINDINGS: WORKSPACES ----
 ---------------------------------
 local wsKeys = {
-	["1"] = 1,
-	["2"] = 2,
-	["3"] = 3,
-	["4"] = 4,
-	["5"] = 5,
-	["6"] = 6,
-	["7"] = 7,
-	["8"] = 8,
-	["9"] = 9,
-	["0"] = "name:0",
+  ["1"] = 1,
+  ["2"] = 2,
+  ["3"] = 3,
+  ["4"] = 4,
+  ["5"] = 5,
+  ["6"] = 6,
+  ["7"] = 7,
+  ["8"] = 8,
+  ["9"] = 9,
+  ["0"] = "name:0",
 }
 for key, ws in pairs(wsKeys) do
-	hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ workspace = ws }))
-	hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ workspace = ws, follow = true }))
+  hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ workspace = ws }))
+  hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ workspace = ws, follow = true }))
 end
 
 hl.bind(FOCUS .. " + U", hl.dsp.focus({ workspace = "e+1" }))
@@ -225,17 +260,16 @@ hl.bind(FOCUS .. " + Page_Down", hl.dsp.focus({ workspace = "e-1" }))
 ------------------------------------
 hl.bind(FOCUS .. " + P", hl.dsp.window.pseudo())
 hl.bind(FOCUS .. " + S", function()
-	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
-	hl.dispatch(hl.dsp.window.center())
+  hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+  hl.dispatch(hl.dsp.window.center())
 end)
 hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(FOCUS .. " + X", hl.dsp.window.close())
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(FOCUS .. " + Q", hl.dsp.exit())
 hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(FOCUS .. " + D", hl.dsp.layout("togglesplit"))
 hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 
 -- Scroll through existing workspaces with SUPER + scroll
@@ -271,38 +305,58 @@ hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
 
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
+  "XF86AudioRaiseVolume",
+  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
+  "XF86AudioLowerVolume",
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
+  "XF86AudioMute",
+  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+  { locked = true, repeating = true }
 )
+---------------------
+---- SCREEN ZOOM ----
+---------------------
+local function zoomfunction(value)
+  local zoomvalue = hl.get_config("cursor:zoom_factor")
+  if (zoomvalue + value) > 3.0 then
+    hl.config({ cursor = { zoom_factor = 3.0 } })
+  elseif (zoomvalue + value) < 1.0 then
+    hl.config({ cursor = { zoom_factor = 1.0 } })
+  else
+    hl.config({ cursor = { zoom_factor = zoomvalue + value } })
+  end
+end
+hl.bind(FOCUS .. " + Minus", function()
+  zoomfunction(-0.3)
+end, { repeating = true })
+hl.bind(FOCUS .. " + Equal", function()
+  zoomfunction(0.3)
+end, { repeating = true })
+
 -----------------------
 ---- RESIZE SUBMAP ----
 -----------------------
 hl.bind(FOCUS .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("resize", function()
-	local step = 40
-	local resizes = {
-		{ keys = { "Y", "left" }, x = -step, y = 0 },
-		{ keys = { "E", "right" }, x = step, y = 0 },
-		{ keys = { "A", "up" }, x = 0, y = step },
-		{ keys = { "H", "down" }, x = 0, y = -step },
-	}
-	for _, r in ipairs(resizes) do
-		for _, key in ipairs(r.keys) do
-			hl.bind(key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true }), { repeating = true })
-		end
-	end
-	hl.bind("Escape", hl.dsp.submap("reset"))
-	hl.bind("Return", hl.dsp.submap("reset"))
+  local step = 40
+  local resizes = {
+    { keys = { "Y", "left" }, x = -step, y = 0 },
+    { keys = { "E", "right" }, x = step, y = 0 },
+    { keys = { "A", "up" }, x = 0, y = step },
+    { keys = { "H", "down" }, x = 0, y = -step },
+  }
+  for _, r in ipairs(resizes) do
+    for _, key in ipairs(r.keys) do
+      hl.bind(key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true }), { repeating = true })
+    end
+  end
+  hl.bind("Escape", hl.dsp.submap("reset"))
+  hl.bind("Return", hl.dsp.submap("reset"))
 end)
