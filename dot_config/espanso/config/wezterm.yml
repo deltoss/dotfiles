@@ -2,5 +2,5 @@
 
 filter_exec: wezterm
 inject_delay: 5
-paste_shortcut: SHIFT+INSERT
 backend: clipboard # So that unicode symbols would work
+
