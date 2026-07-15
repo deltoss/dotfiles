@@ -299,6 +299,9 @@ hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 --------------------------------
 ---- KEYBINDINGS: UTILITIES ----
 --------------------------------
+-- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"), { locked = true, description = "Session: Lock" })
+
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
