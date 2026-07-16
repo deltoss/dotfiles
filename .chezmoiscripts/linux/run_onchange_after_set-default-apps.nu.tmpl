@@ -1,0 +1,8 @@
+{{ if hasPrefix "linux" .osid -}}
+#!/usr/bin/env nu
+
+# Runs after install-packages (alphabetically later == later execution, see
+# chezmoi's application-order docs) so the apps this depends on already exist.
+nu {{ printf "%s/scripts/linux/set_default_apps.nu" .chezmoi.sourceDir | quote }}
+
+{{ end -}}

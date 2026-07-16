@@ -697,6 +697,25 @@ id = "vlc"
 tool = "vlc"
 
 [[packages.linux]]
+description = "Flexible, powerful, server-side application for playing music"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpd"
+tool = "mpd"
+postcommands = [
+  "systemctl --user enable --now mpd.service",
+]
+
+[[packages.linux]]
+description = "Free, open source, cross-platform media player"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpv"
+tool = "mpv"
+
+[[packages.linux]]
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "pacman"
