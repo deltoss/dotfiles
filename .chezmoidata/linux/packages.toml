@@ -841,6 +841,14 @@ postcommands = [
   "flatpak run --command=additional-install.sh dev.lizardbyte.app.Sunshine",
 ]
 
+[[packages.linux]]
+name = "NormCap"
+description = "OCR screenshot tool"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.github.dynobo.normcap"
+
 ###############################################################################
 # GUI apps: AppImage (via scripts)
 ###############################################################################

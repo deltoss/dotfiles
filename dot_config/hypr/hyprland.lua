@@ -295,6 +295,7 @@ hl.bind("SUPER + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice
 hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
 hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
+hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
 --------------------------------
 ---- KEYBINDINGS: UTILITIES ----
@@ -304,8 +305,8 @@ hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"), { locked = true, description =
 
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
+hl.bind("ALT + Print", hl.dsp.exec_cmd("flatpak run com.github.dynobo.normcap"))
 
 hl.bind(
   "XF86AudioRaiseVolume",
