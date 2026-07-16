@@ -4,6 +4,11 @@
 # XDG mime defaults, e.g. Yazi's builtin "play" opener) resolves consistently
 # instead of falling back to mimeinfo.cache's alphabetical registration order.
 #
+# Mimetypes come from the system mime database rather than the app's declared
+# MimeType= list, which lags behind the canonical names files actually resolve
+# to (e.g. mpv.desktop misses audio/x-opus+ogg, vlc.desktop misses
+# video/matroska).
+#
 # Idempotent: re-running just re-asserts the same defaults.
 
 def main [] {
@@ -13,30 +18,25 @@ def main [] {
   }
 
   print $"(ansi green_bold)Setting default applications...(ansi reset)"
-  set-default "mpv.desktop" "audio/"
+  set-default "mpv.desktop" "audio"
+  set-default "vlc.desktop" "video"
 }
 
-# Reads the MimeType list out of a .desktop file, keeps the ones starting with
-# `prefix`, and sets `desktop` as the xdg-mime default for each.
-def set-default [desktop: string, prefix: string] {
-  let desktop_path = $"/usr/share/applications/($desktop)"
-  if not ($desktop_path | path exists) {
+# Sets `desktop` as the xdg-mime default for every `category`/* mimetype in
+# the system mime database.
+def set-default [desktop: string, category: string] {
+  if not ($"/usr/share/applications/($desktop)" | path exists) {
     print $"  (ansi yellow)($desktop) not found, skipping(ansi reset)"
     return
   }
 
   let mimetypes = (
-    open $desktop_path
-    | lines
-    | where ($it | str starts-with "MimeType=")
-    | first
-    | str replace "MimeType=" ""
-    | split row ";"
-    | where ($it | str starts-with $prefix)
+    glob $"/usr/share/mime/($category)/*.xml"
+    | path parse
+    | get stem
+    | each { |type| $"($category)/($type)" }
   )
 
-  print $"  ($desktop) -> ($mimetypes | length) '($prefix)*' mimetypes"
-  for mime in $mimetypes {
-    ^xdg-mime default $desktop $mime
-  }
+  print $"  ($desktop) -> ($mimetypes | length) '($category)/*' mimetypes"
+  ^xdg-mime default $desktop ...$mimetypes
 }
