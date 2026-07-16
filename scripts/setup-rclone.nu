@@ -29,5 +29,8 @@ if ($env.CHEZMOI_COMPUTERPURPOSE == "personal") {
 if (sys host).name =~ "Windows" {
   print $"(ansi green)Configuring startup for Windows...(ansi reset)"
   ^powershell -ExecutionPolicy Bypass -File $'($HERE)/windows/setup-rclone-tasks.ps1'
+} else if (sys host).name =~ "Linux" {
+  print $"(ansi green)Configuring startup for Linux...(ansi reset)"
+  nu $'($HERE)/linux/setup-rclone-mounts.nu'
 }
 print $"(ansi green)Done. rclone services will start at next login.(ansi reset)"

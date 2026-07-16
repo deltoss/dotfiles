@@ -24,6 +24,7 @@ mechvibes_custom/
 # Only works on Linux
 .config/hypr/
 .config/waybar/
+.config/systemd/
 .local/share/applications/
 
 # Windows reads these from AppData instead (content shared via shared/)

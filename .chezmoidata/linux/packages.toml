@@ -310,12 +310,24 @@ commands = [
 ]
 
 [[packages.linux]]
+name = "FUSE"
+description = "Userspace filesystem support, required for rclone mount"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fuse3"
+tool = "fusermount3"
+
+[[packages.linux]]
 description = "For mounting and syncing network storage"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "rclone"
 tool = "rclone"
+postcommands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-rclone.nu"'
+]
 
 [[packages.linux]]
 name = "GitHub CLI"
@@ -672,6 +684,18 @@ package_type = "pacman"
 id = "openssh"
 postcommands = [
   "sudo systemctl enable --now sshd.service",
+]
+
+[[packages.linux]]
+name = "Syncthing"
+description = "Continuous file synchronization"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "syncthing"
+tool = "syncthing"
+postcommands = [
+  "systemctl --user enable --now syncthing.service",
 ]
 
 [[packages.linux]]

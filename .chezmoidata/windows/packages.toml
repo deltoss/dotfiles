@@ -597,6 +597,16 @@ commands = [
 ]
 
 [[packages.windows]]
+name = "Syncthing"
+description = "Continuous file synchronization"
+tags = ["all"]
+package_type = "winget"
+id = "Syncthing.Syncthing"
+postcommands = [
+  "syncthing serve --no-browser &",
+]
+
+[[packages.windows]]
 tags = ["personal"]
 package_type = "winget"
 id = "Microsoft.VisualStudio.Community.Insiders"
