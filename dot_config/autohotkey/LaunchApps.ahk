@@ -20,27 +20,6 @@ DetectHiddenWindows true
 #HotIf
 #Enter:: Run(A_Programs . "/Flow Launcher/Flow Launcher")
 
-; Window + F - [F]irefox
-#HotIf WinActive("ahk_exe firefox.exe")
-^p:: Send "^l" ; Go to address bar
-^k:: Send "^l"
-!o:: Send "^+{Tab}" ; Go to left tab
-!u:: Send "^{Tab}" ; Go to right tab
-!PgDn:: Send "^+{Tab}" ; Go to left tab
-!PgUp:: Send "^{Tab}" ; Go to right tab
-!w:: Send "^w" ; Close tab
-!t:: Send "^t" ; New tab
-#HotIf
-
-; Zen Browser
-#HotIf WinActive("ahk_exe zen.exe")
-^p:: Send "^k" ; Command palette
-!o:: Send "^{Tab}" ; Go to below tab
-!u:: Send "^+{Tab}" ; Go to above tab
-!PgDn:: Send "^+{Tab}" ; Go to left tab
-!PgUp:: Send "^{Tab}" ; Go to right tab
-#HotIf
-
 ; Window + R - [R]esearch/Browser
 #HotIf WinExist("ahk_exe zen.exe ahk_class MozillaWindowClass")
 #r::
@@ -300,6 +279,49 @@ DetectHiddenWindows true
     WinGetPos , , &width, &height, "A"
     MouseMove width / 3, height / 3
 }
+
+; Ctrl + PrintScreen - Recordly
+#HotIf WinExist("ahk_exe Recordly.exe")
+^PrintScreen::
+{
+    WinActivate
+    Sleep 100
+    WinActivate
+    ; Move mouse to the active window
+    WinGetPos , , &width, &height, "A"
+    MouseMove width / 2, height - height / 10
+    Sleep 100 ; To get GlazeWM to stay focused
+    WinActivate
+}
+#HotIf
+^PrintScreen::
+{
+    Run(EnvGet("LOCALAPPDATA") . "\Programs\recordly\Recordly.exe") ; If window doesn't exist, run the app
+    WinWait("ahk_exe Recordly.exe")
+    WinActivate("ahk_exe Recordly.exe")
+    WinWaitActive("ahk_exe Recordly.exe")
+}
+
+; Zen Browser
+#HotIf WinActive("ahk_exe zen.exe")
+^p:: Send "^k" ; Command palette
+!o:: Send "^{Tab}" ; Go to below tab
+!u:: Send "^+{Tab}" ; Go to above tab
+!PgDn:: Send "^+{Tab}" ; Go to left tab
+!PgUp:: Send "^{Tab}" ; Go to right tab
+#HotIf
+
+; Firefox
+#HotIf WinActive("ahk_exe firefox.exe")
+^p:: Send "^l" ; Go to address bar
+^k:: Send "^l"
+!o:: Send "^+{Tab}" ; Go to left tab
+!u:: Send "^{Tab}" ; Go to right tab
+!PgDn:: Send "^+{Tab}" ; Go to left tab
+!PgUp:: Send "^{Tab}" ; Go to right tab
+!w:: Send "^w" ; Close tab
+!t:: Send "^t" ; New tab
+#HotIf
 
 #HotIf WinActive("ahk_exe explorer.exe")
 ^p:: Send "!d" ; Navigation bar
