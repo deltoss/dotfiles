@@ -12,6 +12,10 @@ edit = [
 audacity = [
   { run = 'audacity %s', orphan = true, desc = "Audacity", for = "unix" },
 ]
+play = [
+  { run = 'mpv %s', block = true, desc = "mpv", for = "unix" },
+  { run = 'xdg-open %s', block = true, desc = "Play", for = "unix" },
+]
 
 [open]
 prepend_rules = [
