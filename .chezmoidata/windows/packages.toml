@@ -391,7 +391,7 @@ description = "Screen video recorder"
 tags = ["all"]
 package_type = "commands"
 commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-recordly.nu"'
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-recordly.nu"'
 ]
 
 [[packages.windows]]

@@ -629,10 +629,8 @@ name = "Recordly"
 description = "Screen video recorder"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-recordly.nu"',
-]
+package_type = "aur"
+id = "recordly-bin"
 
 ###############################################################################
 # GUI apps: pacman (official Arch repos)
