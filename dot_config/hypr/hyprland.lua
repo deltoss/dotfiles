@@ -175,7 +175,13 @@ hl.window_rule({
   match = { class = "io.github.seadve.Kooha" },
   float = true,
   pin = true,
-  move = { "monitor_w-window_w-20", "monitor_h-window_h-20" },
+  move = { "monitor_w*0.85-window_w", "monitor_h/2-window_h/2" },
+})
+
+hl.window_rule({
+  match = { class = "hyprland-share-picker" },
+  float = true,
+  pin = true,
 })
 
 hl.window_rule({
