@@ -8,6 +8,11 @@ use = "KKV9/compress"
 rev = "cb6e8ec"
 hash = "25845f484b8d52149132dad1c440333c"
 
+[[plugin.deps]]
+use = "XYenon/clipboard"
+rev = "4533c7f"
+hash = "ba2b9be01c1aea7e23a51cad55ec68e5"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-latte"
 rev = "4770a34"

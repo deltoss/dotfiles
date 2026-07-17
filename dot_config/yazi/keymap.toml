@@ -22,12 +22,14 @@ prepend_keymap = [
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
 	# Copy
+	{ on = "y", run = [ "yank", 'plugin clipboard -- --action=copy' ], desc = "Yank selected files (copy)" },
+	{ on = "x", run = [ "yank --cut", 'plugin clipboard -- --action=copy' ], desc = "Cut selected files" },
+	{ on = [ "<C-p>" ], run = 'plugin clipboard -- --action=paste', desc = "Paste files from system clipboard" },
+	{ on = [ "<Space>", "p" ], run = 'plugin clipboard -- --action=paste', desc = "Paste files from system clipboard" },
 	{ on = [ "<Space>", "y", "c" ], run = "copy path",             desc = "Copy the file path" },
 	{ on = [ "<Space>", "y", "d" ], run = "copy dirname",          desc = "Copy the directory path" },
 	{ on = [ "<Space>", "y", "f" ], run = "copy filename",         desc = "Copy the filename" },
 	{ on = [ "<Space>", "y", "n" ], run = "copy name_without_ext", desc = "Copy the filename without extension" },
-  { on = ["<Space>", "y", "y"], run = ['shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'], desc = "Copy file to system clipboard", for = "unix" },
-  { on = ["<Space>", "y", "y"], run = ['shell -- powershell -NoProfile -c "Set-Clipboard -Path %*"'], desc = "Copy file to system clipboard", for = "windows" },
 
   # Zipping
   { on = ["<Space>", "z", "a"], run = 'plugin compress', desc = "Archive selected files" },
