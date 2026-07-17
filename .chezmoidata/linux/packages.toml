@@ -624,14 +624,6 @@ commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"',
 ]
 
-[[packages.linux]]
-name = "Recordly"
-description = "Screen video recorder"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "recordly-bin"
-
 ###############################################################################
 # GUI apps: pacman (official Arch repos)
 ###############################################################################
@@ -870,6 +862,14 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "flatpak"
 id = "com.github.dynobo.normcap"
+
+[[packages.linux]]
+name = "Kooha"
+description = "Screen video recorder"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "io.github.seadve.Kooha"
 
 ###############################################################################
 # GUI apps: AppImage (via scripts)

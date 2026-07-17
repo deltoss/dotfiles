@@ -171,6 +171,18 @@ for _, c in ipairs({ "wiremix", "bluetui", "nmtui" }) do
   })
 end
 
+hl.window_rule({
+  match = { class = "io.github.seadve.Kooha" },
+  float = true,
+  pin = true,
+  move = { "monitor_w-window_w-20", "monitor_h-window_h-20" },
+})
+
+hl.window_rule({
+  match = { class = "com.gabm.satty" },
+  float = true,
+})
+
 -------------------------------------
 ---- SCREEN SHARE / PIP HANDLING ----
 -------------------------------------
@@ -307,6 +319,7 @@ hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("flatpak run com.github.dynobo.normcap"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("flatpak run io.github.seadve.Kooha"))
 
 hl.bind(
   "XF86AudioRaiseVolume",
