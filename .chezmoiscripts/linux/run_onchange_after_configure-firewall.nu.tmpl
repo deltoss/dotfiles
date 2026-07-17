@@ -1,0 +1,33 @@
+{{ if hasPrefix "linux" .osid -}}
+#!/usr/bin/env nu
+
+print ''
+print $"(ansi bo)(ansi green)Configuring firewall...(ansi reset)"
+
+{{ if eq .osid "linux-cachyos" }}
+let ufw_available = which ufw | is-not-empty
+
+if ($ufw_available == false) {
+  print $"(ansi yellow)ufw not found, skipping firewall configuration.(ansi reset)"
+} else {
+  {{ range .firewall.ports }}
+  print $"(ansi green){{ if hasKey . "description" }}{{ .description }}{{ else }}Port {{ .port }}{{ end }}(ansi reset)"
+  {{ if eq .action "allow" }}
+    {{ if eq .protocol "any" }}
+      sudo ufw allow {{ .port }}
+    {{ else }}
+      sudo ufw allow {{ .port }}/{{ .protocol }}
+    {{ end }}
+  {{ else if eq .action "deny" }}
+    {{ if eq .protocol "any" }}
+      sudo ufw deny {{ .port }}
+    {{ else }}
+      sudo ufw deny {{ .port }}/{{ .protocol }}
+    {{ end }}
+  {{ end }}
+  {{ end }}
+}
+{{ else }}
+print $"(ansi yellow)Unsupported OS '{{ .osid }}', skipping firewall configuration.(ansi reset)"
+{{ end }}
+{{ end -}}

@@ -1,0 +1,55 @@
+[[firewall.ports]]
+port = 22
+protocol = "tcp"
+action = "allow"
+tags = ["all"]
+description = "SSH"
+
+[[firewall.ports]]
+port = 47984
+protocol = "tcp"
+action = "allow"
+description = "Sunshine HTTPS/API"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 47989
+protocol = "tcp"
+action = "allow"
+description = "Sunshine RTSP"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 47990
+protocol = "tcp"
+action = "allow"
+description = "Sunshine Web UI"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 47998
+protocol = "udp"
+action = "allow"
+description = "Sunshine Video Stream"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 47999
+protocol = "udp"
+action = "allow"
+description = "Sunshine Audio Stream"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 48000
+protocol = "udp"
+action = "allow"
+description = "Sunshine Control Input"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 48010
+protocol = "udp"
+action = "allow"
+description = "Sunshine Alt Control"
+tags = ["personal"]
