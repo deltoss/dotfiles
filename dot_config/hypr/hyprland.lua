@@ -1,4 +1,6 @@
 local apps = require("lib/apps")
+local wallpaper = require("lib/wallpaper")
+local wp_dir = os.getenv("HOME") .. "/Synced/Images/Live Wallpapers"
 ------------------
 ---- MONITORS ----
 ------------------
@@ -112,6 +114,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("1password --silent")
   hl.exec_cmd("copyq --start-server")
   hl.exec_cmd("dunst")
+  wallpaper.apply(wp_dir)
 end)
 
 -----------------------
@@ -309,7 +312,10 @@ hl.bind("SUPER + T", apps.run_or_raise("org.wezfurlong.wezterm", "wezterm"))
 hl.bind("SUPER + R", apps.run_or_raise("app.zen_browser.zen", "flatpak run app.zen_browser.zen"))
 hl.bind("SUPER + Z", apps.run_or_raise("obsidian", "obsidian"))
 hl.bind("SUPER + H", apps.run_or_raise("todoist", "~/.local/bin/Todoist.AppImage"))
-hl.bind("SUPER + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice.desktopeditors"))
+hl.bind("SUPER + W", function()
+  wallpaper.shuffle(wp_dir)
+end)
+hl.bind("SUPER + ALT + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice.desktopeditors"))
 hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
 hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
