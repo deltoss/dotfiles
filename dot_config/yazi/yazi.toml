@@ -12,14 +12,13 @@ edit = [
 audacity = [
   { run = 'audacity %s', orphan = true, desc = "Audacity", for = "unix" },
 ]
-play = [
-  { run = 'mpv %s', block = true, desc = "mpv", for = "unix" },
-  { run = 'xdg-open %s', block = true, desc = "Play", for = "unix" },
+audio_play = [
+  { run = 'mpv --no-video %s', block = true, desc = "mpv", for = "unix" },
 ]
 
 [open]
 prepend_rules = [
-	{ mime = "audio/*", use = [ "play", "audacity", "reveal" ] },
+	{ mime = "audio/*", use = [ "audio_play", "play", "audacity", "reveal" ] },
 ]
 append_rules = [
 	{ url = "*", use = [ "edit", "open", "reveal"] },
