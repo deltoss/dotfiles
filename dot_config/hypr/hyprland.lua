@@ -44,8 +44,13 @@ hl.env("HYPRCURSOR_SIZE", "32")
 ---- LOOK AND FEEL ----
 -----------------------
 
+hl.env("STEAM_FORCE_DESKTOPUI_SCALING", "1.5")
+
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
+  xwayland = {
+    force_zero_scaling = true,
+  },
   general = {
     layout = "scrolling",
     border_size = 3,
