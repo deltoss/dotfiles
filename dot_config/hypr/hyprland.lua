@@ -1,6 +1,8 @@
 local apps = require("lib/apps")
 local wallpaper = require("lib/wallpaper")
 local wp_dir = os.getenv("HOME") .. "/Synced/Images/Live Wallpapers"
+local workspaces = require("lib.workspaces")
+
 ------------------
 ---- MONITORS ----
 ------------------
@@ -12,6 +14,16 @@ hl.monitor({
   position = "auto",
   scale = "1.33",
 })
+
+--------------------
+---- WORKSPACES ----
+--------------------
+
+--- WS 1-5, 10 → leftmost monitor, WS 6-9 → rightmost
+workspaces.setup()
+
+hl.on("monitor.added", workspaces.setup)
+hl.on("monitor.removed", workspaces.setup)
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
