@@ -109,6 +109,11 @@ hl.config({
   },
 })
 
+-- Wallpaper layer transitions (mpvpaper / linux-wallpaperengine surfaces).
+hl.curve("popBounce", { type = "bezier", points = { { 0.34, 1.56 }, { 0.64, 1.0 } } })
+hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "popBounce", style = "popin 85%" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "popBounce", style = "popin 85%" })
+
 -------------------
 ---- AUTOSTART ----
 -------------------
