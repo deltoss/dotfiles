@@ -49,6 +49,13 @@ tags = ["personal"]
 
 [[firewall.ports]]
 port = 48010
+protocol = "tcp"
+action = "allow"
+description = "Sunshine RTSP"
+tags = ["personal"]
+
+[[firewall.ports]]
+port = 48010
 protocol = "udp"
 action = "allow"
 description = "Sunshine Alt Control"

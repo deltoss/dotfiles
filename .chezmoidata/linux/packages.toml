@@ -689,6 +689,24 @@ postcommands = [
 ]
 
 [[packages.linux]]
+name = "Sunshine"
+description = "Self-hosted game streaming host"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lizardbyte/sunshine"
+tool = "sunshine"
+precommands = [
+  '''if not (open --raw /etc/pacman.conf | str contains "[lizardbyte]") {
+  "\n[lizardbyte]\nSigLevel = Optional\nServer = https://github.com/LizardByte/pacman-repo/releases/latest/download\n" | sudo tee -a /etc/pacman.conf | ignore
+}''',
+  "sudo pacman -Sy",
+]
+postcommands = [
+  'systemctl --user enable --now app-dev.lizardbyte.app.Sunshine'
+]
+
+[[packages.linux]]
 name = "VirtualBox"
 tool = "VBoxManage"
 tags = ["personal"]
@@ -842,18 +860,6 @@ tags = ["personal"]
 distros = ["cachyos"]
 package_type = "flatpak"
 id = "org.onlyoffice.desktopeditors"
-
-# Sunshine's Flatpak needs a one-time post-install step (per LizardByte docs).
-[[packages.linux]]
-name = "Sunshine"
-description = "Self-hosted game streaming host"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "flatpak"
-id = "dev.lizardbyte.app.Sunshine"
-postcommands = [
-  "flatpak run --command=additional-install.sh dev.lizardbyte.app.Sunshine",
-]
 
 [[packages.linux]]
 name = "NormCap"
