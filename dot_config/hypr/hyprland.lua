@@ -75,6 +75,11 @@ hl.config({
     -- Lets window_rule { immediate = true } (see TEARING below) actually skip vsync for matched windows
     allow_tearing = true,
   },
+  scrolling = {
+    column_width = 0.98,
+    wrap_focus = false,
+    wrap_swapcol = false,
+  },
   decoration = {
     inactive_opacity = 0.97,
     rounding = 10,
