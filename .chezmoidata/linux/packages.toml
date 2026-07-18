@@ -748,6 +748,25 @@ id = "mpv"
 tool = "mpv"
 
 [[packages.linux]]
+description = "Video wallpaper program for wlroots-based Wayland compositors (uses mpv)"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpvpaper"
+tool = "mpvpaper"
+
+# Not in the official Arch repos; the AUR is the install method documented in
+# the project README (github.com/Almamu/linux-wallpaperengine).
+[[packages.linux]]
+name = "linux-wallpaperengine"
+description = "Run Steam's Wallpaper Engine wallpapers on Linux"
+tool = "linux-wallpaperengine"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "linux-wallpaperengine-git"
+
+[[packages.linux]]
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "pacman"
