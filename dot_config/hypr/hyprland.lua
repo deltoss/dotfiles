@@ -125,6 +125,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("copyq --start-server")
   hl.exec_cmd("dunst")
   wallpaper.apply(wp_dir)
+  hl.exec_cmd("hypridle")
 end)
 
 -----------------------
