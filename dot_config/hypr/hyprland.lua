@@ -98,7 +98,7 @@ hl.config({
 
     -- Change transparency of focused and unfocused windows
     active_opacity = 1.0,
-    inactive_opacity = 0.7,
+    inactive_opacity = 0.8,
 
     shadow = {
       enabled = true,
@@ -158,6 +158,15 @@ hl.workspace_rule({
 -----------------------
 -- Verify classes with `hyprctl clients` and adjust.
 
+-- Cozy/idle games launched via SUPER+ALT+F (see KEYBINDINGS: APPLICATIONS).
+-- Single source of truth for id+name, shared by the window rule below and the launch keybind.
+local steamGames = {
+  { id = 2113850, name = "Spirit City: Lofi Sessions" },
+  { id = 2943180, name = "Virtual Cottage 2" },
+  { id = 3511030, name = "Mini Cozy Room: Lo-Fi" },
+  { id = 2826180, name = "Chill Pulse" },
+}
+
 hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace = "name:0" })
 hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" })
 hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
@@ -174,6 +183,13 @@ hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
 hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
+for _, g in ipairs(steamGames) do -- Cozy games (see steamGames above) -> workspace 9
+  hl.window_rule({
+    match = { class = "^(steam_app_" .. g.id .. ")$" },
+    workspace = "9",
+    opacity = "1 override",
+  })
+end
 hl.window_rule({
   match = { class = "com\\.github\\.hluk\\.copyq" },
   float = true,
@@ -350,6 +366,14 @@ hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
 hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
+
+-- Window + Alt + F - [F]ocus Steam Game
+-- Fires the rungameid URI at whatever Steam instance is already running
+-- (launching Steam fresh if it isn't open at all).
+hl.bind("SUPER + ALT + F", function()
+  local game = steamGames[math.random(#steamGames)]
+  hl.exec_cmd('uwsm app -- steam -silent -- "steam://rungameid/' .. game.id .. '"')
+end)
 
 --------------------------------
 ---- KEYBINDINGS: UTILITIES ----
