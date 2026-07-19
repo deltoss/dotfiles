@@ -923,6 +923,15 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
+name = "tailscale"
+description = "Mesh VPN"
+tool = "tailscale"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tailscale"
+
+[[packages.linux]]
 name = "Hyprland"
 description = "Dynamic tiling Wayland compositor"
 tool = "Hyprland"
