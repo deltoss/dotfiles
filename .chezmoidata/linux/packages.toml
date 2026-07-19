@@ -431,12 +431,12 @@ package_type = "pacman"
 id = "wiremix"
 
 [[packages.linux]]
-description = "Visual diff and merge tool"
+description = "A session manager that runs Wayland compositors under systemd for clean startup and teardown"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
-id = "meld"
-tool = "meld"
+id = "uwsm"
+tool = "uwsm"
 
 [[packages.linux]]
 name = "Neovim"
@@ -993,13 +993,13 @@ package_type = "aur"
 id = "vicinae-bin"
 
 [[packages.linux]]
-name = "dunst"
+name = "swaync"
 description = "Notification daemon"
-tool = "dunst"
+tool = "swaync"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
-id = "dunst"
+id = "swaync"
 
 [[packages.linux]]
 name = "hyprlock"

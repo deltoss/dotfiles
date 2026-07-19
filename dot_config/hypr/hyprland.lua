@@ -19,9 +19,8 @@ hl.monitor({
 ---- WORKSPACES ----
 --------------------
 
---- WS 1-5, 10 → leftmost monitor, WS 6-9 → rightmost
 workspaces.setup()
-
+--- WS 1-5, 10 → leftmost monitor, WS 6-9 → rightmost
 hl.on("monitor.added", workspaces.setup)
 hl.on("monitor.removed", workspaces.setup)
 
@@ -135,14 +134,14 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "popBounc
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
-  hl.exec_cmd("waybar")
+  hl.exec_cmd("uwsm app -- waybar")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
-  hl.exec_cmd("vicinae server")
-  hl.exec_cmd("1password --silent")
-  hl.exec_cmd("copyq --start-server")
-  hl.exec_cmd("dunst")
+  hl.exec_cmd("uwsm app -- vicinae server")
+  hl.exec_cmd("uwsm app -- 1password --silent")
+  hl.exec_cmd("uwsm app -- copyq --start-server")
+  hl.exec_cmd("uwsm app -- swaync")
   wallpaper.apply(wp_dir)
-  hl.exec_cmd("hypridle")
+  hl.exec_cmd("uwsm app -- hypridle")
 end)
 
 -----------------------
@@ -151,7 +150,7 @@ end)
 
 hl.workspace_rule({
   workspace = "special:term",
-  on_created_empty = "wezterm start --class wezterm-special",
+  on_created_empty = "uwsm app -- wezterm start --class wezterm-special",
 })
 
 -----------------------
@@ -178,7 +177,8 @@ hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
 hl.window_rule({
   match = { class = "com\\.github\\.hluk\\.copyq" },
   float = true,
-  center = true,
+  focus_on_activate = true,
+  stay_focused = true,
 })
 hl.window_rule({
   match = { class = "wezterm-special" },
@@ -317,35 +317,37 @@ hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action 
 hl.bind(FOCUS .. " + X", hl.dsp.window.close())
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
-hl.bind(FOCUS .. " + Q", hl.dsp.exit())
+hl.bind(FOCUS .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 
 -- Scroll through existing workspaces with SUPER + scroll
-hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind("ALT + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind("ALT + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with SUPER + LMB/RMB and dragging
-hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 ------------------------------------
 ---- KEYBINDINGS: APPLICATIONS ----
 ------------------------------------
 
+hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind("SUPER + X", hl.dsp.window.close())
 hl.bind("SUPER + Q", hl.dsp.exit())
-hl.bind("SUPER + T", apps.run_or_raise("org.wezfurlong.wezterm", "wezterm"))
-hl.bind("SUPER + R", apps.run_or_raise("app.zen_browser.zen", "flatpak run app.zen_browser.zen"))
-hl.bind("SUPER + Z", apps.run_or_raise("obsidian", "obsidian"))
-hl.bind("SUPER + H", apps.run_or_raise("todoist", "~/.local/bin/Todoist.AppImage"))
+hl.bind("SUPER + T", apps.run_or_raise("org.wezfurlong.wezterm", "uwsm app -- wezterm"))
+hl.bind("SUPER + R", apps.run_or_raise("app.zen_browser.zen", "uwsm app -- flatpak run app.zen_browser.zen"))
+hl.bind("SUPER + Z", apps.run_or_raise("obsidian", "uwsm app -- obsidian"))
+hl.bind("SUPER + H", apps.run_or_raise("todoist", "uwsm app -- ~/.local/bin/Todoist.AppImage"))
 hl.bind("SUPER + W", function()
   wallpaper.shuffle(wp_dir)
 end)
-hl.bind("SUPER + ALT + W", apps.run_or_raise("ONLYOFFICE", "flatpak run org.onlyoffice.desktopeditors"))
-hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "mailspring"))
-hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "1password"))
+hl.bind("SUPER + ALT + W", apps.run_or_raise("ONLYOFFICE", "uwsm app -- flatpak run org.onlyoffice.desktopeditors"))
+hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
+hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
@@ -353,13 +355,13 @@ hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-
 ---- KEYBINDINGS: UTILITIES ----
 --------------------------------
 -- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
-hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"), { locked = true, description = "Session: Lock" })
+hl.bind("SUPER + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"), { locked = true, description = "Session: Lock" })
 
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
-hl.bind("ALT + Print", hl.dsp.exec_cmd("flatpak run com.github.dynobo.normcap"))
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("flatpak run io.github.seadve.Kooha"))
+hl.bind("Print", hl.dsp.exec_cmd("uwsm app -- sh -c 'hyprshot -m region --raw | satty --filename -'"))
+hl.bind("ALT + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run com.github.dynobo.normcap"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run io.github.seadve.Kooha"))
 
 hl.bind(
   "XF86AudioRaiseVolume",

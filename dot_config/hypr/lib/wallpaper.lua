@@ -40,7 +40,7 @@ local function pick(dir)
 end
 
 local function mpvpaper_cmd(name, wp)
-  return 'mpvpaper -o "no-audio loop hwdec=auto panscan=1.0" "' .. name .. '" "' .. wp .. '"'
+  return 'uwsm app -- mpvpaper -o "no-audio loop hwdec=auto panscan=1.0" "' .. name .. '" "' .. wp .. '"'
 end
 
 local function engine_screen(name, id)
@@ -57,7 +57,7 @@ local function monitor_cmd(dir, name)
     if not id then
       return nil
     end
-    return "linux-wallpaperengine --silent " .. engine_screen(name, id)
+    return "uwsm app -- linux-wallpaperengine --silent " .. engine_screen(name, id)
   end
   return mpvpaper_cmd(name, wp)
 end
@@ -121,7 +121,7 @@ function M.shuffle(dir)
     end
   end
   if #we_screens > 0 then
-    table.insert(cmds, "linux-wallpaperengine --silent " .. table.concat(we_screens, " "))
+    table.insert(cmds, "uwsm app -- linux-wallpaperengine --silent " .. table.concat(we_screens, " "))
   end
   if #cmds == 0 then
     return
