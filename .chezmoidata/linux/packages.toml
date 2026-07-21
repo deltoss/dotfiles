@@ -835,17 +835,17 @@ postcommands = [
   "gnome-keyring-daemon --start --components=secrets"
 ]
 
-###############################################################################
-# GUI apps: AUR (paru)
-###############################################################################
-
 [[packages.linux]]
 name = "Mailspring"
 description = "Desktop email client"
 tags = ["personal"]
 distros = ["cachyos"]
-package_type = "aur"
+package_type = "pacman"
 id = "mailspring"
+
+###############################################################################
+# GUI apps: AUR (paru)
+###############################################################################
 
 [[packages.linux]]
 name = "Libation"
