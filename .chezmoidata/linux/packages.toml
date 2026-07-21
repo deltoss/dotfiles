@@ -806,6 +806,25 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "bitwarden"
 
+[[packages.linux]]
+name = "libsecret"
+description = "Library for storing and retrieving passwords and secrets"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "libsecret"
+
+[[packages.linux]]
+name = "gnome-keyring"
+description = "Daemon that keeps passwords and secrets, providing the Secret Service backend"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "gnome-keyring"
+postcommands = [
+  "gnome-keyring-daemon --start --components=secrets"
+]
+
 ###############################################################################
 # GUI apps: AUR (paru)
 ###############################################################################
