@@ -60,3 +60,17 @@ protocol = "udp"
 action = "allow"
 description = "Sunshine Alt Control"
 tags = ["personal"]
+
+[[firewall.ports]]
+port = "1714-1764"
+protocol = "tcp"
+action = "allow"
+tags = ["all"]
+description = "KDEConnect"
+
+[[firewall.ports]]
+port = "1714-1764"
+protocol = "udp"
+action = "allow"
+tags = ["all"]
+description = "KDEConnect"
