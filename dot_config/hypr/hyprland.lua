@@ -1,6 +1,7 @@
 local apps = require("lib/apps")
 local wallpaper = require("lib/wallpaper")
-local wp_dir = os.getenv("HOME") .. "/Synced/Images/Live Wallpapers"
+local home = os.getenv("HOME")
+local wp_dir = home .. "/Synced/Images/Live Wallpapers"
 local workspaces = require("lib.workspaces")
 
 ------------------
@@ -141,6 +142,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("uwsm app -- copyq --start-server")
   hl.exec_cmd("uwsm app -- swaync")
   wallpaper.apply(wp_dir)
+  hl.exec_cmd("uwsm app -- " .. home .. "/.local/bin/Handy.AppImage --start-hidden")
   hl.exec_cmd("uwsm app -- hypridle")
 end)
 
@@ -378,6 +380,13 @@ end)
 --------------------------------
 ---- KEYBINDINGS: UTILITIES ----
 --------------------------------
+
+local handyToggle = "pkill -USR2 -x handy"
+-- start on press
+hl.bind(FOCUS .. " + V", hl.dsp.exec_cmd(handyToggle))
+-- stop on release
+hl.bind(FOCUS .. " + V", hl.dsp.exec_cmd(handyToggle), { release = true })
+
 -- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
 hl.bind("SUPER + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"), { locked = true, description = "Session: Lock" })
 
