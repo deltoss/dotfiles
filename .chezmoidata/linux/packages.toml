@@ -800,6 +800,16 @@ package_type = "pacman"
 id = "calibre"
 
 [[packages.linux]]
+name = "Koodo Reader"
+description = "E-book reader"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "brew install --cask koodo-reader"
+]
+
+[[packages.linux]]
 name = "Bitwarden"
 tags = ["personal"]
 distros = ["cachyos"]
