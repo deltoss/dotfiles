@@ -478,6 +478,15 @@ package_type = "pacman"
 id = "lazydocker"
 
 [[packages.linux]]
+name = "systemctl-tui"
+description = "TUI for interacting with systemd services and their logs"
+tool = "systemctl-tui"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "systemctl-tui"
+
+[[packages.linux]]
 name = "OpenCode"
 description = "Agentic AI in the terminal"
 tool = "opencode"
