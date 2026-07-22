@@ -483,8 +483,10 @@ description = "TUI for interacting with systemd services and their logs"
 tool = "systemctl-tui"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "pacman"
-id = "systemctl-tui"
+package_type = "commands"
+commands = [
+  'cargo install systemctl-tui --locked'
+]
 
 [[packages.linux]]
 name = "OpenCode"
