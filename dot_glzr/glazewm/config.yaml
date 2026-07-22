@@ -75,7 +75,7 @@ window_effects:
       style: square
     transparency:
       enabled: true
-      opacity: 97%
+      opacity: 85%
 window_behavior:
   # New windows are created in this state whenever possible.
   # Allowed values: 'tiling', 'floating'.
