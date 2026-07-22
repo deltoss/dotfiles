@@ -197,7 +197,6 @@ hl.window_rule({
   match = { class = "com\\.github\\.hluk\\.copyq" },
   float = true,
   focus_on_activate = true,
-  stay_focused = true,
 })
 hl.window_rule({
   match = { class = "wezterm-special" },
