@@ -64,6 +64,9 @@
          "entrypoints": {
             "btop": {
                "alias": "kill"
+            },
+            "vesktop": {
+               "alias": "Discord"
             }
          }
       },
