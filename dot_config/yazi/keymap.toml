@@ -21,7 +21,11 @@ prepend_keymap = [
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
-	# Copy
+	# Copy, Cut, and Paste
+	{ on = "y", run = [ "yank", 'plugin clipboard -- --action=copy' ], desc = "Yank selected files (copy)" },
+	{ on = "x", run = [ "yank --cut", 'plugin clipboard -- --action=copy' ], desc = "Cut selected files" },
+	{ on = [ "<C-p>" ], run = 'plugin clipboard -- --action=paste', desc = "Paste files from system clipboard" },
+	{ on = [ "<Space>", "p" ], run = 'plugin clipboard -- --action=paste', desc = "Paste files from system clipboard" },
 	{ on = [ "<Space>", "y", "y" ], run = "copy path",             desc = "Yank Path" },
 	{ on = [ "<Space>", "y", "p" ], run = "copy path",             desc = "Yank [P]ath" },
 	{ on = [ "<Space>", "y", "d" ], run = "copy dirname",          desc = "Yank [D]irectory Path" },
