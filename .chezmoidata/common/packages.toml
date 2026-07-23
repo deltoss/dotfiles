@@ -32,6 +32,16 @@ commands = [
 ]
 
 [[packages.common]]
+name = "ast-grep"
+description = "CLI tool for code structural search, lint, and rewriting"
+tool = "sg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y ast-grep'
+]
+
+[[packages.common]]
 name = "intelli-shell"
 tool = "intelli-shell"
 tags = ["all"]
