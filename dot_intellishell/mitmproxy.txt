@@ -1,9 +1,0 @@
-# --------------------------------------------------------------
-#   Commands
-# --------------------------------------------------------------
-
-# Intercepts curl requests on this machine
-mitmproxy --mode local:curl
-
-# Intercepts HTTP requests on this machine
-mitmproxy --mode local

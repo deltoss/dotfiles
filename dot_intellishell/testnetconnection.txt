@@ -1,6 +1,0 @@
-# --------------------------------------------------------------
-#   Commands
-# --------------------------------------------------------------
-
-# Test port connectivity
-Test-NetConnection -ComputerName {{hostname}} -Port {{port}}
