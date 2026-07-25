@@ -964,6 +964,7 @@ id = "io.github.seadve.Kooha"
 
 [[packages.linux]]
 name = "Todoist"
+tool = "Todoist.AppImage"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -974,6 +975,7 @@ commands = [
 [[packages.linux]]
 name = "Handy"
 description = "Offline speech-to-text dictation"
+tool = "Handy.AppImage"
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
