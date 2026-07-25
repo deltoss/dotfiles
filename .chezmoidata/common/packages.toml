@@ -42,15 +42,6 @@ commands = [
 ]
 
 [[packages.common]]
-name = "intelli-shell"
-tool = "intelli-shell"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y intelli-shell --locked'
-]
-
-[[packages.common]]
 name = "podlet"
 description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
 tool = "podlet"
@@ -180,16 +171,6 @@ commands = [
 ]
 
 # --- uv ---
-[[packages.common]]
-name = "Aider"
-description = "Installs python version to be used with Aider" # See https://aider.chat/docs/install.html
-tool = "aider"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'uv tool install --python python3.12 --with pip aider-chat@latest'
-]
-
 [[packages.common]]
 name = "whisperx"
 description = "Installs whisperx for audio to text transcriptions. Word-level timestamps, suitable for subtitles"
