@@ -163,12 +163,11 @@ hl.workspace_rule({
 -----------------------
 -- Verify classes with `hyprctl clients` and adjust.
 
--- Cozy/idle games launched via SUPER+ALT+F (see KEYBINDINGS: APPLICATIONS).
+-- Lo-fi/cozy/idle games launched via SUPER+ALT+F (see KEYBINDINGS: APPLICATIONS).
 -- Single source of truth for id+name, shared by the window rule below and the launch keybind.
 local steamGames = {
   { id = 2113850, name = "Spirit City: Lofi Sessions" },
   { id = 2943180, name = "Virtual Cottage 2" },
-  { id = 3511030, name = "Mini Cozy Room: Lo-Fi" },
   { id = 2826180, name = "Chill Pulse" },
 }
 
@@ -188,7 +187,7 @@ hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
 hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
-for _, g in ipairs(steamGames) do -- Cozy games (see steamGames above) -> workspace 9
+for _, g in ipairs(steamGames) do -- Lo-fi games -> workspace 9
   hl.window_rule({
     match = { class = "^(steam_app_" .. g.id .. ")$" },
     workspace = "9",
