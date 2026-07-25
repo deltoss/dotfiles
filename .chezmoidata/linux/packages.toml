@@ -489,6 +489,28 @@ commands = [
 ]
 
 [[packages.linux]]
+name = "xremap"
+description = "Key remapper that supports application-specific keymaps"
+tool = "xremap"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'cargo install xremap --features hypr',
+]
+
+# Grants xremap access to /dev/uinput without sudo (udev rule + input group).
+# Separate entry so it applies even when xremap is already installed.
+[[packages.linux]]
+name = "xremap uinput access"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/setup-xremap-uinput.nu"',
+]
+
+[[packages.linux]]
 name = "OpenCode"
 description = "Agentic AI in the terminal"
 tool = "opencode"

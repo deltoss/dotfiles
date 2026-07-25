@@ -1,6 +1,7 @@
 local apps = require("lib/apps")
 local wallpaper = require("lib/wallpaper")
 local home = os.getenv("HOME")
+local config_home = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config")
 local wp_dir = home .. "/Synced/Images/Live Wallpapers"
 local workspaces = require("lib.workspaces")
 
@@ -137,8 +138,9 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "popBounc
 hl.on("hyprland.start", function()
   hl.exec_cmd("uwsm app -- gnome-keyring-daemon --start --components=secrets") -- For apps that needs keychains, e.g. Mailspring
   hl.exec_cmd("uwsm app -- waybar")
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("uwsm app -- xremap " .. config_home .. "/xremap/config.yml")
   hl.exec_cmd("uwsm app -- vicinae server")
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("uwsm app -- 1password --silent")
   hl.exec_cmd("uwsm app -- copyq --start-server")
   hl.exec_cmd("uwsm app -- swaync")

@@ -1,0 +1,6 @@
+keymap:
+  - application:
+      only: app.zen_browser.zen
+    remap:
+      Alt-O: Ctrl-Tab
+      Alt-U: Ctrl-Shift-Tab
