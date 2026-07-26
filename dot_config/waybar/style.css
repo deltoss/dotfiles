@@ -84,8 +84,8 @@ opacity: 0.75;
 #workspaces button.active:hover,
 #workspaces button:hover {
     background-color: alpha(@foreground, .3);
-    color: @background;
-    opacity: 1; 
+    color: @foreground;
+    opacity: 1;
     transition: .7s;
 }
 
