@@ -1,90 +1,197 @@
-/* Catppuccin Latte — https://github.com/catppuccin/waybar */
-@import "latte.css";
+@define-color background #eff1f5; /* Catppuccin Latte base */
+@define-color foreground #4c4f69; /* Catppuccin Latte text */
 
 * {
   border: none;
   border-radius: 0;
-  box-shadow: none;
-  font-family: "CaskaydiaCove Nerd Font", "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
-  font-size: 13pt;
   min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+}
+
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @background; 
+  border-radius: 20px;          
+  padding: 0px 5px;
+  margin: 10px 5px 2px 5px;
+  min-height: 30px;
+}
+
+.modules-left {
+  margin-left: 12px;
+}
+
+.modules-right {
+  margin-right: 12px;
 }
 
 window#waybar {
   background: transparent;
-  color: @text;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  color: transparent;
+  padding: 0;
+  margin: 0;
+  transition: .5s;
+}
+
+mpris.empty {
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 #workspaces {
-  margin: 5px 0 5px 5px;
-  padding: 0 4px;
-  border-radius: 1rem;
-  background-color: @surface0;
+    background-color: alpha(@foreground, .05);
+    border: none;
+    padding: 0px;
+    margin: 5px 6px;
+    margin-right: 0px;
+    border-radius: 15px;
 }
 
+
 #workspaces button {
-  padding: 0.3rem 0.6rem;
-  margin: 3px 2px;
-  border: none;
-  border-radius: 1rem;
-  box-shadow: none;
-  color: @subtext0;
-  background: transparent;
+    padding: 0px 8px;
+    margin: 0px 2px;
+    color: @background;
+    border-radius: 15px;
+    background-color: alpha(@foreground, .4);
 }
 
 #workspaces button.active {
-  color: @base;
-  background: @mauve;
+    padding: 0px 8px;
+    margin: 0px 2px;
+    background: @foreground;
+    color: @background;
+    border-radius: 15px;
+    opacity: 1; 
 }
 
-#workspaces button.urgent {
-  color: @base;
-  background: @red;
+#workspaces button.empty {
+    opacity: 0.2; 
 }
 
+#workspaces button.empty.active {
+opacity: 0.75; 
+}
+
+#workspaces button.active:hover,
 #workspaces button:hover {
-  color: @text;
-  background: @surface2;
+    background-color: alpha(@foreground, .3);
+    color: @background;
+    opacity: 1; 
+    transition: .7s;
 }
 
-#window {
-  margin: 5px;
-  padding: 0.4rem 1rem;
-  border-radius: 1rem;
-  background-color: @surface0;
-  color: @subtext0;
-}
-
+#memory,
+#mpris,
+#window,
+#tray-expander,
 #clock,
-#pulseaudio,
+#cpu,
+#battery,
 #network,
-#tray {
-  margin: 5px 3px;
-  padding: 0.4rem 1rem;
-  border-radius: 1rem;
-  background-color: @surface0;
+#bluetooth,
+#pulseaudio {
+  background-color: alpha(@foreground, 0.1);
+  padding: 5px 12px;
+  margin: 5px 0;
+  border-radius: 0;
+}
+
+#mpris:hover,
+#window:hover,
+#clock:hover,
+#cpu:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+  background-color: alpha(@foreground, .2);
+  transition: .7s;
+}
+
+#custom-expand-icon {
+  margin-right: 7px;
+  padding: 0px 10px;
+  border-radius: 15px;
+}
+
+#tray,
+#memory {
+  background-color: transparent;
+  margin: 5px;
+  padding: 0 2px;
 }
 
 #clock {
-  color: @rosewater;
+  border-radius: 15px;
+  padding: 0 15px;
+  margin: 5px 0px;
+  background-color: transparent;
 }
 
-#pulseaudio {
-  color: @sky;
+.hidden {
+  opacity: 0;
 }
 
-#pulseaudio.muted {
-  color: @overlay0;
+#battery {
+  background-color: @foreground;
+  color: @background;
+  min-width: 10px;
+  border-radius: 15px;
+  padding: 0 8px;
+  margin: 5px 0 5px 0px;
+}
+
+#battery {
+  margin-left: 5px;
+}
+
+#mpris,
+#window {
+  border-radius: 15px; 
+  padding: 5px 10px;   
+  margin-right: 0px;   
+}
+
+#window {
+  margin-left: 5px;   
+}
+
+#tray-expander {
+  padding: 0 0 0 1px;
+  margin-left: 0px;
+  border-radius: 15px;
+  background-color: transparent;
 }
 
 #network {
-  color: @mauve;
+  border-radius: 15px 0 0 15px;
 }
 
-#network.disconnected {
-  color: @red;
+#cpu {
+  padding: 0 15px 0 10px;
+  border-radius: 0 15px 15px 0;
+  margin-right: 0px;
 }
 
-#tray {
-  margin-right: 5px;
+#pulseaudio {
+  padding: 0 15px 0 10px;
+}
+
+tooltip {
+  border-radius: 15px;
+  background: @background;
+  color: @foreground;
+  border: 2px solid alpha(@foreground, .5);
+}
+
+tooltip label {
+  color: @foreground;
 }

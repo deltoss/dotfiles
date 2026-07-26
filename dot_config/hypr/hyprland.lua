@@ -209,7 +209,7 @@ hl.window_rule({
   },
 })
 
-for _, c in ipairs({ "wiremix", "bluetui", "nmtui" }) do
+for _, c in ipairs({ "wiremix", "bluetui", "nmtui", "btop" }) do
   hl.window_rule({
     match = { class = c },
     float = true,
