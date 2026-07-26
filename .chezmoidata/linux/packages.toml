@@ -398,6 +398,14 @@ postcommands = [
 tool = "ydotool"
 
 [[packages.linux]]
+description = "Color picker. Dependency of hyprpicker to freeze the screen contents with the --freeze flag"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprpicker"
+tool = "hyprpicker"
+
+[[packages.linux]]
 description = "Screenshot tool for Hyprland (grim+slurp based)"
 tags = ["all"]
 distros = ["cachyos"]

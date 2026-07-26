@@ -393,7 +393,7 @@ hl.bind("SUPER + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"), { locked = true, d
 
 hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
-hl.bind("Print", hl.dsp.exec_cmd("uwsm app -- sh -c 'hyprshot -m region --raw | satty --filename -'"))
+hl.bind("Print", hl.dsp.exec_cmd("uwsm app -- sh -c 'hyprshot -m region --raw --freeze | satty --filename -'"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run com.github.dynobo.normcap"))
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run io.github.seadve.Kooha"))
 
