@@ -52,6 +52,16 @@ commands = [
 ]
 
 [[packages.common]]
+name = "presenterm"
+description = "Create presentations in markdown format and run them from your terminal"
+tool = "presenterm"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y presenterm'
+]
+
+[[packages.common]]
 name = "gittype"
 tool = "gittype"
 tags = ["all"]
