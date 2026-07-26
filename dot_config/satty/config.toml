@@ -1,0 +1,12 @@
+[keybinds]
+pointer = "m"     # [M]ove
+crop = "c"
+brush = "d"       # [D]raw
+line = "l"
+arrow = "a"
+rectangle = "r"
+ellipse = "e"
+text = "t"
+marker = "n"      # [N]umbered marker
+blur = "p"        # [P]ixelate
+highlight = "h"
