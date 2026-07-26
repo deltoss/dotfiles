@@ -1,3 +1,8 @@
+[general]
+# [possible values: save-to-clipboard, save-to-file, save-to-file-as, copy-filepath-to-clipboard, exit]
+# Default is ["exit"], which is easy to hit by accident
+actions-on-escape = []
+
 [keybinds]
 pointer = "m"     # [M]ove
 crop = "c"
