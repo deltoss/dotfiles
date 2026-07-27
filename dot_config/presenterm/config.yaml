@@ -27,7 +27,7 @@ typst:
 
 mermaid:
   # the scale parameter passed to the mermaid CLI (mmdc).
-  scale: 2
+  scale: 4
 
 options:
   # whether slides are automatically terminated when a slide title is found.
