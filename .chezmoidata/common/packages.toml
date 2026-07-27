@@ -10,6 +10,28 @@
 # the per-OS files and run before this bucket, cargo/npm are available here.
 # Order matters: cargo-binstall must precede any `cargo binstall` user.
 
+# --- node ---
+[[packages.common]]
+name = "pi"
+description = "Pi is a minimal agent harness"
+tool = "pi"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g --ignore-scripts @earendil-works/pi-coding-agent"
+]
+
+# --- bun ---
+[[packages.common]]
+name = "oh-my-pi"
+description = "A coding agent with the IDE wired in"
+tool = "omp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "bun install -g @oh-my-pi/pi-coding-agent"
+]
+
 # --- cargo ---
 [[packages.common]]
 name = "cargo-binstall"
