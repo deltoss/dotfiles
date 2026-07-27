@@ -1,0 +1,9 @@
+app.editor.external: ctrl+o
+app.plan.toggle: ctrl+p
+app.stt.toggle: ctrl+t
+app.tools.expand: ctrl+l
+app.thinking.toggle: ctrl+d
+app.model.cycleForward: alt+m
+app.model.cycleBackward: []
+app.model.select: []
+app.display.reset: []
