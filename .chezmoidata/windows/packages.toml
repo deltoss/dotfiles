@@ -1,3 +1,12 @@
+[[packages.common]]
+name = "Bun"
+tool = "bun"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'powershell -c "irm bun.sh/install.ps1 | iex"'
+]
+
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"

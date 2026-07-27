@@ -93,6 +93,15 @@ postcommands = [
   '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
 ]
 
+[[packages.common]]
+name = "Bun"
+tool = "bun"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'http get https://bun.com/install | bash'
+]
+
 [[packages.linux]]
 name = "dotnet"
 tool = "dotnet"

@@ -102,15 +102,6 @@ commands = [
 ]
 
 [[packages.common]]
-name = "Bun"
-tool = "bun"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g bun"
-]
-
-[[packages.common]]
 name = "Biome"
 description = "Linter + formatter for Javascript and Typescript"
 tool = "biome"
