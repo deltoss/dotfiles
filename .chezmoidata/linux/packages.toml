@@ -93,7 +93,7 @@ postcommands = [
   '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
 ]
 
-[[packages.common]]
+[[packages.linux]]
 name = "Bun"
 tool = "bun"
 tags = ["all"]
