@@ -12,7 +12,6 @@
     "clock"
   ],
   "modules-right": [
-    "mpris",
     "group/tray-expander",
     "network",
     "bluetooth",
@@ -150,21 +149,6 @@
     "format": " {used:0.1f}gb",
     "interval": 2,
     "on-click": "uwsm app -- wezterm start --class btop -- btop"
-  },
-  "mpris": {
-    "format": "{player_icon} {artist} - {title}",
-    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
-    "ignored-players": [
-      "chromium"
-    ],
-    "max-length": 35,
-    "player-icons": {
-      "default": "🎵",
-      "mpv": "🎵"
-    },
-    "status-icons": {
-      "paused": "⏸"
-    }
   },
   "hyprland/window": {
     "format": "{}",
