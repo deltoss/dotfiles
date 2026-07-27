@@ -130,6 +130,16 @@ commands = [
 ]
 
 [[packages.common]]
+name = "Mermaid CLI"
+description = "A command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output. Needed as a dependency for presenterm"
+tool = "mmdc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @mermaid-js/mermaid-cli"
+]
+
+[[packages.common]]
 name = "Redocly CLI"
 tool = "redocly"
 tags = ["all"]
