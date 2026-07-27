@@ -1,0 +1,17 @@
+setupVersion: 1
+modelRoles: 
+  default: openai/gpt-5.6-sol
+theme: 
+  light: light-eucalyptus
+  dark: porcelain
+display: 
+  showTokenUsage: true
+personality: pragmatic
+tools: 
+  approvalMode: yolo
+stt: 
+  enabled: true
+astGrep: 
+  enabled: true
+plan: 
+  defaultOnStartup: true

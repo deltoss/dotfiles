@@ -27,19 +27,27 @@
   aichat_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/AICHAT/API Key" | quote }}
   aichat_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/AICHAT/API Key" | quote }}
   {{ if eq $computerPurpose "personal" -}}
+  ohmypi_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OH-MY-PI/API Key" | quote }}
+  pi_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/PI/API Key" | quote }}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OPENCODE/API Key" | quote }}
   fabric_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/FABRIC/API Key" | quote }}
   {{- else if eq $computerPurpose "work" -}}
+  ohmypi_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OH-MY-PI/API Key" | quote }}
+  pi_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/PI/API Key" | quote }}
   codecompanion_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
   fabric_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/FABRIC/API Key" | quote }}
   {{- end }}
   {{ if eq $computerPurpose "personal" -}}
+  ohmypi_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/OH-MY-PI/API Key" | quote }}
+  pi_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/PI/API Key" | quote }}
   codex_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODEX/API Key" | quote }}
   codecompanion_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/OPENCODE/API Key" | quote }}
   {{- else if eq $computerPurpose "work" -}}
+  ohmypi_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/OH-MY-PI/API Key" | quote }}
+  pi_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/PI/API Key" | quote }}
   codecompanion_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/OPENCODE/API Key" | quote }}
   {{- end }}
