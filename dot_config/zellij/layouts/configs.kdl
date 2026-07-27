@@ -18,10 +18,6 @@ layout {
                 args "--allow-dangerously-skip-permissions"
                 start_suspended true
             }
-            pane {
-                name "Sessions"
-                plugin location="zellij:session-manager"
-            }
         }
     }
     tab_template name="config_tab" {
@@ -88,10 +84,6 @@ layout {
                 args 
                     start_suspended true
                 }
-                pane {
-                    name "Sessions"
-                    plugin location="zellij:session-manager"
-                }
             }
         }
         pane size=1 borderless=true {
@@ -133,10 +125,6 @@ layout {
                     command "nu"
                     args "-n" "-c" "cd (^zoxide query serversdotfiles | str trim); claude --allow-dangerously-skip-permissions"
                     start_suspended true
-                }
-                pane {
-                    name "Sessions"
-                    plugin location="zellij:session-manager"
                 }
             }
         }

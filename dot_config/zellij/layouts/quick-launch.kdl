@@ -10,10 +10,6 @@ layout name="Launch" {
             focus true
             expanded true
         }
-        pane {
-            name "Sessions"
-            plugin location="zellij:session-manager"
-        }
     }
     pane size=1 borderless=true {
         plugin location="status-bar"

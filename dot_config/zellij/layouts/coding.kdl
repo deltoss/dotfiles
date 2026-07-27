@@ -36,10 +36,6 @@ layout name="Coding" {
                 args "~/HTTP/"
                 start_suspended true
             }
-            pane {
-                name "Sessions"
-                plugin location="zellij:session-manager"
-            }
         }
     }
     pane size=1 borderless=true {
