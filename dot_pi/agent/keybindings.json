@@ -3,5 +3,9 @@
   "app.tools.expand": "ctrl+l",
   "app.thinking.toggle": "ctrl+d",
   "app.model.cycleForward": "ctrl+n",
-  "app.exit": "ctrl+q"
+  "app.exit": "ctrl+q",
+  "tui.input.tab": [
+    "tab",
+    "ctrl+y"
+  ]
 }
