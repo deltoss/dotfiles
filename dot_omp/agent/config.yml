@@ -1,9 +1,9 @@
 setupVersion: 1
 modelRoles: 
-  default: openai/gpt-5.6-sol
+  default: anthropic/claude-opus-5:high
 theme: 
   light: light-eucalyptus
-  dark: porcelain
+  dark: light-eucalyptus
 display: 
   showTokenUsage: true
 personality: pragmatic
@@ -15,3 +15,10 @@ astGrep:
   enabled: true
 plan: 
   defaultOnStartup: true
+todo: 
+  reminders: false
+hideThinkingBlock: false
+dev: 
+  autoqa: false
+secrets: 
+  enabled: true
