@@ -336,7 +336,7 @@ hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action 
 hl.bind(FOCUS .. " + X", hl.dsp.window.close())
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
-hl.bind(FOCUS .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
+hl.bind(MOVE .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
 
