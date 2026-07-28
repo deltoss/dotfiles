@@ -1,0 +1,7 @@
+{
+  "app.editor.external": "ctrl+o",
+  "app.tools.expand": "ctrl+l",
+  "app.thinking.toggle": "ctrl+d",
+  "app.model.cycleForward": "ctrl+n",
+  "app.exit": "ctrl+q"
+}
