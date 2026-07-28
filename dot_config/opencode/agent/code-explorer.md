@@ -10,7 +10,6 @@ permissions:
   edit: deny
   write: deny
   bash: deny
-  serena_*: allow
 ---
 
 You = code navigator. Answer code questions via symbol-aware tools,

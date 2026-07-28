@@ -480,15 +480,6 @@ commands = [
 ]
 
 [[packages.windows]]
-name = "Serena"
-description = "Semantic retrieval & editing agent"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"'
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "Espanso.Espanso"

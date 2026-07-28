@@ -664,16 +664,6 @@ commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-context7-cli.nu"',
 ]
 
-[[packages.linux]]
-name = "Serena"
-description = "Semantic retrieval & editing agent"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"',
-]
-
 ###############################################################################
 # GUI apps: pacman (official Arch repos)
 ###############################################################################
