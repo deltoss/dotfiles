@@ -138,7 +138,7 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 4, bezier = "popBounc
 hl.on("hyprland.start", function()
   hl.exec_cmd("uwsm app -- gnome-keyring-daemon --start --components=secrets") -- For apps that needs keychains, e.g. Mailspring
   hl.exec_cmd("uwsm app -- waybar")
-  hl.exec_cmd("uwsm app -- xremap " .. config_home .. "/xremap/config.yml")
+  hl.exec_cmd("uwsm app -- xremap --watch=config,device " .. config_home .. "/xremap/config.yml")
   hl.exec_cmd("uwsm app -- vicinae server")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("uwsm app -- 1password --silent")
