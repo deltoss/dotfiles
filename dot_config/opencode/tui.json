@@ -7,6 +7,9 @@
     "messages_half_page_down": "ctrl+d,ctrl+e",
     "editor_open": "<leader>e,ctrl+o",
     "command_list": "ctrl+p,<leader>p",
-    "display_thinking": "<leader>d"
+    "display_thinking": "<leader>t,ctrl+t",
+    "tool_details": "<leader>d,ctrl+d",
+    "model_list": "<leader>m,ctrl+l",
+    "model_cycle_recent": "ctrl+n",
   },
 }

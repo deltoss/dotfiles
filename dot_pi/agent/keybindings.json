@@ -1,9 +1,11 @@
 {
   "app.editor.external": "ctrl+o",
-  "app.tools.expand": "ctrl+l",
-  "app.thinking.toggle": "ctrl+d",
-  "app.model.cycleForward": "ctrl+n",
+  "app.tools.expand": "ctrl+d",
+  "app.thinking.toggle": "ctrl+t",
   "app.exit": "ctrl+q",
+  "app.model.cycleForward": "ctrl+n",
+  "app.model.cycleBackward": "",
+  "app.model.select": "ctrl+l",
   "tui.input.tab": [
     "tab",
     "ctrl+y"

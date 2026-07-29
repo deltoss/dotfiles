@@ -5,14 +5,15 @@
     {
       "context": "Global",
       "bindings": {
-        "ctrl+l": "app:toggleTranscript",
+        "ctrl+t": "app:toggleTranscript",
         "ctrl+o": "chat:externalEditor"
       }
     },
     {
       "context": "Chat",
       "bindings": {
-        "ctrl+o": "chat:externalEditor"
+        "ctrl+o": "chat:externalEditor",
+        "ctrl+l": "chat:modelPicker"
       }
     },
     {
