@@ -114,7 +114,7 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "locked"
         }
-        bind "o" { SwitchToMode "normal"; }
+        bind "S" { SwitchToMode "normal"; }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -138,6 +138,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" {
+        bind "o" { EditScrollback; SwitchToMode "locked"; }
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
@@ -216,7 +217,7 @@ keybinds clear-defaults=true {
         bind "m" { SwitchToMode "move"; }
     }
     shared_except "locked" "entersearch" "search" "renametab" "renamepane" "session" {
-        bind "o" { SwitchToMode "session"; }
+        bind "S" { SwitchToMode "session"; }
     }
     shared_except "locked" "tab" "entersearch" "renametab" "renamepane" {
         bind "t" { SwitchToMode "tab"; }
