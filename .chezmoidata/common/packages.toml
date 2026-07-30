@@ -21,6 +21,18 @@ commands = [
   "npm install -g --ignore-scripts @earendil-works/pi-coding-agent"
 ]
 
+
+[[packages.common]]
+name = "agent-browser"
+description = "Browser automation CLI for AI agents. Fast native Rust CLI."
+tool = "agent-browser"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g agent-browser",
+  "agent-browser install" # Download Chrome from Chrome for Testing (first time only)
+]
+
 # --- bun ---
 [[packages.common]]
 name = "oh-my-pi"

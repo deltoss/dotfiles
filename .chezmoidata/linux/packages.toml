@@ -533,8 +533,10 @@ description = "Agentic AI in the terminal"
 tool = "opencode"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "pacman"
-id = "opencode"
+package_type = "commands"
+commands = [
+  "http get https://opencode.ai/install | bash",
+]
 
 # television's binary is `tv`.
 [[packages.linux]]
