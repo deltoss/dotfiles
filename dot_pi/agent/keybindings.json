@@ -6,6 +6,8 @@
   "app.model.cycleForward": "ctrl+n",
   "app.model.cycleBackward": "",
   "app.model.select": "ctrl+l",
+  "app.models.toggleProvider": "",
+  "app.session.togglePath": "",
   "tui.input.tab": [
     "tab",
     "ctrl+y"
