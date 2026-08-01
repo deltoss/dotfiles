@@ -20,6 +20,7 @@ prepend_keymap = [
   { on = "_", run = "back", desc = "Back to previous directory" },
   { on = "+", run = "forward", desc = "Forward to next directory" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = "M", run = "plugin mount", desc = "Mount a device", for = "unix" },
 
 	# Copy, Cut, and Paste
 	{ on = "y", run = [ "yank", 'plugin clipboard -- --action=copy' ], desc = "Yank selected files (copy)" },
