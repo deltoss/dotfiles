@@ -14,8 +14,8 @@
   "modules-right": [
     "group/tray-expander",
     "network",
-    "bluetooth",
     "pulseaudio",
+    "bluetooth",
     "cpu",
     "battery"
   ],
@@ -109,12 +109,12 @@
     "on-click": "uwsm app -- wezterm start --class bluetui -- bluetui"
   },
   "pulseaudio": {
-    "format": "{icon}",
+    "format": "{volume}% {icon}",
     "on-click": "uwsm app -- wezterm start --class wiremix -- wiremix",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
-    "format-muted": "",
+    "format-muted": " {volume}%",
     "format-icons": {
       "headphone": "",
       "headset": "",
