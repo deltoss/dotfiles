@@ -299,18 +299,83 @@ local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" 
 -- Hyprland's default monitor-jump (disabled above via binds.window_direction_monitor_fallback).
 local wsCycleForDir = { l = "e-1", r = "e+1" }
 
+-- "e-1"/"e+1" from `ws` actually land on another open workspace. At the true
+-- edge we want FOCUS/MOVE to do nothing, not wrap across the whole desktop.
+local function hasFurtherWorkspace(ws, dir)
+  if not ws then
+    return false
+  end
+  for _, w in ipairs(hl.get_workspaces()) do
+    local further = (dir == "l" and w.id < ws.id) or (dir == "r" and w.id > ws.id)
+    if w.windows > 0 and further then
+      return true
+    end
+  end
+  return false
+end
+
+local function columnIndex(w)
+  return w.layout and w.layout.column and w.layout.column.index
+end
+
+-- Is there another window in this workspace with a column index further over
+-- than `index`, in the given direction?
+local function hasFurtherColumn(ws, index, dir)
+  for _, w in ipairs(hl.get_workspace_windows(ws)) do
+    local other = columnIndex(w)
+    local further = other and ((dir == "l" and other < index) or (dir == "r" and other > index))
+    if further then
+      return true
+    end
+  end
+  return false
+end
+
+-- Nothing further over in `dir`, and alone in its column -- 2+ windows sharing
+-- the edge column means it's split and can still be peeled apart further in
+-- that direction, so that's not actually stuck.
+local function atColumnEdge(win, dir)
+  local col = win.layout and win.layout.column
+  if not col then
+    return true
+  end
+  return not hasFurtherColumn(win.workspace, col.index, dir) and #col.windows <= 1
+end
+
 local function focusDir(dir)
   local wsCycle = wsCycleForDir[dir]
   if not wsCycle then
     return hl.dsp.focus({ direction = dir })
   end
   return function()
-    local before = hl.get_active_window()
-    hl.dispatch(hl.dsp.focus({ direction = dir }))
-    local after = hl.get_active_window()
-    local stuck = (before == nil and after == nil) or (before and after and before.address == after.address)
-    if stuck then
-      hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
+    local win = hl.get_active_window()
+    -- Unlike moveDir, a shared column doesn't matter here: focus can only jump
+    -- to an existing column, not split one apart, so "further column" alone
+    -- decides whether we're stuck.
+    local col = win and win.layout and win.layout.column
+    if col and not hasFurtherColumn(win.workspace, col.index, dir) then
+      if hasFurtherWorkspace(win.workspace, dir) then
+        hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
+      end
+    else
+      hl.dispatch(hl.dsp.focus({ direction = dir }))
+    end
+  end
+end
+
+local function moveDir(dir)
+  local wsCycle = wsCycleForDir[dir]
+  if not wsCycle then
+    return hl.dsp.window.move({ direction = dir })
+  end
+  return function()
+    local win = hl.get_active_window()
+    if win and win.workspace and atColumnEdge(win, dir) then
+      if hasFurtherWorkspace(win.workspace, dir) then
+        hl.dispatch(hl.dsp.window.move({ workspace = wsCycle, follow = true }))
+      end
+    else
+      hl.dispatch(hl.dsp.window.move({ direction = dir }))
     end
   end
 end
@@ -319,8 +384,8 @@ for _, k in ipairs(dirKeys) do
   local key, arrow, dir = k[1], k[2], k[3]
   hl.bind(FOCUS .. " + " .. key, focusDir(dir))
   hl.bind(FOCUS .. " + " .. arrow, focusDir(dir))
-  hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ direction = dir }))
-  hl.bind(MOVE .. " + " .. arrow, hl.dsp.window.move({ direction = dir }))
+  hl.bind(MOVE .. " + " .. key, moveDir(dir))
+  hl.bind(MOVE .. " + " .. arrow, moveDir(dir))
 end
 
 ---------------------------------
@@ -358,7 +423,18 @@ hl.bind(FOCUS .. " + S", function()
 end)
 hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
-hl.bind(FOCUS .. " + X", hl.dsp.window.close())
+local function closeWindow()
+  local ws = hl.get_active_workspace()
+  local wasLastWindow = ws and ws.windows == 1
+  hl.dispatch(hl.dsp.window.close())
+  if wasLastWindow then
+    -- "m+1" is monitor-scoped and skips empty workspaces, so this can't hand
+    -- focus to another monitor; if there's no other non-empty workspace here
+    -- it's a no-op.
+    hl.dispatch(hl.dsp.focus({ workspace = "m+1" }))
+  end
+end
+hl.bind(FOCUS .. " + X", closeWindow)
 hl.bind(FOCUS .. " + W", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(MOVE .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
