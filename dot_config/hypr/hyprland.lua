@@ -122,6 +122,11 @@ hl.config({
   cursor = {
     warp_on_change_workspace = 1,
   },
+  binds = {
+    -- Monitors are arranged left/right (see lib/workspaces.lua); disable Hyprland's
+    -- default monitor-jump so FOCUS+Left/Right can cycle workspaces at the edge instead.
+    window_direction_monitor_fallback = false,
+  },
   misc = {
     focus_on_activate = true,
   },
@@ -290,10 +295,30 @@ local MOVE = "ALT + SHIFT"
 
 local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" }, { "h", "down", "d" } }
 
+-- At the left/right edge of a workspace, cycle to the next/previous workspace instead of
+-- Hyprland's default monitor-jump (disabled above via binds.window_direction_monitor_fallback).
+local wsCycleForDir = { l = "e-1", r = "e+1" }
+
+local function focusDir(dir)
+  local wsCycle = wsCycleForDir[dir]
+  if not wsCycle then
+    return hl.dsp.focus({ direction = dir })
+  end
+  return function()
+    local before = hl.get_active_window()
+    hl.dispatch(hl.dsp.focus({ direction = dir }))
+    local after = hl.get_active_window()
+    local stuck = (before == nil and after == nil) or (before and after and before.address == after.address)
+    if stuck then
+      hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
+    end
+  end
+end
+
 for _, k in ipairs(dirKeys) do
   local key, arrow, dir = k[1], k[2], k[3]
-  hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ direction = dir }))
-  hl.bind(FOCUS .. " + " .. arrow, hl.dsp.focus({ direction = dir }))
+  hl.bind(FOCUS .. " + " .. key, focusDir(dir))
+  hl.bind(FOCUS .. " + " .. arrow, focusDir(dir))
   hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ direction = dir }))
   hl.bind(MOVE .. " + " .. arrow, hl.dsp.window.move({ direction = dir }))
 end
