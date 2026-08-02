@@ -124,7 +124,7 @@ hl.config({
   },
   binds = {
     -- Monitors are arranged left/right (see lib/workspaces.lua); disable Hyprland's
-    -- default monitor-jump so FOCUS+Left/Right can cycle workspaces at the edge instead.
+    -- default monitor-jump so PRIMARYMOD+Left/Right can cycle workspaces at the edge instead.
     window_direction_monitor_fallback = false,
   },
   misc = {
@@ -290,8 +290,8 @@ hl.layer_rule({
 ----------------------------------
 ---- KEYBINDINGS: NAVIGATIONS ----
 ----------------------------------
-local FOCUS = "CTRL + ALT + SHIFT"
-local MOVE = "ALT + SHIFT"
+local PRIMARYMOD = "CTRL + ALT + SHIFT"
+local SECONDARYMOD = "ALT + SHIFT"
 
 local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" }, { "h", "down", "d" } }
 
@@ -300,7 +300,7 @@ local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" 
 local wsCycleForDir = { l = "e-1", r = "e+1" }
 
 -- "e-1"/"e+1" from `ws` actually land on another open workspace. At the true
--- edge we want FOCUS/MOVE to do nothing, not wrap across the whole desktop.
+-- edge we want PRIMARYMOD/SECONDARYMOD to do nothing, not wrap across the whole desktop.
 local function hasFurtherWorkspace(ws, dir)
   if not ws then
     return false
@@ -383,10 +383,10 @@ end
 
 for _, k in ipairs(dirKeys) do
   local key, arrow, dir = k[1], k[2], k[3]
-  hl.bind(FOCUS .. " + " .. key, focusDir(dir))
-  hl.bind(FOCUS .. " + " .. arrow, focusDir(dir))
-  hl.bind(MOVE .. " + " .. key, moveDir(dir))
-  hl.bind(MOVE .. " + " .. arrow, moveDir(dir))
+  hl.bind(PRIMARYMOD .. " + " .. key, focusDir(dir))
+  hl.bind(PRIMARYMOD .. " + " .. arrow, focusDir(dir))
+  hl.bind(SECONDARYMOD .. " + " .. key, hl.dsp.focus({ monitor = dir }))
+  hl.bind(SECONDARYMOD .. " + " .. arrow, hl.dsp.focus({ monitor = dir }))
 end
 
 ---------------------------------
@@ -405,25 +405,24 @@ local wsKeys = {
   ["0"] = "name:0",
 }
 for key, ws in pairs(wsKeys) do
-  hl.bind(FOCUS .. " + " .. key, hl.dsp.focus({ workspace = ws }))
-  hl.bind(MOVE .. " + " .. key, hl.dsp.window.move({ workspace = ws, follow = true }))
+  hl.bind(PRIMARYMOD .. " + " .. key, hl.dsp.focus({ workspace = ws }))
 end
 
-hl.bind(FOCUS .. " + U", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(FOCUS .. " + Page_Up", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(FOCUS .. " + O", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(FOCUS .. " + Page_Down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(PRIMARYMOD .. " + U", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(PRIMARYMOD .. " + Page_Up", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(PRIMARYMOD .. " + O", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(PRIMARYMOD .. " + Page_Down", hl.dsp.focus({ workspace = "e-1" }))
 
 ------------------------------------
 ---- KEYBINDINGS: WINDOW STATES ----
 ------------------------------------
-hl.bind(FOCUS .. " + P", hl.dsp.window.pseudo())
-hl.bind(FOCUS .. " + S", function()
+hl.bind(PRIMARYMOD .. " + P", hl.dsp.window.pseudo())
+hl.bind(PRIMARYMOD .. " + S", function()
   hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
   hl.dispatch(hl.dsp.window.center())
 end)
-hl.bind(FOCUS .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(FOCUS .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(PRIMARYMOD .. " + T", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(PRIMARYMOD .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 local function closeWindow()
   local ws = hl.get_active_workspace()
   local wasLastWindow = ws and ws.windows == 1
@@ -435,12 +434,12 @@ local function closeWindow()
     hl.dispatch(hl.dsp.focus({ workspace = "m+1" }))
   end
 end
-hl.bind(FOCUS .. " + X", closeWindow)
-hl.bind(FOCUS .. " + W", hl.dsp.window.close())
+hl.bind(PRIMARYMOD .. " + X", closeWindow)
+hl.bind(PRIMARYMOD .. " + W", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
-hl.bind(MOVE .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
-hl.bind(MOVE .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(FOCUS .. " + C", hl.dsp.window.cycle_next())
+hl.bind(SECONDARYMOD .. " + Q", hl.dsp.exec_cmd("uwsm stop"))
+hl.bind(SECONDARYMOD .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(PRIMARYMOD .. " + C", hl.dsp.window.cycle_next())
 
 -- Scroll through existing workspaces with SUPER + scroll
 hl.bind("ALT + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -468,8 +467,8 @@ hl.bind("SUPER + W", function()
 end)
 hl.bind("SUPER + ALT + W", apps.run_or_raise("ONLYOFFICE", "uwsm app -- flatpak run org.onlyoffice.desktopeditors"))
 hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
-hl.bind(FOCUS .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password --quick-access"))
-hl.bind(FOCUS .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1password"))
+hl.bind(PRIMARYMOD .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password --quick-access"))
+hl.bind(PRIMARYMOD .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
@@ -487,14 +486,14 @@ end)
 
 local handyToggle = "pkill -USR2 -x handy"
 -- start on press
-hl.bind(FOCUS .. " + V", hl.dsp.exec_cmd(handyToggle))
+hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle))
 -- stop on release
-hl.bind(FOCUS .. " + V", hl.dsp.exec_cmd(handyToggle), { release = true })
+hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle), { release = true })
 
 -- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
 hl.bind("SUPER + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"), { locked = true, description = "Session: Lock" })
 
-hl.bind(FOCUS .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
+hl.bind(PRIMARYMOD .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("uwsm app -- sh -c 'hyprshot -m region --raw --freeze | satty --filename -'"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run com.github.dynobo.normcap"))
@@ -528,17 +527,17 @@ local function zoomfunction(value)
     hl.config({ cursor = { zoom_factor = zoomvalue + value } })
   end
 end
-hl.bind(FOCUS .. " + Minus", function()
+hl.bind(PRIMARYMOD .. " + Minus", function()
   zoomfunction(-0.3)
 end, { repeating = true })
-hl.bind(FOCUS .. " + Equal", function()
+hl.bind(PRIMARYMOD .. " + Equal", function()
   zoomfunction(0.3)
 end, { repeating = true })
 
 -----------------------
 ---- RESIZE SUBMAP ----
 -----------------------
-hl.bind(FOCUS .. " + R", hl.dsp.submap("resize"))
+hl.bind(PRIMARYMOD .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("resize", function()
   local step = 40
@@ -552,6 +551,24 @@ hl.define_submap("resize", function()
     for _, key in ipairs(r.keys) do
       hl.bind(key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true }), { repeating = true })
     end
+  end
+  hl.bind("Escape", hl.dsp.submap("reset"))
+  hl.bind("Return", hl.dsp.submap("reset"))
+end)
+
+---------------------
+---- MOVE SUBMAP ----
+---------------------
+hl.bind(PRIMARYMOD .. " + M", hl.dsp.submap("move"))
+
+hl.define_submap("move", function()
+  for _, k in ipairs(dirKeys) do
+    local key, arrow, dir = k[1], k[2], k[3]
+    hl.bind(key, moveDir(dir))
+    hl.bind(arrow, moveDir(dir))
+  end
+  for key, ws in pairs(wsKeys) do
+    hl.bind(key, hl.dsp.window.move({ workspace = ws, follow = true }))
   end
   hl.bind("Escape", hl.dsp.submap("reset"))
   hl.bind("Return", hl.dsp.submap("reset"))
