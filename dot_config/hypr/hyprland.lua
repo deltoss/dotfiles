@@ -349,16 +349,17 @@ local function focusDir(dir)
   end
   return function()
     local win = hl.get_active_window()
-    -- Unlike moveDir, a shared column doesn't matter here: focus can only jump
+    local ws = win and win.workspace or hl.get_active_workspace()
+    -- No active window (empty workspace) is stuck by definition. Otherwise,
+    -- unlike moveDir, a shared column doesn't matter here: focus can only jump
     -- to an existing column, not split one apart, so "further column" alone
     -- decides whether we're stuck.
     local col = win and win.layout and win.layout.column
-    if col and not hasFurtherColumn(win.workspace, col.index, dir) then
-      if hasFurtherWorkspace(win.workspace, dir) then
-        hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
-      end
-    else
+    local stuck = not win or (col and not hasFurtherColumn(ws, col.index, dir))
+    if not stuck then
       hl.dispatch(hl.dsp.focus({ direction = dir }))
+    elseif hasFurtherWorkspace(ws, dir) then
+      hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
     end
   end
 end
