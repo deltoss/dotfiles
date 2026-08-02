@@ -299,6 +299,30 @@ local dirKeys = { { "y", "left", "l" }, { "e", "right", "r" }, { "a", "up", "u" 
 -- Hyprland's default monitor-jump (disabled above via binds.window_direction_monitor_fallback).
 local wsCycleForDir = { l = "e-1", r = "e+1" }
 
+-- Set by setSubmapIndicator (defined further down, near the move/resize submaps) while a
+-- submap's persistent border indicator is active, so flashActiveWindow's revert below
+-- doesn't stomp it -- e.g. hitting a move-submap edge should flash red, then settle back
+-- to the submap's indicator color, not the plain default border.
+local submapIndicatorColor = nil
+
+-- Flash the focused window's border (thicker + dark crimson red) as a visual ping that
+-- it's stuck at an edge -- works on tiled windows too, since it doesn't move anything.
+-- Reverts via a one-shot timer.
+local function flashActiveWindow()
+  local origBorderSize = hl.get_config("general:border_size")
+  hl.dispatch(hl.dsp.window.set_prop({ prop = "active_border_color", value = "rgb(8b0000)" }))
+  hl.dispatch(hl.dsp.window.set_prop({ prop = "border_size", value = origBorderSize + 5 }))
+  hl.timer(function()
+    if submapIndicatorColor then
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "active_border_color", value = submapIndicatorColor }))
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "border_size", value = origBorderSize + 5 }))
+    else
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "active_border_color", value = "#567594" }))
+      hl.dispatch(hl.dsp.window.set_prop({ prop = "border_size", value = origBorderSize }))
+    end
+  end, { timeout = 250, type = "oneshot" })
+end
+
 -- "e-1"/"e+1" from `ws` actually land on another open workspace. At the true
 -- edge we want PRIMARYMOD/SECONDARYMOD to do nothing, not wrap across the whole desktop.
 local function hasFurtherWorkspace(ws, dir)
@@ -360,6 +384,8 @@ local function focusDir(dir)
       hl.dispatch(hl.dsp.focus({ direction = dir }))
     elseif hasFurtherWorkspace(ws, dir) then
       hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
+    elseif win then
+      flashActiveWindow()
     end
   end
 end
@@ -374,9 +400,25 @@ local function moveDir(dir)
     if win and win.workspace and atColumnEdge(win, dir) then
       if hasFurtherWorkspace(win.workspace, dir) then
         hl.dispatch(hl.dsp.window.move({ workspace = wsCycle, follow = true }))
+      else
+        flashActiveWindow()
       end
     else
       hl.dispatch(hl.dsp.window.move({ direction = dir }))
+    end
+  end
+end
+
+-- No monitor exists in `dir`: unlike workspace/column edges, monitor layout is
+-- arbitrary 2D, so detect "stuck" by checking whether the active monitor actually
+-- changed rather than reimplementing Hyprland's own directional geometry.
+local function focusMonitorDir(dir)
+  return function()
+    local before = hl.get_active_monitor()
+    hl.dispatch(hl.dsp.focus({ monitor = dir }))
+    local after = hl.get_active_monitor()
+    if before and after and before.id == after.id and hl.get_active_window() then
+      flashActiveWindow()
     end
   end
 end
@@ -385,8 +427,8 @@ for _, k in ipairs(dirKeys) do
   local key, arrow, dir = k[1], k[2], k[3]
   hl.bind(PRIMARYMOD .. " + " .. key, focusDir(dir))
   hl.bind(PRIMARYMOD .. " + " .. arrow, focusDir(dir))
-  hl.bind(SECONDARYMOD .. " + " .. key, hl.dsp.focus({ monitor = dir }))
-  hl.bind(SECONDARYMOD .. " + " .. arrow, hl.dsp.focus({ monitor = dir }))
+  hl.bind(SECONDARYMOD .. " + " .. key, focusMonitorDir(dir))
+  hl.bind(SECONDARYMOD .. " + " .. arrow, focusMonitorDir(dir))
 end
 
 ---------------------------------
@@ -534,10 +576,37 @@ hl.bind(PRIMARYMOD .. " + Equal", function()
   zoomfunction(0.3)
 end, { repeating = true })
 
+-------------------------------
+---- SUBMAP MODE INDICATOR ----
+-------------------------------
+-- Persistent border color/thickness (distinct from the edge-stuck flash color) while
+-- in the move/resize submap, so it's obvious normal binds aren't active. Each submap
+-- gets its own color so move vs resize is distinguishable at a glance. Reverts on exit.
+local function setSubmapIndicator(active, color)
+  local origBorderSize = hl.get_config("general:border_size")
+  if active then
+    submapIndicatorColor = color
+    hl.dispatch(hl.dsp.window.set_prop({ prop = "active_border_color", value = color }))
+    hl.dispatch(hl.dsp.window.set_prop({ prop = "border_size", value = origBorderSize + 5 }))
+  else
+    submapIndicatorColor = nil
+    hl.dispatch(hl.dsp.window.set_prop({ prop = "active_border_color", value = "#567594" }))
+    hl.dispatch(hl.dsp.window.set_prop({ prop = "border_size", value = origBorderSize }))
+  end
+end
+
+local function exitSubmap()
+  setSubmapIndicator(false)
+  hl.dispatch(hl.dsp.submap("reset"))
+end
+
 -----------------------
 ---- RESIZE SUBMAP ----
 -----------------------
-hl.bind(PRIMARYMOD .. " + R", hl.dsp.submap("resize"))
+hl.bind(PRIMARYMOD .. " + R", function()
+  setSubmapIndicator(true, "rgb(ff8c00)") -- orange = resize
+  hl.dispatch(hl.dsp.submap("resize"))
+end)
 
 hl.define_submap("resize", function()
   local step = 40
@@ -552,14 +621,17 @@ hl.define_submap("resize", function()
       hl.bind(key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true }), { repeating = true })
     end
   end
-  hl.bind("Escape", hl.dsp.submap("reset"))
-  hl.bind("Return", hl.dsp.submap("reset"))
+  hl.bind("Escape", exitSubmap)
+  hl.bind("Return", exitSubmap)
 end)
 
 ---------------------
 ---- MOVE SUBMAP ----
 ---------------------
-hl.bind(PRIMARYMOD .. " + M", hl.dsp.submap("move"))
+hl.bind(PRIMARYMOD .. " + M", function()
+  setSubmapIndicator(true, "rgb(00bfff)") -- cyan = move
+  hl.dispatch(hl.dsp.submap("move"))
+end)
 
 hl.define_submap("move", function()
   for _, k in ipairs(dirKeys) do
@@ -570,6 +642,6 @@ hl.define_submap("move", function()
   for key, ws in pairs(wsKeys) do
     hl.bind(key, hl.dsp.window.move({ workspace = ws, follow = true }))
   end
-  hl.bind("Escape", hl.dsp.submap("reset"))
-  hl.bind("Return", hl.dsp.submap("reset"))
+  hl.bind("Escape", exitSubmap)
+  hl.bind("Return", exitSubmap)
 end)
