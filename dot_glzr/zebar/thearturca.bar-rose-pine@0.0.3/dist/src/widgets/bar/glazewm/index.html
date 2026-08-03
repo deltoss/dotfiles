@@ -13,5 +13,58 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- Binding mode badge (mod): the bundled bar doesn't render GlazeWM
+         binding modes, so subscribe to them over GlazeWM's IPC websocket
+         and inject a badge after the workspaces in the left group.
+         Styled in mods.css. -->
+    <script type="module">
+      let modes = [];
+
+      function render() {
+        const group = document.querySelector('.justify-self-start');
+        if (!group) return;
+        let badge = document.getElementById('binding-mode');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.id = 'binding-mode';
+          group.appendChild(badge);
+        }
+        const mode = modes[0];
+        const label = mode ? (mode.displayName ?? mode.name) : '';
+        if (badge.textContent !== label) badge.textContent = label;
+        badge.dataset.mode = mode ? mode.name : '';
+        badge.classList.toggle('active', !!mode);
+      }
+
+      function connect() {
+        const ws = new WebSocket('ws://localhost:6123');
+        ws.onopen = () => {
+          ws.send('query binding-modes');
+          ws.send('sub -e binding_modes_changed');
+        };
+        ws.onmessage = (e) => {
+          const data = JSON.parse(e.data)?.data;
+          if (data?.eventType === 'binding_modes_changed') {
+            modes = data.newBindingModes;
+          } else if (data?.bindingModes) {
+            modes = data.bindingModes;
+          } else {
+            return;
+          }
+          render();
+        };
+        ws.onclose = () => setTimeout(connect, 3000);
+      }
+      connect();
+
+      // The bar renders asynchronously; re-attach the badge whenever it's
+      // missing (initial render or if the left group gets recreated).
+      new MutationObserver(() => {
+        if (!document.getElementById('binding-mode')) render();
+      }).observe(document.getElementById('root'), {
+        childList: true,
+        subtree: true,
+      });
+    </script>
   </body>
 </html>

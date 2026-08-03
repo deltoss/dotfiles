@@ -393,7 +393,10 @@ window_rules:
           regex: ".*[Cc]rosshair.*"
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
+  # `display_name` is surfaced through GlazeWM's IPC (e.g. zebar's binding
+  # mode provider) as the visual mode indicator.
   - name: resize
+    display_name: RESIZE
     keybindings:
       - commands:
           - resize --width -2%
@@ -421,6 +424,87 @@ binding_modes:
         bindings:
           - escape
           - enter
+  # When enabled, the focused window can be moved via arrow keys or YHAE,
+  # or sent to a workspace (following it) via the number keys.
+  - name: move
+    display_name: MOVE
+    keybindings:
+      - commands:
+          - move --direction left
+        bindings:
+          - 'y'
+          - left
+      - commands:
+          - move --direction right
+        bindings:
+          - e
+          - right
+      - commands:
+          - move --direction up
+        bindings:
+          - a
+          - up
+      - commands:
+          - move --direction down
+        bindings:
+          - h
+          - down
+      - commands:
+          - move --workspace 1
+          - focus --workspace 1
+        bindings:
+          - '1'
+      - commands:
+          - move --workspace 2
+          - focus --workspace 2
+        bindings:
+          - '2'
+      - commands:
+          - move --workspace 3
+          - focus --workspace 3
+        bindings:
+          - '3'
+      - commands:
+          - move --workspace 4
+          - focus --workspace 4
+        bindings:
+          - '4'
+      - commands:
+          - move --workspace 5
+          - focus --workspace 5
+        bindings:
+          - '5'
+      - commands:
+          - move --workspace 6
+          - focus --workspace 6
+        bindings:
+          - '6'
+      - commands:
+          - move --workspace 7
+          - focus --workspace 7
+        bindings:
+          - '7'
+      - commands:
+          - move --workspace 8
+          - focus --workspace 8
+        bindings:
+          - '8'
+      - commands:
+          - move --workspace 9
+          - focus --workspace 9
+        bindings:
+          - '9'
+      - commands:
+          - move --workspace 0
+          - focus --workspace 0
+        bindings:
+          - '0'
+      # Press enter/escape to return to default keybindings.
+      - commands:
+          - wm-disable-binding-mode --name move
+        bindings:
+          - escape
+          - enter
 keybindings:
   # Shift focus in a given direction.
   - commands:
@@ -443,32 +527,27 @@ keybindings:
     bindings:
       - ctrl+alt+shift+h
       - ctrl+alt+shift+down
-  # Move focused window in a given direction.
+  # Focus the left/right monitor (window moves live in the move mode).
   - commands:
-      - move --direction left
+      - focus --monitor 0
     bindings:
       - alt+shift+y
       - alt+shift+left
   - commands:
-      - move --direction right
+      - focus --monitor 1
     bindings:
       - alt+shift+e
       - alt+shift+right
-  - commands:
-      - move --direction up
-    bindings:
-      - alt+shift+a
-      - alt+shift+up
-  - commands:
-      - move --direction down
-    bindings:
-      - alt+shift+h
-      - alt+shift+down
   # [R]esize mode
   - commands:
       - wm-enable-binding-mode --name resize
     bindings:
       - ctrl+alt+shift+r
+  # [M]ove mode
+  - commands:
+      - wm-enable-binding-mode --name move
+    bindings:
+      - ctrl+alt+shift+m
   # [P]auses/Disables window management and all other 
   # keybindings until the key is pressed again.
   - commands:
@@ -589,54 +668,3 @@ keybindings:
       - focus --workspace 0
     bindings:
       - ctrl+alt+shift+0
-  # Move focused window to a workspace defined in `workspaces` config.
-  - commands:
-      - move --workspace 1
-      - focus --workspace 1
-    bindings:
-      - alt+shift+1
-  - commands:
-      - move --workspace 2
-      - focus --workspace 2
-    bindings:
-      - alt+shift+2
-  - commands:
-      - move --workspace 3
-      - focus --workspace 3
-    bindings:
-      - alt+shift+3
-  - commands:
-      - move --workspace 4
-      - focus --workspace 4
-    bindings:
-      - alt+shift+4
-  - commands:
-      - move --workspace 5
-      - focus --workspace 5
-    bindings:
-      - alt+shift+5
-  - commands:
-      - move --workspace 6
-      - focus --workspace 6
-    bindings:
-      - alt+shift+6
-  - commands:
-      - move --workspace 7
-      - focus --workspace 7
-    bindings:
-      - alt+shift+7
-  - commands:
-      - move --workspace 8
-      - focus --workspace 8
-    bindings:
-      - alt+shift+8
-  - commands:
-      - move --workspace 9
-      - focus --workspace 9
-    bindings:
-      - alt+shift+9
-  - commands:
-      - move --workspace 0
-      - focus --workspace 0
-    bindings:
-      - alt+shift+0
