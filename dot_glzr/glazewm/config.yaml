@@ -35,7 +35,7 @@ gaps:
   inner_gap: 3px
   # Gap between windows and the screen edge.
   outer_gap:
-    top: 55px
+    top: 53px
     right: 13px
     bottom: 13px
     left: 13px
@@ -100,31 +100,22 @@ workspaces:
     display_name: N
     bind_to_monitor: 0
   - name: "1"
-    display_name: I
     bind_to_monitor: 0
   - name: "2"
-    display_name: II
     bind_to_monitor: 0
   - name: "3"
-    display_name: III
     bind_to_monitor: 0
   - name: "4"
-    display_name: IV
     bind_to_monitor: 0
   - name: "5"
-    display_name: V
     bind_to_monitor: 0
   - name: "6"
-    display_name: VI
     bind_to_monitor: 1
   - name: "7"
-    display_name: VII
     bind_to_monitor: 1
   - name: "8"
-    display_name: VIII
     bind_to_monitor: 1
   - name: "9"
-    display_name: IX
     bind_to_monitor: 1
   - name: "S1"
     display_name: "S1"

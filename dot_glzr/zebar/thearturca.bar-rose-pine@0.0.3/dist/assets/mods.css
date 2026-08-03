@@ -13,6 +13,24 @@
   }
 }
 
+/* Bump base font size */
+body {
+  font-size: 18px;
+}
+
+/* Wider spacing between cpu, memory, and weather inside the stats widget.
+   Overrides its gap-2 (8px). */
+.justify-self-end .justify-end {
+  gap: 0.85rem;
+}
+
+/* Center the pill groups vertically in the bar window.
+   The bundle bottom-aligns them (items-end), which leaves the
+   top of the transparent 48px window empty. */
+#root .grid {
+  align-items: center;
+}
+
 /* Binding mode badge, injected by the mod script in the glazewm bar html.
    Colors match the Hyprland submap indicators: cyan = move, orange = resize. */
 #binding-mode {
