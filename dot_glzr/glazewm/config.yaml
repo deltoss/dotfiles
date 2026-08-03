@@ -527,7 +527,7 @@ keybindings:
     bindings:
       - ctrl+alt+shift+h
       - ctrl+alt+shift+down
-  # Focus the left/right monitor (window moves live in the move mode).
+  # Focus the left/right monitor
   - commands:
       - focus --monitor 0
     bindings:
