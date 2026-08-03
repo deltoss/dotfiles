@@ -338,6 +338,22 @@ local function hasFurtherWorkspace(ws, dir)
   return false
 end
 
+-- Is there a monitor further over in `dir`? Unlike hasFurtherWorkspace this doesn't
+-- require occupancy -- an empty monitor still has a bound, active workspace (see
+-- workspaces.setup()), so it's still a valid move target even with zero windows.
+local function hasFurtherMonitor(mon, dir)
+  if not mon then
+    return false
+  end
+  for _, m in ipairs(hl.get_monitors()) do
+    local further = (dir == "l" and m.position.x < mon.position.x) or (dir == "r" and m.position.x > mon.position.x)
+    if further then
+      return true
+    end
+  end
+  return false
+end
+
 local function columnIndex(w)
   return w.layout and w.layout.column and w.layout.column.index
 end
@@ -400,6 +416,8 @@ local function moveDir(dir)
     if win and win.workspace and atColumnEdge(win, dir) then
       if hasFurtherWorkspace(win.workspace, dir) then
         hl.dispatch(hl.dsp.window.move({ workspace = wsCycle, follow = true }))
+      elseif hasFurtherMonitor(hl.get_active_monitor(), dir) then
+        hl.dispatch(hl.dsp.window.move({ monitor = dir, follow = true }))
       else
         flashActiveWindow()
       end
