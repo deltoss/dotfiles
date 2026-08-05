@@ -615,7 +615,7 @@ tags = ["all"]
 package_type = "winget"
 id = "Syncthing.Syncthing"
 postcommands = [
-  "syncthing serve --no-browser &",
+  'powershell -File $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/start-syncthing.ps1"'
 ]
 
 [[packages.windows]]
