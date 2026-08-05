@@ -1,11 +1,11 @@
-layout name="Coding" {
+layout name="👾 Coding" {
     pane size=1 borderless=true {
         plugin location="tab-bar"
     }
     pane split_direction="vertical" {
         pane size="65%" stacked=true {
           pane {
-              name "Editor"
+              name "👾 Editor"
               command "nu"
               args "-e" "y"
               expanded true
@@ -14,24 +14,29 @@ layout name="Coding" {
         }
         pane split_direction="horizontal" size="35%" stacked=true {
             pane {
-                name "Terminal"
+                name "👾 Terminal"
                 command "nu"
                 start_suspended true
                 expanded true
             }
             pane {
-                name "OpenCode"
+                name "🤖 Pi"
+                command "pi"
+                start_suspended true
+            }
+            pane {
+                name "🤖 OpenCode"
                 command "opencode"
                 start_suspended true
             }
             pane {
-                name "Claude"
+                name "🤖 Claude"
                 command "claude"
                 args "--allow-dangerously-skip-permissions"
                 start_suspended true
             }
             pane {
-                name "HTTP"
+                name "🌐 HTTP"
                 command "nvim"
                 args "~/HTTP/"
                 start_suspended true

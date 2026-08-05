@@ -5,7 +5,7 @@ layout {
         }
         pane stacked=true {
             pane {
-                name "Editor"
+                name "👾 Editor"
                 command "nu"
                 args "-e" "y"
                 start_suspended true
@@ -14,12 +14,17 @@ layout {
             }
             children
             pane {
-                name "OpenCode"
+                name "🤖 Pi"
+                command "pi"
+                start_suspended true
+            }
+            pane {
+                name "🤖 OpenCode"
                 command "opencode"
                 start_suspended true
             }
             pane {
-                name "Claude"
+                name "🤖 Claude"
                 command "claude"
                 args "--allow-dangerously-skip-permissions"
                 start_suspended true
@@ -30,6 +35,6 @@ layout {
         }
     }
 
-    tab name="Org Notes" split_direction="vertical" cwd="~/Documents/Org Notes"
-    tab name="Note Taking" split_direction="vertical" cwd="~/Documents/Note Taking"
+    tab name="📙 Org Notes" split_direction="vertical" cwd="~/Documents/Org Notes"
+    tab name="📘 Note Taking" split_direction="vertical" cwd="~/Documents/Note Taking"
 }
