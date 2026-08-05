@@ -1,6 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
+    "serena": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--project-from-cwd",
+        "--enable-web-dashboard=false"
+      ],
+      "timeout": 60000
+    },
     "atlassian": {
       "type": "remote",
       "enabled": true,
@@ -18,6 +31,11 @@
       "environment": {
         "ANKI_CONNECT_URL": "http://localhost:8765"
       }
+    }
+  },
+  "agent": {
+    "explore": {
+      "disable": true // Don't use built-in explore agent, as it won't be able to use serena mcp
     }
   }
 }
