@@ -21,6 +21,15 @@ $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
 use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/refresh-path.nu'
 use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/add-path-env.nu'
 
+# winget exit codes that mean "nothing to do", not "failure". winget's ARP
+# correlation sometimes collapses two packages from the same publisher into one
+# row, so an already-installed package can be missing from the list below and
+# get a redundant install attempt.
+const WINGET_BENIGN_EXITS = [
+  -1978335135  # 0x8A150061 APPINSTALLER_CLI_ERROR_PACKAGE_ALREADY_INSTALLED
+  -1978335189  # 0x8A15002B APPINSTALLER_CLI_ERROR_UPDATE_NOT_APPLICABLE
+]
+
 # Installed winget IDs, via the WinGet PowerShell module (returns real objects;
 # `winget list` only gives text). Install the module first if it is missing.
 print "Querying installed winget packages..."
@@ -64,7 +73,16 @@ if $already_installed {
     {{- end }}
   {{- end }}
   {{- if eq .package_type "winget" }}
-  ^winget install --id {{ .id | quote }} -e --no-upgrade {{ if hasKey . "version" }}-v {{ .version | quote }}{{ end }}
+  try {
+    ^winget install --id {{ .id | quote }} -e --no-upgrade {{ if hasKey . "version" }}-v {{ .version | quote }}{{ end }}
+  } catch {
+    let code = $env.LAST_EXIT_CODE
+    if $code in $WINGET_BENIGN_EXITS {
+      print $"  ($display) already installed, skipping"
+    } else {
+      print $"  (ansi red)($display) failed, winget exit code ($code)(ansi reset)"
+    }
+  }
   {{- else if eq .package_type "commands" }}
     {{- range .commands }}
   {{ . }}

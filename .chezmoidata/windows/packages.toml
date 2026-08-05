@@ -188,6 +188,7 @@ id = "glzr-io.glazewm"
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"
+tool = "zebar"
 id = "glzr-io.zebar"
 
 [[packages.windows]]
