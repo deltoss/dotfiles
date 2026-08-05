@@ -400,6 +400,8 @@ local function focusDir(dir)
       hl.dispatch(hl.dsp.focus({ direction = dir }))
     elseif hasFurtherWorkspace(ws, dir) then
       hl.dispatch(hl.dsp.focus({ workspace = wsCycle }))
+    elseif hasFurtherMonitor(hl.get_active_monitor(), dir) then
+      hl.dispatch(hl.dsp.focus({ monitor = dir }))
     elseif win then
       flashActiveWindow()
     end
