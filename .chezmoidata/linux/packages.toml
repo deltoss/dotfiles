@@ -145,6 +145,15 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
+name = "Git LFS"
+description = "a Git extension for versioning large binary file"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git-lfs"
+tool = "git-lfs"
+
+[[packages.linux]]
 tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
