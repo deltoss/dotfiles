@@ -115,6 +115,13 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "S" { SwitchToMode "normal"; }
+        bind "s" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
                 floating true
@@ -122,15 +129,8 @@ keybinds clear-defaults=true {
             }
             SwitchToMode "locked"
         }
-        bind "s" {
-            LaunchOrFocusPlugin "zellij:share" {
-                floating true
-                move_to_focused_tab true
-            }
-            SwitchToMode "locked"
-        }
         bind "w" {
-            LaunchOrFocusPlugin "session-manager" {
+            LaunchOrFocusPlugin "zellij:share" {
                 floating true
                 move_to_focused_tab true
             }
