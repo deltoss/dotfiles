@@ -12,4 +12,8 @@ cd ~/nerd-fonts/
 ./install.sh {{ . }}
 {{- end }}
 
+mkdir -p ~/.local/share/fonts
+find "{{ $.chezmoi.sourceDir }}/assets/fonts" -mindepth 2 -maxdepth 2 \( -iname '*.ttf' -o -iname '*.otf' \) -exec cp -f {} ~/.local/share/fonts/ \;
+fc-cache -f
+
 {{ end -}}

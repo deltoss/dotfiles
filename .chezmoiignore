@@ -3,6 +3,7 @@ LICENSE
 WindowsRegEdits/
 scripts/
 shared/
+assets/
 .containers/
 AGENTS.md
 CLAUDE.md

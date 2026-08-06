@@ -15,4 +15,9 @@ pwsh -NoProfile -NoLogo -NonInteractive -Command '& ([scriptblock]::Create((iwr 
 
 Write-Host "Review the output, then type 'exit' + enter..."
 
+$fontsFolder = (New-Object -ComObject Shell.Application).Namespace(0x14)
+Get-ChildItem -Path "{{ $.chezmoi.sourceDir }}\assets\fonts" -Recurse -Include *.ttf,*.otf | ForEach-Object {
+  $fontsFolder.CopyHere($_.FullName, 0x10)
+}
+
 {{ end -}}
