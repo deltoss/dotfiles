@@ -20,23 +20,26 @@ def main [] {
   print $"(ansi green_bold)Setting default applications...(ansi reset)"
   set-default "mpv.desktop" "audio"
   set-default "vlc.desktop" "video"
+  set-default "yazi.desktop" "inode/directory"
 }
 
-# Sets `desktop` as the xdg-mime default for every `category`/* mimetype in
-# the system mime database.
-def set-default [desktop: string, category: string] {
+# Sets `desktop` as the xdg-mime default for either one exact mimetype or every
+# mimetype in a top-level category from the system mime database.
+def set-default [desktop: string, category_or_mimetype: string] {
   if not ($"/usr/share/applications/($desktop)" | path exists) {
     print $"  (ansi yellow)($desktop) not found, skipping(ansi reset)"
     return
   }
 
-  let mimetypes = (
-    glob $"/usr/share/mime/($category)/*.xml"
+  let mimetypes = if ($category_or_mimetype | str contains "/") {
+    [$category_or_mimetype]
+  } else {
+    glob $"/usr/share/mime/($category_or_mimetype)/*.xml"
     | path parse
     | get stem
-    | each { |type| $"($category)/($type)" }
-  )
+    | each { |type| $"($category_or_mimetype)/($type)" }
+  }
 
-  print $"  ($desktop) -> ($mimetypes | length) '($category)/*' mimetypes"
+  print $"  ($desktop) -> ($mimetypes | length) MIME entries"
   ^xdg-mime default $desktop ...$mimetypes
 }
