@@ -398,13 +398,11 @@ package_type = "winget"
 id = "Gyan.FFmpeg"
 
 [[packages.windows]]
-name = "Recordly"
-description = "Screen video recorder"
+name = "OBS Studio"
+description = "Records and streams your screen, camera, and audio"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-recordly.nu"'
-]
+package_type = "winget"
+id = "OBSProject.OBSStudio"
 
 [[packages.windows]]
 name = "Sunshine"

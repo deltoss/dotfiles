@@ -271,6 +271,8 @@ window_rules:
           equals: olk # Microsoft Outlook
       - window_process:
           equals: 'VirtualBox'
+      - window_process:
+          equals: 'obs64' # OBS Studio
   - commands:
       - move --workspace 8
       - focus --workspace 8

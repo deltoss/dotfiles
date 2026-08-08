@@ -280,8 +280,8 @@ DetectHiddenWindows true
     MouseMove width / 3, height / 3
 }
 
-; Ctrl + PrintScreen - Recordly
-#HotIf WinExist("ahk_exe Recordly.exe")
+; Ctrl + PrintScreen - OBS Studio
+#HotIf WinExist("ahk_exe obs64.exe")
 ^PrintScreen::
 {
     WinActivate
@@ -296,10 +296,10 @@ DetectHiddenWindows true
 #HotIf
 ^PrintScreen::
 {
-    Run(EnvGet("LOCALAPPDATA") . "\Programs\recordly\Recordly.exe") ; If window doesn't exist, run the app
-    WinWait("ahk_exe Recordly.exe")
-    WinActivate("ahk_exe Recordly.exe")
-    WinWaitActive("ahk_exe Recordly.exe")
+    Run(A_ProgramFiles . "\obs-studio\bin\64bit\obs64.exe") ; If window doesn't exist, run the app
+    WinWait("ahk_exe obs64.exe")
+    WinActivate("ahk_exe obs64.exe")
+    WinWaitActive("ahk_exe obs64.exe")
 }
 
 ; Zen Browser
