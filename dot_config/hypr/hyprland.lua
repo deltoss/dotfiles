@@ -190,6 +190,7 @@ hl.window_rule({ match = { class = "^(VirtualBoxVM)$" }, workspace = "4" })
 hl.window_rule({ match = { class = "^(obsidian)$" }, workspace = "5" })
 hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
 hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
+hl.window_rule({ match = { class = "^(com\\.obsproject\\.Studio)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
 for _, g in ipairs(steamGames) do -- Lo-fi games -> workspace 9
@@ -225,13 +226,6 @@ for _, c in ipairs({ "wiremix", "bluetui", "nmtui", "btop" }) do
     },
   })
 end
-
-hl.window_rule({
-  match = { class = "io.github.seadve.Kooha" },
-  float = true,
-  pin = true,
-  move = { "monitor_w*0.85-window_w", "monitor_h/2-window_h/2" },
-})
 
 hl.window_rule({
   match = { class = "hyprland-share-picker" },
@@ -559,7 +553,7 @@ hl.bind(PRIMARYMOD .. " + Return", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd("copyq toggle"))
 hl.bind("Print", hl.dsp.exec_cmd("uwsm app -- sh -c 'hyprshot -m region --raw --freeze | satty --filename -'"))
 hl.bind("ALT + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run com.github.dynobo.normcap"))
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("uwsm app -- flatpak run io.github.seadve.Kooha"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("uwsm app -- obs"))
 
 hl.bind(
   "XF86AudioRaiseVolume",
