@@ -281,6 +281,5 @@ description = "Belfry OpenScad Library, v2.0. An OpenSCAD library of shapes, mas
 tags = ["personal"]
 package_type = "commands"
 commands = [
-  'mkdir ("~/.local/share/OpenSCAD/libraries" | path expand)',
-  'git clone https://github.com/BelfrySCAD/BOSL2.git ("~/.local/share/OpenSCAD/libraries/BOSL2" | path expand)'
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-bosl2.nu"',
 ]
