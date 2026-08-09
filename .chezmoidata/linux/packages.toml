@@ -690,21 +690,6 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
-name = "Nerd Fonts Symbols"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "ttf-nerd-fonts-symbols-mono"
-
-[[packages.linux]]
-name = "WezTerm"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "wezterm-git"
-tool = "wezterm"
-
-[[packages.linux]]
 name = "Obsidian"
 tags = ["all"]
 distros = ["cachyos"]
@@ -816,17 +801,6 @@ package_type = "pacman"
 id = "mpvpaper"
 tool = "mpvpaper"
 
-# Not in the official Arch repos; the AUR is the install method documented in
-# the project README (github.com/Almamu/linux-wallpaperengine).
-[[packages.linux]]
-name = "linux-wallpaperengine"
-description = "Run Steam's Wallpaper Engine wallpapers on Linux"
-tool = "linux-wallpaperengine"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "aur"
-id = "linux-wallpaperengine-git"
-
 [[packages.linux]]
 tags = ["personal"]
 distros = ["cachyos"]
@@ -905,7 +879,7 @@ package_type = "pacman"
 id = "mailspring"
 
 ###############################################################################
-# GUI apps: AUR (paru)
+# AUR (paru)
 ###############################################################################
 
 [[packages.linux]]
@@ -915,6 +889,40 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "aur"
 id = "libation"
+
+# Not in the official Arch repos; the AUR is the install method documented in
+# the project README (github.com/Almamu/linux-wallpaperengine).
+[[packages.linux]]
+name = "linux-wallpaperengine"
+description = "Run Steam's Wallpaper Engine wallpapers on Linux"
+tool = "linux-wallpaperengine"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "linux-wallpaperengine-git"
+
+[[packages.linux]]
+name = "Nerd Fonts Symbols"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "ttf-nerd-fonts-symbols-mono"
+
+[[packages.linux]]
+name = "WezTerm"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "wezterm-git"
+tool = "wezterm"
+
+[[packages.linux]]
+name = "OpenSCAD"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "openscad-git"
+tool = "openscad"
 
 ###############################################################################
 # GUI apps: Flatpak (Flathub)

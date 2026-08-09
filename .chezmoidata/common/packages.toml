@@ -124,6 +124,16 @@ commands = [
   'cargo install --locked zellij --no-default-features --features plugins_from_target'
 ]
 
+[[packages.common]]
+name = "openscad-lsp"
+description = "LSP for OpenSCAD"
+tool = "openscad-lsp"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'cargo install openscad-lsp'
+]
+
 # --- npm ---
 [[packages.common]]
 name = "Typescript"
