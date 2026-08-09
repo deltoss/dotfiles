@@ -1,0 +1,3 @@
+#!/bin/sh
+export FILE="$1"
+exec wezterm start -- zellij --layout coding options --default-cwd "$(dirname "$1")"

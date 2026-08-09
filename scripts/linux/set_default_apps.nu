@@ -21,6 +21,19 @@ def main [] {
   set-default "mpv.desktop" "audio"
   set-default "vlc.desktop" "video"
   set-default "yazi.desktop" "inode/directory"
+  set-default "zellij-code-editor.desktop" "text"
+  set-default "zellij-code-editor.desktop" "application/sql"
+  set-default "zellij-code-editor.desktop" "application/x-ruby"
+  set-default "zellij-code-editor.desktop" "application/x-perl"
+  set-default "zellij-code-editor.desktop" "application/x-php"
+  set-default "zellij-code-editor.desktop" "application/x-shellscript"
+  set-default "zellij-code-editor.desktop" "application/x-sh"
+  set-default "zellij-code-editor.desktop" "application/toml"
+  set-default "zellij-code-editor.desktop" "application/typescript"
+  set-default "zellij-code-editor.desktop" "application/javascript"
+  set-default "zellij-code-editor.desktop" "application/xml"
+  set-default "zellij-code-editor.desktop" "application/x-yaml"
+  set-default "zellij-code-editor.desktop" "application/json"
 }
 
 # Sets `desktop` as the xdg-mime default for either one exact mimetype or every

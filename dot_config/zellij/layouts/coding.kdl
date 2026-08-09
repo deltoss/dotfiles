@@ -7,7 +7,7 @@ layout name="👾 Coding" {
           pane {
               name "👾 Editor"
               command "nu"
-              args "-e" "y"
+              args "-e" "if ($env.FILE? | is-not-empty) { y $env.FILE } else { y }"
               expanded true
               focus true
           }

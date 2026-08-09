@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Zellij Code Editor
+GenericName=Code Editor
+Comment=Open text and code files in a Zellij coding workspace
+Exec=zellij-code-editor %f
+Icon=nvim
+Terminal=false
+NoDisplay=false
+Categories=Utility;TextEditor;Development;
+MimeType=text/plain;
