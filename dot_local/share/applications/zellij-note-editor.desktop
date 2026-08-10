@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Zellij Note Editor
+GenericName=Note Editor
+Comment=Open text files in a Zellij note workspace
+Exec=zellij-note-editor %f
+Icon=nvim
+Terminal=false
+NoDisplay=false
+Categories=Utility;TextEditor;
+MimeType=text/plain;
