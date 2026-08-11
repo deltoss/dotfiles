@@ -33,6 +33,10 @@ prepend_keymap = [
 	{ on = [ "<Space>", "y", "f" ], run = "copy filename",         desc = "Yank [F]ilename" },
 	{ on = [ "<Space>", "y", "F" ], run = "copy name_without_ext", desc = "Yank [F]ilename Without Extension" },
 
+  # Locked files
+  { on = [ "<Space>", "l", "l" ], run = 'plugin lockcheck', desc = "Show processes [l]ocking selected files" },
+  { on = [ "<Space>", "l", "k" ], run = 'plugin lockcheck -- --kill', desc = "[K]ill processes locking selected files" },
+
   # Zipping
   { on = ["<Space>", "z", "a"], run = 'plugin compress', desc = "Archive selected files" },
   { on = ["<Space>", "z", "p"], run = 'plugin compress -p', desc = "Archive selected files (password)" },
