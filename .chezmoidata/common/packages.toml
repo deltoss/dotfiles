@@ -294,3 +294,13 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-bosl2.nu"',
 ]
+
+[[packages.common]]
+name = "whisper.cpp"
+description = "Local speech-to-text inference using OpenAI Whisper models"
+tool = "whisper-cli"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-whisper-cpp.nu"',
+]
