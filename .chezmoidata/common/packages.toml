@@ -43,6 +43,17 @@ commands = [
   "bun install -g @oh-my-pi/pi-coding-agent"
 ]
 
+# --- mise ---
+[[packages.common]]
+name = "cmake"
+description = "Cross-platform build system generator. Needed to build native deps from source."
+tool = "cmake"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'mise use -g cmake@latest'
+]
+
 # --- cargo ---
 [[packages.common]]
 name = "cargo-binstall"
