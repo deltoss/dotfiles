@@ -1,10 +1,16 @@
 {
+  {{- if hasKey . "opencode_anthropic_key" }}
   "anthropic": {
     "type": "api",
     "key": {{ .opencode_anthropic_key | quote }}
-  },
+  }
+  {{- end }}
+  {{- if hasKey . "opencode_openai_key" }}
+  {{-   if hasKey . "opencode_anthropic_key" }},
+  {{-   end }}
   "openai": {
     "type": "api",
     "key": {{ .opencode_openai_key | quote }}
   }
+  {{- end }}
 }

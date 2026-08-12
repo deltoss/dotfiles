@@ -1,10 +1,16 @@
 {
+  {{- if hasKey . "pi_anthropic_key" }}
   "anthropic": {
     "type": "api_key",
     "key": {{ .pi_anthropic_key | quote }}
-  },
+  }
+  {{- end }}
+  {{- if hasKey . "pi_openai_key" }}
+  {{-   if hasKey . "pi_anthropic_key" }},
+  {{-   end }}
   "openai": {
     "type": "api_key",
     "key": {{ .pi_openai_key | quote }}
   }
+  {{- end }}
 }

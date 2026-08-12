@@ -1,9 +1,17 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
+{{ if hasKey . "aichat_anthropic_key" -}}
 model: claude
+{{ end -}}
 light_theme: true
+{{ if or (hasKey . "aichat_anthropic_key") (hasKey . "aichat_openai_key") -}}
 clients:
+{{ if hasKey . "aichat_anthropic_key" -}}
 - type: claude
   api_key: {{ .aichat_anthropic_key }}
+{{ end -}}
+{{ if hasKey . "aichat_openai_key" -}}
 - type: openai
   api_key: {{ .aichat_openai_key }}
+{{ end -}}
+{{ end -}}

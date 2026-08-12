@@ -1,4 +1,10 @@
 {
-  "anthropic": {{ .codecompanion_anthropic_key | quote }},
+  {{- if hasKey . "codecompanion_anthropic_key" }}
+  "anthropic": {{ .codecompanion_anthropic_key | quote }}
+  {{- end }}
+  {{- if hasKey . "codecompanion_openai_key" }}
+  {{-   if hasKey . "codecompanion_anthropic_key" }},
+  {{-   end }}
   "openai": {{ .codecompanion_openai_key | quote }}
+  {{- end }}
 }

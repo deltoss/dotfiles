@@ -1,2 +1,6 @@
+{{ if hasKey . "ohmypi_openai_key" -}}
 OPENAI_API_KEY={{ .ohmypi_openai_key }}
+{{ end -}}
+{{ if hasKey . "ohmypi_anthropic_key" -}}
 ANTHROPIC_API_KEY={{ .ohmypi_anthropic_key }}
+{{ end -}}
