@@ -697,6 +697,13 @@ package_type = "pacman"
 id = "obsidian"
 
 [[packages.linux]]
+name = "ShowMeTheKey"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "showmethekey"
+
+[[packages.linux]]
 name = "Anki"
 tags = ["all"]
 distros = ["cachyos"]

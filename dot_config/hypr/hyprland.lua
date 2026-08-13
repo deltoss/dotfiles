@@ -238,6 +238,16 @@ hl.window_rule({
   float = true,
 })
 
+hl.window_rule({
+  match = {
+    class = "one.alynx.showmethekey",
+    title = "^Floating Window.*",
+  },
+  float = true,
+  pin = true,
+  no_initial_focus = true,
+})
+
 -------------------------------------
 ---- SCREEN SHARE / PIP HANDLING ----
 -------------------------------------
