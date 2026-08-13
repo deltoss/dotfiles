@@ -1,0 +1,46 @@
+#!/usr/bin/env nu
+
+# Downloads the model weights defined in .chezmoidata/common/models.toml.
+# Cross-platform, so this runs on both Windows and Linux (no OS guard).
+
+{{- $models := list -}}
+{{- range .models.common -}}
+  {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
+    {{- $models = append $models . -}}
+  {{- end -}}
+{{- end }}
+
+let models = [
+{{- range $models }}
+  { name: {{ .name | quote }}, url: {{ .url | quote }}, dir: {{ if hasKey . "dir" }}{{ .dir | quote }}{{ else }}"~/models"{{ end }} }
+{{- end }}
+]
+
+if ($models | is-empty) {
+  print $"(ansi grey)No models to download.(ansi reset)"
+  exit 0
+}
+
+print $"(ansi green_bold)Downloading models...(ansi reset)"
+
+for model in $models {
+  let model_dir = ($model.dir | path expand)
+  mkdir $model_dir
+
+  let filename = ($model.url | url parse | get path | path basename)
+  let dest = ($model_dir | path join $filename)
+
+  if ($dest | path exists) {
+    print $"(ansi grey)Already have ($filename)(ansi reset)"
+    continue
+  }
+
+  print $"(ansi blue)Downloading ($model.name) to ($dest)...(ansi reset)"
+  # Stage under .part so an interrupted multi-GB download isn't mistaken for a
+  # complete file on the next run.
+  let staged = $"($dest).part"
+  http get $model.url | save --progress --force $staged
+  mv --force $staged $dest
+}
+
+print $"(ansi green)Model downloads complete.(ansi reset)"

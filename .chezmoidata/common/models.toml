@@ -1,0 +1,8 @@
+# Idempotency is by destination filename: an entry whose file already exists is
+# skipped, so downloads are never repeated but a changed URL filename refetches.
+
+[[models.common]]
+name = "whisper large-v3-turbo q5_0"
+description = "Multilingual whisper.cpp model. Fast, good accuracy."
+url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo-q5_0.bin"
+tags = ["all"]

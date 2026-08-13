@@ -3,24 +3,30 @@
 use ./helpers/require.nu
 
 def main [] {
-  require git
-  require cmake
-
-  let work_dir = (mktemp --directory --tmpdir whisper-cpp.XXXXXXXX)
-  let source_dir = ($work_dir | path join "source")
-  let build_dir = ($work_dir | path join "build")
   let bin_dir = ($nu.home-dir | path join ".local" "bin")
   let executable = if (sys host).name == "Windows" {
     "whisper-cli.exe"
   } else {
     "whisper-cli"
   }
+  let installed_executable = ($bin_dir | path join $executable)
+
+  if ($installed_executable | path exists) {
+    print $"(ansi yellow)✓ whisper.cpp is already installed, nothing to do.(ansi reset)"
+    return
+  }
+
+  require git
+  require cmake
+
+  let work_dir = (mktemp --directory --tmpdir whisper-cpp.XXXXXXXX)
+  let source_dir = ($work_dir | path join "source")
+  let build_dir = ($work_dir | path join "build")
   let built_executable = if (sys host).name == "Windows" {
     $build_dir | path join "bin" "Release" $executable
   } else {
     $build_dir | path join "bin" $executable
   }
-  let installed_executable = ($bin_dir | path join $executable)
 
   try {
     print $"(ansi cyan)→ Cloning whisper.cpp…(ansi reset)"
@@ -30,11 +36,11 @@ def main [] {
     }
 
     print $"(ansi cyan)→ Building whisper.cpp…(ansi reset)"
-    cmake -S $source_dir -B $build_dir \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=OFF \
-      -DWHISPER_BUILD_TESTS=OFF \
-      -DWHISPER_BUILD_SERVER=OFF
+    (cmake -S $source_dir -B $build_dir
+      -DCMAKE_BUILD_TYPE=Release
+      -DBUILD_SHARED_LIBS=OFF
+      -DWHISPER_BUILD_TESTS=OFF
+      -DWHISPER_BUILD_SERVER=OFF)
     if $env.LAST_EXIT_CODE != 0 {
       error make { msg: "Failed to configure whisper.cpp" }
     }
