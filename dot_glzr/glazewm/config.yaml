@@ -384,6 +384,8 @@ window_rules:
           equals: kdenlive
       - window_process:
           regex: ".*[Cc]rosshair.*"
+      - window_process:
+          equals: 'keyviz'
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or YHAE.
   # `display_name` is surfaced through GlazeWM's IPC (e.g. zebar's binding

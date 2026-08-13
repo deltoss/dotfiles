@@ -643,6 +643,11 @@ package_type = "winget"
 id = "Oracle.VirtualBox"
 
 [[packages.windows]]
+tags = ["all"]
+package_type = "winget"
+id = "mulaRahul.Keyviz"
+
+[[packages.windows]]
 name = "AWS CLI"
 description = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
 tool = "aws"
