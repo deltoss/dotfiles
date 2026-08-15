@@ -194,6 +194,15 @@ commands = [
 ]
 
 [[packages.common]]
+name = "Pi ACP"
+tool = "pi-acp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'npm install -g pi-acp'
+]
+
+[[packages.common]]
 name = "Claude Code ACP"
 tool = "claude-agent-acp"
 tags = ["all"]
