@@ -1,0 +1,12 @@
+# See https://www.hunk.dev/docs/reference/config/
+theme = "catppuccin-frappe"
+mode = "stack"
+tab_width = 2
+wrap_lines = true
+sidebar = true
+agent_notes = true
+line_numbers = true
+hunk_headers = true
+menu_bar = true
+copy_decorations = false
+cursor_line = "row"
