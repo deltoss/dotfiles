@@ -1,5 +1,9 @@
 local M = {}
 
+local function class_matches(class, pattern)
+  return class == pattern or class:match(pattern) ~= nil
+end
+
 -- Run-or-raise-or-cycle:
 --   no window   -> launch cmd
 --   not focused -> focus most recently used window of that class
@@ -7,9 +11,15 @@ local M = {}
 -- NOTE: cycling must use a stable order, NOT focus_history_id.
 -- MRU order mutates when you focus, so wins[2] always points back
 -- at the window you just left -> ping-pong between 2 windows.
-function M.run_or_raise(class, cmd)
+function M.run_or_raise(class_pattern, cmd)
   return function()
-    local wins = hl.get_windows({ class = class })
+    local wins = {}
+    for _, win in ipairs(hl.get_windows()) do
+      if class_matches(win.class, class_pattern) then
+        table.insert(wins, win)
+      end
+    end
+
     if #wins == 0 then
       hl.dispatch(hl.dsp.exec_cmd(cmd))
       return
@@ -17,7 +27,7 @@ function M.run_or_raise(class, cmd)
 
     local active = hl.get_active_window()
 
-    if active == nil or active.class ~= class then
+    if active == nil or not class_matches(active.class, class_pattern) then
       -- Not on one -> jump to most recently used
       table.sort(wins, function(a, b)
         return a.focus_history_id < b.focus_history_id
