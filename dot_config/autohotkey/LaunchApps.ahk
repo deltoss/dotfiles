@@ -296,7 +296,7 @@ DetectHiddenWindows true
 #HotIf
 ^PrintScreen::
 {
-    Run(A_ProgramFiles . "\obs-studio\bin\64bit\obs64.exe") ; If window doesn't exist, run the app
+    Run(A_ProgramFiles . "\obs-studio\bin\64bit\obs64.exe", A_ProgramFiles . "\obs-studio\bin\64bit") ; If window doesn't exist, run the app
     WinWait("ahk_exe obs64.exe")
     WinActivate("ahk_exe obs64.exe")
     WinWaitActive("ahk_exe obs64.exe")
