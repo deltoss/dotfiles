@@ -928,7 +928,7 @@ name = "OpenSCAD"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "aur"
-id = "openscad-git"
+id = "openscad"
 tool = "openscad"
 
 ###############################################################################
