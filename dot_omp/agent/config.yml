@@ -1,4 +1,4 @@
-setupVersion: 1
+setupVersion: 2
 modelRoles: 
   default: anthropic/claude-opus-5:high
 theme: 
@@ -22,3 +22,5 @@ dev:
   autoqa: false
 secrets: 
   enabled: true
+composer: 
+  shape: box
