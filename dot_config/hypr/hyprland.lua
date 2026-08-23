@@ -193,6 +193,11 @@ hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7
 hl.window_rule({ match = { class = "^(com\\.obsproject\\.Studio)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
 hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
+hl.window_rule({
+  match = { class = "steam" },
+  float = true,
+  center = true,
+})
 for _, g in ipairs(steamGames) do -- Lo-fi games -> workspace 9
   hl.window_rule({
     match = { class = "^(steam_app_" .. g.id .. ")$" },
