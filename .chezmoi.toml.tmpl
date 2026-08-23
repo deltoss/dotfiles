@@ -28,13 +28,15 @@
   {{ if eq $computerPurpose "personal" -}}
   vultr_key = {{ onepasswordRead "op://Personal/Vultr/API Key" | quote }}
   {{- end }}
-  // Note aichat does not support OpenAI plans at time of writing. Thus, it's a
-  // separate section from the other tools to force it to use API keys
+  {{- /*
+    Note aichat does not support OpenAI plans at time of writing. Thus, it's a
+    separate section from the other tools to force it to use API keys
+  */ -}}
   {{- if eq $computerPurpose "personal" }}
   aichat_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/AICHAT/API Key" | quote }}
-  {{- else if eq $computerPurpose "work" }}
+  {{  else if eq $computerPurpose "work" }}
   aichat_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/AICHAT/API Key" | quote }}
-  {{- end }}
+  {{  end -}}
   {{ if $useAnthropicKeys -}}
   {{-   if eq $computerPurpose "personal" }}
   ohmypi_anthropic_key = {{ onepasswordRead "op://Personal/Claude AI - Personal/OH-MY-PI/API Key" | quote }}
@@ -48,8 +50,8 @@
   codecompanion_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/OPENCODE/API Key" | quote }}
   fabric_anthropic_key = {{ onepasswordRead "op://Work/Claude AI - Work/FABRIC/API Key" | quote }}
-  {{-   end }}
-  {{- end }}
+  {{    end -}}
+  {{- end -}}
   {{ if $useOpenAIKeys -}}
   {{-   if eq $computerPurpose "personal" }}
   ohmypi_openai_key = {{ onepasswordRead "op://Personal/OpenAI - Personal/OH-MY-PI/API Key" | quote }}
@@ -62,8 +64,8 @@
   pi_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/PI/API Key" | quote }}
   codecompanion_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/CODECOMPANION.NVIM/API Key" | quote }}
   opencode_openai_key = {{ onepasswordRead "op://Work/OpenAI - Work/OPENCODE/API Key" | quote }}
-  {{-   end }}
-  {{- end }}
+  {{    end -}}
+  {{- end -}}
   {{ if eq $computerPurpose "personal" -}}
   ssh_connections = {{- onepasswordRead "op://Personal/SSH Connections/notesPlain" | quote -}}
   {{- else if eq $computerPurpose "work" -}}
