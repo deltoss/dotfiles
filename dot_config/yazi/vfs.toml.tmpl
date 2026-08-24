@@ -3,7 +3,7 @@
 
 {{- if $config }}
 {{- range $config.hosts -}}
-[services.{{ .alias }}]
+[sftp.{{ .alias }}]
 type = "sftp"
 host = {{ .hostname | quote }}
 user = {{ .user | quote }}
