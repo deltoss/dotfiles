@@ -145,6 +145,15 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
+name = "btop"
+description = "An interactive terminal-based system monitor."
+tool = "btop"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "btop"
+
+[[packages.linux]]
 name = "Git LFS"
 description = "a Git extension for versioning large binary file"
 tags = ["all"]

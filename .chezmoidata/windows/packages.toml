@@ -500,6 +500,15 @@ package_type = "winget"
 id = "cjpais.Handy"
 
 [[packages.windows]]
+name = "btop4win"
+tool = "btop"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "scoop install btop"
+]
+
+[[packages.windows]]
 name = "Obsidian CLI"
 tool = "notesmd-cli"
 tags = ["all"]
