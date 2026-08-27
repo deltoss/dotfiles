@@ -9,11 +9,6 @@ rev = "cb6e8ec"
 hash = "25845f484b8d52149132dad1c440333c"
 
 [[plugin.deps]]
-use = "XYenon/clipboard"
-rev = "4533c7f"
-hash = "ba2b9be01c1aea7e23a51cad55ec68e5"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:mount"
 rev = "9014ed2"
 hash = "e3260d0b1feded8c8e3ae3afa1169e30"
