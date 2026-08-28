@@ -147,6 +147,16 @@ commands = [
 
 # --- npm ---
 [[packages.common]]
+name = "node-notifier-cli"
+description = "Cross-platform desktop notification CLI"
+tool = "notify"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g node-notifier-cli"
+]
+
+[[packages.common]]
 name = "Typescript"
 tool = "tsc"
 tags = ["all"]
