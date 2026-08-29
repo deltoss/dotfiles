@@ -237,6 +237,15 @@ postcommands = [
 ]
 
 [[packages.common]]
+name = "RTK"
+description = "Installs RTK and initializes it for AI agents."
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-rtk.nu"'
+]
+
+[[packages.common]]
 name = "Codex ACP"
 tool = "codex-acp"
 tags = ["all"]
