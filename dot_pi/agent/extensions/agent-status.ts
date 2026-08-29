@@ -21,6 +21,11 @@ const STATUS_FILE = join(STATUS_DIRECTORY, `${AGENT.id}-${INSTANCE_ID}.json`);
 
 type AgentState = "ready" | "attention" | "working";
 
+interface ZellijRoute {
+	session: string;
+	paneId: string;
+}
+
 const PROMPT_DETAIL_KEYS = [
 	"args",
 	"data",
@@ -66,6 +71,7 @@ interface AgentStatus {
 	startedAt: number;
 	updatedAt: number;
 	expiresAt: number;
+	zellij?: ZellijRoute;
 }
 
 function cleanText(value: unknown): string | undefined {
@@ -73,6 +79,13 @@ function cleanText(value: unknown): string | undefined {
 
 	const text = value.trim();
 	return text ? text : undefined;
+}
+
+function getZellijRoute(): ZellijRoute | undefined {
+	const session = cleanText(process.env.ZELLIJ_SESSION_NAME);
+	const paneId = cleanText(process.env.ZELLIJ_PANE_ID);
+
+	return session && paneId ? { session, paneId } : undefined;
 }
 
 function asRecord(value: unknown): Record<string, unknown> | undefined {
@@ -295,6 +308,7 @@ export default function agentStatus(pi: ExtensionAPI): void {
 			startedAt,
 			updatedAt: now,
 			expiresAt: now + LEASE_MS,
+			zellij: getZellijRoute(),
 		} satisfies AgentStatus;
 
 		writeQueue = writeQueue
