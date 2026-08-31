@@ -6,7 +6,12 @@ if (which rtk | is-not-empty) {
   return
 }
 
-cargo install --git https://github.com/rtk-ai/rtk
+if (sys host).name == "Windows" {
+  # RTK currently emits an MSVC-only /STACK linker flag on Windows.
+  cargo "+stable-x86_64-pc-windows-msvc" install --git https://github.com/rtk-ai/rtk
+} else {
+  cargo install --git https://github.com/rtk-ai/rtk
+}
 $env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".cargo" "bin"))
 
 print $"(ansi green)Configuring RTK...(ansi reset)"

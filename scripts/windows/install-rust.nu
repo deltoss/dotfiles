@@ -17,7 +17,9 @@ if ($output_path | path exists) {
   # Refresh PATH for current session
   refresh-path
 
-  # Swap to GNU toolchain instead of MSVC
+  # Keep GNU as the default, with MSVC available for Windows-only packages
+  # that do not support the GNU linker.
+  rustup toolchain install stable-x86_64-pc-windows-msvc
   rustup toolchain install stable-x86_64-pc-windows-gnu
   rustup default stable-x86_64-pc-windows-gnu
 
