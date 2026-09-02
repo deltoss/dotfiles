@@ -121,6 +121,28 @@ DetectHiddenWindows true
     MouseMove width / 2, height / 2
 }
 
+; Window + / - Quake terminal
+#/::{
+    target := "ahk_class quake"
+
+    if WinExist(target) {
+        if WinActive(target) {
+            WinHide(target)
+        } else {
+            WinShow(target)
+            WinRestore(target)
+            WinActivate(target)
+            WinWaitActive(target)
+        }
+        return
+    }
+
+    Run("wezterm-gui.exe start --always-new-process --class quake -- nu.exe -e pi")
+    WinWait(target)
+    WinActivate(target)
+    WinWaitActive(target)
+}
+
 ; Window + T - [T]erminal
 #HotIf WinExist("ahk_exe wezterm-gui.exe")
 #t::
