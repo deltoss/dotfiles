@@ -1,0 +1,5 @@
+Write simply. Avoid AI-slop language. No flowery adjectives, unnecessary adverbs, or overly formal phrasing. No em dashes (—).
+
+For lists:
+- Format unordered items as `- **Short summary** ⟶ Details`.
+- Format numbered items as `1. **Short summary** ⟶ Details`, incrementing the number.
