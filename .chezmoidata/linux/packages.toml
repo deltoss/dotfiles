@@ -365,6 +365,15 @@ id = "github-cli"
 tool = "gh"
 
 [[packages.linux]]
+name = "QMK"
+description = "CLI and toolchain for building and flashing keyboard firmware"
+tool = "qmk"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qmk"
+
+[[packages.linux]]
 name = "Nushell"
 tags = ["all"]
 distros = ["cachyos"]
@@ -1055,6 +1064,15 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "hyprland"
+
+[[packages.linux]]
+name = "udiskie"
+description = "Automount removable media through udisks2"
+tool = "udiskie"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "udiskie"
 
 [[packages.linux]]
 name = "Waybar"
