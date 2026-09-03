@@ -20,26 +20,7 @@ def main [] {
       "npm:pi-web-access",
       "npm:pi-subagents"
     ],
-    defaultThinkingLevel: "max",
-    subagents: {
-      agentOverrides: {
-        "scout": {
-          "systemPromptMode": "append"
-        },
-        "researcher": {
-          "systemPromptMode": "append"
-        },
-        "worker": {
-          "systemPromptMode": "append"
-        },
-        "reviewer": {
-          "systemPromptMode": "append"
-        },
-        "oracle": {
-          "systemPromptMode": "append"
-        }
-      }
-    }
+    defaultThinkingLevel: "max"
   }
 
   let stdin = ($in | default --empty '{}')
