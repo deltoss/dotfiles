@@ -3,6 +3,8 @@ SetWorkingDir(A_ScriptDir) ; Ensures a consistent starting directory.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 
 DetectHiddenWindows true
+; Default window delay is 100ms. Set to 50ms for snappier feel
+SetWinDelay(50)
 
 ^Esc::
 !Esc::
@@ -147,47 +149,58 @@ PositionQuakeWindow(target, sourceWindow)
 
 ; Window + / - Quake terminal
 #/::{
+    static sourceWindow := 0
+    previousWinDelay := SetWinDelay(0)
     target := "ahk_class quake"
 
-    if WinActive(target) {
-        WinHide(target)
-        return
+    try {
+        if WinActive(target) {
+            WinHide(target)
+            if sourceWindow && WinExist(sourceWindow)
+                WinActivate(sourceWindow)
+            return
+        }
+
+        sourceWindow := WinExist("A")
+
+        if !WinExist(target) {
+            Run("wezterm-gui.exe start --always-new-process --class quake")
+            WinWait(target)
+        }
+
+        WinShow(target)
+        WinRestore(target)
+        PositionQuakeWindow(target, sourceWindow)
+        WinSetAlwaysOnTop(true, target)
+        WinActivate(target)
+        WinWaitActive(target)
+    } finally {
+        SetWinDelay(previousWinDelay)
     }
-
-    sourceWindow := WinExist("A")
-
-    if !WinExist(target) {
-        Run("wezterm-gui.exe start --always-new-process --class quake")
-        WinWait(target)
-    }
-
-    WinShow(target)
-    WinRestore(target)
-    PositionQuakeWindow(target, sourceWindow)
-    WinSetAlwaysOnTop(true, target)
-    WinActivate(target)
-    WinWaitActive(target)
 }
 
 ; Window + T - [T]erminal
-#HotIf WinExist("ahk_exe wezterm-gui.exe")
+#HotIf WinExist("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm")
 #t::
 {
-    WinActivate ; If window exists unfocused, focus it
+    target := "ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm"
+    WinActivate(target) ; If window exists unfocused, focus it
+    WinWaitActive(target)
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
     MouseMove width / 2, height / 2
     Sleep 200
-    WinActivate ; If window exists unfocused, focus it
+    WinActivate(target) ; Keep focus under GlazeWM
 }
 #HotIf
 #t::
 {
+    target := "ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm"
     ; If window doesn't exist, run the app
-    Run("wezterm-gui.exe") ; If window doesn't exist, run the app
-    WinWait("ahk_exe wezterm-gui.exe")
-    WinActivate("ahk_exe wezterm-gui.exe")
-    WinWaitActive("ahk_exe wezterm-gui.exe")
+    Run("wezterm-gui.exe")
+    WinWait(target)
+    WinActivate(target)
+    WinWaitActive(target)
 
     ; Move mouse to the active window
     WinGetPos , , &width, &height, "A"
