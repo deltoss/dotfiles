@@ -121,24 +121,50 @@ DetectHiddenWindows true
     MouseMove width / 2, height / 2
 }
 
+PositionQuakeWindow(target, sourceWindow)
+{
+    WinGetPos(&sourceX, &sourceY, &sourceWidth, &sourceHeight, sourceWindow)
+    sourceCenterX := sourceX + sourceWidth / 2
+    sourceCenterY := sourceY + sourceHeight / 2
+    monitorNumber := MonitorGetPrimary()
+
+    Loop MonitorGetCount() {
+        MonitorGet(A_Index, &left, &top, &right, &bottom)
+        if sourceCenterX >= left && sourceCenterX < right
+            && sourceCenterY >= top && sourceCenterY < bottom {
+            monitorNumber := A_Index
+            break
+        }
+    }
+
+    MonitorGetWorkArea(monitorNumber, &left, &top, &right, &bottom)
+    width := Round((right - left) * 0.8)
+    height := Round((bottom - top) * 0.7)
+    x := left + Round((right - left - width) / 2)
+    y := top + Round((bottom - top - height) / 2)
+    WinMove(x, y, width, height, target)
+}
+
 ; Window + / - Quake terminal
 #/::{
     target := "ahk_class quake"
 
-    if WinExist(target) {
-        if WinActive(target) {
-            WinHide(target)
-        } else {
-            WinShow(target)
-            WinRestore(target)
-            WinActivate(target)
-            WinWaitActive(target)
-        }
+    if WinActive(target) {
+        WinHide(target)
         return
     }
 
-    Run("wezterm-gui.exe start --always-new-process --class quake")
-    WinWait(target)
+    sourceWindow := WinExist("A")
+
+    if !WinExist(target) {
+        Run("wezterm-gui.exe start --always-new-process --class quake")
+        WinWait(target)
+    }
+
+    WinShow(target)
+    WinRestore(target)
+    PositionQuakeWindow(target, sourceWindow)
+    WinSetAlwaysOnTop(true, target)
     WinActivate(target)
     WinWaitActive(target)
 }
