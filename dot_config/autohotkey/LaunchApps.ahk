@@ -127,11 +127,11 @@ PositionQuakeWindow(target, sourceWindow)
     sourceCenterX := sourceX + sourceWidth / 2
     sourceCenterY := sourceY + sourceHeight / 2
     monitorNumber := MonitorGetPrimary()
+    monitorCount := MonitorGetCount()
 
-    Loop MonitorGetCount() {
+    Loop monitorCount {
         MonitorGet(A_Index, &left, &top, &right, &bottom)
-        if (sourceCenterX >= left && sourceCenterX < right
-            && sourceCenterY >= top && sourceCenterY < bottom) {
+        if (sourceCenterX >= left && sourceCenterX < right && sourceCenterY >= top && sourceCenterY < bottom) {
             monitorNumber := A_Index
             break
         }
