@@ -123,12 +123,17 @@ DetectHiddenWindows true
 
 ; Window + / - Quake terminal
 #/::{
+    static previousWindow := 0
     target := "ahk_class quake"
 
     if WinExist(target) {
         if WinActive(target) {
             WinHide(target)
+            if previousWindow && WinExist("ahk_id " previousWindow) {
+                WinActivate("ahk_id " previousWindow)
+            }
         } else {
+            previousWindow := WinExist("A")
             WinShow(target)
             WinRestore(target)
             WinActivate(target)
@@ -137,6 +142,7 @@ DetectHiddenWindows true
         return
     }
 
+    previousWindow := WinExist("A")
     Run("wezterm-gui.exe start --always-new-process --class quake")
     WinWait(target)
     WinActivate(target)
