@@ -137,7 +137,7 @@ DetectHiddenWindows true
         return
     }
 
-    Run("wezterm-gui.exe start --always-new-process --class quake -- nu.exe -e pi")
+    Run("wezterm-gui.exe start --always-new-process --class quake")
     WinWait(target)
     WinActivate(target)
     WinWaitActive(target)
