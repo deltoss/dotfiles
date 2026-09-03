@@ -144,7 +144,7 @@ window_rules:
       - window_process:
           equals: 'WindowsTerminal'
   - commands:
-      - set-floating --width 80% --height 70% --centered --shown-on-top
+      - ignore
     match:
       - window_class:
           equals: quake
