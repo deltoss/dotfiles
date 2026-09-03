@@ -144,6 +144,11 @@ window_rules:
       - window_process:
           equals: 'WindowsTerminal'
   - commands:
+      - set-floating --width 80% --height 70% --centered --shown-on-top
+    match:
+      - window_class:
+          equals: quake
+  - commands:
       - set-floating
       - move --workspace 0
       - focus --workspace 0
@@ -151,6 +156,8 @@ window_rules:
     match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
           equals: wezterm-gui
+        window_class:
+          not_regex: '^quake$'
   - commands:
       - set-floating
       - move --workspace 2
