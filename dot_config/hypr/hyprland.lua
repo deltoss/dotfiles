@@ -1,5 +1,6 @@
 local apps = require("lib/apps")
 local wallpaper = require("lib/wallpaper")
+local ai_with_context = require("lib.ai-with-context")
 local home = os.getenv("HOME")
 local config_home = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config")
 local wp_dir = home .. "/Synced/Images/Live Wallpapers"
@@ -554,7 +555,7 @@ hl.bind(PRIMARYMOD .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1p
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
 hl.bind(
   "F22",
-  hl.dsp.exec_cmd("uwsm app -- ~/.local/bin/ai-with-context"),
+  ai_with_context.toggle,
   { description = "AI: Open Pi with focused window context" }
 )
 hl.bind("F24", hl.dsp.workspace.toggle_special("term"))
