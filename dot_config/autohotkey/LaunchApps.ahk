@@ -147,9 +147,8 @@ PositionQuakeWindow(target, sourceWindow)
     WinMove(x, y, width, height, target)
 }
 
-; Window + / or F24 - Quake terminal
+; Window + / - Quake terminal
 #/::
-F24::
 {
     static sourceWindow := 0
     previousWinDelay := SetWinDelay(0)

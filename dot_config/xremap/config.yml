@@ -4,9 +4,3 @@ keymap:
     remap:
       Alt-O: Ctrl-Tab
       Alt-U: Ctrl-Shift-Tab
-  - name: Steam Games Overlay
-    application:
-      only:
-        - "/^steam_app_[0-9]+$/"
-    remap:
-      F23: Shift-Tab
