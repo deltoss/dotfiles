@@ -4,16 +4,15 @@ local WORKSPACE = "ai-with-context"
 local SPECIAL_WORKSPACE = "special:" .. WORKSPACE
 local WINDOW_CLASS = "ai-with-context"
 local MAX_CONTEXT_CHARS = 500
-
-local KDL_ESCAPES = {
-  ["\\"] = "\\\\",
-  ['"'] = '\\"',
-  ["\b"] = "\\b",
-  ["\f"] = "\\f",
-  ["\n"] = "\\n",
-  ["\r"] = "\\r",
-  ["\t"] = "\\t",
-}
+local ZELLIJ_LAUNCHER = [[
+session=$1
+shift
+zellij delete-session --force "$session" >/dev/null 2>&1 || true
+zellij attach --create --close-on-exit "$session" -- "$@"
+status=$?
+zellij delete-session --force "$session" >/dev/null 2>&1 || true
+exit "$status"
+]]
 
 local function limit_context_length(text)
   local valid_utf8, end_index = pcall(utf8.offset, text, MAX_CONTEXT_CHARS + 1)
@@ -35,12 +34,6 @@ local function build_shell_command(args)
     table.insert(quoted, quote_shell_arg(arg))
   end
   return table.concat(quoted, " ")
-end
-
-local function quote_kdl_string(value)
-  return '"' .. value:gsub('[%z\1-\31\\"]', function(char)
-    return KDL_ESCAPES[char] or string.format("\\u%04x", char:byte())
-  end) .. '"'
 end
 
 local function ai_workspace_visible()
@@ -81,25 +74,14 @@ local function build_prompt(context)
   }, "\n")
 end
 
-local function build_zellij_layout(context, home)
-  local time = os.date("%H:%M")
-  local task_name = "AI: " .. context.class .. " · " .. time
-  local tab_name = "π " .. context.class .. " " .. time
-
-  return table.concat({
-    "layout {",
-    "  tab name=" .. quote_kdl_string(tab_name) .. " focus=true {",
-    "    pane command=\"pi\" cwd=" .. quote_kdl_string(home) .. " focus=true {",
-    "      args \"--name\" " .. quote_kdl_string(task_name) .. " " .. quote_kdl_string(build_prompt(context)),
-    "    }",
-    "  }",
-    "}",
-  }, "\n")
-end
-
 local function launch_ai(context)
   local home = os.getenv("HOME") or "/"
+  local pi_agent_dir = home .. "/.pi/agent"
+  local task_name = "AI: " .. context.class .. " · " .. os.date("%H:%M")
+
   hl.exec_cmd(build_shell_command({
+    "env",
+    "WEZTERM_SKIP_ATTACH_MAXIMIZE=1",
     "uwsm",
     "app",
     "--",
@@ -111,22 +93,40 @@ local function launch_ai(context)
     "--cwd",
     home,
     "--",
-    "zellij",
-    "--session",
+    "sh",
+    "-c",
+    ZELLIJ_LAUNCHER,
+    "ai-with-context-launcher",
     WORKSPACE,
-    "--layout-string",
-    build_zellij_layout(context, home),
+    "pi",
+    "--no-context-files",
+    "--append-system-prompt",
+    "",
+    "--no-skills",
+    "--no-prompt-templates",
+    "--no-extensions",
+    "--extension",
+    pi_agent_dir .. "/extensions/agent-status.ts",
+    "--extension",
+    pi_agent_dir .. "/extensions/terminal.ts",
+    "--extension",
+    pi_agent_dir .. "/npm/node_modules/pi-web-access/index.ts",
+    "--name",
+    task_name,
+    build_prompt(context),
   }))
 end
 
 function M.toggle()
-  if ai_workspace_visible() or ai_window_exists() then
+  if ai_window_exists() then
     toggle_ai_workspace()
     return
   end
 
   local context = focused_window_context()
-  toggle_ai_workspace()
+  if not ai_workspace_visible() then
+    toggle_ai_workspace()
+  end
   launch_ai(context)
 end
 

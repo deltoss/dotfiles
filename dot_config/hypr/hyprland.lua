@@ -165,6 +165,10 @@ hl.workspace_rule({
   on_created_empty = "uwsm app -- wezterm start --class wezterm-special",
 })
 
+hl.workspace_rule({
+  workspace = "special:ai-with-context",
+})
+
 -----------------------
 ---- WINDOWS RULES ----
 -----------------------
@@ -184,6 +188,7 @@ hl.window_rule({
   workspace = "special:ai-with-context",
   float = true,
   center = true,
+  opacity = "0.9 0.9 override",
   size = {
     "(monitor_w*0.75)",
     "(monitor_h*0.75)",
@@ -553,12 +558,7 @@ hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
 hl.bind(PRIMARYMOD .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password --quick-access"))
 hl.bind(PRIMARYMOD .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
-hl.bind(
-  "F22",
-  ai_with_context.toggle,
-  { description = "AI: Open Pi with focused window context" }
-)
-hl.bind("F24", hl.dsp.workspace.toggle_special("term"))
+hl.bind("SUPER + A", ai_with_context.toggle, { description = "AI: Open Pi with focused window context" })
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
 -- Window + Alt + F - [F]ocus Steam Game
