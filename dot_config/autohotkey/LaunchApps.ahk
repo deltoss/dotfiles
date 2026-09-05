@@ -220,48 +220,6 @@ PositionQuakeWindow(target, sourceWindow)
     MouseMove width / 2, height / 2
 }
 
-; Window + V - [V]isual Studio Code
-#HotIf WinExist("ahk_exe code.exe")
-#v::
-{
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
-}
-#HotIf
-#v::
-{
-    Run(A_Programs . "/Visual Studio Code/Visual Studio Code") ; If window doesn't exist, run the app
-    WinWait("ahk_exe code.exe")
-    WinActivate("ahk_exe code.exe")
-    WinWaitActive("ahk_exe code.exe")
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
-}
-
-; Window + Alt + V - [V]isual Studio
-#HotIf WinExist("ahk_exe devenv.exe")
-#!v::
-{
-    WinActivate ; If window exists unfocused, focus it
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
-}
-#HotIf
-#!v::
-{
-    Run("devenv") ; If window doesn't exist, run the app
-    WinWait("ahk_exe devenv.exe")
-    WinActivate("ahk_exe devenv.exe")
-    WinWaitActive("ahk_exe devenv.exe")
-    ; Move mouse to the active window
-    WinGetPos , , &width, &height, "A"
-    MouseMove width / 2, height / 2
-}
-
 ; Window + S (Search)
 #HotIf WinExist("ahk_exe everything.exe")
 #s::
