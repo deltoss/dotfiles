@@ -542,6 +542,7 @@ hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
 hl.bind(PRIMARYMOD .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password --quick-access"))
 hl.bind(PRIMARYMOD .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
+hl.bind("F24", hl.dsp.workspace.toggle_special("term"))
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
 -- Window + Alt + F - [F]ocus Steam Game
