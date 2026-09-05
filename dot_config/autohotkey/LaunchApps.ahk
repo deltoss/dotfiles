@@ -147,8 +147,10 @@ PositionQuakeWindow(target, sourceWindow)
     WinMove(x, y, width, height, target)
 }
 
-; Window + / - Quake terminal
-#/::{
+; Window + / or F24 - Quake terminal
+#/::
+F24::
+{
     static sourceWindow := 0
     previousWinDelay := SetWinDelay(0)
     target := "ahk_class quake"
