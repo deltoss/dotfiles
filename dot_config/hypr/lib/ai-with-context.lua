@@ -1,9 +1,13 @@
+local prompt_rules = require("lib.prompt-rules")
+
 local M = {}
 
+local HOME = os.getenv("HOME") or "/"
 local WORKSPACE = "ai-with-context"
 local SPECIAL_WORKSPACE = "special:" .. WORKSPACE
 local WINDOW_CLASS = "ai-with-context"
 local MAX_CONTEXT_CHARS = 500
+local PROMPTS_PATH = HOME .. "/.agents/ai-with-context/prompts.lua"
 local ZELLIJ_LAUNCHER = [[
 session=$1
 shift
@@ -13,6 +17,11 @@ status=$?
 zellij delete-session --force "$session" >/dev/null 2>&1 || true
 exit "$status"
 ]]
+local RULES, rules_error = prompt_rules.load(PROMPTS_PATH)
+
+if rules_error then
+  print("[ai-with-context] " .. rules_error)
+end
 
 local function limit_context_length(text)
   local valid_utf8, end_index = pcall(utf8.offset, text, MAX_CONTEXT_CHARS + 1)
@@ -95,8 +104,7 @@ local function build_prompt(context)
 end
 
 local function launch_ai(context)
-  local home = os.getenv("HOME") or "/"
-  local pi_agent_dir = home .. "/.pi/agent"
+  local pi_agent_dir = HOME .. "/.pi/agent"
   local task_name = "AI: " .. context.class .. " · " .. os.date("%H:%M")
 
   hl.exec_cmd(build_shell_command({
@@ -111,7 +119,7 @@ local function launch_ai(context)
     "--class",
     WINDOW_CLASS,
     "--cwd",
-    home,
+    HOME,
     "--",
     "sh",
     "-c",
@@ -121,7 +129,7 @@ local function launch_ai(context)
     "pi",
     "--no-context-files",
     "--append-system-prompt",
-    "",
+    prompt_rules.find_prompt(RULES, context),
     "--no-skills",
     "--no-prompt-templates",
     "--no-extensions",
