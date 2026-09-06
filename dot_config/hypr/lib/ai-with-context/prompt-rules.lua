@@ -15,24 +15,6 @@ local function rule_matches(rule, context)
     and optional_contains(rule.title_contains, context.title)
 end
 
-function M.load(path)
-  local chunk, load_error = loadfile(path, "t", {})
-  if not chunk then
-    return {}, "could not load prompt rules: " .. load_error
-  end
-
-  local ok, config = pcall(chunk)
-  if not ok then
-    return {}, "could not evaluate prompt rules: " .. tostring(config)
-  end
-
-  if type(config) ~= "table" or type(config.rules) ~= "table" then
-    return {}, "prompt rules must return a table containing 'rules'"
-  end
-
-  return config.rules
-end
-
 function M.find_prompt(rules, context)
   for _, rule in ipairs(rules) do
     if type(rule) == "table" and type(rule.prompt) == "string" and rule_matches(rule, context) then
