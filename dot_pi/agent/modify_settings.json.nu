@@ -3,8 +3,8 @@
 def main [] {
   let managed = {
     theme: "light",
-    defaultProvider: "openai",
-    defaultModel: "openai-codex/gpt-5.6-terra",
+    defaultProvider: "openai-codex",
+    defaultModel: "gpt-5.6-terra",
     hideThinkingBlock: true,
     enabledModels: [
       "openai-codex/gpt-5.6-luna",
