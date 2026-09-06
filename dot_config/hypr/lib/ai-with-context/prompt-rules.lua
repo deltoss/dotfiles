@@ -1,18 +1,22 @@
 local M = {}
 
-local function optional_equals(expected, actual)
-  return expected == nil or expected == actual
-end
+local function optional_pattern_matches(pattern, value)
+  if pattern == nil then
+    return true
+  end
 
-local function optional_contains(expected, actual)
-  return expected == nil or (type(expected) == "string" and actual:find(expected, 1, true) ~= nil)
+  if type(pattern) ~= "string" or type(value) ~= "string" then
+    return false
+  end
+
+  local ok, match = pcall(string.match, value, pattern)
+  return ok and match ~= nil
 end
 
 local function rule_matches(rule, context)
-  return optional_equals(rule.process, context.process)
-    and optional_equals(rule.class, context.class)
-    and optional_equals(rule.workspace, context.workspace)
-    and optional_contains(rule.title_contains, context.title)
+  return optional_pattern_matches(rule.process, context.process)
+    and optional_pattern_matches(rule.class, context.class)
+    and optional_pattern_matches(rule.title, context.title)
 end
 
 function M.find_prompt(rules, context)
