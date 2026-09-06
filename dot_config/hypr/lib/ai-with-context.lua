@@ -3,11 +3,12 @@ local prompt_rules = require("lib.prompt-rules")
 local M = {}
 
 local HOME = os.getenv("HOME") or "/"
+local CONFIG_HOME = os.getenv("XDG_CONFIG_HOME") or HOME .. "/.config"
 local WORKSPACE = "ai-with-context"
 local SPECIAL_WORKSPACE = "special:" .. WORKSPACE
 local WINDOW_CLASS = "ai-with-context"
 local MAX_CONTEXT_CHARS = 500
-local PROMPTS_PATH = HOME .. "/.agents/ai-with-context/prompts.lua"
+local PROMPTS_PATH = CONFIG_HOME .. "/hypr/ai-with-context/prompts.lua"
 local ZELLIJ_LAUNCHER = [[
 session=$1
 shift
