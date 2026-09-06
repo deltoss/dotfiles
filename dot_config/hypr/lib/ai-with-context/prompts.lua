@@ -1,7 +1,7 @@
 return {
   rules = {
     -- Rules are checked top to bottom. The first matching rule wins.
-    -- Omit matchers you do not need. Every provided matcher must match.
+    -- Each rule needs at least one matcher. Every provided matcher must match.
     -- Process, class, and title use Lua patterns. Use ^ and $ for exact matches.
     -- {
     --   process = "^example_app$",
