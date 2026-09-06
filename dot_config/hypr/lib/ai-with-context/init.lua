@@ -1,14 +1,14 @@
-local prompt_rules = require("lib.prompt-rules")
+local prompt_config = require("lib.ai-with-context.prompts")
+local prompt_rules = require("lib.ai-with-context.prompt-rules")
 
 local M = {}
 
 local HOME = os.getenv("HOME") or "/"
-local CONFIG_HOME = os.getenv("XDG_CONFIG_HOME") or HOME .. "/.config"
 local WORKSPACE = "ai-with-context"
 local SPECIAL_WORKSPACE = "special:" .. WORKSPACE
 local WINDOW_CLASS = "ai-with-context"
 local MAX_CONTEXT_CHARS = 500
-local PROMPTS_PATH = CONFIG_HOME .. "/hypr/ai-with-context/prompts.lua"
+local RULES = type(prompt_config.rules) == "table" and prompt_config.rules or {}
 local ZELLIJ_LAUNCHER = [[
 session=$1
 shift
@@ -18,11 +18,6 @@ status=$?
 zellij delete-session --force "$session" >/dev/null 2>&1 || true
 exit "$status"
 ]]
-local RULES, rules_error = prompt_rules.load(PROMPTS_PATH)
-
-if rules_error then
-  print("[ai-with-context] " .. rules_error)
-end
 
 local function limit_context_length(text)
   local valid_utf8, end_index = pcall(utf8.offset, text, MAX_CONTEXT_CHARS + 1)
