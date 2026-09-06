@@ -24,6 +24,21 @@ local function normalize_text(value, fallback)
   return limit_context_length(text ~= "" and text or fallback)
 end
 
+local function read_process_name(pid)
+  if type(pid) ~= "number" or pid <= 0 then
+    return "unknown"
+  end
+
+  local file = io.open("/proc/" .. math.floor(pid) .. "/comm", "r")
+  if not file then
+    return "unknown"
+  end
+
+  local name = file:read("*l")
+  file:close()
+  return normalize_text(name, "unknown")
+end
+
 local function quote_shell_arg(value)
   return "'" .. value:gsub("'", "'\"'\"'") .. "'"
 end
@@ -56,7 +71,10 @@ end
 
 local function focused_window_context()
   local window = hl.get_active_window()
+  local pid = window and window.pid
   return {
+    process = read_process_name(pid),
+    pid = normalize_text(pid, "unknown"),
     class = normalize_text(window and window.class, "unknown"),
     title = normalize_text(window and window.title, "Untitled window"),
     workspace = normalize_text(window and window.workspace and window.workspace.name, "unknown"),
@@ -66,6 +84,8 @@ end
 local function build_prompt(context)
   return table.concat({
     "Context for my next request:",
+    "- Process name: " .. context.process,
+    "- PID: " .. context.pid,
     "- Class: " .. context.class,
     "- Window title: " .. context.title,
     "- Hyprland workspace: " .. context.workspace,
