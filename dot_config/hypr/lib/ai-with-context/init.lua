@@ -139,8 +139,6 @@ end
 
 local function build_launch_args(context, rule)
   local args = {
-    "env",
-    "WEZTERM_SKIP_ATTACH_MAXIMIZE=1",
     "uwsm",
     "app",
     "--",
