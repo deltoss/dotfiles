@@ -3,6 +3,7 @@ import { mkdir, rename, rm, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { basename, dirname, join } from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import notifier from "node-notifier";
 
 const AGENT = {
 	id: "pi",
@@ -210,9 +211,15 @@ export default function agentStatus(pi: ExtensionAPI): void {
 	let writeQueue = Promise.resolve();
 
 	function notify(title: string, message: string): void {
-		void pi.exec("notify", ["-t", title, "-m", message, "-s"]).catch((error: unknown) => {
+		try {
+			notifier.notify({ title, message, sound: true }, (error) => {
+				if (error) {
+					console.error("[agent-status] Failed to send notification:", error);
+				}
+			});
+		} catch (error) {
 			console.error("[agent-status] Failed to send notification:", error);
-		});
+		}
 	}
 
 	function notifyForSession(title: string, message: string): void {
