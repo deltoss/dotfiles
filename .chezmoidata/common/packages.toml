@@ -254,6 +254,15 @@ commands = [
   "npm install -g @bitwarden/cli"
 ]
 
+[[packages.common]]
+name = "Hunk"
+tool = "hunk"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g hunkdiff"
+]
+
 # --- uv ---
 [[packages.common]]
 name = "whisperx"
