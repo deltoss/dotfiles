@@ -554,17 +554,6 @@ commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/setup-xremap-uinput.nu"',
 ]
 
-[[packages.linux]]
-name = "OpenCode"
-description = "Agentic AI in the terminal"
-tool = "opencode"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "http get https://opencode.ai/install | bash",
-]
-
 # television's binary is `tv`.
 [[packages.linux]]
 name = "television"
@@ -574,15 +563,6 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "television"
-
-[[packages.linux]]
-name = "aichat"
-description = "All-in-one LLM CLI tool"
-tool = "aichat"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "aichat"
 
 [[packages.linux]]
 name = "worktrunk"
@@ -608,20 +588,6 @@ postcommands = [
   # Wayland build injects text via /dev/uinput, which needs this capability
   "sudo setcap 'cap_dac_override+p' /usr/bin/espanso",
   "espanso service register",
-]
-
-[[packages.linux]]
-name = "Fabric"
-description = "AI framework for augmenting humans using prompts"
-tool = "fabric"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash",
-]
-postcommands = [
-  "fabric --setup",
 ]
 
 [[packages.linux]]
@@ -671,37 +637,6 @@ commands = [
 ###############################################################################
 # CLI tools: scripts (cross-platform / native installers)
 ###############################################################################
-
-[[packages.linux]]
-name = "Claude Code"
-tool = "claude"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "curl -fsSL https://claude.ai/install.sh | bash",
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-claude-code.nu"',
-]
-
-[[packages.linux]]
-name = "Context7 CLI"
-description = "Fetches up-to-date library docs for AI agents"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-context7-cli.nu"',
-]
-
-[[packages.linux]]
-name = "Serena"
-description = "Semantic retrieval & editing agent"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"',
-]
 
 ###############################################################################
 # GUI apps: pacman (official Arch repos)

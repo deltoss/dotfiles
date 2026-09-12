@@ -1,5 +1,17 @@
 # Dotfiles
 
+AI clients, MCP installers, AI credentials, skills, and Whisper CLI/model setup live in [AI-Data](https://github.com/deltoss/AI-Data). Shared runtimes, Handy, and desktop integration stay here.
+
+After merging both migration changes, update both checkouts. From AI-Data, run:
+
+```nu
+nu ai.nu init
+nu ai.nu diff
+nu ai.nu apply
+```
+
+AI-Data has its own chezmoi config and state under `~/.config/chezmoi-ai/`. Continue using normal `chezmoi apply` for this repository. No uninstall or live-file deletion is needed. Old AI keys in this repo's local config are unused; `chezmoi init` regenerates that config without them.
+
 This repository serves as my personal dotfiles and system configuration hub, powered by `Chezmoi` for seamless management across Windows and Linux machines.
 
 It contains my curated configuration files, automated package installations, and setup scripts for both personal and work environments. Whether setting up a fresh install or keeping multiple machines in sync, this repo acts as my single source of truth, saving hours of manual configuration time through version-controlled, easily deployable setups.

@@ -116,16 +116,6 @@ package_type = "winget"
 id = "hluk.CopyQ"
 
 [[packages.windows]]
-name = "OpenCode"
-description = "Agentic AI in the terminal"
-tool = "opencode"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "choco install -y opencode"
-]
-
-[[packages.windows]]
 description = "Dependency for Neovim plugins"
 tags = ["all"]
 package_type = "winget"
@@ -142,19 +132,6 @@ tags = ["all"]
 package_type = "winget"
 id = "max-sixty.worktrunk"
 tool = "git-wt"
-
-[[packages.windows]]
-tags = ["all"]
-package_type = "winget"
-id = "sigoden.AIChat"
-
-[[packages.windows]]
-tags = ["all"]
-package_type = "winget"
-id = "danielmiessler.Fabric"
-postcommands = [
-  "fabric --setup"
-]
 
 [[packages.windows]]
 tags = ["all"]
@@ -463,33 +440,6 @@ postcommands = [
 ]
 
 [[packages.windows]]
-name = "Claude Code"
-tool = "claude"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'powershell -NoProfile -Command "irm https://claude.ai/install.ps1 | iex"',
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-claude-code.nu"'
-]
-
-[[packages.windows]]
-name = "Context7 CLI"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-context7-cli.nu"'
-]
-
-[[packages.windows]]
-name = "Serena"
-description = "Semantic retrieval & editing agent"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-serena.nu"'
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "Espanso.Espanso"
@@ -538,14 +488,6 @@ commands = [
 ]
 
 # The below only works with Windows, and has no direct Linux Counterpart
-
-[[packages.windows]]
-name = "Claude Desktop"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-claude-desktop.nu"'
-]
 
 [[packages.windows]]
 tags = ["all"]

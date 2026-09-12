@@ -8,7 +8,9 @@ Personal [chezmoi](https://www.chezmoi.io/) dotfiles for both Windows and Linux.
 - `.chezmoidata/`, TOML data driving the install scripts, in `windows/`, `linux/`, `common/` subdirs (+ `steam-apps.toml` at root). chezmoi merges every file recursively by its top-level key.
 - `.chezmoiscripts/{windows,linux,common}/run_onchange_after_*`, install/config scripts, re-run when their rendered content changes. `common/` holds the ones that are identical on both OSes and need no guard. Nushell (`.nu.tmpl`), with a few PowerShell (`.ps1.tmpl`) where it's genuinely cleaner (registry, Appx). Each is OS-guarded internally; chezmoi skips the empty render on the other OS.
 - `scripts/`, Nushell helpers, **not** deployed (chezmoi-ignored). Top-level scripts dispatch on `(sys host).name` to `scripts/{windows,linux}/`. Invoked from package entries as `nu $"($env.CHEZMOI_SOURCEDIR)/scripts/<name>.nu"`.
-- `dot_config/`, `dot_claude/`, `AppData/`, `Documents/`, …, config deployed to `$HOME`.
+- `dot_config/`, `AppData/`, `Documents/`, …, config deployed to `$HOME`.
+
+AI clients, MCP installers, skills, AI credential templates, and CLI model downloads live in `deltoss/AI-Data`, a separate chezmoi source/config/state. Do not add their deployment targets or packages back here. Shared runtimes and desktop integration (including Handy) stay here.
 
 ## Packages
 

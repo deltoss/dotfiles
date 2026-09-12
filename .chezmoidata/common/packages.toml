@@ -10,39 +10,6 @@
 # the per-OS files and run before this bucket, cargo/npm are available here.
 # Order matters: cargo-binstall must precede any `cargo binstall` user.
 
-# --- node ---
-[[packages.common]]
-name = "pi"
-description = "Pi is a minimal agent harness"
-tool = "pi"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g --ignore-scripts @earendil-works/pi-coding-agent"
-]
-
-[[packages.common]]
-name = "agent-browser"
-description = "Browser automation CLI for AI agents. Fast native Rust CLI."
-tool = "agent-browser"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g agent-browser",
-  "agent-browser install" # Download Chrome from Chrome for Testing (first time only)
-]
-
-# --- bun ---
-[[packages.common]]
-name = "oh-my-pi"
-description = "A coding agent with the IDE wired in"
-tool = "omp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  "bun install -g @oh-my-pi/pi-coding-agent"
-]
-
 # --- mise ---
 [[packages.common]]
 name = "cmake"
@@ -204,48 +171,6 @@ commands = [
 ]
 
 [[packages.common]]
-name = "Pi ACP"
-tool = "pi-acp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g pi-acp'
-]
-
-[[packages.common]]
-name = "Claude Code ACP"
-tool = "claude-agent-acp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g @agentclientprotocol/claude-agent-acp'
-]
-
-[[packages.common]]
-name = "Codex"
-tool = "codex"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g @openai/codex'
-]
-postcommands = [
-  # Configure Serena for codex now that codex exists (Serena installs earlier,
-  # from the Linux list, before codex was available). Guarded so it is a no-op
-  # where Serena is not installed.
-  'if (which serena | is-not-empty) { serena setup codex }',
-]
-
-[[packages.common]]
-name = "Codex ACP"
-tool = "codex-acp"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'npm install -g @agentclientprotocol/codex-acp'
-]
-
-[[packages.common]]
 name = "Bitwarden CLI"
 tool = "bw"
 tags = ["personal"]
@@ -264,15 +189,6 @@ commands = [
 ]
 
 # --- uv ---
-[[packages.common]]
-name = "whisperx"
-description = "Installs whisperx for audio to text transcriptions. Word-level timestamps, suitable for subtitles"
-tool = "whisperx"
-tags = ["personal"]
-package_type = "commands"
-commands = [
-  'uv tool install whisperx'
-]
 
 [[packages.common]]
 name = "harlequin"
@@ -321,14 +237,4 @@ tags = ["personal"]
 package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-bosl2.nu"',
-]
-
-[[packages.common]]
-name = "whisper.cpp"
-description = "Local speech-to-text inference using OpenAI Whisper models"
-tool = "whisper-cli"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-whisper-cpp.nu"',
 ]
