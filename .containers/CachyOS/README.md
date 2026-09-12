@@ -12,7 +12,7 @@ podman build -t my-cachy .containers/CachyOS
 ## Test the package install script
 
 Boot the container with systemd, then run the harness. It renders
-`.chezmoiscripts/linux/run_onchange_after_install-packages.nu.tmpl` and runs it as a
+`home/.chezmoiscripts/linux/run_onchange_after_install-packages.nu.tmpl` and runs it as a
 normal user, the way chezmoi would (paru/makepkg refuse root):
 
 ```nu

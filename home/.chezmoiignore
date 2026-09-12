@@ -1,15 +1,3 @@
-README.md
-LICENSE
-WindowsRegEdits/
-scripts/
-shared/
-assets/
-.containers/
-AGENTS.md
-CLAUDE.md
-.rgignore
-.fdignore
-
 # Ignore files or directories on different OS
 # See https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines
 {{- if ne .osid "windows" }}

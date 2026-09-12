@@ -4,6 +4,8 @@ This repository serves as my personal dotfiles and system configuration hub, pow
 
 It contains my curated configuration files, automated package installations, and setup scripts for both personal and work environments. Whether setting up a fresh install or keeping multiple machines in sync, this repo acts as my single source of truth, saving hours of manual configuration time through version-controlled, easily deployable setups.
 
+Chezmoi deploys files from `home/`, selected by `.chezmoiroot`. Helpers, assets, and shared source files stay at the repository root.
+
 ## Prerequisites
 
 - `Nushell` → To run the shell scripts

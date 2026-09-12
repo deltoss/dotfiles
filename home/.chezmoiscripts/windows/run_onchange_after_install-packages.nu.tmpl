@@ -14,12 +14,12 @@ if not $is_admin {
 print $"(ansi green_bold)Installing packages...(ansi reset)"
 
 # Context made available to the per-package install commands below.
-$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.workingTree }}'
 $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
 
 # Reusable PATH helpers, shared with the scripts/windows helpers.
-use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/refresh-path.nu'
-use '{{ .chezmoi.sourceDir }}/scripts/windows/helpers/add-path-env.nu'
+use '{{ .chezmoi.workingTree }}/scripts/windows/helpers/refresh-path.nu'
+use '{{ .chezmoi.workingTree }}/scripts/windows/helpers/add-path-env.nu'
 
 # winget exit codes that mean "nothing to do", not "failure". winget's ARP
 # correlation sometimes collapses two packages from the same publisher into one

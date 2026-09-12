@@ -13,7 +13,7 @@
 print $"(ansi green_bold)Installing packages...(ansi reset)"
 
 # Context made available to the per-package install commands below.
-$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.workingTree }}'
 $env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
 
 {{- $packagesToInstall := list -}}

@@ -3,7 +3,7 @@
 
 print "Installing steam apps..."
 print "Configuring necessary environment variables..."
-$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.sourceDir }}'
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.workingTree }}'
 
 # Install prerequisites for the steam app installs below.
 # (do --ignore-errors: winget returns non-zero when Steam is already installed.)
