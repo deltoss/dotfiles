@@ -5,9 +5,9 @@ AI clients, MCP installers, AI credentials, skills, and Whisper CLI/model setup 
 After merging both migration changes, update both checkouts. From AI-Data, run:
 
 ```nu
-nu ai.nu init
-nu ai.nu diff
-nu ai.nu apply
+nu setup.nu init
+nu setup.nu diff
+nu setup.nu apply
 ```
 
 AI-Data has its own chezmoi config and state under `~/.config/chezmoi-ai/`. Continue using normal `chezmoi apply` for this repository. No uninstall or live-file deletion is needed. Old AI keys in this repo's local config are unused; `chezmoi init` regenerates that config without them.
