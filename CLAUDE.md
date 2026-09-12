@@ -10,8 +10,6 @@ Personal [chezmoi](https://www.chezmoi.io/) dotfiles for both Windows and Linux.
 - `scripts/`, Nushell helpers, **not** deployed (chezmoi-ignored). Top-level scripts dispatch on `(sys host).name` to `scripts/{windows,linux}/`. Invoked from package entries as `nu $"($env.CHEZMOI_SOURCEDIR)/scripts/<name>.nu"`.
 - `dot_config/`, `AppData/`, `Documents/`, …, config deployed to `$HOME`.
 
-AI clients, MCP installers, skills, AI credential templates, and CLI model downloads live in `deltoss/AI-Data`, a separate chezmoi source/config/state. Do not add their deployment targets or packages back here. Shared runtimes and desktop integration (including Handy) stay here.
-
 ## Packages
 
 Each OS's `install-packages` consumer installs its own `.chezmoidata/<os>/packages.toml` (`[[packages.<os>]]`) **plus** the shared `.chezmoidata/common/packages.toml` (`[[packages.common]]`), concatenated **OS-first, common-last**. `common` holds only packages whose install command + idempotency check are identical on both OSes (cargo/npm/uv/dotnet via `commands` + a `tool` check); the per-OS files hold winget/apt entries and the package managers themselves, which therefore install before the common bucket needs them. Entries are filtered by `tags` (`all` always; `personal`/`work` must match `.computerPurpose`).
