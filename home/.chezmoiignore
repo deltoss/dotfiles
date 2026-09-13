@@ -1,0 +1,26 @@
+# Ignore files or directories on different OS
+# See https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines
+{{- if ne .osid "windows" }}
+AppData/ # A directory exclusive to Windows
+Documents/PowerShell # I don't use PowerShell on Linux
+
+# Only works on Windows
+mechvibes_custom/
+.config/Bulk Rename Utility
+.config/autohotkey
+.glzr/
+{{- end }}
+
+{{- if eq .osid "windows" }}
+# Only works on Linux
+.config/hypr/
+.config/waybar/
+.config/systemd/
+.local/share/applications/
+
+# Windows reads these from AppData instead (content shared via shared/)
+.config/worktrunk/
+.config/com.pais.handy/
+.config/copyq/
+.config/ghb/
+{{- end }}

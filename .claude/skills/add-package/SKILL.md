@@ -12,7 +12,7 @@ description: >-
 # Add Package (chezmoi dotfiles)
 
 Add package to install lists. Write `[[packages.<scope>]]` entry in right
-`.chezmoidata/<scope>/packages.toml`, official method only, then validate.
+`home/.chezmoidata/<scope>/packages.toml`, official method only, then validate.
 
 Two machines: **Windows** and **Linux**.
 Edit source here. **Never run `chezmoi apply`**. User does that.
@@ -61,7 +61,7 @@ chezmoi data
 ```
 Must succeed (TOML parses + merges). Then render+check current-OS consumer:
 ```
-chezmoi execute-template < .chezmoiscripts/windows/run_onchange_after_install-packages.nu.tmpl | save --force $"($env.TEMP)/check.nu"
+chezmoi execute-template < home/.chezmoiscripts/windows/run_onchange_after_install-packages.nu.tmpl | save --force $"($env.TEMP)/check.nu"
 nu-check $"($env.TEMP)/check.nu"
 ```
 Linux consumer renders empty off-Linux, for Linux-only entry just confirm

@@ -49,5 +49,5 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ostree --repo=/var/lib/flatpak/repo config set 'remote "flathub".http2' false 2>/dev/null || true
 
 # Render + run the install script as the user, exactly as chezmoi would.
-su - t -c 'chezmoi execute-template --source /repo < /repo/.chezmoiscripts/linux/run_onchange_after_install-packages.nu.tmpl > /tmp/install-packages.nu'
+su - t -c 'chezmoi execute-template --source /repo < /repo/home/.chezmoiscripts/linux/run_onchange_after_install-packages.nu.tmpl > /tmp/install-packages.nu'
 su - t -c 'nu /tmp/install-packages.nu'

@@ -1,0 +1,19 @@
+{{ if hasPrefix "linux" .osid -}}
+#!/bin/bash
+
+DIR="~/nerd-fonts"
+if [ -d "$DIR" ]; then
+  rm -rf "$DIR"
+fi
+
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/nerd-fonts
+cd ~/nerd-fonts/
+{{- range .fonts.linux }}
+./install.sh {{ . }}
+{{- end }}
+
+mkdir -p ~/.local/share/fonts
+find "{{ $.chezmoi.workingTree }}/assets/fonts" -mindepth 2 -maxdepth 2 \( -iname '*.ttf' -o -iname '*.otf' \) -exec cp -f {} ~/.local/share/fonts/ \;
+fc-cache -f
+
+{{ end -}}

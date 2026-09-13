@@ -1,0 +1,71 @@
+{{ if hasPrefix "linux" .osid -}}
+#!/usr/bin/env nu
+
+# Installs the Linux packages defined in .chezmoidata/linux/packages.toml plus
+# the cross-platform ones in .chezmoidata/common/packages.toml.
+#
+# Target distro: CachyOS (Arch-based). `pacman` entries install from the official
+# repos; `aur` entries use paru (shipped with CachyOS). Runs as the normal user
+# (cargo/npm/uv/dotnet install user-scoped); pacman/paru elevate themselves.
+# NOTE: the package MANAGERS the common entries rely on (rust, node, dotnet, …)
+# must be defined in linux/packages.toml so they install first.
+
+print $"(ansi green_bold)Installing packages...(ansi reset)"
+
+# Context made available to the per-package install commands below.
+$env.CHEZMOI_SOURCEDIR = '{{ .chezmoi.workingTree }}'
+$env.CHEZMOI_COMPUTERPURPOSE = '{{ .computerPurpose }}'
+
+{{- $packagesToInstall := list -}}
+{{- range (concat .packages.linux .packages.common) -}}
+  {{- $crossDistro := or (not (hasKey . "distros")) (has "all" .distros) -}}
+  {{- if or $crossDistro (and (eq $.osid "linux-cachyos") (has "cachyos" .distros)) -}}
+    {{- if or (has "all" .tags) (has $.computerPurpose .tags) -}}
+      {{- $packagesToInstall = append $packagesToInstall . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+
+{{- range $packagesToInstall }}
+  {{- $name := "Unknown" -}}
+  {{- if hasKey . "name" }}{{ $name = .name }}{{ else if hasKey . "id" }}{{ $name = .id }}{{ end }}
+let display = {{ $name | quote }}
+print $"(ansi blue)Checking ($display)...(ansi reset)"
+  {{- if hasKey . "tool" }}
+let already_installed = (which ^{{ .tool }} | is-not-empty)
+  {{- else }}
+let already_installed = false
+  {{- end }}
+if $already_installed {
+  print $"  ($display) already installed, skipping"
+}{{ if hasKey . "precheck" }} else if not ({{ .precheck }}) {
+  print $"  ($display) pre-check not met, skipping"
+}{{ end }} else {
+  {{- if hasKey . "description" }}
+  print {{ .description | quote }}
+  {{- end }}
+  {{- if hasKey . "precommands" }}
+    {{- range .precommands }}
+  {{ . }}
+    {{- end }}
+  {{- end }}
+  {{- if eq .package_type "pacman" }}
+  sudo pacman -S --needed --noconfirm {{ .id | quote }}
+  {{- else if eq .package_type "aur" }}
+  paru -S --needed --noconfirm {{ .id | quote }}
+  {{- else if eq .package_type "flatpak" }}
+  flatpak install -y flathub {{ .id | quote }}
+  {{- else if eq .package_type "commands" }}
+    {{- range .commands }}
+  {{ . }}
+    {{- end }}
+  {{- end }}
+  {{- if hasKey . "postcommands" }}
+    {{- range .postcommands }}
+  {{ . }}
+    {{- end }}
+  {{- end }}
+}
+{{ end }}
+print $"(ansi green_bold)Package install complete. Review the output above.(ansi reset)"
+{{ end -}}

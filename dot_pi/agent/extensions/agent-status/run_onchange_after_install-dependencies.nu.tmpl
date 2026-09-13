@@ -1,7 +1,0 @@
-#!/usr/bin/env nu
-
-# Reinstall dependencies when either npm manifest changes.
-# package.json hash: {{ include "dot_pi/agent/extensions/agent-status/package.json" | sha256sum }}
-# package-lock.json hash: {{ include "dot_pi/agent/extensions/agent-status/package-lock.json" | sha256sum }}
-
-^npm ci

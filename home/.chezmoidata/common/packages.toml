@@ -1,0 +1,240 @@
+# Cross-platform packages, installed on BOTH Windows and Linux.
+#
+# Each OS's install-packages script ranges over its own array PLUS this common
+# array (OS array first, common last). Only put entries here whose install
+# command AND idempotency check are identical on both OSes, i.e.
+# package_type = "commands" via cargo/npm/uv/dotnet with a `tool` (which-)check.
+# winget / apt / choco / scoop entries stay in the per-OS files.
+#
+# The package MANAGERS (rust, node, …) have OS-specific installs, so they live in
+# the per-OS files and run before this bucket, cargo/npm are available here.
+# Order matters: cargo-binstall must precede any `cargo binstall` user.
+
+# --- mise ---
+[[packages.common]]
+name = "cmake"
+description = "Cross-platform build system generator. Needed to build native deps from source."
+tool = "cmake"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'mise use -g cmake@latest'
+]
+
+# --- cargo ---
+[[packages.common]]
+name = "cargo-binstall"
+description = "Binary package manager for Rust"
+tool = "cargo-binstall"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "cargo install cargo-binstall"
+]
+
+[[packages.common]]
+name = "ripgrep"
+description = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
+tool = "rg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y ripgrep'
+]
+
+[[packages.common]]
+name = "ast-grep"
+description = "CLI tool for code structural search, lint, and rewriting"
+tool = "sg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y ast-grep'
+]
+
+[[packages.common]]
+name = "podlet"
+description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
+tool = "podlet"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y podlet'
+]
+
+[[packages.common]]
+name = "presenterm"
+description = "Create presentations in markdown format and run them from your terminal"
+tool = "presenterm"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo binstall -y presenterm'
+]
+
+[[packages.common]]
+name = "gittype"
+tool = "gittype"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install gittype'
+]
+
+[[packages.common]]
+name = "agg"
+description = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
+tool = "agg"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'cargo install --git https://github.com/asciinema/agg'
+]
+
+[[packages.common]]
+name = "zellij"
+description = "Terminal multiplexer"
+tool = "zellij"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  # Extra flags to disable the web client at it was causing issues with Windows
+  'cargo install --locked zellij --no-default-features --features plugins_from_target'
+]
+
+[[packages.common]]
+name = "openscad-lsp"
+description = "LSP for OpenSCAD"
+tool = "openscad-lsp"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'cargo install openscad-lsp'
+]
+
+# --- npm ---
+[[packages.common]]
+name = "node-notifier-cli"
+description = "Cross-platform desktop notification CLI"
+tool = "notify"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g node-notifier-cli"
+]
+
+[[packages.common]]
+name = "Typescript"
+tool = "tsc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g typescript"
+]
+
+[[packages.common]]
+name = "Biome"
+description = "Linter + formatter for Javascript and Typescript"
+tool = "biome"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @biomejs/biome"
+]
+
+[[packages.common]]
+name = "bru - Bruno CLI"
+tool = "bru"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @usebruno/cli"
+]
+
+[[packages.common]]
+name = "Mermaid CLI"
+description = "A command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output. Needed as a dependency for presenterm"
+tool = "mmdc"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @mermaid-js/mermaid-cli"
+]
+
+[[packages.common]]
+name = "Redocly CLI"
+tool = "redocly"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g @redocly/cli"
+]
+
+[[packages.common]]
+name = "Bitwarden CLI"
+tool = "bw"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  "npm install -g @bitwarden/cli"
+]
+
+[[packages.common]]
+name = "Hunk"
+tool = "hunk"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "npm install -g hunkdiff"
+]
+
+# --- uv ---
+
+[[packages.common]]
+name = "harlequin"
+tool = "harlequin"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
+]
+
+[[packages.common]]
+name = "yt-dlp"
+description = "Installs python version to be used with yt-dlp"
+tool = "yt-dlp"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
+]
+
+[[packages.common]]
+name = "JiraTUI"
+description = "A Text User Interface (TUI) for interacting with Atlassian Jira directly from your shell"
+tool = "jiratui"
+tags = ["work"]
+package_type = "commands"
+commands = [
+  'uv tool install jiratui'
+]
+
+# --- others ---
+[[packages.common]]
+name = "ilspycmd"
+description = "To decomplie CSharp code. Useful CLI tool for AI agents."
+tool = "ilspycmd"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'dotnet tool install --global ilspycmd'
+]
+
+[[packages.common]]
+name = "BOSL2"
+description = "Belfry OpenScad Library, v2.0. An OpenSCAD library of shapes, masks, and manipulators to make working with OpenSCAD easier"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-bosl2.nu"',
+]

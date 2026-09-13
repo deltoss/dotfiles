@@ -1,0 +1,1151 @@
+# `distros` scopes an entry to specific distros, matched against the running
+# distro's /etc/os-release id (e.g. "cachyos"). Omit it to apply to all distros.
+#
+###############################################################################
+# Package managers / language runtimes (must precede the common bucket)
+###############################################################################
+
+[[packages.linux]]
+name = "System update"
+description = "Updates system by refreshing package databases from configured mirrors, then upgrade all installed packages"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -Syu --noconfirm",
+]
+
+[[packages.linux]]
+name = "Rust"
+tool = "rustc"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm rustup",
+  "rustup default stable",
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".cargo" "bin"))',
+]
+
+[[packages.linux]]
+name = "cargo-binstall"
+description = "Binary package manager for Rust"
+tool = "cargo-binstall"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "cargo-binstall"
+
+[[packages.linux]]
+name = "Go"
+tool = "go"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "go"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join "go" "bin"))',
+]
+
+# NONINTERACTIVE=1 keeps the installer from prompting; brew lives at
+# /home/linuxbrew/.linuxbrew. Persistent PATH needs the brew shellenv in your
+# shell profile; the postcommand only fixes PATH for this run.
+[[packages.linux]]
+name = "Homebrew"
+description = "Homebrew package manager for Linux"
+tool = "brew"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'with-env { NONINTERACTIVE: "1" } { http get https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash }',
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ["/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"])',
+]
+
+[[packages.linux]]
+name = "uv"
+description = "Package manager for Python"
+tool = "uv"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "uv"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
+]
+
+# Global npm prefix -> ~/.local so `npm install -g` writes to ~/.local/bin (no sudo).
+[[packages.linux]]
+name = "Node.js"
+tool = "node"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm nodejs npm",
+  'npm config set prefix ($nu.home-dir | path join ".local")',
+]
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
+]
+
+[[packages.linux]]
+name = "Bun"
+tool = "bun"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'http get https://bun.com/install | bash'
+]
+
+[[packages.linux]]
+name = "dotnet"
+tool = "dotnet"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "dotnet-sdk"
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".dotnet" "tools"))',
+]
+
+[[packages.linux]]
+name = "mise"
+description = "Dev tool version manager (asdf-compatible)"
+tool = "mise"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mise"
+
+[[packages.linux]]
+name = "Deno"
+tool = "deno"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "deno"
+
+[[packages.linux]]
+name = "Python"
+description = "Dependency for Neovim plugins"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm python python-pip",
+]
+
+###############################################################################
+# CLI tools
+###############################################################################
+
+[[packages.linux]]
+name = "btop"
+description = "An interactive terminal-based system monitor."
+tool = "btop"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "btop"
+
+[[packages.linux]]
+name = "Git LFS"
+description = "a Git extension for versioning large binary file"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git-lfs"
+tool = "git-lfs"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git"
+tool = "git"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "jq"
+tool = "jq"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "ffmpeg"
+tool = "ffmpeg"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fzf"
+tool = "fzf"
+
+[[packages.linux]]
+description = "PDF rendering toolkit; provides pdftotext"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "poppler"
+tool = "pdftotext"
+
+# Arch ships ImageMagick v7, whose binary is `magick` (not v6's `convert`).
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "imagemagick"
+tool = "magick"
+
+# Native ODBC driver manager (libodbc.so.2) required by harlequin's `odbc` extra
+# (pyodbc). harlequin is in the cross-platform list; Windows has ODBC built in.
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "unixodbc"
+tool = "isql"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "7zip"
+tool = "7z"
+
+[[packages.linux]]
+description = "Universal document converter"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "pandoc-cli"
+tool = "pandoc"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "less"
+tool = "less"
+
+[[packages.linux]]
+description = "Share your terminal over the web"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "ttyd"
+tool = "ttyd"
+
+[[packages.linux]]
+description = "Mount remote filesystems over SSH"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "sshfs"
+tool = "sshfs"
+
+[[packages.linux]]
+description = "Simple, fast alternative to find"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fd"
+tool = "fd"
+
+[[packages.linux]]
+description = "cat clone with syntax highlighting"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bat"
+tool = "bat"
+
+[[packages.linux]]
+description = "Syntax-highlighting pager for git diffs"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "git-delta"
+tool = "delta"
+
+[[packages.linux]]
+description = "Fast tldr client for simplified man pages"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tealdeer"
+tool = "tldr"
+
+[[packages.linux]]
+description = "A dependency Neovim needs for treesitter (a C compiler)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "clang"
+tool = "clang"
+
+[[packages.linux]]
+description = "CLI for managing parsers for Neovim"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tree-sitter-cli"
+tool = "tree-sitter"
+
+[[packages.linux]]
+description = "Smarter cd that learns your most-used directories"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "zoxide"
+tool = "zoxide"
+
+[[packages.linux]]
+description = "Customizable cross-shell prompt"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "starship"
+tool = "starship"
+
+[[packages.linux]]
+description = "Terminal UI for git"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lazygit"
+tool = "lazygit"
+
+[[packages.linux]]
+name = "yq"
+description = "Command-line YAML/JSON/XML processor"
+tool = "yq"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "brew install yq",
+]
+
+[[packages.linux]]
+name = "FUSE"
+description = "Userspace filesystem support, required for rclone mount"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "fuse3"
+tool = "fusermount3"
+
+[[packages.linux]]
+description = "For mounting and syncing network storage"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "rclone"
+tool = "rclone"
+postcommands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/setup-rclone.nu"'
+]
+
+[[packages.linux]]
+name = "GitHub CLI"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "github-cli"
+tool = "gh"
+
+[[packages.linux]]
+name = "QMK"
+description = "CLI and toolchain for building and flashing keyboard firmware"
+tool = "qmk"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qmk"
+
+[[packages.linux]]
+name = "Nushell"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "nushell"
+tool = "nu"
+
+[[packages.linux]]
+description = "Terminal file manager"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "yazi"
+tool = "yazi"
+
+[[packages.linux]]
+description = "Modern replacement for ls"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "eza"
+tool = "eza"
+
+[[packages.linux]]
+description = "Interactive HTTPS proxy"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mitmproxy"
+tool = "mitmproxy"
+
+[[packages.linux]]
+description = "Clipboard manager with history"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "copyq"
+tool = "copyq"
+
+[[packages.linux]]
+description = "CLI clipboard for Wayland (wl-copy/wl-paste)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "wl-clipboard"
+tool = "wl-copy"
+
+[[packages.linux]]
+name = "ydotool"
+description = "Needed for CopyQ to paste on wayland. See https://github.com/hluk/copyq-commands/tree/master#wayland-support & https://github.com/hluk/copyq-commands/blob/master/commands/wayland-support.ini"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "ydotool"
+postcommands = [
+  "systemctl --user enable --now ydotool.service"
+]
+tool = "ydotool"
+
+[[packages.linux]]
+description = "Color picker. Dependency of hyprpicker to freeze the screen contents with the --freeze flag"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprpicker"
+tool = "hyprpicker"
+
+[[packages.linux]]
+description = "Screenshot tool for Hyprland (grim+slurp based)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprshot"
+tool = "hyprshot"
+
+[[packages.linux]]
+description = "Screenshot annotation tool (pairs with hyprshot)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "satty"
+tool = "satty"
+
+[[packages.linux]]
+description = "PulseAudio/PipeWire volume control GUI (Waybar on-click)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "pavucontrol"
+tool = "pavucontrol"
+
+[[packages.linux]]
+name = "wiremix"
+description = "TUI audio mixer for PipeWire"
+tool = "wiremix"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "wiremix"
+
+[[packages.linux]]
+description = "A session manager that runs Wayland compositors under systemd for clean startup and teardown"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "uwsm"
+tool = "uwsm"
+
+[[packages.linux]]
+name = "Neovim"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "neovim"
+tool = "nvim"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "podman"
+tool = "podman"
+
+[[packages.linux]]
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "podman-compose"
+tool = "podman-compose"
+
+[[packages.linux]]
+description = "Integrate your phone with your desktop"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "kdeconnect"
+tool = "kdeconnect-cli"
+
+[[packages.linux]]
+name = "lazydocker"
+description = "Terminal UI for Docker/Podman"
+tool = "lazydocker"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lazydocker"
+
+[[packages.linux]]
+name = "systemctl-tui"
+description = "TUI for interacting with systemd services and their logs"
+tool = "systemctl-tui"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'cargo install systemctl-tui --locked'
+]
+
+[[packages.linux]]
+name = "xremap"
+description = "Key remapper that supports application-specific keymaps"
+tool = "xremap"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'cargo install xremap --features hypr',
+]
+
+# Grants xremap access to /dev/uinput without sudo (udev rule + input group).
+# Separate entry so it applies even when xremap is already installed.
+[[packages.linux]]
+name = "xremap uinput access"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/setup-xremap-uinput.nu"',
+]
+
+# television's binary is `tv`.
+[[packages.linux]]
+name = "television"
+description = "Fuzzy finder TUI"
+tool = "tv"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "television"
+
+[[packages.linux]]
+name = "worktrunk"
+description = "Better CLI to interact with Git Worktrees"
+tool = "wt"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "worktrunk"
+
+# NOTE: if an X11 espanso build is already installed, the `tool` precheck skips
+# this entry — uninstall espanso-x11 first. Re-run the setcap after espanso
+# package updates (pacman strips file capabilities on upgrade).
+[[packages.linux]]
+name = "Espanso"
+description = "Cross-platform text expander (Wayland build)"
+tool = "espanso"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "espanso-wayland"
+postcommands = [
+  # Wayland build injects text via /dev/uinput, which needs this capability
+  "sudo setcap 'cap_dac_override+p' /usr/bin/espanso",
+  "espanso service register",
+]
+
+[[packages.linux]]
+name = "Obsidian CLI (notesmd-cli)"
+description = "Interact with Obsidian vaults from the terminal"
+tool = "notesmd-cli"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "brew tap yakitrak/yakitrak",
+  "brew install yakitrak/yakitrak/notesmd-cli"
+]
+
+[[packages.linux]]
+name = "Vultr CLI"
+description = "CLI for Vultr VPS & cloud services"
+tool = "vultr-cli"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "brew install vultr/vultr-cli/vultr-cli",
+]
+
+###############################################################################
+# DisplayLink Driver for KVMs and/or USB-C Hubs with Displays
+###############################################################################
+
+[[packages.linux]]
+name = "Vultr CLI"
+description = "CLI for Vultr VPS & cloud services"
+tool = "vultr-cli"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "paru -S linux-cachyos-headers", # or linux-cachyos-lts-headers / linux-headers, matching whichever kernel `uname -r` shows DKMS needs headers for your exact running kernel or the build silently fails.",
+  "paru -S dkms evdi-dkms displaylink", # evdi-dkms builds the kernel module, displaylink installs the userspace binaries.
+  "sudo systemctl enable --now displaylink.service", # Enable the service
+  "sudo modprobe udl",
+  # Troubleshooting:
+  # systemctl status displaylink.service
+  # If evdi.ko is missing, DKMS failed — check dkms status and journalctl -u dkms.
+]
+
+###############################################################################
+# CLI tools: scripts (cross-platform / native installers)
+###############################################################################
+
+###############################################################################
+# GUI apps: pacman (official Arch repos)
+###############################################################################
+
+[[packages.linux]]
+name = "Obsidian"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "obsidian"
+
+[[packages.linux]]
+name = "ShowMeTheKey"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "showmethekey"
+
+[[packages.linux]]
+name = "Anki"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "anki"
+
+[[packages.linux]]
+name = "Steam"
+description = "Digital game storefront and launcher"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "steam"
+tool = "steam"
+
+[[packages.linux]]
+name = "OpenSSH"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "openssh"
+postcommands = [
+  "sudo systemctl enable --now sshd.service",
+]
+
+[[packages.linux]]
+name = "Syncthing"
+description = "Continuous file synchronization"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "syncthing"
+tool = "syncthing"
+postcommands = [
+  "systemctl --user enable --now syncthing.service",
+]
+
+[[packages.linux]]
+name = "Sunshine"
+description = "Self-hosted game streaming host"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "lizardbyte/sunshine"
+tool = "sunshine"
+precommands = [
+  '''if not (open --raw /etc/pacman.conf | str contains "[lizardbyte]") {
+  "\n[lizardbyte]\nSigLevel = Optional\nServer = https://github.com/LizardByte/pacman-repo/releases/latest/download\n" | sudo tee -a /etc/pacman.conf | ignore
+}''',
+  "sudo pacman -Sy",
+]
+postcommands = [
+  'systemctl --user enable --now app-dev.lizardbyte.app.Sunshine'
+]
+
+[[packages.linux]]
+name = "VirtualBox"
+tool = "VBoxManage"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "virtualbox"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qbittorrent"
+tool = "qbittorrent"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "vlc"
+tool = "vlc"
+
+[[packages.linux]]
+description = "Flexible, powerful, server-side application for playing music"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpd"
+tool = "mpd"
+postcommands = [
+  "systemctl --user enable --now mpd.service",
+]
+
+[[packages.linux]]
+description = "Free, open source, cross-platform media player"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpv"
+tool = "mpv"
+
+[[packages.linux]]
+description = "Video wallpaper program for wlroots-based Wayland compositors (uses mpv)"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mpvpaper"
+tool = "mpvpaper"
+
+[[packages.linux]]
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "audacity"
+tool = "audacity"
+
+[[packages.linux]]
+description = "Non-linear video editor"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "kdenlive"
+tool = "kdenlive"
+
+# HandBrake's GUI binary is `ghb`.
+[[packages.linux]]
+description = "Video transcoder/converter"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "handbrake"
+tool = "ghb"
+
+[[packages.linux]]
+name = "calibre"
+description = "E-book library manager"
+tool = "calibre"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "calibre"
+
+[[packages.linux]]
+name = "Koodo Reader"
+description = "E-book reader"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "brew install --cask koodo-reader"
+]
+
+[[packages.linux]]
+name = "Bitwarden"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bitwarden"
+
+[[packages.linux]]
+name = "libsecret"
+description = "Library for storing and retrieving passwords and secrets"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "libsecret"
+
+[[packages.linux]]
+name = "gnome-keyring"
+description = "Daemon that keeps passwords and secrets, providing the Secret Service backend"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "gnome-keyring"
+postcommands = [
+  "gnome-keyring-daemon --start --components=secrets"
+]
+
+[[packages.linux]]
+name = "Mailspring"
+description = "Desktop email client"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "mailspring"
+
+###############################################################################
+# AUR (paru)
+###############################################################################
+
+[[packages.linux]]
+name = "Libation"
+description = "Audible audiobook manager and downloader"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "libation"
+
+# Not in the official Arch repos; the AUR is the install method documented in
+# the project README (github.com/Almamu/linux-wallpaperengine).
+[[packages.linux]]
+name = "linux-wallpaperengine"
+description = "Run Steam's Wallpaper Engine wallpapers on Linux"
+tool = "linux-wallpaperengine"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "linux-wallpaperengine-git"
+
+[[packages.linux]]
+name = "Nerd Fonts Symbols"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "ttf-nerd-fonts-symbols-mono"
+
+[[packages.linux]]
+name = "WezTerm"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "wezterm-git"
+tool = "wezterm"
+
+[[packages.linux]]
+name = "OpenSCAD"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "openscad"
+tool = "openscad"
+
+###############################################################################
+# GUI apps: Flatpak (Flathub)
+###############################################################################
+
+# Ensure flatpak + the flathub remote exist before the flatpak apps below.
+[[packages.linux]]
+name = "Flatpak"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "sudo pacman -S --needed --noconfirm flatpak",
+  "sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo",
+]
+
+[[packages.linux]]
+name = "OrcaSlicer"
+description = "Slicer for 3D printing"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.orcaslicer.OrcaSlicer"
+
+[[packages.linux]]
+name = "Pinta"
+description = "Simple drawing and image editing"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.github.PintaProject.Pinta"
+
+[[packages.linux]]
+name = "Bruno"
+description = "Git-friendly API client"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.usebruno.Bruno"
+
+[[packages.linux]]
+name = "Zen Browser"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "app.zen_browser.zen"
+
+[[packages.linux]]
+name = "ONLYOFFICE Desktop Editors"
+description = "Office suite compatible with MS formats"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "org.onlyoffice.desktopeditors"
+
+[[packages.linux]]
+name = "NormCap"
+description = "OCR screenshot tool"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "flatpak"
+id = "com.github.dynobo.normcap"
+
+[[packages.linux]]
+name = "OBS Studio"
+description = "Records and streams your screen, camera, and audio"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "obs-studio-browser"
+
+###############################################################################
+# GUI apps: AppImage (via scripts)
+###############################################################################
+
+[[packages.linux]]
+name = "Todoist"
+tool = "Todoist.AppImage"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-todoist.nu"',
+]
+
+[[packages.linux]]
+name = "Handy"
+description = "Offline speech-to-text dictation"
+tool = "Handy.AppImage"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/install-handy.nu"',
+]
+###############################################################################
+# Hyprland desktop (WM + bar + launcher + notifications + lock)
+###############################################################################
+
+[[packages.linux]]
+name = "tailscale"
+description = "Mesh VPN"
+tool = "tailscale"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "tailscale"
+
+[[packages.linux]]
+name = "Hyprland"
+description = "Dynamic tiling Wayland compositor"
+tool = "Hyprland"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprland"
+
+[[packages.linux]]
+name = "udiskie"
+description = "Automount removable media through udisks2"
+tool = "udiskie"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "udiskie"
+
+[[packages.linux]]
+name = "Waybar"
+description = "Wayland status bar (replaces Zebar from the Windows setup)"
+tool = "waybar"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "waybar"
+
+[[packages.linux]]
+name = "xdg-desktop-portal-hyprland"
+description = "Portal backend for Hyprland (screenshare, file pickers)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "xdg-desktop-portal-hyprland"
+
+[[packages.linux]]
+name = "polkit"
+description = "Privilege authorization framework (lets GUI apps request root)"
+tool = "pkexec"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "polkit"
+
+[[packages.linux]]
+name = "hyprpolkitagent"
+description = "Polkit authentication agent for GUI privilege prompts"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprpolkitagent"
+
+[[packages.linux]]
+name = "qt5-wayland"
+description = "Qt5 Wayland support"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qt5-wayland"
+
+[[packages.linux]]
+name = "qt6-wayland"
+description = "Qt6 Wayland support"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "qt6-wayland"
+
+# Not in the official Arch repos; the AUR is the officially documented install
+# method (docs.vicinae.com/install/repo). `vicinae-bin` = prebuilt stable release.
+[[packages.linux]]
+name = "Vicinae"
+description = "Raycast-like application launcher (replaces wofi)"
+tool = "vicinae"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "vicinae-bin"
+
+[[packages.linux]]
+name = "swaync"
+description = "Notification daemon"
+tool = "swaync"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "swaync"
+
+[[packages.linux]]
+name = "hyprlock"
+description = "Hyprland's GPU-accelerated screen locker"
+tool = "hyprlock"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hyprlock"
+
+[[packages.linux]]
+name = "hypridle"
+description = "Hyprland's idle daemon (triggers hyprlock/dpms on timeout)"
+tool = "hypridle"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "hypridle"
+
+[[packages.linux]]
+name = "bluez"
+description = "Bluetooth protocol stack daemons (bluetoothd)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluez"
+
+[[packages.linux]]
+name = "bluez-utils"
+description = "Bluetooth CLI utilities (bluetoothctl)"
+tool = "bluetoothctl"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluez-utils"
+
+[[packages.linux]]
+name = "blueman"
+description = "GTK Bluetooth manager (pair/connect/switch devices, launchable from the launcher)"
+tool = "blueman-manager"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "blueman"
+
+[[packages.linux]]
+name = "bluetui"
+description = "TUI for managing bluetooth devices"
+tool = "bluetui"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "bluetui"
+
+[[packages.linux]]
+name = "xdg-desktop-portal-gtk"
+description = "GTK portal backend (file picker dialogs, GTK theme info)"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "xdg-desktop-portal-gtk"
+
+# Not yet in the official Arch repos; AUR is the first-party hyprwm distribution.
+[[packages.linux]]
+name = "hyprshutdown"
+description = "Graceful Hyprland shutdown/logout utility (asks apps to close before exiting)"
+tool = "hyprshutdown"
+tags = ["all"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "hyprshutdown"

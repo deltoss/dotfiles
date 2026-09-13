@@ -1,0 +1,65 @@
+[interpreters.nu]
+  command = "nu"
+  args = ["--stdin"]
+
+[cd]
+  command = "nu"
+
+{{ $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{ $email := promptStringOnce . "email" "What is your email address (for git). Match this to your GitHub account's email(s) or your activity graph may not detect the commit." -}}
+{{ $username := promptStringOnce . "username" "What is your username (for git)" -}}
+{{ $steamUsername := promptStringOnce . "steamUsername" "What is your username (for Steam)" -}}
+{{ $computerPurposeChoices := list "personal" "work" -}}
+{{ $computerPurpose := promptChoiceOnce . "computerPurpose" "What type of computer are you on" $computerPurposeChoices -}}
+[data]
+  osid = {{ $osid | quote }}
+  email = {{ $email | quote }}
+  username = {{ $username | quote }}
+  steamUsername = {{ $steamUsername | quote }}
+  computerPurpose = {{ $computerPurpose | quote }}
+  {{ if eq $computerPurpose "personal" -}}
+  vultr_key = {{ onepasswordRead "op://Personal/Vultr/API Key" | quote }}
+  {{- end }}
+  {{ if eq $computerPurpose "personal" -}}
+  ssh_connections = {{- onepasswordRead "op://Personal/SSH Connections/notesPlain" | quote -}}
+  {{- else if eq $computerPurpose "work" -}}
+  ssh_connections = {{- onepasswordRead "op://Work/SSH Connections/notesPlain" | quote -}}
+  {{- end }}
+  {{ if eq $computerPurpose "personal" -}}
+  harlequin_configs = {{- onepasswordRead "op://Personal/Harlequin/Configs" | quote -}}
+  {{ else if eq $computerPurpose "work" -}}
+  harlequin_configs = {{- onepasswordRead "op://Work/Harlequin/Configs" | quote -}}
+  {{- end }}
+  {{ if eq $computerPurpose "personal" -}}
+  mobile_ssh_public_key = {{ onepasswordRead "op://Personal/Mobile Devices SSH Key/public key" | quote }}
+  iot_hostname = {{ onepasswordRead "op://Personal/Hostnames/iot" | quote }}
+  copyparty_website = {{ onepasswordRead "op://Personal/Copyparty/website" | quote }}
+  copyparty_username = {{ onepasswordRead "op://Personal/Copyparty/username" | quote }}
+  copyparty_password = {{ onepasswordRead "op://Personal/Copyparty/password" | quote }}
+  {{- end }}
+  rclone_personal_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client ID" | quote }}
+  rclone_personal_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Personal Google Drive/Client Secret" | quote }}
+  rclone_notes_gdrive_client_id = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client ID" | quote }}
+  rclone_notes_gdrive_client_secret = {{ onepasswordRead "op://Personal/RClone - Notes Google Drive/Client Secret" | quote }}
+  {{ if eq $computerPurpose "work" -}}
+  jira_api_token = {{ onepasswordRead "op://Work/Atlassian - Work/JiraTUI API Token" | quote }}
+  jira_base_url = {{ onepasswordRead "op://Work/Atlassian - Work/Base URL" | quote }}
+  jira_username = {{ onepasswordRead "op://Work/Atlassian - Work/username" | quote }}
+  {{- end }}
+
+[diff]
+  pager = "delta"
+
+[merge]
+  command = "nvim"
+  args = [
+    "-d",
+    {{ printf "%q" "{{ .Destination }}" }},
+    {{ printf "%q" "{{ .Source }}" }},
+    # Commented below as changing this panel won't actually merge in the edits made to it
+    # {{ printf "%q" "{{ .Target }}" }},
+  ]
