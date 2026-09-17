@@ -15,9 +15,16 @@ audacity = [
 audio_play = [
   { run = 'mpv --no-video %s', block = true, desc = "mpv", for = "unix" },
 ]
+video_play = [
+  { run = 'vlc %s', orphan = true, desc = "VLC", for = "unix" },
+]
+handbrake = [
+  { run = 'ghb %s', orphan = true, desc = "HandBrake", for = "unix" },
+]
 
 [open]
 prepend_rules = [
+	{ mime = "video/*", use = [ "video_play", "handbrake", "reveal" ] },
 	{ mime = "audio/*", use = [ "audio_play", "play", "audacity", "reveal" ] },
 ]
 append_rules = [

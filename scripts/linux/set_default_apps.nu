@@ -20,6 +20,7 @@ def main [] {
   print $"(ansi green_bold)Setting default applications...(ansi reset)"
   set-default "mpv.desktop" "audio"
   set-default "vlc.desktop" "video"
+  video-aliases | each { |mime| set-default "vlc.desktop" $mime }
   set-default "yazi.desktop" "inode/directory"
   set-default "zellij-code-editor.desktop" "text"
   set-default "zellij-code-editor.desktop" "application/sql"
@@ -34,6 +35,18 @@ def main [] {
   set-default "zellij-code-editor.desktop" "application/xml"
   set-default "zellij-code-editor.desktop" "application/x-yaml"
   set-default "zellij-code-editor.desktop" "application/json"
+}
+
+# Includes video aliases, which xdg-mime does not resolve to their canonical type.
+def video-aliases [] {
+  glob "/usr/share/mime/{video,application}/*.xml"
+  | each { |path|
+      open --raw $path
+      | parse -r '<alias type="(?<mime>video/[^"]+)"'
+      | get mime
+    }
+  | flatten
+  | uniq
 }
 
 # Sets `desktop` as the xdg-mime default for either one exact mimetype or every
