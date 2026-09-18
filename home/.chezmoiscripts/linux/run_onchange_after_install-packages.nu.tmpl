@@ -10,6 +10,8 @@
 # NOTE: the package MANAGERS the common entries rely on (rust, node, dotnet, …)
 # must be defined in linux/packages.toml so they install first.
 
+sudo -v
+
 print $"(ansi green_bold)Installing packages...(ansi reset)"
 
 # Context made available to the per-package install commands below.
