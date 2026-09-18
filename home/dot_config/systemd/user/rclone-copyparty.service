@@ -1,0 +1,15 @@
+[Unit]
+Description=RClone mount of copyparty
+Documentation=https://rclone.org/commands/rclone_mount/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount media-dav: /mnt/copyparty --config=%h/.config/rclone/rclone.conf --no-check-certificate --vfs-cache-mode writes --dir-cache-time 5s
+ExecStop=-/usr/bin/fusermount3 -u /mnt/copyparty
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

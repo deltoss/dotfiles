@@ -10,10 +10,23 @@ print $"(ansi green)Configuring rclone mount services for Linux...(ansi reset)"
 
 systemctl --user daemon-reload
 
-let units = [
-  "rclone-personal-google-drive.service"
-  "rclone-notes-google-drive.service"
-]
+let units = if $env.CHEZMOI_COMPUTERPURPOSE == "personal" {
+  if not ("/mnt/copyparty" | path exists) {
+    print $"(ansi blue)Creating /mnt/copyparty...(ansi reset)"
+    sudo install -d -m 0755 -o $env.USER /mnt/copyparty
+  }
+
+  [
+    "rclone-personal-google-drive.service"
+    "rclone-notes-google-drive.service"
+    "rclone-copyparty.service"
+  ]
+} else {
+  [
+    "rclone-personal-google-drive.service"
+    "rclone-notes-google-drive.service"
+  ]
+}
 
 for $unit in $units {
   print $"(ansi blue)Enabling ($unit)...(ansi reset)"
