@@ -1140,6 +1140,15 @@ distros = ["cachyos"]
 package_type = "pacman"
 id = "xdg-desktop-portal-gtk"
 
+[[packages.linux]]
+name = "Arduino CLI"
+description = "Command-line tool for compiling and uploading Arduino sketches"
+tool = "arduino-cli"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "arduino-cli"
+
 # Not yet in the official Arch repos; AUR is the first-party hyprwm distribution.
 [[packages.linux]]
 name = "hyprshutdown"

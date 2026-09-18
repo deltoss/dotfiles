@@ -599,6 +599,16 @@ package_type = "winget"
 id = "mulaRahul.Keyviz"
 
 [[packages.windows]]
+name = "Arduino CLI"
+description = "Command-line tool for compiling and uploading Arduino sketches"
+tool = "arduino-cli"
+tags = ["personal"]
+package_type = "commands"
+commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-arduino-cli.nu"'
+]
+
+[[packages.windows]]
 name = "AWS CLI"
 description = "AWS CLI. See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions"
 tool = "aws"
