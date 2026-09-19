@@ -573,10 +573,9 @@ end)
 ---- KEYBINDINGS: UTILITIES ----
 --------------------------------
 
-local handyToggle = "pkill -USR2 -x handy"
--- start on press
+local handyToggle = "pkill -USR2 -n handy"
+-- Toggle recording on press and release for push-to-talk.
 hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle))
--- stop on release
 hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle), { release = true })
 
 -- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
