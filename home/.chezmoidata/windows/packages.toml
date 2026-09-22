@@ -68,6 +68,13 @@ tool = "deno"
 id = "DenoLand.Deno"
 
 [[packages.windows]]
+name = "SecretSpec"
+tool = "secretspec"
+tags = ["all"]
+package_type = "winget"
+id = "Cachix.SecretSpec"
+
+[[packages.windows]]
 name = "Rust"
 tool = "rustc"
 tags = ["all"]

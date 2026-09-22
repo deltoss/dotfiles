@@ -145,6 +145,16 @@ commands = [
 ###############################################################################
 
 [[packages.linux]]
+name = "SecretSpec"
+description = "Declarative interface for secrets providers"
+tool = "secretspec"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "http get https://install.secretspec.dev | sh",
+]
+
+[[packages.linux]]
 name = "btop"
 description = "An interactive terminal-based system monitor."
 tool = "btop"
