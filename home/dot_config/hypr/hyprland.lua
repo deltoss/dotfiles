@@ -574,9 +574,24 @@ end)
 --------------------------------
 
 local handyToggle = "pkill -USR2 -n handy"
--- Toggle recording on press and release for push-to-talk.
-hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle))
-hl.bind(PRIMARYMOD .. " + V", hl.dsp.exec_cmd(handyToggle), { release = true })
+local handyChordKeys = { "V", "Control_L", "Control_R", "Shift_L", "Shift_R", "Alt_L", "Alt_R" }
+
+-- Stop push-to-talk only after the entire chord is released.
+hl.bind(PRIMARYMOD .. " + V", function()
+  hl.exec_cmd(handyToggle)
+
+  local releaseTimer
+  releaseTimer = hl.timer(function()
+    for _, key in ipairs(handyChordKeys) do
+      if hl.is_key_down(key) then
+        return
+      end
+    end
+
+    releaseTimer:set_enabled(false)
+    hl.exec_cmd(handyToggle)
+  end, { timeout = 10, type = "repeat" })
+end)
 
 -- Windows-style lock: SUPER + L -> hyprlock immediately (no dependency on hypridle/loginctl)
 hl.bind("SUPER + L", hl.dsp.exec_cmd("uwsm app -- hyprlock"), { locked = true, description = "Session: Lock" })
