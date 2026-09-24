@@ -1,0 +1,18 @@
+{{ if hasPrefix "linux" .osid -}}
+#!/usr/bin/env nu
+
+let config_home = ($env | get -o XDG_CONFIG_HOME | default ($env.HOME | path join ".config"))
+let layout = ($config_home | path join "hypr" "monitor-layout.lua")
+if ($layout | path exists) or (not (is-terminal --stdin)) or (not (is-terminal --stdout)) {
+  return
+}
+if (which hyprctl | is-empty) {
+  return
+}
+let monitors = (try { ^hyprctl -j monitors | from json } catch { [] })
+if ($monitors | length) < 2 {
+  return
+}
+
+nu {{ printf "%s/scripts/linux/setup-hypr-monitors.nu" .chezmoi.workingTree | quote }}
+{{ end -}}

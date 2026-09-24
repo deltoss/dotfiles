@@ -1,5 +1,7 @@
 # Ignore files or directories on different OS
 # See https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/#ignore-files-or-a-directory-on-different-machines
+# Keep machine-local monitor choices out of the source.
+.config/hypr/monitor-layout.lua
 {{- if ne .osid "windows" }}
 AppData/ # A directory exclusive to Windows
 Documents/PowerShell # I don't use PowerShell on Linux

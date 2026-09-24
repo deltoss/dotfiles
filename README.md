@@ -85,6 +85,10 @@ Chezmoi deploys files from `home/`, selected by `.chezmoiroot`. Helpers, assets,
    chezmoi init deltoss/dotfiles --ssh --apply --verbose
    ```
 
+## Hyprland Monitor Layout
+
+On the first interactive `chezmoi apply` with Hyprland running and both monitors connected, select the primary (left) and secondary (right) monitor. The setup saves their names and the primary's logical width in the unmanaged `~/.config/hypr/monitor-layout.lua`, then reloads Hyprland. If setup is unavailable, a later apply will try again. To change the layout later, run `nu scripts/linux/setup-hypr-monitors.nu` from this repository.
+
 ## Debugging Chezmoi
 
 - Test templates with `chezmoi execute-template '{{ .osid }}'`. See [Chezmoi References - Commands - execute-template - examples](https://www.chezmoi.io/reference/commands/execute-template/#examples)

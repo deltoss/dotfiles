@@ -11,6 +11,14 @@ local workspaces = require("lib.workspaces")
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+local monitor_layout_path = config_home .. "/hypr/monitor-layout.lua"
+local monitor_layout_file = io.open(monitor_layout_path, "r")
+if monitor_layout_file then
+  monitor_layout_file:close()
+  local layout = dofile(monitor_layout_path)
+  hl.monitor({ output = layout.primary, mode = "preferred", position = "0x0", scale = "1.67" })
+  hl.monitor({ output = layout.secondary, mode = "preferred", position = layout.secondary_x .. "x0", scale = "1.67" })
+end
 hl.monitor({
   output = "",
   mode = "preferred",
