@@ -27,6 +27,11 @@
 # By default, espanso uses the "Auto" backend which should work well in most cases,
 # but you may want to try the "Clipboard" or "Inject" backend in case of issues.
 # backend: Clipboard
+{{ if eq .chezmoi.os "linux" }}
+# WezTerm needs CTRL+SHIFT+V. On Wayland, espanso cannot select
+# app-specific configs such as wezterm.yml, so set the shortcut here.
+paste_shortcut: CTRL+SHIFT+V
+{{- end }}
 
 # --- Auto-restart
 

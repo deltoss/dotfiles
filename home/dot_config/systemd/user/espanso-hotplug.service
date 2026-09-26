@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart espanso after a USB input device change
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/sleep 2
+ExecStart=/usr/bin/systemctl --user restart espanso.service
