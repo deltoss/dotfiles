@@ -1,0 +1,122 @@
+" Reload with :source ~/.ideavimrc, or :source % while editing this file.
+
+" Leader and clipboard setup used by these mappings
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+let mapleader = " "
+set timeoutlen=500
+set clipboard=unnamed
+
+" Give mapped Ctrl keys to Vim in the modes where they are used.
+" Keep Ctrl+C available to Rider in Insert mode.
+sethandler <C-z> n-v-i:vim
+sethandler <C-y> n-v-i:vim
+sethandler <C-r> i-c:vim
+sethandler <C-u> n-v:vim
+sethandler <C-d> n-v-i:vim
+sethandler <C-e> n-v:vim
+sethandler <S-Up> n-v-i:vim
+sethandler <S-Down> n-v-i:vim
+sethandler <C-Up> n:vim
+sethandler <C-Down> n:vim
+sethandler <C-Left> n:vim
+sethandler <C-Right> n:vim
+sethandler <C-s> n-i:vim
+sethandler <C-BS> i:vim
+sethandler <C-Del> i:vim
+sethandler <C-c> n-v:vim i:ide
+
+" Undo/redo. Visual mode must exit before running Normal-mode undo/redo.
+nnoremap <C-z> u
+vnoremap <C-z> <Esc>u
+inoremap <C-z> <C-o>u
+nnoremap <C-y> <C-r>
+vnoremap <C-y> <Esc><C-r>
+
+" Accept the selected Rider completion with Tab-style replacement.
+" Without a completion popup, do nothing. Normal/Visual Ctrl+Y stays redo.
+imap <C-y> <Action>(EditorChooseLookupItemReplace)
+
+" Paste from the system clipboard
+inoremap <C-r><C-r> <C-r>*
+inoremap <C-r>r <C-r>*
+cnoremap <C-r><C-r> <C-r>*
+
+" Scroll and search, then center the cursor line
+nnoremap <C-u> <C-u>zz
+vnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+vnoremap <C-d> <C-d>zz
+nnoremap <C-e> <C-d>zz
+vnoremap <C-e> <C-d>zz
+nnoremap n nzz
+vnoremap n nzz
+nnoremap N Nzz
+vnoremap N Nzz
+
+" Wrapped display-line navigation with Shift+Up/Down. Plain arrows are unmapped.
+nnoremap <S-Up> gk
+vnoremap <S-Up> gk
+inoremap <S-Up> <C-o>gk
+nnoremap <S-Down> gj
+vnoremap <S-Down> gj
+inoremap <S-Down> <C-o>gj
+
+" Save. Insert Ctrl+S deliberately returns to Normal mode.
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <Esc>:update<CR>
+
+" Indent/outdent and reselect. Indent width comes from Rider Code Style.
+vnoremap < <gv
+vnoremap > >gv
+
+" Insert-mode word deletion
+inoremap <C-BS> <C-w>
+inoremap <C-Del> <C-o>dw
+inoremap <C-d> <C-o>dw
+
+" Split editor windows
+nnoremap <leader><Up> :split<CR>
+nnoremap <leader><Down> :split<CR>
+nnoremap <leader><Left> :vsplit<CR>
+nnoremap <leader><Right> :vsplit<CR>
+
+" Move focus between splits in Normal mode only
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Left> <C-w>h
+nnoremap <C-Right> <C-w>l
+
+" Delete without replacing copied text
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+nnoremap <leader>D "_D
+vnoremap <leader>D "_D
+nnoremap <leader>x "_x
+vnoremap <leader>x "_x
+nnoremap <leader>X "_X
+vnoremap <leader>X "_X
+
+" Change without replacing copied text
+nnoremap <leader>c "_c
+vnoremap <leader>c "_c
+nnoremap <leader>C "_C
+vnoremap <leader>C "_C
+
+" Copy to the end of the line
+nnoremap Y y$
+
+" Replace selected text without overwriting the paste register
+vnoremap <leader>p "_dP
+vnoremap p "_dP
+
+" Join lines
+nnoremap <leader>j J
+
+" Change the current word or selection; Ctrl+C is not copy in these modes.
+nnoremap <C-c> ciw
+vnoremap <C-c> c
+
+" Prepare whole-file substitution of the word under the cursor.
+" Type the replacement before pressing Enter.
+nnoremap <leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left>
