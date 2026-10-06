@@ -248,14 +248,6 @@ id = "less"
 tool = "less"
 
 [[packages.linux]]
-description = "Share your terminal over the web"
-tags = ["all"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "ttyd"
-tool = "ttyd"
-
-[[packages.linux]]
 description = "Mount remote filesystems over SSH"
 tags = ["all"]
 distros = ["cachyos"]
