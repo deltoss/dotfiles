@@ -19,12 +19,25 @@ sethandler <S-Up> n-v-i:vim
 sethandler <S-Down> n-v-i:vim
 sethandler <C-Up> n:vim
 sethandler <C-Down> n:vim
-sethandler <C-Left> n:vim
-sethandler <C-Right> n:vim
+sethandler <C-Left> n-x:vim
+sethandler <C-Right> n-x:vim
 sethandler <C-s> n-i:vim
-sethandler <C-BS> i:vim
-sethandler <C-Del> i:vim
+sethandler <C-BS> n-i:vim
+sethandler <C-Del> n-i:vim
 sethandler <C-c> n-v:vim i:ide
+sethandler <C-o> n-x:vim
+sethandler <C-i> n-x:vim
+sethandler <C-k> i:vim
+sethandler <C-A-y> n:vim
+sethandler <C-A-Left> n:vim
+sethandler <C-A-h> n:vim
+sethandler <C-A-Down> n:vim
+sethandler <C-A-a> n:vim
+sethandler <C-A-Up> n:vim
+sethandler <C-A-e> n:vim
+sethandler <C-A-Right> n:vim
+sethandler <C-A-i> n:vim
+sethandler <C-P> a:ide
 
 " Undo/redo. Visual mode must exit before running Normal-mode undo/redo.
 nnoremap <C-z> u
@@ -120,3 +133,122 @@ vnoremap <C-c> c
 " Prepare whole-file substitution of the word under the cursor.
 " Type the replacement before pressing Enter.
 nnoremap <leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" File paths and IDE navigation history
+nmap <leader>yy <Action>(CopyAbsolutePath)
+nmap <leader>yp <Action>(CopyAbsolutePath)
+nmap <leader>yP <Action>(CopyContentRootPath)
+nmap <C-o> <Action>(Back)
+xmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+xmap <C-i> <Action>(Forward)
+
+" Word movement, deletion and selection
+xmap <C-Right> <Action>(EditorNextWordWithSelection)
+xmap <C-Left> <Action>(EditorPreviousWordWithSelection)
+nmap <C-BS> <Action>(EditorDeleteToWordStart)
+nmap <C-Del> <Action>(EditorDeleteToWordEnd)
+xmap v <Action>(EditorSelectWord)
+xmap V <Action>(EditorUnSelectWord)
+
+" Files, refactoring, completion and formatting
+nmap <leader>sp <Action>(GotoAction)
+nmap <leader>a <Action>(NewFile)
+nmap <leader>rr <Action>(RenameElement)
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>ru <Action>(OptimizeImports)
+nmap <leader>r. <Action>(ShowIntentionActions)
+xmap <leader>r. <Action>(ShowIntentionActions)
+nmap <leader>. <Action>(ShowIntentionActions)
+xmap <leader>. <Action>(ShowIntentionActions)
+nmap <leader>, <Action>(CodeCompletion)
+nmap gc <Action>(CommentByLineComment)
+xmap gc <Action>(CommentByLineComment)
+nmap gb <Action>(CommentByBlockComment)
+xmap gb <Action>(CommentByBlockComment)
+nmap <leader>f <Action>(ReformatCode)
+xmap <leader>f <Action>(ReformatCode)
+
+" Search, documentation and code navigation
+nmap <leader>sc <Action>(SearchEverywhere)
+nmap <leader>sg <Action>(FindInPath)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>ss <Action>(FileStructurePopup)
+nmap <leader>sS <Action>(GotoSymbol)
+nmap <leader>sm <Action>(FileStructurePopup)
+nmap k <Action>(QuickJavaDoc)
+nmap K <Action>(ParameterInfo)
+imap <C-k> <Action>(ParameterInfo)
+nmap ga <Action>(ShowIntentionActions)
+nmap gA <Action>(ReSharperNavigateTo)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(QuickImplementations)
+nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(FindUsages)
+nmap gh <Action>(CallHierarchy)
+nmap gt <Action>(GotoClass)
+nmap zA <Action>(ExpandCollapseToggleAction)
+nmap zd <Action>(RiderCollapseToDefinitions)
+nmap [[ <Action>(MethodUp)zz
+xmap [[ <Action>(MethodUp)zz
+nmap ]] <Action>(MethodDown)zz
+xmap ]] <Action>(MethodDown)zz
+
+" Errors and bookmarks
+nmap <leader>en <Action>(GotoNextError)zz
+nmap <leader>ep <Action>(GotoPreviousError)zz
+nmap ]e <Action>(GotoNextError)zz
+xmap ]e <Action>(GotoNextError)zz
+nmap [e <Action>(GotoPreviousError)zz
+xmap [e <Action>(GotoPreviousError)zz
+nmap <leader>mn <Action>(GotoNextBookmark)zz
+nmap <leader>mp <Action>(GotoPreviousBookmark)zz
+nmap ]m <Action>(GotoNextBookmark)zz
+xmap ]m <Action>(GotoNextBookmark)zz
+nmap [m <Action>(GotoPreviousBookmark)zz
+xmap [m <Action>(GotoPreviousBookmark)zz
+nmap <leader>ma <Action>(ToggleBookmark)<Action>(ActivateBookmarksToolWindow)
+nmap <leader>mx <Action>(ToggleBookmark)
+nmap <leader>md <Action>(ToggleBookmark)
+
+" Build, debug and tests
+nmap _nb <Action>(RebuildSelectionAction)
+nmap _nr <Action>(RebuildSolutionAction)
+nmap _nc <Action>(CancelBuildAction)
+nmap _a <Action>(ToggleLineBreakpoint)
+nmap _b <Action>(ViewBreakpoints)
+nmap _s <Action>(Debug)
+nmap _q <Action>(Stop)
+nmap _c <Action>(ActivateDebugToolWindow)
+nmap _i <Action>(NavigateToImmediateWindow)
+nmap _p <Action>(editRunConfigurations)
+nmap _k <Action>(EvaluateExpression)
+xmap _k <Action>(EvaluateExpression)
+nmap <C-A-y> <Action>(StepOut)
+nmap <C-A-Left> <Action>(StepOut)
+nmap <C-A-h> <Action>(StepOver)
+nmap <C-A-Down> <Action>(StepOver)
+nmap <C-A-a> <Action>(Debug)
+nmap <C-A-Up> <Action>(Debug)
+nmap <C-A-e> <Action>(StepInto)
+nmap <C-A-Right> <Action>(StepInto)
+nmap <C-A-i> <Action>(RunToCursor)
+nmap _ts <Action>(RiderUnitTestRunContextAction)
+nmap _tS <Action>(RiderUnitTestDebugContextAction)
+nmap _tt <Action>(ActivateUnitTestsToolWindow)
+
+" Tool windows and Solution Explorer search
+nmap - <Action>(ActivateProjectToolWindow)
+nmap _f <Action>(FindInSolutionView)
+nmap <leader>t <Action>(ActivateTerminalToolWindow)
+nmap <leader>ee <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>mm <Action>(ActivateBookmarksToolWindow)
+nmap <leader>T <Action>(ActivateTODOToolWindow)
+
+" Git
+nmap <leader>gp <Action>(VcsShowCurrentChangeMarker)
+nmap <leader>gP <Action>(Compare.SameVersion)
+nmap <leader>gd <Action>(Vcs.Show.Local.Changes)
+nmap <leader>gb <Action>(Annotate)
+nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+nmap <leader>gH <Action>(Vcs.Show.Log)

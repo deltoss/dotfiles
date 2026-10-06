@@ -1,0 +1,1 @@
+export RIDER_PROPERTIES="$HOME/.config/rider/idea.properties"

@@ -188,6 +188,8 @@ window_rules:
     match:
       - window_process:
           equals: devenv # Visual Studio IDE
+      - window_process:
+          equals: rider64 # JetBrains Rider
   - commands:
       - move --workspace 2
       - focus --workspace 2
@@ -197,6 +199,10 @@ window_rules:
           equals: devenv # Visual Studio IDE
         window_title:
           regex: .+Microsoft Visual Studio.* # Solution windows
+      - window_process:
+          equals: rider64 # JetBrains Rider
+        window_class:
+          equals: SunAwtFrame # Main windows
   - commands:
       - move --workspace 3
       - focus --workspace 3
@@ -383,6 +389,10 @@ window_rules:
           regex: ".*Dialog.*"
         window_title:
           regex: ".*Microsoft Visual Studio.*"
+      - window_process:
+          equals: rider64 # JetBrains Rider
+        window_class:
+          equals: SunAwtDialog # JetBrains Rider Dialog Windows
       - window_process:
           equals: rundll32 # Printer
       - window_process:

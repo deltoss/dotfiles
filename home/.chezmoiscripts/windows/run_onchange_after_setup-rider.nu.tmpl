@@ -1,0 +1,15 @@
+{{ if eq .osid "windows" -}}
+#!/usr/bin/env nu
+
+let properties = ($env.USERPROFILE | path join ".config" "rider" "idea.properties")
+if not ($properties | path exists) {
+  error make {msg: $"Missing Rider properties file: ($properties)"}
+}
+
+^setx RIDER_PROPERTIES $properties
+if $env.LAST_EXIT_CODE != 0 {
+  error make {msg: "Failed to persist RIDER_PROPERTIES"}
+}
+
+print "Configured Rider to use ~/.config/rider. Sign out and back in before launching it from the desktop."
+{{ end -}}
