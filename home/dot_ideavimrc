@@ -14,6 +14,8 @@ set smartcase
 set ideajoin
 set idearefactormode=keep
 set ideaoutsideeditor
+set classtextobj
+set mini-ai
 
 " Give mapped Ctrl keys to Vim in the modes where they are used.
 " Keep Ctrl+C available to Rider in Insert mode.
