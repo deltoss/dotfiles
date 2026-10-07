@@ -16,6 +16,7 @@ set idearefactormode=keep
 set ideaoutsideeditor
 set classtextobj
 set mini-ai
+set surround
 
 " Give mapped Ctrl keys to Vim in the modes where they are used.
 " Keep Ctrl+C available to Rider in Insert mode.
@@ -156,6 +157,14 @@ nmap <C-BS> <Action>(EditorDeleteToWordStart)
 nmap <C-Del> <Action>(EditorDeleteToWordEnd)
 xmap v <Action>(EditorSelectWord)
 xmap V <Action>(EditorUnSelectWord)
+
+
+" Surrounds, matching mini.surround in Neovim
+let g:surround_no_mappings = 1
+nmap gsa <Plug>YSurround
+xmap gsa <Plug>VSurround
+nmap gsd <Plug>DSurround
+nmap gsr <Plug>CSurround
 
 " Files, refactoring, completion and formatting
 nmap <leader>sp <Action>(GotoAction)
