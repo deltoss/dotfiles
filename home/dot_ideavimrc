@@ -6,6 +6,7 @@ vnoremap <Space> <Nop>
 let mapleader = " "
 set timeoutlen=500
 set clipboard=unnamed
+set ideawindowjumps
 
 " Give mapped Ctrl keys to Vim in the modes where they are used.
 " Keep Ctrl+C available to Rider in Insert mode.
@@ -138,10 +139,6 @@ nnoremap <leader>rw :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap <leader>yy <Action>(CopyAbsolutePath)
 nmap <leader>yp <Action>(CopyAbsolutePath)
 nmap <leader>yP <Action>(CopyContentRootPath)
-nmap <C-o> <Action>(Back)
-xmap <C-o> <Action>(Back)
-nmap <C-i> <Action>(Forward)
-xmap <C-i> <Action>(Forward)
 
 " Word movement, deletion and selection
 xmap <C-Right> <Action>(EditorNextWordWithSelection)
@@ -173,6 +170,8 @@ xmap <leader>f <Action>(ReformatCode)
 nmap <leader>sc <Action>(SearchEverywhere)
 nmap <leader>sg <Action>(FindInPath)
 nmap <leader>sf <Action>(GotoFile)
+nmap <leader>sr <Action>(RecentFiles)
+nmap <leader>sl <Action>(RecentLocations)
 nmap <leader>ss <Action>(FileStructurePopup)
 nmap <leader>sS <Action>(GotoSymbol)
 nmap <leader>sm <Action>(FileStructurePopup)
@@ -181,12 +180,13 @@ nmap K <Action>(ParameterInfo)
 imap <C-k> <Action>(ParameterInfo)
 nmap ga <Action>(ShowIntentionActions)
 nmap gA <Action>(ReSharperNavigateTo)
-nmap gd <Action>(GotoDeclaration)
 nmap gD <Action>(QuickImplementations)
 nmap gi <Action>(GotoImplementation)
-nmap gr <Action>(FindUsages)
+nmap gr <Action>(ShowUsages)
+nmap gR <Action>(FindUsages)
 nmap gh <Action>(CallHierarchy)
 nmap gt <Action>(GotoClass)
+nmap gT <Action>(GotoTypeDeclaration)
 nmap zA <Action>(ExpandCollapseToggleAction)
 nmap zd <Action>(RiderCollapseToDefinitions)
 nmap [[ <Action>(MethodUp)zz
@@ -217,7 +217,7 @@ nmap _R <Action>(RebuildSolutionAction)
 nmap _C <Action>(CancelBuildAction)
 nmap _a <Action>(ToggleLineBreakpoint)
 nmap _b <Action>(ViewBreakpoints)
-nmap _s <Action>(Debug)
+nmap _d <Action>(Debug)
 nmap _q <Action>(Stop)
 nmap _c <Action>(ActivateDebugToolWindow)
 nmap _i <Action>(NavigateToImmediateWindow)
@@ -252,3 +252,4 @@ nmap <leader>gd <Action>(Vcs.Show.Local.Changes)
 nmap <leader>gb <Action>(Annotate)
 nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
 nmap <leader>gH <Action>(Vcs.Show.Log)
+nmap <leader>gA <Action>(Refactorings.QuickListPopupAction)
