@@ -212,9 +212,9 @@ nmap <leader>mx <Action>(ToggleBookmark)
 nmap <leader>md <Action>(ToggleBookmark)
 
 " Build, debug and tests
-nmap _nb <Action>(RebuildSelectionAction)
-nmap _nr <Action>(RebuildSolutionAction)
-nmap _nc <Action>(CancelBuildAction)
+nmap _B <Action>(RebuildSelectionAction)
+nmap _R <Action>(RebuildSolutionAction)
+nmap _C <Action>(CancelBuildAction)
 nmap _a <Action>(ToggleLineBreakpoint)
 nmap _b <Action>(ViewBreakpoints)
 nmap _s <Action>(Debug)
