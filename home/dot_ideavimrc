@@ -7,7 +7,7 @@ let mapleader = " "
 set timeoutlen=300
 set clipboard=unnamed
 set ideawindowjumps
-set scrolloff=13
+set scrolloff=5
 set incsearch
 set hlsearch
 set inccommand=split
