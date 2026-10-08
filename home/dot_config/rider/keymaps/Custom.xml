@@ -34,6 +34,9 @@
   <action id="RebuildSolutionAction">
     <keyboard-shortcut first-keystroke="alt r" />
   </action>
+  <action id="MaximizeToolWindow">
+    <keyboard-shortcut first-keystroke="alt z" />
+  </action>
   <action id="ResizeToolWindowDown">
     <keyboard-shortcut first-keystroke="shift ctrl down" />
   </action>
