@@ -71,7 +71,8 @@ inoremap <C-r>r <C-r>*
 cnoremap <C-r><C-r> <C-r>*
 
 " Clear search highlighting
-nnoremap <Esc> :nohlsearch<CR>
+nmap <Esc> <Action>(EditorEscape):nohlsearch<CR>
+xmap <Esc> <Action>(EditorEscape):nohlsearch<CR>
 
 " Scroll and search, then center the cursor line
 nnoremap <C-u> <C-u>zz
