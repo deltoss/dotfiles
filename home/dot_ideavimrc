@@ -4,11 +4,13 @@
 nnoremap <Space> <Nop>
 vnoremap <Space> <Nop>
 let mapleader = " "
-set timeoutlen=500
+set timeoutlen=300
 set clipboard=unnamed
 set ideawindowjumps
-set scrolloff=5
+set scrolloff=13
 set incsearch
+set hlsearch
+set inccommand=split
 set ignorecase
 set smartcase
 set ideajoin
@@ -17,6 +19,7 @@ set ideaoutsideeditor
 set classtextobj
 set mini-ai
 set surround
+set multiple-cursors
 
 " Give mapped Ctrl keys to Vim in the modes where they are used.
 " Keep Ctrl+C available to Rider in Insert mode.
@@ -34,6 +37,7 @@ sethandler <C-Left> n-x:vim
 sethandler <C-Right> n-x:vim
 sethandler <C-s> n-i:vim
 sethandler <C-BS> n-i:vim
+sethandler <C-h> i:vim
 sethandler <C-Del> n-i:vim
 sethandler <C-c> n-v:vim i:ide
 sethandler <C-o> n-x:vim
@@ -66,6 +70,9 @@ inoremap <C-r><C-r> <C-r>*
 inoremap <C-r>r <C-r>*
 cnoremap <C-r><C-r> <C-r>*
 
+" Clear search highlighting
+nnoremap <Esc> :nohlsearch<CR>
+
 " Scroll and search, then center the cursor line
 nnoremap <C-u> <C-u>zz
 vnoremap <C-u> <C-u>zz
@@ -90,12 +97,16 @@ inoremap <S-Down> <C-o>gj
 nnoremap <C-s> :update<CR>
 inoremap <C-s> <Esc>:update<CR>
 
+" Visual line end without selecting the trailing newline
+xnoremap $ g_
+
 " Indent/outdent and reselect. Indent width comes from Rider Code Style.
 vnoremap < <gv
 vnoremap > >gv
 
 " Insert-mode word deletion
 inoremap <C-BS> <C-w>
+inoremap <C-h> <C-w>
 inoremap <C-Del> <C-o>dw
 inoremap <C-d> <C-o>dw
 
@@ -158,6 +169,11 @@ nmap <C-Del> <Action>(EditorDeleteToWordEnd)
 xmap v <Action>(EditorSelectWord)
 xmap V <Action>(EditorUnSelectWord)
 
+
+" Multiple occurrences, matching the Neovim <leader>* workflow
+let g:multi_cursor_use_default_mapping = 0
+nmap <leader>* <Plug>NextWholeOccurrence
+xmap <leader>* <Plug>NextOccurrence
 
 " Surrounds, matching mini.surround in Neovim
 let g:surround_no_mappings = 1
@@ -264,6 +280,8 @@ nmap <leader>mm <Action>(ActivateBookmarksToolWindow)
 nmap <leader>T <Action>(ActivateTODOToolWindow)
 
 " Git
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap <leader>gp <Action>(VcsShowCurrentChangeMarker)
 nmap <leader>gP <Action>(Compare.SameVersion)
 nmap <leader>gd <Action>(Vcs.Show.Local.Changes)
