@@ -16,7 +16,6 @@ set smartcase
 set ideajoin
 set idearefactormode=keep
 set ideaoutsideeditor
-set classtextobj
 set mini-ai
 set surround
 set multiple-cursors
