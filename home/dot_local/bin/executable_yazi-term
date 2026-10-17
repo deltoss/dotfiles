@@ -1,2 +1,2 @@
 #!/bin/sh
-exec wezterm start -- nu -e "y $1"
+exec wezterm start --cwd "${1:-$PWD}" -- nu -e y
