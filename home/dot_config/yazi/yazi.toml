@@ -18,10 +18,13 @@ audio_play = [
 handbrake = [
   { run = 'ghb %s', orphan = true, desc = "HandBrake", for = "unix" },
 ]
+kdenlive = [
+  { run = 'kdenlive %s', orphan = true, desc = "Kdenlive", for = "unix" },
+]
 
 [open]
 prepend_rules = [
-	{ mime = "video/*", use = [ "play", "handbrake", "reveal" ] },
+	{ mime = "video/*", use = [ "play", "handbrake", "kdenlive", "reveal" ] },
 	{ mime = "audio/*", use = [ "audio_play", "play", "audacity", "reveal" ] },
 ]
 append_rules = [
