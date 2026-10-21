@@ -21,6 +21,16 @@ commands = [
   'mise use -g cmake@latest'
 ]
 
+[[packages.common]]
+name = "dust"
+description = "Disk usage overview"
+tool = "dust"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'mise use -g dust'
+]
+
 # --- cargo ---
 [[packages.common]]
 name = "cargo-binstall"
