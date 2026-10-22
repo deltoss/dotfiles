@@ -31,6 +31,16 @@ commands = [
   'mise use -g dust'
 ]
 
+[[packages.common]]
+name = "openapi-tui"
+description = "Browse remote OpenAPI specifications and send API requests"
+tool = "openapi-tui"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  'mise use -g github:zaghaghi/openapi-tui'
+]
+
 # --- cargo ---
 [[packages.common]]
 name = "cargo-binstall"
