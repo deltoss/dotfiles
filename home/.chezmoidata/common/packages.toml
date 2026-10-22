@@ -32,13 +32,13 @@ commands = [
 ]
 
 [[packages.common]]
-name = "openapi-tui"
-description = "Browse remote OpenAPI specifications and send API requests"
-tool = "openapi-tui"
+name = "oq"
+description = "Terminal OpenAPI specification viewer"
+tool = "oq"
 tags = ["all"]
 package_type = "commands"
 commands = [
-  'mise use -g github:zaghaghi/openapi-tui'
+  'mise use -g github:plutov/oq'
 ]
 
 # --- cargo ---
