@@ -22,7 +22,7 @@ disabled = false
 format = '[ 🕙 $time ]($style) '
 time_format = "%I:%M:%S %p"
 utc_time_offset = "+11"
-style = "bold bg:#8a15e2"
+style = "fg:#4c4f69 bg:#ccd0da"
 
 # Based on the Nerd Font Preset:
 #   https://starship.rs/presets/nerd-font.html
