@@ -41,6 +41,16 @@ commands = [
   'mise use -g github:plutov/oq'
 ]
 
+[[packages.common]]
+name = "pup"
+description = "Datadog CLI for monitors, logs and metrics"
+tool = "pup"
+tags = ["work"]
+package_type = "commands"
+commands = [
+  'mise use -g github:DataDog/pup'
+]
+
 # --- cargo ---
 [[packages.common]]
 name = "cargo-binstall"
