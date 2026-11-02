@@ -221,6 +221,16 @@ commands = [
 # --- uv ---
 
 [[packages.common]]
+name = "Hugging Face CLI"
+description = "Download and manage models from Hugging Face"
+tool = "hf"
+tags = ["all"]
+package_type = "commands"
+commands = [
+  "uv tool install huggingface_hub"
+]
+
+[[packages.common]]
 name = "harlequin"
 tool = "harlequin"
 tags = ["all"]

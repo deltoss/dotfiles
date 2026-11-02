@@ -507,6 +507,25 @@ id = "podman-compose"
 tool = "podman-compose"
 
 [[packages.linux]]
+name = "crun"
+description = "OCI runtime needed for Gufo GPU group access"
+tool = "crun"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "pacman"
+id = "crun"
+
+[[packages.linux]]
+name = "Gufo"
+description = "Strix Halo inference engine, run via Podman"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  "podman pull ghcr.io/gufo-org/toolboxes/gufo-runtime:latest"
+]
+
+[[packages.linux]]
 description = "Integrate your phone with your desktop"
 tags = ["all"]
 distros = ["cachyos"]

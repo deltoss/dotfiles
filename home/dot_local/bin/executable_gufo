@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+models_dir="${GUFO_MODELS_DIR:-$HOME/models}"
+mkdir -p "$models_dir"
+
+options=(
+  --rm
+  --userns=keep-id:uid=1000,gid=1000
+  --device /dev/kfd
+  --device /dev/dri
+  --group-add keep-groups
+  --ulimit memlock=-1
+  -v "$models_dir:/models:ro"
+)
+
+if [[ -t 0 && -t 1 ]]; then
+  options+=(-it)
+fi
+
+if [[ "${1:-}" == "serve" ]]; then
+  options+=(-p 127.0.0.1:8080:8080)
+fi
+
+exec podman run "${options[@]}" \
+  ghcr.io/gufo-org/toolboxes/gufo-runtime:latest \
+  gufo "$@"

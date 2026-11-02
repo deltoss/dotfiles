@@ -29,3 +29,7 @@ mechvibes_custom/
 .config/copyq/
 .config/ghb/
 {{- end }}
+# Gufo Podman wrapper is only for personal CachyOS machines.
+{{- if or (ne .osid "linux-cachyos") (ne .computerPurpose "personal") }}
+.local/bin/gufo
+{{- end }}
