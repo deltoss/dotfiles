@@ -85,21 +85,6 @@ Chezmoi deploys files from `home/`, selected by `.chezmoiroot`. Helpers, assets,
    chezmoi init deltoss/dotfiles --ssh --apply --verbose
    ```
 
-## Local AI (CachyOS)
-
-Personal CachyOS installs pull the Gufo Podman image and provide a `gufo` CLI wrapper in `~/.local/bin`. The Hugging Face `hf` CLI is installed on both Linux and Windows through `uv`.
-
-Download supported GGUF models to `~/models` using `hf download`. The wrapper mounts that directory read-only as `/models` inside the container, so pass container paths to Gufo:
-
-```bash
-hf download <repository> <model.gguf> --local-dir ~/models/<model-directory>
-gufo diagnose
-gufo chat --model /models/<model-directory>/<model.gguf>
-gufo serve --host 0.0.0.0 --port 8080 llm --model /models/<model-directory>/<model.gguf>
-```
-
-The server is published only on the host's `127.0.0.1:8080`. Set `GUFO_MODELS_DIR` to use a different host model directory. The wrapper requires the user to have access to `/dev/kfd` and `/dev/dri`.
-
 ## Hyprland Monitor Layout
 
 On the first interactive `chezmoi apply` with Hyprland running and both monitors connected, select the primary (left) and secondary (right) monitor. The setup saves their names and the primary's logical width in the unmanaged `~/.config/hypr/monitor-layout.lua`, then reloads Hyprland. If setup is unavailable, a later apply will try again. To change the layout later, run `nu scripts/linux/setup-hypr-monitors.nu` from this repository.

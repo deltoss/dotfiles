@@ -1,27 +1,25 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/usr/bin/env nu
 
-models_dir="${GUFO_MODELS_DIR:-$HOME/models}"
-mkdir -p "$models_dir"
+def --wrapped main [...args: string] {
+  let models_dir = ($env.GUFO_MODELS_DIR? | default ($nu.home-dir | path join "models") | path expand)
+  mkdir $models_dir
 
-options=(
-  --rm
-  --userns=keep-id:uid=1000,gid=1000
-  --device /dev/kfd
-  --device /dev/dri
-  --group-add keep-groups
-  --ulimit memlock=-1
-  -v "$models_dir:/models:ro"
-)
+  let options = [
+    "--rm"
+    "--userns=keep-id:uid=1000,gid=1000"
+    "--device" "/dev/kfd"
+    "--device" "/dev/dri"
+    "--group-add" "keep-groups"
+    "--ulimit" "memlock=-1"
+    "-v" $"($models_dir):/models:ro"
+  ]
 
-if [[ -t 0 && -t 1 ]]; then
-  options+=(-it)
-fi
+  let tty = if (is-terminal --stdin) and (is-terminal --stdout) { ["-it"] } else { [] }
+  let port = if ($args | get -o 0 | default "") == "serve" {
+    ["-p" "127.0.0.1:8080:8080"]
+  } else {
+    []
+  }
 
-if [[ "${1:-}" == "serve" ]]; then
-  options+=(-p 127.0.0.1:8080:8080)
-fi
-
-exec podman run "${options[@]}" \
-  ghcr.io/gufo-org/toolboxes/gufo-runtime:latest \
-  gufo "$@"
+  exec podman run ...$options ...$tty ...$port ghcr.io/gufo-org/toolboxes/gufo-runtime:latest gufo ...$args
+}
