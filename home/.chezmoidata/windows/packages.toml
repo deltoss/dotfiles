@@ -520,12 +520,12 @@ id = "AstroComma.AstroGrep"
 [[packages.windows]]
 tags = ["all"]
 package_type = "winget"
-id = "xanderfrangos.twinkletray"
+id = "jftuga.less"
 
 [[packages.windows]]
-tags = ["all"]
+tags = ["personal"]
 package_type = "winget"
-id = "jftuga.less"
+id = "xanderfrangos.twinkletray"
 
 [[packages.windows]]
 name = "OpenSSH Server"
