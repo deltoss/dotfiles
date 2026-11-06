@@ -168,10 +168,11 @@ end)
 --- WORKSPACE RULES ---
 -----------------------
 
-hl.workspace_rule({
-  workspace = "special:term",
-  on_created_empty = "uwsm app -- wezterm start --class wezterm-special",
-})
+hl.on("workspace.created", function(workspace)
+  if workspace.name == "special:term" and workspace.is_empty then
+    hl.exec_cmd("uwsm app -- wezterm start --class wezterm-special", { workspace = "special:term silent" })
+  end
+end)
 
 hl.workspace_rule({
   workspace = "special:ai-with-context",
