@@ -1,15 +1,17 @@
 {{ if hasPrefix "linux" .osid -}}
 #!/bin/bash
+set -euo pipefail
 
-DIR="~/nerd-fonts"
-if [ -d "$DIR" ]; then
-  rm -rf "$DIR"
+DIR="$HOME/nerd-fonts"
+if [ -d "$DIR/.git" ]; then
+  git -C "$DIR" pull --ff-only
+else
+  git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git "$DIR"
 fi
 
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git ~/nerd-fonts
-cd ~/nerd-fonts/
+cd "$DIR"
 {{- range .fonts.linux }}
-./install.sh {{ . }}
+./install.sh install "{{ . }}"
 {{- end }}
 
 mkdir -p ~/.local/share/fonts
