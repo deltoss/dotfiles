@@ -561,7 +561,7 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  'cargo install xremap --features hypr',
+  'cargo install --locked xremap --features hypr',
 ]
 
 # Grants xremap access to /dev/uinput without sudo (udev rule + input group).

@@ -59,7 +59,7 @@ tool = "cargo-binstall"
 tags = ["all"]
 package_type = "commands"
 commands = [
-  "cargo install cargo-binstall"
+  "cargo install --locked cargo-binstall"
 ]
 
 [[packages.common]]
@@ -108,7 +108,7 @@ tool = "gittype"
 tags = ["all"]
 package_type = "commands"
 commands = [
-  'cargo install gittype'
+  'cargo install --locked gittype'
 ]
 
 [[packages.common]]
@@ -118,7 +118,7 @@ tool = "agg"
 tags = ["all"]
 package_type = "commands"
 commands = [
-  'cargo install --git https://github.com/asciinema/agg'
+  'cargo install --locked --git https://github.com/asciinema/agg'
 ]
 
 [[packages.common]]
@@ -139,7 +139,7 @@ tool = "openscad-lsp"
 tags = ["personal"]
 package_type = "commands"
 commands = [
-  'cargo install openscad-lsp'
+  'cargo install --locked openscad-lsp'
 ]
 
 # --- npm ---
