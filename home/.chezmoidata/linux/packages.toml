@@ -863,6 +863,16 @@ id = "mailspring"
 # AUR (paru)
 ###############################################################################
 
+# The upstream-documented AUR package installs the official Matcha release binary.
+[[packages.linux]]
+name = "Matcha"
+description = "Terminal email client"
+tool = "matcha"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "aur"
+id = "matcha-client-bin"
+
 [[packages.linux]]
 name = "Libation"
 description = "Audible audiobook manager and downloader"
