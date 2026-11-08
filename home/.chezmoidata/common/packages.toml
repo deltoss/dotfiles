@@ -42,6 +42,17 @@ commands = [
 ]
 
 [[packages.common]]
+name = "Matcha"
+description = "Terminal email client"
+tool = "matcha"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+commands = [
+  'mise use -g github:floatpane/matcha@latest'
+]
+
+[[packages.common]]
 name = "pup"
 description = "Datadog CLI for monitors, logs and metrics"
 tool = "pup"

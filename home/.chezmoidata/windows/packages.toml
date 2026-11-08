@@ -338,14 +338,6 @@ package_type = "winget"
 id = "Foundry376.Mailspring"
 
 [[packages.windows]]
-name = "Matcha"
-description = "Terminal email client"
-tool = "matcha"
-tags = ["personal"]
-package_type = "winget"
-id = "floatpane.matcha"
-
-[[packages.windows]]
 tags = ["personal"]
 package_type = "winget"
 id = "calibre.calibre"
