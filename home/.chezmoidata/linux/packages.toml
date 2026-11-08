@@ -618,14 +618,27 @@ commands = [
 # DisplayLink Driver for KVMs and/or USB-C Hubs with Displays
 ###############################################################################
 
-# Run manually on machines with a DisplayLink dock. Choose the headers package
-# that matches the running kernel (uname -r), such as linux-cachyos-lts-headers
-# or linux-headers for other kernels.
-# paru -S linux-cachyos-headers
-# paru -S dkms evdi-dkms displaylink
-# sudo systemctl enable --now displaylink.service
-# sudo modprobe udl
-#
+[[packages.linux]]
+name = "DisplayLink"
+description = "Driver for DisplayLink docks and USB display adapters"
+tags = ["personal"]
+distros = ["cachyos"]
+package_type = "commands"
+precheck = '(glob /usr/lib/modules/*/pkgbase | is-not-empty)'
+commands = [
+  '''let kernel_headers = (
+  glob /usr/lib/modules/*/pkgbase
+  | each {|path|
+      let kernel = (open --raw $path | str trim)
+      $"($kernel)-headers"
+    }
+  | uniq
+)
+sudo pacman -S --needed --noconfirm ...$kernel_headers''',
+  "paru -S --needed --noconfirm dkms evdi-dkms displaylink",
+  "sudo systemctl enable --now displaylink.service",
+  "sudo modprobe udl",
+]
 # If evdi.ko is missing, check dkms status and journalctl -u dkms.
 
 ###############################################################################
