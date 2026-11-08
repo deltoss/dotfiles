@@ -621,25 +621,19 @@ commands = [
 [[packages.linux]]
 name = "DisplayLink"
 description = "Driver for DisplayLink docks and USB display adapters"
+tool = "DLSupportTool.sh"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "commands"
-precheck = '(glob /usr/lib/modules/*/pkgbase | is-not-empty)'
 commands = [
-  '''let kernel_headers = (
-  glob /usr/lib/modules/*/pkgbase
-  | each {|path|
-      let kernel = (open --raw $path | str trim)
-      $"($kernel)-headers"
-    }
-  | uniq
-)
-sudo pacman -S --needed --noconfirm ...$kernel_headers''',
-  "paru -S --needed --noconfirm dkms evdi-dkms displaylink",
-  "sudo systemctl enable --now displaylink.service",
+  "paru -S linux-cachyos-headers", # or linux-cachyos-lts-headers / linux-headers, matching whichever kernel `uname -r` shows DKMS needs headers for your exact running kernel or the build silently fails.",
+  "paru -S dkms evdi-dkms displaylink", # evdi-dkms builds the kernel module, displaylink installs the userspace binaries.
+  "sudo systemctl enable --now displaylink.service", # Enable the service
   "sudo modprobe udl",
+  # Troubleshooting:
+  # systemctl status displaylink.service
+  # If evdi.ko is missing, DKMS failed — check dkms status and journalctl -u dkms.
 ]
-# If evdi.ko is missing, check dkms status and journalctl -u dkms.
 
 ###############################################################################
 # CLI tools: scripts (cross-platform / native installers)
