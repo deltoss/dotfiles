@@ -1,13 +1,4 @@
 [[packages.windows]]
-name = "Bun"
-tool = "bun"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'powershell -c "irm bun.sh/install.ps1 | iex"'
-]
-
-[[packages.windows]]
 tags = ["all"]
 package_type = "winget"
 id = "Nushell.Nushell"
@@ -383,10 +374,8 @@ id = "OBSProject.OBSStudio"
 [[packages.windows]]
 name = "Sunshine"
 tags = ["personal"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-sunshine.nu"'
-]
+package_type = "winget"
+id = "LizardByte.Sunshine"
 
 [[packages.windows]]
 tags = ["personal"]
@@ -474,16 +463,6 @@ tags = ["personal"]
 package_type = "commands"
 commands = [
   "choco install -y bitwarden"
-]
-
-[[packages.windows]]
-name = "Vultr CLI"
-description = "CLI for Vultr VPS & cloud services"
-tool = "vultr-cli"
-tags = ["personal"]
-package_type = "commands"
-commands = [
-  "choco install -y vultr-cli"
 ]
 
 # The below only works with Windows, and has no direct Linux Counterpart
@@ -601,16 +580,6 @@ id = "Oracle.VirtualBox"
 tags = ["all"]
 package_type = "winget"
 id = "mulaRahul.Keyviz"
-
-[[packages.windows]]
-name = "Arduino CLI"
-description = "Command-line tool for compiling and uploading Arduino sketches"
-tool = "arduino-cli"
-tags = ["personal"]
-package_type = "commands"
-commands = [
-  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-arduino-cli.nu"'
-]
 
 [[packages.windows]]
 name = "AWS CLI"

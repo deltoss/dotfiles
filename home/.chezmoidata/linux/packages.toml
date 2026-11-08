@@ -94,15 +94,6 @@ postcommands = [
 ]
 
 [[packages.linux]]
-name = "Bun"
-tool = "bun"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'http get https://bun.com/install | bash'
-]
-
-[[packages.linux]]
 name = "dotnet"
 tool = "dotnet"
 tags = ["all"]
@@ -623,25 +614,15 @@ commands = [
   "brew install yakitrak/yakitrak/notesmd-cli"
 ]
 
-[[packages.linux]]
-name = "Vultr CLI"
-description = "CLI for Vultr VPS & cloud services"
-tool = "vultr-cli"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "brew install vultr/vultr-cli/vultr-cli",
-]
-
 ###############################################################################
 # DisplayLink Driver for KVMs and/or USB-C Hubs with Displays
 ###############################################################################
 
 [[packages.linux]]
-name = "Vultr CLI"
-description = "CLI for Vultr VPS & cloud services"
-tool = "vultr-cli"
+name = "DisplayLink"
+description = "Driver for DisplayLink docks and USB display adapters"
+# Check for the bundled support script to detect an existing driver install.
+tool = "DLSupportTool.sh"
 tags = ["personal"]
 distros = ["cachyos"]
 package_type = "commands"
@@ -1160,15 +1141,6 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "xdg-desktop-portal-gtk"
-
-[[packages.linux]]
-name = "Arduino CLI"
-description = "Command-line tool for compiling and uploading Arduino sketches"
-tool = "arduino-cli"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "arduino-cli"
 
 # Not yet in the official Arch repos; AUR is the first-party hyprwm distribution.
 [[packages.linux]]
