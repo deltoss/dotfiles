@@ -94,15 +94,6 @@ postcommands = [
 ]
 
 [[packages.linux]]
-name = "Bun"
-tool = "bun"
-tags = ["all"]
-package_type = "commands"
-commands = [
-  'http get https://bun.com/install | bash'
-]
-
-[[packages.linux]]
 name = "dotnet"
 tool = "dotnet"
 tags = ["all"]
@@ -631,7 +622,11 @@ tags = ["personal"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  "brew install vultr/vultr-cli/vultr-cli",
+  'mise use -g github:vultr/vultr-cli',
+]
+# Expose the binary in this run for the following DisplayLink entry's check.
+postcommands = [
+  '$env.PATH = ($env.PATH | prepend (mise which vultr-cli | str trim | path dirname))',
 ]
 
 ###############################################################################
@@ -1160,15 +1155,6 @@ tags = ["all"]
 distros = ["cachyos"]
 package_type = "pacman"
 id = "xdg-desktop-portal-gtk"
-
-[[packages.linux]]
-name = "Arduino CLI"
-description = "Command-line tool for compiling and uploading Arduino sketches"
-tool = "arduino-cli"
-tags = ["personal"]
-distros = ["cachyos"]
-package_type = "pacman"
-id = "arduino-cli"
 
 # Not yet in the official Arch repos; AUR is the first-party hyprwm distribution.
 [[packages.linux]]
