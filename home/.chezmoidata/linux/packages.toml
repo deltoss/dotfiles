@@ -621,6 +621,7 @@ commands = [
 [[packages.linux]]
 name = "DisplayLink"
 description = "Driver for DisplayLink docks and USB display adapters"
+# Check for the bundled support script to detect an existing driver install.
 tool = "DLSupportTool.sh"
 tags = ["personal"]
 distros = ["cachyos"]
