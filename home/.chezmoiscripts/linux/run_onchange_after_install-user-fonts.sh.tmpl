@@ -2,16 +2,14 @@
 #!/bin/bash
 set -euo pipefail
 
-DIR="$HOME/nerd-fonts"
-if [ -d "$DIR/.git" ]; then
-  git -C "$DIR" pull --ff-only
-else
-  git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git "$DIR"
-fi
+INSTALLER="$(mktemp)"
+trap 'rm -f "$INSTALLER"' EXIT
 
-cd "$DIR"
+curl -fsSL https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh -o "$INSTALLER"
+chmod u+x "$INSTALLER"
+
 {{- range .fonts.linux }}
-./install.sh install "{{ . }}"
+"$INSTALLER" install "{{ . }}"
 {{- end }}
 
 mkdir -p ~/.local/share/fonts
