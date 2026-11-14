@@ -324,10 +324,8 @@ description = "Command-line YAML/JSON/XML processor"
 tool = "yq"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "brew install yq",
-]
+package_type = "brew"
+id = "yq"
 
 [[packages.linux]]
 name = "FUSE"
@@ -539,10 +537,8 @@ description = "TUI for interacting with systemd services and their logs"
 tool = "systemctl-tui"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'cargo install systemctl-tui --locked'
-]
+package_type = "cargo"
+id = "systemctl-tui"
 
 [[packages.linux]]
 name = "xremap"
@@ -550,10 +546,9 @@ description = "Key remapper that supports application-specific keymaps"
 tool = "xremap"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'cargo install --locked xremap --features hypr',
-]
+package_type = "cargo"
+id = "xremap"
+args = ["--features", "hypr"]
 
 # Grants xremap access to /dev/uinput without sudo (udev rule + input group).
 # Separate entry so it applies even when xremap is already installed.
@@ -608,10 +603,10 @@ description = "Interact with Obsidian vaults from the terminal"
 tool = "notesmd-cli"
 tags = ["all"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
+package_type = "brew"
+id = "yakitrak/yakitrak/notesmd-cli"
+precommands = [
   "brew tap yakitrak/yakitrak",
-  "brew install yakitrak/yakitrak/notesmd-cli"
 ]
 
 ###############################################################################
@@ -801,10 +796,9 @@ name = "Koodo Reader"
 description = "E-book reader"
 tags = ["personal"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  "brew install --cask koodo-reader"
-]
+package_type = "brew"
+id = "koodo-reader"
+args = ["--cask"]
 
 [[packages.linux]]
 name = "Bitwarden"

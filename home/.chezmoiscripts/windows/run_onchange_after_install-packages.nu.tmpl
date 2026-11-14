@@ -50,6 +50,10 @@ let winget_ids = (
 {{ range $packagesToInstall }}
   {{- $name := "Unknown" -}}
   {{- if hasKey . "name" }}{{ $name = .name }}{{ else if hasKey . "id" }}{{ $name = .id }}{{ end }}
+  {{- $args := "" -}}
+  {{- range (get . "args" | default list) -}}
+    {{- $args = printf "%s %s" $args (. | quote) -}}
+  {{- end }}
 let display = {{ $name | quote }}
 print $"(ansi blue)Checking ($display)...(ansi reset)"
   {{- if hasKey . "tool" }}
@@ -83,6 +87,24 @@ if $already_installed {
       print $"  (ansi red)($display) failed, winget exit code ($code)(ansi reset)"
     }
   }
+  {{- else if eq .package_type "mise" }}
+  mise use -g{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "cargo" }}
+  cargo install --locked{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "cargo-binstall" }}
+  cargo binstall -y{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "npm" }}
+  npm install -g{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "uv" }}
+  uv tool install{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "dotnet" }}
+  dotnet tool install --global{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "scoop" }}
+  scoop install{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "choco" }}
+  choco install -y{{ $args }} {{ .id | quote }}
+  {{- else if eq .package_type "pip" }}
+  pip3 install{{ $args }} {{ .id | quote }}
   {{- else if eq .package_type "commands" }}
     {{- range .commands }}
   {{ . }}

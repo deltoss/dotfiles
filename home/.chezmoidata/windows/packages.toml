@@ -413,10 +413,8 @@ postcommands = [
 name = "podman-compose"
 tool = "podman-compose"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "pip3 install podman-compose"
-]
+package_type = "pip"
+id = "podman-compose"
 
 [[packages.windows]]
 description = "For mounting and syncing network storage"
@@ -441,29 +439,25 @@ id = "cjpais.Handy"
 name = "btop4win"
 tool = "btop"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "scoop install btop"
-]
+package_type = "scoop"
+id = "btop"
 
 [[packages.windows]]
 name = "Obsidian CLI"
 tool = "notesmd-cli"
 tags = ["all"]
-package_type = "commands"
-commands = [
+package_type = "scoop"
+id = "notesmd-cli"
+precommands = [
   "scoop bucket add scoop-yakitrak https://github.com/yakitrak/scoop-yakitrak.git",
-  "scoop install notesmd-cli"
 ]
 
 [[packages.windows]]
 name = "Bitwarden"
 precheck = "(choco list bitwarden | lines | last | parse '{packagesInstalled} {_}' | first | get packagesInstalled | into int) < 1"
 tags = ["personal"]
-package_type = "commands"
-commands = [
-  "choco install -y bitwarden"
-]
+package_type = "choco"
+id = "bitwarden"
 
 # The below only works with Windows, and has no direct Linux Counterpart
 
@@ -477,10 +471,8 @@ name = "MinGW"
 description = "Required dependency for Neovim plugins"
 tool = "gcc"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "choco install -y mingw"
-]
+package_type = "choco"
+id = "mingw"
 
 [[packages.windows]]
 tags = ["all"]

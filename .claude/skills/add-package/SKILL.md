@@ -22,12 +22,14 @@ Existing entries = schema source of truth. Read the target file first; fields ar
 ## Steps
 
 **1. Scope: which file?**
-- `common/`, *only* tools installed by identical `cargo`/`npm`/`uv`/`dotnet`
-  command on both OSes (`commands` + `tool`). Preferred for cross-platform CLIs.
-- `linux/`, pacman/aur/flatpak + Linux `commands`. Use `distros = ["cachyos"]`.
-- `windows/`, winget/choco/scoop + Windows `commands`.
+- `common/`, *only* tools installed by identical `mise`/`cargo`/`cargo-binstall`/
+  `npm`/`uv`/`dotnet` commands on both OSes. Use the matching package type with
+  `id` + `tool`; optional `args` holds separate arguments. Keep custom installs
+  as `commands`. Preferred for cross-platform CLIs.
+- `linux/`, pacman/aur/flatpak/brew + Linux `commands`. Use `distros = ["cachyos"]`.
+- `windows/`, winget/choco/scoop/pip + Windows `commands`.
 
-Default both machines. Cross-platform cargo/npm/uv/dotnet tool → one `common`
+Default both machines. Cross-platform mise/cargo/npm/uv/dotnet tool → one `common`
 entry. Else → one entry per OS file.
 
 **2. Official method: research, don't guess.** Determine the correct installation method by consulting the project's own official sources. Usually its' GitHub repository, official website, or documentation. **Not training data or community guesses**.

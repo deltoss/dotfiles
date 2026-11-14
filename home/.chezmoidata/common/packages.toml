@@ -2,9 +2,10 @@
 #
 # Each OS's install-packages script ranges over its own array PLUS this common
 # array (OS array first, common last). Only put entries here whose install
-# command AND idempotency check are identical on both OSes, i.e.
-# package_type = "commands" via cargo/npm/uv/dotnet with a `tool` (which-)check.
-# winget / apt / choco / scoop entries stay in the per-OS files.
+# command AND idempotency check are identical on both OSes.
+# Use mise/cargo/cargo-binstall/npm/uv/dotnet types with an `id` and a `tool`
+# (which-)check. Optional `args` are separate arguments, not shell code.
+# Keep custom installs as `commands`; OS-specific managers stay in per-OS files.
 #
 # The package MANAGERS (rust, node, …) have OS-specific installs, so they live in
 # the per-OS files and run before this bucket, cargo/npm are available here.
@@ -16,30 +17,24 @@ name = "cmake"
 description = "Cross-platform build system generator. Needed to build native deps from source."
 tool = "cmake"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'mise use -g cmake@latest'
-]
+package_type = "mise"
+id = "cmake@latest"
 
 [[packages.common]]
 name = "dust"
 description = "Disk usage overview"
 tool = "dust"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'mise use -g dust'
-]
+package_type = "mise"
+id = "dust"
 
 [[packages.common]]
 name = "oq"
 description = "Terminal OpenAPI specification viewer"
 tool = "oq"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'mise use -g github:plutov/oq'
-]
+package_type = "mise"
+id = "github:plutov/oq"
 
 [[packages.common]]
 name = "Arduino CLI"
@@ -47,19 +42,15 @@ description = "Command-line tool for compiling and uploading Arduino sketches"
 tool = "arduino-cli"
 tags = ["personal"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'mise use -g arduino-cli'
-]
+package_type = "mise"
+id = "arduino-cli"
 
 [[packages.common]]
 name = "Bun"
 tool = "bun"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'mise use -g bun'
-]
+package_type = "mise"
+id = "bun"
 
 [[packages.common]]
 name = "Matcha"
@@ -67,10 +58,8 @@ description = "Terminal email client"
 tool = "matcha"
 tags = ["personal"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'mise use -g github:floatpane/matcha@latest'
-]
+package_type = "mise"
+id = "github:floatpane/matcha@latest"
 
 [[packages.common]]
 name = "Vultr CLI"
@@ -78,20 +67,16 @@ description = "CLI for Vultr VPS & cloud services"
 tool = "vultr-cli"
 tags = ["personal"]
 distros = ["cachyos"]
-package_type = "commands"
-commands = [
-  'mise use -g github:vultr/vultr-cli'
-]
+package_type = "mise"
+id = "github:vultr/vultr-cli"
 
 [[packages.common]]
 name = "pup"
 description = "Datadog CLI for monitors, logs and metrics"
 tool = "pup"
 tags = ["work"]
-package_type = "commands"
-commands = [
-  'mise use -g github:DataDog/pup'
-]
+package_type = "mise"
+id = "github:DataDog/pup"
 
 # --- cargo ---
 [[packages.common]]
@@ -99,90 +84,74 @@ name = "cargo-binstall"
 description = "Binary package manager for Rust"
 tool = "cargo-binstall"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "cargo install --locked cargo-binstall"
-]
+package_type = "cargo"
+id = "cargo-binstall"
 
 [[packages.common]]
 name = "ripgrep"
 description = "Ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern"
 tool = "rg"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y ripgrep'
-]
+package_type = "cargo-binstall"
+id = "ripgrep"
 
 [[packages.common]]
 name = "ast-grep"
 description = "CLI tool for code structural search, lint, and rewriting"
 tool = "sg"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y ast-grep'
-]
+package_type = "cargo-binstall"
+id = "ast-grep"
 
 [[packages.common]]
 name = "podlet"
 description = "Converts docker syntax or docker-compose.yml files to podman equivalents"
 tool = "podlet"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y podlet'
-]
+package_type = "cargo-binstall"
+id = "podlet"
 
 [[packages.common]]
 name = "presenterm"
 description = "Create presentations in markdown format and run them from your terminal"
 tool = "presenterm"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo binstall -y presenterm'
-]
+package_type = "cargo-binstall"
+id = "presenterm"
 
 [[packages.common]]
 name = "gittype"
 tool = "gittype"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo install --locked gittype'
-]
+package_type = "cargo"
+id = "gittype"
 
 [[packages.common]]
 name = "agg"
 description = "Used to convert ASCIICasts (i.e. `wezterm record`) to gif formats"
 tool = "agg"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'cargo install --locked --git https://github.com/asciinema/agg'
-]
+package_type = "cargo"
+id = "https://github.com/asciinema/agg"
+args = ["--git"]
 
 [[packages.common]]
 name = "zellij"
 description = "Terminal multiplexer"
 tool = "zellij"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  # Extra flags to disable the web client at it was causing issues with Windows
-  'cargo install --locked zellij --no-default-features --features plugins_from_target'
-]
+package_type = "cargo"
+id = "zellij"
+# Disable the web client because it was causing issues with Windows.
+args = ["--no-default-features", "--features", "plugins_from_target"]
 
 [[packages.common]]
 name = "openscad-lsp"
 description = "LSP for OpenSCAD"
 tool = "openscad-lsp"
 tags = ["personal"]
-package_type = "commands"
-commands = [
-  'cargo install --locked openscad-lsp'
-]
+package_type = "cargo"
+id = "openscad-lsp"
 
 # --- npm ---
 [[packages.common]]
@@ -190,75 +159,59 @@ name = "node-notifier-cli"
 description = "Cross-platform desktop notification CLI"
 tool = "notify"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g node-notifier-cli"
-]
+package_type = "npm"
+id = "node-notifier-cli"
 
 [[packages.common]]
 name = "Typescript"
 tool = "tsc"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g typescript"
-]
+package_type = "npm"
+id = "typescript"
 
 [[packages.common]]
 name = "Biome"
 description = "Linter + formatter for Javascript and Typescript"
 tool = "biome"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @biomejs/biome"
-]
+package_type = "npm"
+id = "@biomejs/biome"
 
 [[packages.common]]
 name = "bru - Bruno CLI"
 tool = "bru"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @usebruno/cli"
-]
+package_type = "npm"
+id = "@usebruno/cli"
 
 [[packages.common]]
 name = "Mermaid CLI"
 description = "A command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output. Needed as a dependency for presenterm"
 tool = "mmdc"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @mermaid-js/mermaid-cli"
-]
+package_type = "npm"
+id = "@mermaid-js/mermaid-cli"
 
 [[packages.common]]
 name = "Redocly CLI"
 tool = "redocly"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g @redocly/cli"
-]
+package_type = "npm"
+id = "@redocly/cli"
 
 [[packages.common]]
 name = "Bitwarden CLI"
 tool = "bw"
 tags = ["personal"]
-package_type = "commands"
-commands = [
-  "npm install -g @bitwarden/cli"
-]
+package_type = "npm"
+id = "@bitwarden/cli"
 
 [[packages.common]]
 name = "Hunk"
 tool = "hunk"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "npm install -g hunkdiff"
-]
+package_type = "npm"
+id = "hunkdiff"
 
 # --- uv ---
 
@@ -267,29 +220,24 @@ name = "Hugging Face CLI"
 description = "Download and manage models from Hugging Face"
 tool = "hf"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "uv tool install huggingface_hub"
-]
+package_type = "uv"
+id = "huggingface_hub"
 
 [[packages.common]]
 name = "harlequin"
 tool = "harlequin"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  "uv tool install 'harlequin[postgres,mysql,s3,odbc]'"
-]
+package_type = "uv"
+id = "harlequin[postgres,mysql,s3,odbc]"
 
 [[packages.common]]
 name = "yt-dlp"
 description = "Installs python version to be used with yt-dlp"
 tool = "yt-dlp"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'uv tool install --python python3.12 --with pip "yt-dlp[default]"'
-]
+package_type = "uv"
+id = "yt-dlp[default]"
+args = ["--python", "python3.12", "--with", "pip"]
 
 # --- others ---
 [[packages.common]]
@@ -297,10 +245,8 @@ name = "ilspycmd"
 description = "To decomplie CSharp code. Useful CLI tool for AI agents."
 tool = "ilspycmd"
 tags = ["all"]
-package_type = "commands"
-commands = [
-  'dotnet tool install --global ilspycmd'
-]
+package_type = "dotnet"
+id = "ilspycmd"
 
 [[packages.common]]
 name = "BOSL2"
