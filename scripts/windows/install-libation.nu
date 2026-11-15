@@ -8,7 +8,7 @@ let locations = [
 ]
 
 let installed = $locations | any { path exists }
-if ($installed | is-not-empty) {
+if $installed {
   print $"(ansi green)Already installed at: ($installed)(ansi reset)"
   print $"(ansi green)Skipping installation...(ansi reset)"
   exit 0

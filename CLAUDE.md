@@ -14,10 +14,10 @@ Personal [chezmoi](https://www.chezmoi.io/) dotfiles for both Windows and Linux.
 
 Each OS's `install-packages` consumer installs its own `home/.chezmoidata/<os>/packages.toml` (`[[packages.<os>]]`) **plus** the shared `home/.chezmoidata/common/packages.toml` (`[[packages.common]]`), concatenated **OS-first, common-last**. `common` holds only packages whose install command + idempotency check are identical on both OSes (mise/cargo/cargo-binstall/npm/uv/dotnet types + a `tool` check, or custom `commands`); the per-OS files hold OS-specific manager entries and the package managers themselves, which therefore install before the common bucket needs them. Entries are filtered by `tags` (`all` always; `personal`/`work` must match `.computerPurpose`).
 
-The entry schema (`tool`, `precheck`, `commands`, `precommands`/`postcommands`, `package_type`, …) is the source-of-truth in the install-packages consumer template and the existing entries, read it there rather than duplicating it. The same data-file + consumer pattern applies to fonts, steam-apps, models, and uninstalls.
+The entry schema (`tool`, `precheck`, `commands`, `precommands`/`postcommands`, `package_type`, …) is the source-of-truth in the install-packages consumer template and the existing entries, read it there rather than duplicating it. Root `update.nu` reads the same data for manual upgrades: `update_commands` overrides the update action, absent means re-run `commands` for custom entries (native per-package updates for other types), and `[]` skips. System upgrades are explicit commands in `packages.toml`; pacman/AUR entries without overrides are covered by that manifest step, not generated system transactions. Installers ignore `update_commands`; upgrades do not replay install hooks. The same data-file + consumer pattern applies to fonts, steam-apps, models, and uninstalls.
 
 ## Working on it
 
 - Render a template: `cat file.tmpl | chezmoi execute-template`; inspect data: `chezmoi data`.
 - The consumers *emit* Nushell, so validate without running: render, then `nu-check` the output.
-- Check package types and OS/tag filtering without installing anything: `nu scripts/tests/check-package-types.nu`.
+- Preview upgrades: `nu update.nu --dry-run`; filter with `--type mise`. Show annotated examples with `nu update.nu --help`.

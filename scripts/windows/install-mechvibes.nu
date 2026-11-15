@@ -4,11 +4,12 @@ let locations = [
   $"($env.ProgramFiles)\\Mechvibes"
   $"($env.'ProgramFiles(x86)')\\Mechvibes"
   $"($env.LOCALAPPDATA)\\Mechvibes"
+  $"($env.LOCALAPPDATA)\\Programs\\Mechvibes"
   $"($env.APPDATA)\\Mechvibes"
 ]
 
 let installed = $locations | any { path exists }
-if ($installed | is-not-empty) {
+if $installed {
   print $"(ansi green)Already installed at: ($installed)(ansi reset)"
   print $"(ansi green)Skipping installation...(ansi reset)"
   exit 0

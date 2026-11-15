@@ -85,6 +85,27 @@ Chezmoi deploys files from `home/`, selected by `.chezmoiroot`. Helpers, assets,
    chezmoi init deltoss/dotfiles --ssh --apply --verbose
    ```
 
+## Upgrading packages
+
+Run the updater from the repository, separately from `chezmoi apply`:
+
+```nu
+nu update.nu --dry-run       # Preview; does not run updates or installed checks
+nu update.nu                 # Upgrade packages for this machine
+nu update.nu --type mise     # Limit to one package_type
+```
+
+Run `nu update.nu --help` for annotated usage examples.
+
+Package loading and selection live in `scripts/packages.nu`. It returns full manifest entries for installs or updates, with OS-specific packages before common ones:
+
+```nu
+use scripts/packages.nu [read-machine-data select-packages]
+select-packages (read-machine-data) --type mise
+```
+
+Run selection tests with `nu --no-config-file scripts/tests/packages.nu`.
+
 ## Hyprland Monitor Layout
 
 On the first interactive `chezmoi apply` with Hyprland running and both monitors connected, select the primary (left) and secondary (right) monitor. The setup saves their names and the primary's logical width in the unmanaged `~/.config/hypr/monitor-layout.lua`, then reloads Hyprland. If setup is unavailable, a later apply will try again. To change the layout later, run `nu scripts/linux/setup-hypr-monitors.nu` from this repository.

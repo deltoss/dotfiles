@@ -10,6 +10,9 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-dotnet.nu"'
 ]
+update_commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-dotnet.nu"'
+]
 
 [[packages.windows]]
 description = "Many applications requires these as dependencies, such as Rust (msvc)"
@@ -36,6 +39,7 @@ package_type = "commands"
 commands = [
   "powershell -Command 'iex \"& {$(irm get.scoop.sh)} -RunAsAdmin\"'"
 ]
+update_commands = ["scoop update"]
 
 [[packages.windows]]
 name = "uv"
@@ -46,6 +50,7 @@ package_type = "commands"
 commands = [
   'powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"'
 ]
+update_commands = ["uv self update"]
 
 [[packages.windows]]
 tags = ["all"]
@@ -73,6 +78,7 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-rust.nu"'
 ]
+update_commands = ["rustup update"]
 
 [[packages.windows]]
 tags = ["all"]
@@ -86,6 +92,7 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-libation.nu"'
 ]
+update_commands = ["winget upgrade --id rmcrackan.Libation --exact"]
 
 [[packages.windows]]
 tags = ["all"]
@@ -99,6 +106,8 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-mechvibes.nu"'
 ]
+# Upgrades legacy v2 to the current rewritten app.
+update_commands = ["winget upgrade --id HaiNguyen.Mechvibes --exact"]
 
 [[packages.windows]]
 tags = ["all"]
@@ -286,6 +295,9 @@ tags = ["all"]
 package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-wezterm-nightly.nu"'
+]
+update_commands = [
+  'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-wezterm-nightly.nu"'
 ]
 
 [[packages.windows]]
@@ -526,6 +538,7 @@ package_type = "commands"
 commands = [
   'powershell -File $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/setup-ssh-server.ps1"'
 ]
+update_commands = [] # Serviced by Windows Update; do not replay SSH configuration.
 
 [[packages.windows]]
 name = "Syncthing"

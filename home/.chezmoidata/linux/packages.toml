@@ -14,6 +14,9 @@ package_type = "commands"
 commands = [
   "sudo pacman -Syu --noconfirm",
 ]
+update_commands = [
+  "paru -Syu", # Updates repository packages through pacman, plus AUR packages.
+]
 
 [[packages.linux]]
 name = "Rust"
@@ -25,6 +28,7 @@ commands = [
   "sudo pacman -S --needed --noconfirm rustup",
   "rustup default stable",
 ]
+update_commands = ["rustup update"]
 postcommands = [
   '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".cargo" "bin"))',
 ]
@@ -62,6 +66,7 @@ package_type = "commands"
 commands = [
   'with-env { NONINTERACTIVE: "1" } { http get https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash }',
 ]
+update_commands = ["brew update"]
 postcommands = [
   '$env.PATH = ($env.PATH | prepend ["/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin"])',
 ]
@@ -89,6 +94,7 @@ commands = [
   "sudo pacman -S --needed --noconfirm nodejs npm",
   'npm config set prefix ($nu.home-dir | path join ".local")',
 ]
+update_commands = [] # Updated by the system transaction; do not replay setup.
 postcommands = [
   '$env.PATH = ($env.PATH | prepend ($nu.home-dir | path join ".local" "bin"))',
 ]
@@ -130,6 +136,7 @@ package_type = "commands"
 commands = [
   "sudo pacman -S --needed --noconfirm python python-pip",
 ]
+update_commands = [] # Updated by the system transaction.
 
 ###############################################################################
 # CLI tools
@@ -560,6 +567,7 @@ package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/linux/setup-xremap-uinput.nu"',
 ]
+update_commands = [] # One-time permissions setup, not a software update.
 
 # television's binary is `tv`.
 [[packages.linux]]
@@ -894,6 +902,7 @@ commands = [
   "sudo pacman -S --needed --noconfirm flatpak",
   "sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo",
 ]
+update_commands = [] # Package updated by the system transaction; keep remotes.
 
 [[packages.linux]]
 name = "OrcaSlicer"

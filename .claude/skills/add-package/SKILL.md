@@ -57,6 +57,11 @@ before consumers, `cargo-binstall` before `cargo binstall` users, Flatpak
 remote-setup before flatpak apps. `tags`: `["all"]` default (dev), `personal`
 (media), `work` (job), state your guess.
 
+For custom installs, add `update_commands` when upgrading differs from
+installation. `update.nu` uses it instead of the normal update action;
+without it, `commands` entries re-run `commands`. Use `[]` to disable updates.
+Install-only `precheck`, `precommands`, and `postcommands` are not replayed.
+
 **6. Validate.**
 ```
 chezmoi data

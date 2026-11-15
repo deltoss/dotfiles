@@ -6,6 +6,8 @@
 # Use mise/cargo/cargo-binstall/npm/uv/dotnet types with an `id` and a `tool`
 # (which-)check. Optional `args` are separate arguments, not shell code.
 # Keep custom installs as `commands`; OS-specific managers stay in per-OS files.
+# `update_commands` overrides the action in update.nu only. Without it, custom
+# entries re-run `commands`. Set update_commands = [] to skip updates.
 #
 # The package MANAGERS (rust, node, …) have OS-specific installs, so they live in
 # the per-OS files and run before this bucket, cargo/npm are available here.
@@ -118,13 +120,6 @@ tool = "presenterm"
 tags = ["all"]
 package_type = "cargo-binstall"
 id = "presenterm"
-
-[[packages.common]]
-name = "gittype"
-tool = "gittype"
-tags = ["all"]
-package_type = "cargo"
-id = "gittype"
 
 [[packages.common]]
 name = "agg"
@@ -255,4 +250,8 @@ tags = ["personal"]
 package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/install-bosl2.nu"',
+]
+update_commands = [
+  'let target = ("~/.local/share/OpenSCAD/libraries/BOSL2" | path expand)',
+  'if ($target | path exists) { git -C $target pull --ff-only }',
 ]
