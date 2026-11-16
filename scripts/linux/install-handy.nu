@@ -28,8 +28,16 @@ def main [] {
   mkdir $bin_dir
 
   print $"Downloading ($asset.name)..."
-  http get $asset.browser_download_url | save -f $dest
-  chmod +x $dest
+  # Rename a completed download so a running AppImage can keep using the old file.
+  let download = (mktemp --tmpdir-path $bin_dir "Handy.AppImage.XXXXXX")
+  try {
+    http get $asset.browser_download_url | save -f $download
+    chmod +x $download
+    mv -f $download $dest
+  } catch {|err|
+    rm -f $download
+    error make $err
+  }
 
   let apps_dir = ($nu.home-dir | path join ".local" "share" "applications")
   mkdir $apps_dir
@@ -45,5 +53,3 @@ Terminal=false
 
   print $"Handy installed to ($dest). Grant microphone access on first launch."
 }
-
-main

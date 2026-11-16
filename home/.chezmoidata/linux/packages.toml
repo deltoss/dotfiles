@@ -630,14 +630,15 @@ tags = ["personal"]
 distros = ["cachyos"]
 package_type = "commands"
 commands = [
-  "paru -S linux-cachyos-headers", # or linux-cachyos-lts-headers / linux-headers, matching whichever kernel `uname -r` shows DKMS needs headers for your exact running kernel or the build silently fails.",
-  "paru -S dkms evdi-dkms displaylink", # evdi-dkms builds the kernel module, displaylink installs the userspace binaries.
+  "paru -S --needed --noconfirm linux-cachyos-headers", # or linux-cachyos-lts-headers / linux-headers, matching whichever kernel `uname -r` shows DKMS needs headers for your exact running kernel or the build silently fails.",
+  "paru -S --needed --noconfirm dkms evdi-dkms displaylink", # evdi-dkms builds the kernel module, displaylink installs the userspace binaries.
   "sudo systemctl enable --now displaylink.service", # Enable the service
   "sudo modprobe udl",
   # Troubleshooting:
   # systemctl status displaylink.service
   # If evdi.ko is missing, DKMS failed — check dkms status and journalctl -u dkms.
 ]
+update_commands = [] # Updated by the system transaction; do not replay setup.
 
 ###############################################################################
 # CLI tools: scripts (cross-platform / native installers)
