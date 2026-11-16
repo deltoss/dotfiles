@@ -131,17 +131,6 @@ id = "https://github.com/asciinema/agg"
 args = ["--git"]
 
 [[packages.common]]
-name = "zellij"
-description = "Terminal multiplexer"
-tool = "zellij"
-tags = ["all"]
-package_type = "cargo"
-id = "zellij"
-# Disable the web client because it was causing issues with Windows.
-# Bundle OpenSSL to avoid incompatibilities with the system OpenSSL version.
-args = ["--no-default-features", "--features", "plugins_from_target,vendored_curl"]
-
-[[packages.common]]
 name = "openscad-lsp"
 description = "LSP for OpenSCAD"
 tool = "openscad-lsp"
@@ -243,6 +232,7 @@ tool = "ilspycmd"
 tags = ["all"]
 package_type = "dotnet"
 id = "ilspycmd"
+args = ["--ignore-failed-sources"]
 
 [[packages.common]]
 name = "BOSL2"

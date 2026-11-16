@@ -143,6 +143,16 @@ update_commands = [] # Updated by the system transaction.
 ###############################################################################
 
 [[packages.linux]]
+name = "zellij"
+description = "Terminal multiplexer"
+tool = "zellij"
+tags = ["all"]
+package_type = "cargo"
+id = "zellij"
+# Keep the no-web build with bundled OpenSSL.
+args = ["--no-default-features", "--features", "plugins_from_target,vendored_curl"]
+
+[[packages.linux]]
 name = "SecretSpec"
 description = "Declarative interface for secrets providers"
 tool = "secretspec"

@@ -30,6 +30,7 @@ id = "Microsoft.VisualStudio.BuildTools"
 tags = ["all"]
 package_type = "winget"
 id = "Chocolatey.Chocolatey"
+update_commands = ["gsudo choco upgrade chocolatey --yes"]
 
 [[packages.windows]]
 name = "Scoop"
@@ -84,6 +85,23 @@ update_commands = ["rustup update"]
 tags = ["all"]
 package_type = "winget"
 id = "jdx.mise"
+
+[[packages.windows]]
+name = "zellij"
+description = "Terminal multiplexer"
+tool = "zellij"
+tags = ["all"]
+package_type = "cargo-binstall"
+id = "zellij"
+# OS entries run before the common cargo-binstall entry on a fresh install.
+precommands = ["if (which cargo-binstall | is-empty) { cargo install --locked cargo-binstall }"]
+# Upstream metadata uses .tar.gz, but the Windows release is a ZIP.
+args = [
+  "--strategies", "crate-meta-data",
+  "--targets", "x86_64-pc-windows-msvc",
+  "--pkg-fmt", "zip",
+  "--pkg-url", "{repo}/releases/download/v{version}/{name}-{target}.zip",
+]
 
 [[packages.windows]]
 name = "Libation"
