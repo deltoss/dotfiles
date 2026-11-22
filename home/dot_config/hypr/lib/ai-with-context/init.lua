@@ -19,7 +19,7 @@ zellij delete-session --force "$session" >/dev/null 2>&1 || true
 exit "$status"
 ]]
 local PI_EXTENSIONS = {
-  HOME .. "/.pi/agent/extensions/agent-status.ts",
+  HOME .. "/.pi/agent/extensions/agent-status",
   HOME .. "/.pi/agent/extensions/terminal.ts",
   HOME .. "/.pi/agent/npm/node_modules/pi-web-access/index.ts",
 }
