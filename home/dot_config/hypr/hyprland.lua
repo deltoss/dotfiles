@@ -1,6 +1,5 @@
 local apps = require("lib/apps")
 local wallpaper = require("lib/wallpaper")
-local ai_with_context = require("lib.ai-with-context")
 local home = os.getenv("HOME")
 local config_home = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config")
 local wp_dir = home .. "/Synced/Images/Live Wallpapers"
@@ -174,10 +173,6 @@ hl.on("workspace.created", function(workspace)
   end
 end)
 
-hl.workspace_rule({
-  workspace = "special:ai-with-context",
-})
-
 -----------------------
 ---- WINDOWS RULES ----
 -----------------------
@@ -192,17 +187,6 @@ local steamGames = {
 }
 
 hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace = "name:0" })
-hl.window_rule({
-  match = { class = "ai-with-context" },
-  workspace = "special:ai-with-context",
-  float = true,
-  center = true,
-  opacity = "0.9 0.9 override",
-  size = {
-    "(monitor_w*0.75)",
-    "(monitor_h*0.75)",
-  },
-})
 hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" })
 hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
 hl.window_rule({
@@ -567,7 +551,7 @@ hl.bind("SUPER + M", apps.run_or_raise("Mailspring", "uwsm app -- mailspring"))
 hl.bind(PRIMARYMOD .. " + Period", apps.run_or_raise("1password", "uwsm app -- 1password --quick-access"))
 hl.bind(PRIMARYMOD .. " + Space", apps.run_or_raise("1password", "uwsm app -- 1password"))
 hl.bind("SUPER + Slash", hl.dsp.workspace.toggle_special("term"))
-hl.bind("SUPER + A", ai_with_context.toggle, { description = "AI: Open Pi with focused window context" })
+require("lib.autoload").setup(config_home .. "/hypr/lib/autoload")
 hl.bind("SUPER + Period", hl.dsp.exec_cmd("vicinae vicinae://launch/core/search-emojis"))
 
 -- Window + Alt + F - [F]ocus Steam Game
