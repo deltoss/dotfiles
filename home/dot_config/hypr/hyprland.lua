@@ -345,11 +345,12 @@ end
 -- "e-1"/"e+1" from `ws` actually land on another open workspace. At the true
 -- edge we want PRIMARYMOD/SECONDARYMOD to do nothing, not wrap across the whole desktop.
 local function hasFurtherWorkspace(ws, dir)
-  if not ws then
+  -- Special and named workspaces have no numeric ID and cannot be ordered here.
+  if not ws or not ws.id then
     return false
   end
   for _, w in ipairs(hl.get_workspaces()) do
-    local further = (dir == "l" and w.id < ws.id) or (dir == "r" and w.id > ws.id)
+    local further = w.id and ((dir == "l" and w.id < ws.id) or (dir == "r" and w.id > ws.id))
     if w.windows > 0 and further then
       return true
     end
