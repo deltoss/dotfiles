@@ -1,7 +1,7 @@
 continuation_prompt = '▶▶ '
 
 [git_status]
-disabled = true
+disabled = false
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
