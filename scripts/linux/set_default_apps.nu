@@ -22,6 +22,7 @@ def main [] {
   set-default "vlc.desktop" "video"
   video-aliases | each { |mime| set-default "vlc.desktop" $mime }
   set-default "yazi.desktop" "inode/directory"
+  set-default "app.zen_browser.zen.desktop" "application/pdf"
   set-default "zellij-code-editor.desktop" "text"
   set-default "zellij-code-editor.desktop" "application/sql"
   set-default "zellij-code-editor.desktop" "application/x-ruby"
@@ -52,7 +53,9 @@ def video-aliases [] {
 # Sets `desktop` as the xdg-mime default for either one exact mimetype or every
 # mimetype in a top-level category from the system mime database.
 def set-default [desktop: string, category_or_mimetype: string] {
-  if not ($"/usr/share/applications/($desktop)" | path exists) {
+  let data_home = ($env.XDG_DATA_HOME? | default ("~/.local/share" | path expand))
+  let data_dirs = ($env.XDG_DATA_DIRS? | default "/usr/local/share:/usr/share" | split row ":" | prepend $data_home)
+  if not ($data_dirs | any { |dir| $dir | path join "applications" $desktop | path exists }) {
     print $"  (ansi yellow)($desktop) not found, skipping(ansi reset)"
     return
   }
