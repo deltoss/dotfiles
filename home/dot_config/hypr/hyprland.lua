@@ -186,32 +186,32 @@ local steamGames = {
   { id = 2826180, name = "Chill Pulse" },
 }
 
-hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace = "name:0" })
-hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "2" })
-hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "2", float = true })
+hl.window_rule({ match = { class = "^(org\\.wezfurlong\\.wezterm)$" }, workspace = "1" })
+hl.window_rule({ match = { class = "^(Code|code|code-oss)$" }, workspace = "3" })
+hl.window_rule({ match = { class = "^([Ss]team)$" }, workspace = "3", float = true })
 hl.window_rule({
   match = { class = "^(firefox|brave-browser|google-chrome|chromium|zen|app.zen_browser.zen)$" },
-  workspace = "3",
+  workspace = "4",
 })
-hl.window_rule({ match = { class = "^([Aa]nki)$" }, workspace = "3" })
+hl.window_rule({ match = { class = "^([Aa]nki)$" }, workspace = "4" })
 -- TODO: float Anki dialogs (title not ending in "Anki"); verify titles with `hyprctl clients`.
-hl.window_rule({ match = { class = "^(Postman|postman|[Bb]runo)$" }, workspace = "4" })
-hl.window_rule({ match = { class = "^(VirtualBoxVM)$" }, workspace = "4" })
-hl.window_rule({ match = { class = ".+[Oo]bsidian$" }, workspace = "5" })
-hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "6" })
-hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "7" })
-hl.window_rule({ match = { class = "^(com\\.obsproject\\.Studio)$" }, workspace = "7" })
-hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "7" })
-hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "8" })
+hl.window_rule({ match = { class = "^(Postman|postman|[Bb]runo)$" }, workspace = "5" })
+hl.window_rule({ match = { class = "^(VirtualBoxVM)$" }, workspace = "5" })
+hl.window_rule({ match = { class = ".+[Oo]bsidian$" }, workspace = "6" })
+hl.window_rule({ match = { class = "^([Tt]odoist)$" }, workspace = "7" })
+hl.window_rule({ match = { class = "^(Mailspring|mailspring)$" }, workspace = "8" })
+hl.window_rule({ match = { class = "^(com\\.obsproject\\.Studio)$" }, workspace = "8" })
+hl.window_rule({ match = { class = "^(VirtualBox Manager)$" }, workspace = "8" })
+hl.window_rule({ match = { class = "^(discord|Slack)$" }, workspace = "9" })
 hl.window_rule({
   match = { class = "steam" },
   float = true,
   center = true,
 })
-for _, g in ipairs(steamGames) do -- Lo-fi games -> workspace 9
+for _, g in ipairs(steamGames) do -- Lo-fi games -> workspace 10
   hl.window_rule({
     match = { class = "^(steam_app_" .. g.id .. ")$" },
-    workspace = "9",
+    workspace = "10",
     opacity = "1 override",
   })
 end
@@ -484,7 +484,7 @@ local wsKeys = {
   ["7"] = 7,
   ["8"] = 8,
   ["9"] = 9,
-  ["0"] = "name:0",
+  ["0"] = 10,
 }
 for key, ws in pairs(wsKeys) do
   hl.bind(PRIMARYMOD .. " + " .. key, hl.dsp.focus({ workspace = ws }))

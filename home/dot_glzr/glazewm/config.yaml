@@ -96,9 +96,6 @@ window_behavior:
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
 workspaces:
-  - name: "0"
-    display_name: N
-    bind_to_monitor: 0
   - name: "1"
     bind_to_monitor: 0
   - name: "2"
@@ -110,12 +107,14 @@ workspaces:
   - name: "5"
     bind_to_monitor: 0
   - name: "6"
-    bind_to_monitor: 1
+    bind_to_monitor: 0
   - name: "7"
     bind_to_monitor: 1
   - name: "8"
     bind_to_monitor: 1
   - name: "9"
+    bind_to_monitor: 1
+  - name: "10"
     bind_to_monitor: 1
   - name: "S1"
     display_name: "S1"
@@ -150,8 +149,8 @@ window_rules:
           equals: quake
   - commands:
       - set-floating
-      - move --workspace 0
-      - focus --workspace 0
+      - move --workspace 1
+      - focus --workspace 1
       - set-tiling
     match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
@@ -160,15 +159,15 @@ window_rules:
           not_regex: '^quake$'
   - commands:
       - set-floating
-      - move --workspace 2
-      - focus --workspace 2
+      - move --workspace 3
+      - focus --workspace 3
       - set-tiling
     match: # Set initially to tiling breaks these apps, so first-set to floating
       - window_process:
           equals: Code # Visual Studio Code
   - commands:
-      - move --workspace 2
-      - focus --workspace 2
+      - move --workspace 3
+      - focus --workspace 3
       - set-floating
     match:
       - window_process:
@@ -191,8 +190,8 @@ window_rules:
       - window_process:
           equals: rider64 # JetBrains Rider
   - commands:
-      - move --workspace 2
-      - focus --workspace 2
+      - move --workspace 3
+      - focus --workspace 3
       - set-tiling
     match:
       - window_process:
@@ -204,8 +203,8 @@ window_rules:
         window_class:
           equals: SunAwtFrame # Main windows
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 4
+      - focus --workspace 4
       - set-floating
     match:
       - window_process:
@@ -215,15 +214,15 @@ window_rules:
       - window_process:
           equals: 'LEAP Desktop'
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 4
+      - focus --workspace 4
       - set-tiling
     match:
       - window_process:
           regex: firefox|msedge|brave|chrome|zen
   - commands:
-      - move --workspace 3
-      - focus --workspace 3
+      - move --workspace 4
+      - focus --workspace 4
     match:
       - window_title:
           regex: '.+[Aa]nki'
@@ -239,15 +238,15 @@ window_rules:
       - window_process:
           equals: claude
   - commands:
-      - move --workspace 5
-      - focus --workspace 5
+      - move --workspace 6
+      - focus --workspace 6
       - set-tiling
     match:
       - window_process:
           equals: Obsidian
   - commands:
-      - move --workspace 4
-      - focus --workspace 4
+      - move --workspace 5
+      - focus --workspace 5
       - set-tiling
     match:
       - window_process:
@@ -257,8 +256,8 @@ window_rules:
       - window_process:
           equals: 'VirtualBoxVM'
   - commands:
-      - move --workspace 0
-      - focus --workspace 0
+      - move --workspace 1
+      - focus --workspace 1
       - ignore
     match:
       - window_process:
@@ -266,14 +265,14 @@ window_rules:
       - window_process:
           equals: 'Soundpad'
   - commands:
-      - move --workspace 6
-      - focus --workspace 6
+      - move --workspace 7
+      - focus --workspace 7
     match:
       - window_process:
           regex: '[Tt]odoist'
   - commands:
-      - move --workspace 7
-      - focus --workspace 7
+      - move --workspace 8
+      - focus --workspace 8
       - set-tiling
     match:
       - window_process:
@@ -287,8 +286,8 @@ window_rules:
       - window_process:
           equals: 'obs64' # OBS Studio
   - commands:
-      - move --workspace 8
-      - focus --workspace 8
+      - move --workspace 9
+      - focus --workspace 9
       - set-tiling
     match:
       - window_process:
@@ -507,8 +506,8 @@ binding_modes:
         bindings:
           - '9'
       - commands:
-          - move --workspace 0
-          - focus --workspace 0
+          - move --workspace 10
+          - focus --workspace 10
         bindings:
           - '0'
       # Press enter/escape to return to default keybindings.
@@ -677,6 +676,6 @@ keybindings:
     bindings:
       - ctrl+alt+shift+9
   - commands:
-      - focus --workspace 0
+      - focus --workspace 10
     bindings:
       - ctrl+alt+shift+0

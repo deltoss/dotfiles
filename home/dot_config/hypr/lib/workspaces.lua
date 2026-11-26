@@ -35,7 +35,7 @@ local function apply(monitors)
     hl.workspace_rule({
       workspace = tostring(ws),
       monitor = mon.name,
-      default = (ws == 1 or ws == 6),
+      default = (ws == 1 or ws == 7),
     })
 
     if hl.get_workspace(ws) then
@@ -46,11 +46,10 @@ local function apply(monitors)
     end
   end
 
-  for ws = 1, 5 do
+  for ws = 1, 6 do
     bind(ws, leftmost)
   end
-  bind(10, leftmost)
-  for ws = 6, 9 do
+  for ws = 7, 10 do
     bind(ws, rightmost)
   end
 end

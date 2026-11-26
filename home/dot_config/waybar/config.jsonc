@@ -23,11 +23,8 @@
     "disable-scroll": true,
     "all-outputs": false,
     "cursor": true,
-    "sort-by": "name",
-    "format": "{icon}",
-    "format-icons": {
-      "0": "N"
-    }
+    "sort-by": "id",
+    "format": "{name}"
   },
   "cpu": {
     "interval": 5,
