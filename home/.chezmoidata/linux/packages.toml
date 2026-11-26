@@ -860,7 +860,7 @@ id = "mailspring"
 [[packages.linux]]
 name = "Libation"
 description = "Audible audiobook manager and downloader"
-tags = ["all"]
+tags = ["personal"]
 distros = ["cachyos"]
 package_type = "aur"
 id = "libation"

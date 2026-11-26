@@ -105,7 +105,7 @@ args = [
 
 [[packages.windows]]
 name = "Libation"
-tags = ["all"]
+tags = ["personal"]
 package_type = "commands"
 commands = [
   'nu $"($env.CHEZMOI_SOURCEDIR)/scripts/windows/install-libation.nu"'
