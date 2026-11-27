@@ -198,6 +198,24 @@ tags = ["all"]
 package_type = "npm"
 id = "hunkdiff"
 
+[[packages.common]]
+name = "Dagu"
+description = "Local workflow automation"
+tool = "dagu"
+tags = ["all"]
+package_type = "npm"
+id = "@dagucloud/dagu"
+args = ["--ignore-scripts=false"]
+
+[[packages.common]]
+name = "n8n"
+description = "Workflow integrations and event triggers"
+tool = "n8n"
+tags = ["all"]
+package_type = "npm"
+id = "n8n@2"
+update_commands = ["npm install -g n8n@2"]
+
 # --- uv ---
 
 [[packages.common]]
