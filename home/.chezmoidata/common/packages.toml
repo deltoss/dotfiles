@@ -213,8 +213,7 @@ description = "Workflow integrations and event triggers"
 tool = "n8n"
 tags = ["all"]
 package_type = "npm"
-id = "n8n@2"
-update_commands = ["npm install -g n8n@2"]
+id = "n8n"
 
 # --- uv ---
 
