@@ -1,0 +1,10 @@
+[Unit]
+Description=Dagu workflow automation
+
+[Service]
+ExecStart=/usr/bin/env dagu start-all
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

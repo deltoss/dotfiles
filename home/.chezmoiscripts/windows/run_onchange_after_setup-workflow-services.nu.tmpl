@@ -1,0 +1,8 @@
+{{ if eq .osid "windows" -}}
+#!/usr/bin/env nu
+{{- $script := printf "%s/scripts/setup-workflow-services.nu" .chezmoi.workingTree }}
+# Script hash: {{ include $script | sha256sum }}
+{{- $tasks := printf "%s/scripts/windows/setup-workflow-tasks.ps1" .chezmoi.workingTree }}
+# Task script hash: {{ include $tasks | sha256sum }}
+nu {{ $script | quote }}
+{{ end -}}

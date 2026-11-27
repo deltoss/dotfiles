@@ -1,0 +1,10 @@
+[Unit]
+Description=n8n workflow integrations
+
+[Service]
+ExecStart=/usr/bin/env n8n start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
