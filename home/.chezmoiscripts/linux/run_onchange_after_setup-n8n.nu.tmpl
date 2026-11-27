@@ -1,6 +1,6 @@
 {{ if hasPrefix "linux" .osid -}}
 #!/usr/bin/env nu
-{{- $script := printf "%s/scripts/setup-workflow-services.nu" .chezmoi.workingTree }}
+{{- $script := printf "%s/scripts/setup-n8n.nu" .chezmoi.workingTree }}
 # Script hash: {{ include $script | sha256sum }}
 nu {{ $script | quote }}
 {{ end -}}
